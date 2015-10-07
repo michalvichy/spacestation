@@ -40,19 +40,21 @@ body.page-template-landing_page{
 }
 
 #intro_image-left{
+	position: absolute;
+	left:0;
 	display: inline-block;
 	background: url('assets/imgs/logo_mark_centre_gold-left.png');
 	width: 108px;
 	height: 170px;
-	float: left;
 }
 
 #intro_image-right{
+	position: absolute;
+	right: 1px;
 	display: inline-block;
 	background: url('assets/imgs/logo_mark_centre_gold-right.png');
 	width: 108px;
 	height: 170px;
-	float: left;
 }
 
 

@@ -58,7 +58,15 @@ else { $paged = 1; }
         <![endif]-->
 
         <?php wp_head(); ?>
-
+		<script>
+			window.onload = function() {
+				var intro_image_left = document.getElementById("intro_image-left");
+				var intro_image_right = document.getElementById("intro_image-right");				
+				TweenLite.from(intro_image_left, 2, {top:"-1000px"});
+				TweenLite.from(intro_image_right, 2, {bottom:"-1000px"});
+				
+			}
+		</script>
     </head>
 
 <body <?php body_class(); ?>>
