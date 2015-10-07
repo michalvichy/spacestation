@@ -63,7 +63,10 @@ else { $paged = 1; }
 
 <body <?php body_class(); ?>>
 <?php if(isset($qode_toolbar)) include("toolbar_examples.php") ?>
-   <div id="intro_image"></div>
+   <div id="intro_image">
+   		<div id="intro_image-left"></div>
+   		<div id="intro_image-right"></div>
+   </div>
 <div class="wrapper">
     <div class="wrapper_inner">
         <!-- Google Analytics start -->
