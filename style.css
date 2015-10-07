@@ -10,5 +10,34 @@ Template: bridge
 @import url("../bridge/style.css");
 
 /* center logo */
-div.header_inner_left{left:50%!important; margin-left:-75px;}
+div.header_inner_left{
+	left:50%!important; 
+	margin-left:-75px;
+	}
 
+
+/* /// LANDING PAGE/////// */
+body.page-template-landing_page{
+	background: url('assets/imgs/back_marble.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: 0;
+}
+	
+#intro_image{
+	display: block;
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -108px;
+	margin-top: -85px;
+	background: url('assets/imgs/logo_mark_centre_gold.png');
+	width: 217px;
+	height: 170px;
+	z-index: 5000;
+}
+
+/* ////////////////////////////// */
