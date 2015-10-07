@@ -9,3 +9,6 @@ Template: bridge
 */
 @import url("../bridge/style.css");
 
+/* center logo */
+div.header_inner_left{left:50%!important; margin-left:-75px;}
+
