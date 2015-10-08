@@ -419,6 +419,50 @@ $display_header_top = "yes";
 				</div>
 			</div>
 		</aside>
+		<!-- 	right menu hack		//////////// -->
+
+<div class="header_inner_right">
+                                <div class="side_menu_button_wrapper right">
+									<?php if(is_active_sidebar('header_bottom_right')) { ?>
+										<div class="header_bottom_right_widget_holder"><?php dynamic_sidebar('header_bottom_right'); ?></div>
+									<?php } ?>
+									<?php if(is_active_sidebar('woocommerce_dropdown')) {
+										dynamic_sidebar('woocommerce_dropdown');
+									} ?>
+                                    <div class="side_menu_button">
+									
+										<?php if(isset($qode_options_proya['enable_search']) && $qode_options_proya['enable_search'] == 'yes') {
+											$search_type_class = 'search_slides_from_window_top';
+											if(isset($qode_options_proya['search_type']) && $qode_options_proya['search_type'] !== '') {
+												$search_type_class = $qode_options_proya['search_type'];
+											}
+											if(isset($qode_options_proya['search_type']) && $qode_options_proya['search_type'] == 'search_covers_header') {
+												if (isset($qode_options_proya['search_cover_only_bottom_yesno']) && $qode_options_proya['search_cover_only_bottom_yesno']=='yes') {
+													$search_type_class .= ' search_covers_only_bottom';
+												}
+											}
+											?>
+											<a class="search_button <?php echo esc_attr($search_type_class); ?> <?php echo esc_attr($header_button_size); ?>" href="javascript:void(0)">
+                                                <?php $qodeIconCollections->getSearchIcon(qodef_option_get_value('search_icon_pack')); ?>
+											</a>
+								
+											<?php if($search_type_class == 'fullscreen_search' && $fullscreen_search_animation=='from_circle'){ ?>
+												<div class="fullscreen_search_overlay"></div>
+											<?php } ?>
+										<?php } ?>
+                                        <?php if($enable_popup_menu == "yes"){ ?>
+                                            <a href="javascript:void(0)" class="popup_menu <?php echo $header_button_size; ?>"><span class="popup_menu_inner"><i class="line">&nbsp;</i></span></a>
+                                        <?php } ?>
+                                        <?php if($enable_side_area == "yes" && $enable_popup_menu == 'no'){ ?>
+                                            <a class="side_menu_button_link <?php echo $header_button_size; ?>" href="javascript:void(0)">
+                                                <?php echo qode_get_side_menu_icon_html(); ?>
+                                            </a>
+										<?php } ?>
+                                    </div>
+                                </div>
+							</div>
+
+<!--  ///////// end right menu  -->
 		<?php if((isset($qode_options_proya['vertical_area_type']) && ($qode_options_proya['vertical_area_type'] == 'hidden')) &&
 			(isset($qode_options_proya['vertical_logo_bottom']) && $qode_options_proya['vertical_logo_bottom'] !== '')) { ?>
 			<div class="vertical_menu_area_bottom_logo">
@@ -428,6 +472,9 @@ $display_header_top = "yes";
 					</a>
 				</div>
 			</div>
+			
+
+			
 		<?php } ?>
 	<?php } ?>
 
