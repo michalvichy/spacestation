@@ -3,8 +3,10 @@
 Template Name: Landing Page
 */
 global $wp_query;
+/*
 global $qode_options_proya;
 global $qode_toolbar;
+*/
 $id = $wp_query->get_queried_object_id();
 $sidebar = get_post_meta($id, "qode_show-sidebar", true);  
 
@@ -71,6 +73,7 @@ else { $paged = 1; }
 
 <body <?php body_class(); ?>>
 <?php if(isset($qode_toolbar)) include("toolbar_examples.php") ?>
+<?php get_header(); ?>
    <div id="intro_image">
    		<div id="intro_image-left"></div>
    		<div id="intro_image-right"></div>

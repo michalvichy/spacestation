@@ -17,7 +17,7 @@ div.header_inner_left{
 
 
 /* /// LANDING PAGE/////// */
-body.page-template-landing_page{
+body.page-template-landing_page .content{
 	background: url('assets/imgs/back_marble.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
