@@ -30,6 +30,17 @@ div.side_menu_button a{
 }
 
 
+/* display both left and right navigation panels */
+aside.vertical_menu_area{
+	z-index: 5000;
+}
+
+body.vertical_menu_enabled header div.header_inner{
+	display: block;
+}
+
+
+
 /*  ---- CONTENT ---- */
 
 /* top serch spacing fix */

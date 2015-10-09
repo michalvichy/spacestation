@@ -421,7 +421,7 @@ $display_header_top = "yes";
 		</aside>
 		<!-- 	right menu hack		//////////// -->
 
-<div class="header_inner_right">
+							<!-- <div class="header_inner_right">
                                 <div class="side_menu_button_wrapper right">
 									<?php if(is_active_sidebar('header_bottom_right')) { ?>
 										<div class="header_bottom_right_widget_holder"><?php dynamic_sidebar('header_bottom_right'); ?></div>
@@ -460,7 +460,7 @@ $display_header_top = "yes";
 										<?php } ?>
                                     </div>
                                 </div>
-							</div>
+							</div> -->
 
 <!--  ///////// end right menu  -->
 		<?php if((isset($qode_options_proya['vertical_area_type']) && ($qode_options_proya['vertical_area_type'] == 'hidden')) &&
@@ -478,7 +478,7 @@ $display_header_top = "yes";
 		<?php } ?>
 	<?php } ?>
 
-<?php if(!$enable_vertical_menu){ ?>
+<?php if($enable_vertical_menu){ ?>
 
 <?php if($header_bottom_appearance == "regular" || $header_bottom_appearance == "fixed" || $header_bottom_appearance == "fixed_hiding" || $header_bottom_appearance == "stick" || $header_bottom_appearance == "stick menu_bottom" || $header_bottom_appearance == "stick_with_left_right_menu"){ ?>
 
