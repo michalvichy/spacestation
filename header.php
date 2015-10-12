@@ -382,7 +382,7 @@ $display_header_top = "yes";
 
 				<div class="vertical_area_background" <?php if($vertical_area_background_image != ""){ echo 'style="background-image:url('.$vertical_area_background_image.');"'; } ?>></div>
 
-				<div class="vertical_logo_wrapper">
+				<!-- <div class="vertical_logo_wrapper">
 					<?php
 					if (isset($qode_options_proya['logo_image']) && $qode_options_proya['logo_image'] != ""){ $logo_image = $qode_options_proya['logo_image'];}else{ $logo_image =  get_template_directory_uri().'/img/logo.png'; };
 					if (isset($qode_options_proya['logo_image_light']) && $qode_options_proya['logo_image_light'] != ""){ $logo_image_light = $qode_options_proya['logo_image_light'];}else{ $logo_image_light =  get_template_directory_uri().'/img/logo.png'; };
@@ -397,7 +397,7 @@ $display_header_top = "yes";
 						</a>
 					</div>
 
-				</div>
+				</div> -->
 
 				<nav class="vertical_menu dropdown_animation vertical_menu_<?php echo $vertical_menu_style; ?>">
 					<?php

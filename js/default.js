@@ -25,6 +25,16 @@ if(typeof paspartu_width_init == 'undefined'){ //check if variable is defined in
 
 $j(document).ready(function() {
 	"use strict";
+
+	/**
+	 * Apply Corners
+	 */
+	
+	$j('.jqcorner').corner("4px bevel");
+
+	/**
+	 *  END
+	 */
 	
 	if($j('header').hasClass('regular')){
 		content_menu_top = 0;

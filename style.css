@@ -29,16 +29,88 @@ div.side_menu_button a{
 	padding: 5px!important;
 }
 
-
 /* display both left and right navigation panels */
 aside.vertical_menu_area{
 	z-index: 5000;
+	opacity: 0.95;
 }
 
 body.vertical_menu_enabled header div.header_inner{
 	display: block;
 }
 
+/*LEFT VERTICAL MENU AREA PANEL*/
+
+/*<-- TEXT INPUT -->*/
+aside.vertical_menu_area form input[type='text']{
+	width: 100%;
+/*margin: 0 0 20px 0;*/
+padding: 4px 0 0 5px;
+border: 0;
+outline: 0;
+resize: none;
+font-size: 13px;
+line-height: 17px;
+background-color: #C5C7C8;
+color: #222;
+font-family: 'Raleway';
+font-weight: 400;
+
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+/*<-- RADIO -->*/
+
+aside.vertical_menu_area form fieldset#record-types input[type="radio"]{
+		display: none!important;
+	}
+
+aside.vertical_menu_area form #record-types label{
+	display:inline-block;
+    		padding:0 0 0 5px;
+    		cursor: pointer;
+    		font-weight: 600;
+	}
+
+aside.vertical_menu_area form #record-types input[type="radio"]:checked + label {
+    color: orange;
+	}
+
+/*<-- SELECT -->*/
+
+div.jqcorner{
+	background-color: #C5C7C8!important;
+	margin-bottom: 10px ;
+}
+
+aside.vertical_menu_area form select{
+/*background: url("/wp-content/themes/ten/img/arrow.png") no-repeat scroll 505px 12px / 21px 15px rgba(0, 0, 0, 0);*/
+padding: 2px 0 2px 4px;
+text-align: left;
+height: 20px!important;
+/*border: 2px solid #ababab;*/
+/*margin: 10px 0;*/
+border-radius: 0;
+text-transform: uppercase;
+-webkit-appearance: none;
+/*font-family: futura-pt,sans-serif;*/
+font-size: 16px;
+font-weight: 300;
+background-color: #C5C7C8!important;
+}
+
+
+/*<-- SUBMIT -->*/
+
+.js-run-pb-search{
+	display: inline-block;
+	padding: 0 5px;
+	color: white!important;
+	font-size: 12px!important;
+	text-transform: uppercase;
+	background: #B59656; 
+}
 
 
 /*  ---- CONTENT ---- */
