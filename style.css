@@ -294,6 +294,20 @@ z-index: 1001;
 }
 
 
+/* ////////////////////////////////// */
+/* ------------- FOOTER ------------- */
+
+
+/* ---- MIDDLE COLUMN ---- */
+footer div.column2.footer_col2 div.textwidget{
+
+  text-align: center;
+  margin-top:35%;
+  margin-left: -15px;
+
+}
+
+
 
 /* ////////////////////////////////// */
 /* -------- PAGE TEMPLATES --------- */
