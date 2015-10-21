@@ -61,7 +61,8 @@ else { $paged = 1; }
 	<div class="full_width"<?php if($background_color != "") { echo " style='background-color:". $background_color ."'";} ?>>
 		<div class="full_width_inner" <?php qode_inline_style($content_style_spacing); ?>>
 
-			<?php the_content(); ?>
+			<!-- <?php the_content(); ?> -->
+
 			
 			<?php require_once ('includes/listing-connection.php'); ?> 
 

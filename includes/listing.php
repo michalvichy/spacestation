@@ -316,12 +316,12 @@
 
       </div>
     <!-- END RESULT -->
+
        <!-- if video url create javascript variable with it -->
        <?php if( !empty($item->media->videos->video->url) ){ ?>
                 <script type="text/javascript">
                   video_url = <?php echo ("'".$item->media->videos->video->url."';");  ?>
-                  // youtube_url = video_url.replace("watch?v=", "v/");
-                  youtube_url = video_url;
+                  youtube_url = video_url; // youtube_url = video_url.replace("watch?v=", "v/");
                   external = <?php echo ("'".$item->media->videos->video->external."';");  ?>
                   floorplan = <?php echo ("'".$floorplan."';");  ?>
                   epc = <?php echo ("'".$epc."';");  ?>
@@ -335,3 +335,21 @@
       <script src="<?php echo get_childTheme_url(); ?>/js/px-video.js"></script>
       <script type="text/javascript" src="<?php echo get_childTheme_url(); ?>/js/single_view.js"></script>
 </div>
+
+<!-- RELATED POSTS -->
+
+<?php query_posts('tag=art,kires'); ?>
+<?php echo '<div id="relatedposts"><h3>Related Posts</h3><ul>'; ?>
+<?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
+<li><div class="relatedthumb"><a href="<? the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail(); ?></a></div>
+          <div class="relatedcontent">
+          <h3><a href="<? the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
+          <?php the_time('M j, Y') ?>
+  </div>
+</li>
+
+<?php endwhile; endif ;?>
+<?php echo '</ul></div>'; ?>
+
+ 
