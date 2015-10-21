@@ -1,5 +1,5 @@
 
-		body{ font-family: 'Droid Serif', sans-serif; font-size: 0.91em; line-height: 1.5em; background-color: grey;}
+		body{ /*font-family: 'Droid Serif', sans-serif; font-size: 0.91em; line-height: 1.5em; */background-color: grey;}
 		td {vertical-align: top;border-right: 1px dotted; padding: 0 10px;}
 		
 		a:hover	{color: #3999ca;}

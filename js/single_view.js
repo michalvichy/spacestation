@@ -1,13 +1,13 @@
 //VARS
-
-var gallery_view = $('.ls-wp-fullwidth-container');
-var floorplan_view = $('#floorplan_container');
-var epc_view = $('#epc_container');
-var map_view = $('#map_container');
-var video_view = $('#myvid');
+var $j = jQuery.noConflict();
+var gallery_view = $j('.ls-wp-fullwidth-container');
+var floorplan_view = $j('#floorplan_container');
+var epc_view = $j('#epc_container');
+var map_view = $j('#map_container');
+var video_view = $j('#myvid');
 // var single_view_divs = $('.single_view_media > div');
-var description_view = $('.single_view_info.description');
-var arrange_view = $('.single_view_info.arrange');
+var description_view = $j('.single_view_info.description');
+var arrange_view = $j('.single_view_info.arrange');
 
 var video1;
 
@@ -51,7 +51,7 @@ function Initialize_Unversal_Player()
 		if(external == 'false') 
 			{
 				'use strict';
-				$('#myvid').html('<div class="px-video-img-captions-container"><div class="px-video-captions hide"></div><div class="px-video-wrapper"><video poster="img/poster.jpg" class="px-video" controls ><source src='+video_url+' type="video/mp4" /><div><a href=' + video_url + '><img src="img/poster.jpg" width="640" height="360" alt="download video" /></a></div></video></div></div><div class="px-video-controls"></div>');
+				$j('#myvid').html('<div class="px-video-img-captions-container"><div class="px-video-captions hide"></div><div class="px-video-wrapper"><video poster="img/poster.jpg" class="px-video" controls ><source src='+video_url+' type="video/mp4" /><div><a href=' + video_url + '><img src="img/poster.jpg" width="640" height="360" alt="download video" /></a></div></video></div></div><div class="px-video-controls"></div>');
 		
 				//init UVP
 				video1 = new InitPxVideo({
@@ -68,7 +68,7 @@ function Initialize_Unversal_Player()
 			}
 		else if(external === 'true') 
 			{
-				$('#myvid').html('<iframe width="100%" height="500" src="' + youtube_url + '"></iframe>');
+				$j('#myvid').html('<iframe width="100%" height="500" src="' + youtube_url + '"></iframe>');
 			}
 	}
 
@@ -87,14 +87,14 @@ function pauseVid() {
 }
 
 // DOCUMENT READY - 2st
-	$(document).ready(function() {
+	$j(document).ready(function() {
 		
 	//LAYOUT CHANGE BUTTONS LOGIC
 
-	$('.single_view_navigation ul li').on('click','a',function(event){
+	$j('.single_view_navigation ul li').on('click','a',function(event){
 		event.preventDefault();
 		event.stopPropagation();
-		switch( $(this).attr('id') ) {
+		switch( $j(this).attr('id') ) {
     		case 'single_view_nav_map': 
     			
     			// if video player has been initialised
@@ -183,14 +183,14 @@ function pauseVid() {
 	})
 
 	// ARRANGE VIEWING BUTTON
-	$('.arrange_viewing_button.open').on('click',function(event){
+	$j('.arrange_viewing_button.open').on('click',function(event){
 		event.preventDefault(); 
 		hideItem([description_view],true);
 		showItem([arrange_view],true);
 
 	})
 
-	$('.arrange_viewing_button.close').on('click',function(event){
+	$j('.arrange_viewing_button.close').on('click',function(event){
 		event.preventDefault(); 
 		hideItem([arrange_view],true);
 		showItem([description_view],true);
@@ -199,10 +199,10 @@ function pauseVid() {
 	});
 
 // WINDOW LOAD - 3rd
-	$(window).load(function(){
+	$j(window).load(function(){
 
    		// Initialize flickity
-   		$('.gallery').flickity({
+   		$j('.gallery').flickity({
   			contain: false,
   			imagesLoaded: true,
   			lazyLoad: true

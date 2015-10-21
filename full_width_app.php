@@ -2,6 +2,9 @@
 /*
 Template Name: Full Width App
 */ 
+
+update_option('current_page_template','Full Width App');
+
 ?>
 <?php 
 global $wp_query;
@@ -521,7 +524,7 @@ $errorMessage 	= null;
 		    					<p><?php echo $item->data->pba__status__c; ?></p>
 		    					<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
 		    				    <div class="thumbnail">
-		    				    	<a href= "http://localhost/ss/wp-content/themes/spacestation/listing.php?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
+		    				    	<a href= "http://localhost/ss/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
 		    				    	<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>"></a>
 		    				    </div>
 		    				    <?php }; ?>
