@@ -287,7 +287,7 @@ background-color: #C5C7C8!important;
 
 /* left side logo */
 #left_side_logo{
-position: absolute;
+position: fixed;
 left: 25px;
 bottom: 20px;
 z-index: 1001;

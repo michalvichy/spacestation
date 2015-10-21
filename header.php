@@ -1,3 +1,4 @@
+
 <?php global $qode_options_proya, $wp_query, $qode_toolbar, $qodeIconCollections; ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -25,6 +26,27 @@
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo esc_url($qode_options_proya['favicon_image']); ?>">
 	<link rel="apple-touch-icon" href="<?php echo esc_url($qode_options_proya['favicon_image']); ?>"/>
 	<?php wp_head(); ?>
+
+<?php
+ if(wp_get_theme() == "Space Station"){
+?>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+	<script type="text/javascript" src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
+	<script type="text/javascript" src="http://jquery-list-grid.ssdtutorials.com/js/cookie.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/pb-style.css">
+
+	<!-- listing styles and scripts -->
+
+	<link rel="stylesheet" href="<?php echo get_childTheme_url(); ?>/css/px-video.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/fontello.css">
+
+<?php } else{
+echo '<script>alert("?");</script>';
+}?>
+
 </head>
 
 <body <?php body_class(); ?>>
