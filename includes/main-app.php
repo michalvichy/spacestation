@@ -267,7 +267,6 @@
 								<input type="hidden" name="reference" value="<?php echo $reference;?>">
 								<input type="hidden" name="price_from" value="<?php echo $price_from;?>">
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
-								<!-- <input type="hidden" name="size_from" value="<?php echo $size_from;?>"> -->
 								<input type="hidden" name="bedrooms_from" value="<?php echo $bedrooms_from;?>">	
 								<input type="hidden" name="bathrooms_from" value="<?php echo $bathrooms_from;?>">	
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">	
@@ -286,8 +285,7 @@
 								<input type="hidden" name="reference" value="<?php echo $reference;?>">
 								<input type="hidden" name="price_from" value="<?php echo $price_from;?>">
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
-								<!-- <input type="hidden" name="size_from" value="<?php echo $size_from;?>"> -->
-								<input type="hidden" name="bedrooms_from" value="<?php echo $bedrooms_from;?>">
+								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="bathrooms_from" value="<?php echo $bathrooms_from;?>">	
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">
 								<input type="hidden" name="itemsperpage" value="<?php echo $itemsperpage;?>">
@@ -354,7 +352,7 @@
 
 		    $j("select[name='price_from'] option[value='"+<?php Print($price_from)  ?>+"']").prop('selected', true);
     $j("select[name='price_to'] option[value='"+<?php Print($price_to) ?>+"']").prop('selected', true);
-    $j("select[name='bedrooms_from'] option[value='"+<?php Print($bedrooms_from) ?>+"']").prop('selected', true);
+    // $j("select[name='bedrooms_from'] option[value='"+<?php Print($bedrooms_from) ?>+"']").prop('selected', true);
 
     <?php if( $default_recordtypes == "sale;rent" ){ ?>
      $j("input[name='recordtypes']").first().prop('checked', true);
@@ -364,6 +362,7 @@
   
     $j("select[name='orderby'] option[value=<?php echo("'".$orderby."'"); ?>]").prop('selected', true);
     <?php
+    	if (!empty($bedrooms_from)) echo( "\$j(\"select[name='bedrooms_from'] option[value='".$bedrooms_from."']\").prop('selected', true);"); 
     	if (!empty($itemsperpage)) echo( "\$j(\"select[name='itemsperpage'] option[value='".$itemsperpage."']\").prop('selected', true);"); 
     	if (!empty($bathrooms_from)) echo( "\$j(\"select[name='bathrooms_from'] option[value='".$bathrooms_from."']\").prop('selected', true);"); 
     	if (!empty($default_propertytype)) echo( "\$j(\"select[name='propertytype'] option[value='".$default_propertytype."']\").prop('selected', true);");

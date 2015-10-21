@@ -61,13 +61,12 @@ else { $paged = 1; }
 	<div class="full_width"<?php if($background_color != "") { echo " style='background-color:". $background_color ."'";} ?>>
 		<div class="full_width_inner" <?php qode_inline_style($content_style_spacing); ?>>
 
-			<?php the_content(); ?>								
+			<?php the_content(); ?>		
 
-			<?php include ('includes/connection.php'); ?> 
+			<?php require_once ('includes/connection.php'); ?> 
 
-			<?php include ('includes/main-app.php'); ?>
-	
-			
+			<?php require_once ('includes/main-app.php'); ?>
+
 
 <!-- GET FOOTER	 -->
 	<?php get_footer(); ?>
