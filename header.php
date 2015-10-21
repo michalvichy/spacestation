@@ -64,7 +64,7 @@
 		// ALWAYS LOAD IF RUNNING SPACE STATION THEME
 	?>
 
-	<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/pb-style.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/pb-style.css">
 	
 	<?php } else{
 	echo '<script>alert("?");</script>';

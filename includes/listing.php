@@ -338,7 +338,7 @@
 
 <!-- RELATED POSTS -->
 
-<?php query_posts('tag=art,kires'); ?>
+<?php query_posts('tag='.$item->data->pba__propertytype__c.',art'); ?>
 <?php echo '<div class="vc_row wpb_row section vc_row-fluid" style=" text-align:left;"><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="wpb_wrapper"><div class="qode_carousels_holder clearfix"><div class="qode_carousels"><div class="caroufredsel_wrapper" style="display: block; text-align: left; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: 0; width: 1360px; margin: 0px; overflow: hidden; cursor: move; height: 146px;"><ul class="slides" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: -264.50476799999996px; margin: 0px; width: 5712px; opacity: 1; z-index: 0;">'; ?>
 <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

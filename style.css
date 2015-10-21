@@ -12,6 +12,10 @@ Template: bridge
 /* ///////////////////////////////// */
 /* -------- GENERAL STYLES -------- */
 
+.content .container{
+  background-color: transparent;
+}
+
 /* ----  HEADER ---- */
 
 /* center logo */
@@ -291,6 +295,12 @@ position: fixed;
 left: 25px;
 bottom: 20px;
 z-index: 1001;
+}
+
+/*  ---- CAROUSEL ---- */
+
+div.caroufredsel_wrapper{
+  left: 0!important;
 }
 
 
