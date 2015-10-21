@@ -27,25 +27,50 @@
 	<link rel="apple-touch-icon" href="<?php echo esc_url($qode_options_proya['favicon_image']); ?>"/>
 	<?php wp_head(); ?>
 
-<?php
- if(wp_get_theme() == "Space Station"){
-?>
+	<!-- HEADER MODS -->
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
-	<script type="text/javascript" src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
-	<script type="text/javascript" src="http://jquery-list-grid.ssdtutorials.com/js/cookie.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+	<?php
+	// IF RUNNING SPACE STATION THEME
+	 if(wp_get_theme() == "Space Station"){
+		
+	 	/**
+	 	 * LOAD SCRIPTS BASED ON TEMPLATE NAME
+	 	 */
+
+		// IF CURRENT TEMPLATE IS APP
+	 	if(get_option('current_page_template') === 'Full Width App'){
+	?>
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+		<script type="text/javascript" src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
+		<script type="text/javascript" src="http://jquery-list-grid.ssdtutorials.com/js/cookie.js"></script>
+	
+	<?php } 
+	
+		// IF CURRENT TEMPLATE IS LISTING
+		if(get_option('current_page_template') === 'Full Width Listing'){
+	
+	?>
+	
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.1/flickity.css" media="screen">
+			<link rel="stylesheet" href="<?php echo get_childTheme_url(); ?>/css/px-video.css" />
+			<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/fontello.css">
+	
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.1/flickity.pkgd.min.js"></script>
+			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	
+	<?php } 
+
+		// ALWAYS LOAD IF RUNNING SPACE STATION THEME
+	?>
 
 	<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/pb-style.css">
+	
+	<?php } else{
+	echo '<script>alert("?");</script>';
+	}?>
 
-	<!-- listing styles and scripts -->
-
-	<link rel="stylesheet" href="<?php echo get_childTheme_url(); ?>/css/px-video.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/fontello.css">
-
-<?php } else{
-echo '<script>alert("?");</script>';
-}?>
+	<!-- END HEADER MODS -->
 
 </head>
 

@@ -77,15 +77,15 @@ function clearForm() {
 
 
 		// AJAX
-		$j.ajaxSetup({cache:false});
+		// $j.ajaxSetup({cache:false});
 		
-		$j("h1 a").click(function(e){ 
-			e.preventDefault();
-			var post_id = $j(this).attr("rel");
-			$j("#results").html("loading...");
-			$j("#results").load("http://localhost/ss/wp-content/themes/spacestation/listing.php?id="+post_id,{id:post_id});
-			return false;
-		});
+		// $j("h1 a").click(function(e){ 
+		// 	e.preventDefault();
+		// 	var post_id = $j(this).attr("rel");
+		// 	$j("#results").html("loading...");
+		// 	$j("#results").load("http://localhost/ss/wp-content/themes/spacestation/listing.php?id="+post_id,{id:post_id});
+		// 	return false;
+		// });
 
 
 		$rslts = $j('#results');
@@ -128,10 +128,6 @@ function clearForm() {
 
 	//onChange FORM SUBMIT
 
-	// $('fieldset#record-types input[type=radio]').on('change', function() {
- //    	$(this).closest("form").submit();
-	// });
-
 	$j('form#theForm').on('change', 'input, select', function() {
 		$j(this).closest("form").submit();
 	});
@@ -148,48 +144,6 @@ function clearForm() {
 // WINDOW LOAD - 3rd
 	$j(window).load(function(){
 
-   		// inintMsnry();
-
-
 
 	});
-
-// Check Submit function ?????????????????????
-
-	// function checkSubmit() {
-    	    
- //    	    // Please enter all ID's of your Multi-Select-Fields into this array.
- //    	    multiPicklistFields = new Array("pba__Request__c.pba__PropertyType__c","pba__Request__c.View__c");
-    	    
- //    	    // Enter the name of your form here. DEFAULT: web2prospect
- //    	    var formName = "web2prospect";
-    	    
- //    	    // PLEASE DONT'T CHANGE THE JAVASCRIPT-CODE AFTER THIS LINE
- //    	    for (var y=0; y < multiPicklistFields.length; y++) {
- //    	        var string = "";
- //    	        var field = multiPicklistFields[y];
- //    	        for (var i=0; i < document.forms[formName].elements[field].length; i++) {
- //    	            if (document.forms[formName].elements[field][i].checked) {
- //    	                string += document.forms[formName].elements[field][i].value + "; ";
- //    	            }
- //    	        }
- //    	        string = string.substr(0, string.length - 2);
- //    	        field = document.createElement("input");
- //    	        field.type = "hidden";
- //    	        field.name = multiPicklistFields[y];
- //    	        field.value = string;
- //    	        document.forms[formName].appendChild(field);
- //    	    }
- //    	    return true;
- //    	}
-
-////// WEB FONTS /////////
-
-WebFont.load({
-    google: {
-      families: ['Droid Sans', 'Droid Serif']
-    },
-    active: triggerMasonry,
-  	inactive: triggerMasonry
-  });
 
