@@ -44,7 +44,6 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
 		<script type="text/javascript" src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
 		<script type="text/javascript" src="http://jquery-list-grid.ssdtutorials.com/js/cookie.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
 	
 	<?php } 
 	

@@ -248,7 +248,7 @@ else { $paged = 1; }
                                                               
                                                               <a class="ls-thumb-<?php echo $i; ?>" href="#" style="width: 100px; height: 60px;">
         
-                                                                <img src="http://localhost/ss/wp-content/themes/spacestation/includes/show_image.php?file=<?php echo urldecode($image->url); ?>" /> 
+                                                                <img src="<?php echo get_childTheme_url(); ?>/includes/show_image.php?file=<?php echo urldecode($image->url); ?>" /> 
                                                                 
                                                                 <?php $i++; ?>
                                                               
@@ -507,8 +507,8 @@ else { $paged = 1; }
                 <?php } ?>
                 <!-- END ELSE EMPTY RESULT -->
 
-<script src="http://localhost/ss/wp-content/themes/spacestation/js/px-video.js"></script>
-<script type="text/javascript" src="http://localhost/ss/wp-content/themes/spacestation/js/single_view.js"></script>
+<script src="<?php echo get_childTheme_url(); ?>/js/px-video.js"></script>
+<script type="text/javascript" src="<?php echo get_childTheme_url(); ?>/js/single_view.js"></script>
 
 <!-- GET FOOTER	 -->
 	<?php get_footer(); ?>

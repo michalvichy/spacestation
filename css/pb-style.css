@@ -1,5 +1,5 @@
 
-		body{ /*font-family: 'Droid Serif', sans-serif; font-size: 0.91em; line-height: 1.5em; */background-color: grey;}
+		body{ background-color: grey;}
 		td {vertical-align: top;border-right: 1px dotted; padding: 0 10px;}
 		
 		a:hover	{color: #3999ca;}
@@ -189,16 +189,6 @@ h3.mainTitle{
 .gallery{
 	transition: opacity .55s ease-in-out;
 }
-
-/* gallery height */
-/*.gallery {
-  height: 160px;
-}*/
-
-/* cell inherit height from gallery */
-/*.gallery-cell {
-  height: 100%;
-}*/
 
 
 /*//////////// FORM STYLING ////////////*/
