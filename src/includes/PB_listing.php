@@ -85,50 +85,12 @@
 
                             <?php endforeach; ?> <!-- end foreach $image -->
 
-                                <div class="ls-circle-timer">
-                                  <div class="ls-ct-left">
-                                    <div class="ls-ct-rotate">
-                                      <div class="ls-ct-hider">
-                                        <div class="ls-ct-half">
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                    
-                                  <div class="ls-ct-right">
-                                    <div class="ls-ct-rotate">
-                                      <div class="ls-ct-hider">
-                                        <div class="ls-ct-half">
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                    
-                                  <div class="ls-ct-center"></div>
-                                </div>
-
                               </div>
 
-
-                            <div class="ls-loading-container" style="z-index: -1; display: none;">
-                              <div class="ls-loading-indicator">
+                              <div class="ls-bottom-nav-wrapper ls-below-thumbnails" style="visibility: visible;">
+                                <a class="ls-nav-start" href="#"></a>
+                                <a class="ls-nav-stop ls-nav-stop-active" href="#"></a>
                               </div>
-                            </div>
-                            
-                            <a class="ls-nav-prev" href="#" style="visibility: visible;"></a>
-                            <a class="ls-nav-next" href="#" style="visibility: visible;"></a>
-                            
-                            <div class="ls-bottom-nav-wrapper ls-above-thumbnails" style="visibility: visible;">
-                              <a class="ls-nav-start" href="#"></a>
-                              <a class="ls-nav-stop ls-nav-stop-active" href="#"></a>
-                            </div>
-
-                            
-                            <div class="ls-bottom-nav-wrapper ls-below-thumbnails" style="visibility: visible;">
-                              <a class="ls-nav-start" href="#"></a>
-                              <a class="ls-nav-stop ls-nav-stop-active" href="#"></a>
-                            </div>
-                            <div class="ls-shadow"></div>
                             
                             </div>
                           </div>
@@ -354,7 +316,7 @@
                 <!-- END ELSE EMPTY RESULT -->
 
       <script src="<?php echo get_childTheme_url(); ?>/js/px-video.js"></script>
-      <script type="text/javascript" src="<?php echo get_childTheme_url(); ?>/js/single_view.js"></script>
+      <script type="text/javascript" src="<?php echo get_childTheme_url(); ?>/js/PB_listing.js"></script>
 </div>
 
 <!-- RELATED POSTS -->

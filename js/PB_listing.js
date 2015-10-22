@@ -5,7 +5,6 @@ var floorplan_view = $j('#floorplan_container');
 var epc_view = $j('#epc_container');
 var map_view = $j('#map_container');
 var video_view = $j('#myvid');
-// var single_view_divs = $('.single_view_media > div');
 var description_view = $j('.single_view_info.description');
 var arrange_view = $j('.single_view_info.arrange');
 
@@ -269,8 +268,8 @@ function pauseVid() {
 	$j(window).load(function(){
 
 		$j("#layerslider_6").layerSlider({
-			responsiveUnder: 1280, 
-			layersContainer: 1280, 
+			responsiveUnder: 768, 
+			layersContainer: 768, 
 			autoStart: false, 
 			startInViewport: false, 
 			skin: 'noskin', 
@@ -288,13 +287,6 @@ function pauseVid() {
 			cbPrev: function(data) { }, 
 			cbNext: function(data) { }, 
 			skinsPath: 'http://localhost/ss/wp-content/plugins/LayerSlider/static/skins/'
-		});
-
-   		// Initialize flickity
-   		$j('.gallery').flickity({
-  			contain: false,
-  			imagesLoaded: true,
-  			lazyLoad: true
 		});
 
 	});
