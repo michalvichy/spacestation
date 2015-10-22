@@ -11,6 +11,66 @@ var arrange_view = $j('.single_view_info.arrange');
 
 var video1;
 
+// GOOGLE MAP
+function init_map(){
+
+	// STYLED MAP
+		var roadAtlasStyles = [
+	    {
+	        featureType: "poi.school",
+	        elementType: "labels",
+	        stylers: [
+	              { visibility: "off" }
+	        ]
+	    }
+	  	];
+	
+	  var styledMapOptions = {
+	    	name: 'US Road Atlas'
+	  	};
+	
+	
+	// MY STLES MAP
+	
+		var myStyles =[
+	    {
+	        featureType: "poi.school",
+	        elementType: "labels",
+	        stylers: [
+	              { visibility: "off" }
+	        ]
+	    }
+		];
+	
+	// MY OPTIONS	
+		var myOptions = {
+		    zoom:16,
+		    center:new google.maps.LatLng(lat,lng),
+		    mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+	
+		map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+		
+		marker = new google.maps.Marker({
+	  		map: map,
+	  		position: new google.maps.LatLng(lat,lng)
+		});
+	
+		infowindow = new google.maps.InfoWindow({content:"<b>"+property_name+"</b><br/>"+property_address });
+	
+	  	var usRoadMapType = new google.maps.StyledMapType(roadAtlasStyles, styledMapOptions);
+	
+	  	map.mapTypes.set('usroadatlas', usRoadMapType);
+	  	map.setMapTypeId('usroadatlas');
+	
+		google.maps.event.addListener(marker, "click", function(){
+			infowindow.open(map,marker);
+		});
+			
+		infowindow.open(map,marker);
+}
+
+
 ///////////// hideItem / showItem
 function hideItem(items, opacity)
 	{
@@ -101,15 +161,23 @@ function pauseVid() {
     		    if(video1 != undefined){  pauseVid(); }
 
     		    // if lat & lng defined load map
-    		    if(lat != undefined && lng != undefined){
+    		    if(lat != undefined && lng != undefined)
+    		    {
 
+    		    	map_view.css('z-index', '0');
 
-    		    		hideItem([gallery_view,video_view,floorplan_view,epc_view]);
-    		    		showItem([map_view]);
+    		    	hideItem([gallery_view,video_view,floorplan_view,epc_view]);
+    		    	showItem([map_view]);
 
-					}else{
+    		    	if( $j('#gmap_canvas').is(':empty') )
+    		    	{
+    		    		init_map();
+    		    	}
+
+				}else
+				{
 						alert('no longitude and latitude');
-					}
+				}
 
     		    break;
     		
@@ -118,7 +186,6 @@ function pauseVid() {
     			// if video player has been initialised
     		    if(video1 != undefined){ pauseVid(); }
 
-    		    	// map_view.css('z-index', '0');
     		     	hideItem([map_view,video_view,floorplan_view,epc_view]);
 					showItem([gallery_view]);
 
