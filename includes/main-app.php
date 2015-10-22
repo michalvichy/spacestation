@@ -34,7 +34,7 @@
 		
 		  			<fieldset id="parameters">
 						<div class="jqcorner">
-							<input type="text" name="reference" placeholder="Property Address" value="<?php echo $reference;?>" style="width: 170px;">
+							<input type="text" name="reference" placeholder="LOCATION" value="<?php echo $reference;?>" style="width: 170px;">
 						</div>
 						
 						<br>
@@ -246,7 +246,7 @@
 		  				</fieldset>
 		
 		
-						<select name="orderby" style="background:none!important;">
+						<select name="orderby" style="background:none!important; margin-left:50px;">
 							<option value="">SORT BY:</option>
 							<option value="CreatedDate;DESC">Created Date DESC</option>
 							<option value="CreatedDate;ASC">Created Date ASC</option>
@@ -263,10 +263,10 @@
 						</select>
 				</fieldset>		
 			</form>
-				</div>
 				<div class="view">
 					<a id="list" href="#"> List View </a><span>|<span>
 		    		<a id="grid" href="#"> Grid View </a>
+				</div>
 				</div>
 			<!-- END SEARCHFORM -->      
 		             
@@ -290,7 +290,7 @@
 								<input type="hidden" name="price_from" value="<?php echo $price_from;?>">
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
 								<input type="hidden" name="bedrooms_from" value="<?php echo $bedrooms_from;?>">	
-								<input type="hidden" name="bathrooms_from" value="<?php echo $bathrooms_from;?>">	
+								<input type="hidden" name="bathrooms_from" value="<?php if( !empty($bathrooms_from)) {echo $bathrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">	
 								<input type="hidden" name="itemsperpage" value="<?php echo $itemsperpage;?>">
 								<input type="hidden" name="recordtypes" value="<?php echo $recordtypes;?>">	
@@ -308,7 +308,7 @@
 								<input type="hidden" name="price_from" value="<?php echo $price_from;?>">
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
 								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo '1'; }?>">
-								<input type="hidden" name="bathrooms_from" value="<?php echo $bathrooms_from;?>">	
+								<input type="hidden" name="bathrooms_from" value="<?php if( !empty($bathrooms_from)) {echo $bathrooms_from;}else{ echo '1'; }?>">	
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">
 								<input type="hidden" name="itemsperpage" value="<?php echo $itemsperpage;?>">
 								<input type="hidden" name="recordtypes" value="<?php echo $recordtypes;?>">		

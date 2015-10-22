@@ -1,34 +1,15 @@
-
-		body{ background-color: grey;}
-		td {vertical-align: top;border-right: 1px dotted; padding: 0 10px;}
-		
-		a:hover	{color: #3999ca;}
+	
 		
 		a:link {text-decoration:none; color: #092A3D;}    /* unvisited link */
-		a:visited {text-decoration:none; color: #092A3D;} /* visited link */
+		a:visited {text-decoration:none; color: #999;} /* visited link */
 		a:hover {text-decoration:none;}   /* mouse over link */
 		a:active {text-decoration:none; color: red;}  /* selected link */
-		a.active{color: orange;}
-
-		/*///////////*/
-		html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-margin: 0;
-padding: 0;
-border: 0;
-outline: 0;
-}
+		a.active{color: #9a751e;}
 
 li{list-style: none;}
 
 .view {
-    margin: 0 0 50px 0;
+    margin: 0 0 50px 50px;
     display: inline-block;
 }
 
@@ -214,20 +195,21 @@ h3.mainTitle{
 		margin-right: 50px;
 	}
 
+	form#theForm.PB_request_form{display: inline-block;}
+
 	fieldset#record-types input[type="radio"]{
 		display: none;
 	}
 
 	#record-types label{
 		display:inline-block;
-    background-color:#ddd;
-    padding:4px 11px;
-    cursor: pointer;
+    	padding:4px 11px;
+    	cursor: pointer;
 	}
 
 	#record-types input[type="radio"]:checked + label {
-    background-color:#bbb;
-    /*color: orange;*/
+    	color: #9a751e;
+    	font-weight: 600;
 	}
 
 	/*PARAMETERS*/
@@ -266,6 +248,6 @@ h3.mainTitle{
 		}
 	
 		#property-status input[type="radio"]:checked + label {
-    	color: orange;
+    	color: #9a751e;
 		}
 
