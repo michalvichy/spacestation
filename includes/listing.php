@@ -238,7 +238,7 @@
                </p>
                <a href="#" class="arrange_viewing_button beige angle_edges_button open">ARRANGE A VIEWING</a>
             </div><!-- // end single_view_info_header -->
-            <div class="panel half_width" style="height:250px; overflow-y: auto;">  
+            <div class="panel half_width">  
               <ul class="info_panel_nav">
 
                       <!-- if documents not empty -->
@@ -257,7 +257,7 @@
                 <li><a href="#">SHARE</a></li>
               </ul>
             <br>
-            <p><?php echo $item->data->pba__description_pb__c; ?> </p>
+            <p style="height:345px; overflow-y: auto;"><?php echo $item->data->pba__description_pb__c; ?> </p>
                 
             </div> <!-- // end panel -->  
             <div class="panel half_width">  

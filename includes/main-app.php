@@ -18,7 +18,7 @@
 			
 			<!-- BEGIN SEARCHFORM -->
 	<div id="searchform">
-			<form method="post" id="theForm" >
+			<form method="post" id="theForm" class="PB_request_form" >
 		
 				<!-- RECORD TYPES -->
 						<fieldset id="record-types">
@@ -33,35 +33,47 @@
 		  				</fieldset>
 		
 		  			<fieldset id="parameters">
-						<input type="text" name="reference" placeholder="Property Address" value="<?php echo $reference;?>" style="width: 170px;">
+						<div class="jqcorner">
+							<input type="text" name="reference" placeholder="Property Address" value="<?php echo $reference;?>" style="width: 170px;">
+						</div>
+						
 						<br>
-						<input class="slider" id="slider1" type="range" min="0" max="100" value="0" oninput="showValue(value, 1);" onchange="showValue(value, 1);" />
+						
+						<div class="slidershell" id="slidershell2">
+        					<div class="sliderfill" id="sliderfill2"></div>
+        					<div class="slidertrack" id="slidertrack2"></div>
+        					<div class="sliderthumb" id="sliderthumb2"></div>
+        					<div class="slidervalue" id="slidervalue2">0</div>
+        					<input class="slider" id="slider2" type="range" min="0" max="100" value="0" oninput="showValue(value, 1, false);" onchange="showValue(value, 1, false);">
+      					</div>
 			
 						<!-- // DETECT CURRENT RECORD TYPE -->
 			
 						 <!-- IF SALE -->
 						<?php if(isset($recordtypes) && ($recordtypes == 'sale') ){ ?>
-						<select name="price_from">
-							<option value="0">No Min</option>
-							<option value="500000">&#163;500,000</option>
-							<option value="550000">&#163;550,000</option>
-							<option value="600000">&#163;600,000</option>
-							<option value="650000">&#163;650,000</option>
-							<option value="700000">&#163;700,000</option>
-							<option value="750000">&#163;750,000</option>
-							<option value="800000">&#163;800,000</option>
-							<option value="900000">&#163;900,000</option>
-							<option value="1000000">&#163;1,000,000</option>
-							<option value="1100000">&#163;1,100,000</option>
-							<option value="1200000">&#163;1,200,000</option>
-							<option value="1300000">&#163;1,300,000</option>
-							<option value="1400000">&#163;1,400,000</option>
-							<option value="1500000">&#163;1,500,000</option>
-							<option value="1750000">&#163;1,750,000</option>
-							<option value="2000000">&#163;2,000,000</option>
-							<option value="2500000">&#163;2,500,000</option>
-						</select>
-		
+						<div class="jqcorner">
+							<select name="price_from">
+								<option value="0">No Min</option>
+								<option value="500000">&#163;500,000</option>
+								<option value="550000">&#163;550,000</option>
+								<option value="600000">&#163;600,000</option>
+								<option value="650000">&#163;650,000</option>
+								<option value="700000">&#163;700,000</option>
+								<option value="750000">&#163;750,000</option>
+								<option value="800000">&#163;800,000</option>
+								<option value="900000">&#163;900,000</option>
+								<option value="1000000">&#163;1,000,000</option>
+								<option value="1100000">&#163;1,100,000</option>
+								<option value="1200000">&#163;1,200,000</option>
+								<option value="1300000">&#163;1,300,000</option>
+								<option value="1400000">&#163;1,400,000</option>
+								<option value="1500000">&#163;1,500,000</option>
+								<option value="1750000">&#163;1,750,000</option>
+								<option value="2000000">&#163;2,000,000</option>
+								<option value="2500000">&#163;2,500,000</option>
+							</select>
+						</div>
+					<div class="jqcorner">
 						<select name="price_to">
 							<option value="0">No Max</option>
 							<option value="500000">&#163;500,000</option>
@@ -87,10 +99,11 @@
 							<option value="4500000">&#163;4,500,000</option>
 							<option value="5000000">&#163;5,000,000</option>
 						</select>
+					</div>
 						<br>
 						 <!-- END IF SALE + IF RENT -->
 						<?php }else if(isset($recordtypes) && ($recordtypes == 'rent') ){ ?>
-		
+						<div class="jqcorner">
 							<select name="price_from">
 							<option value="0">No Min rent</option>
 							<option value="300">&#163;300 <?php echo '(&#163;'. number_format((float)(300*52)/12) .'/month)'; ?></option>
@@ -109,8 +122,10 @@
 							<option value="2000">&#163;2,000 <?php echo '(&#163;'. number_format((float)(2000*52)/12) .'/month)'; ?></option>
 							<option value="2500">&#163;2,500 <?php echo '(&#163;'. number_format((float)(2500*52)/12) .'/month)'; ?></option>
 							<option value="3000">&#163;3,000 <?php echo '(&#163;'. number_format((float)(3000*52)/12) .'/month)'; ?></option>
-						</select>
+							</select>
+						</div>
 		
+					<div class="jqcorner">	
 						<select name="price_to">
 							<option value="0">No Max rent</option>
 							<option value="300">&#163;300 <?php echo '(&#163;'. number_format((float)(300*52)/12) .'/month)'; ?></option>
@@ -134,10 +149,12 @@
 							<option value="4500">&#163;4,500 <?php echo '(&#163;'. number_format((float)(4500*52)/12) .'/month)'; ?></option>
 							<option value="5000">&#163;5,000 <?php echo '(&#163;'. number_format((float)(5000*52)/12) .'/month)'; ?></option>
 						</select>
+					</div>	
 						<br>
 		
 						<?php } ?>
 						 <!-- END IF RENT -->
+					<div class="jqcorner">						 
 						<select name="propertytype">
 							<option value="">Type</option>
 							<option value="Apartment">Apartment</option>
@@ -157,16 +174,20 @@
 							<option value="Townhouse">Townhouse</option>
 							<option value="Villa">Villa</option>
 						</select>
+					</div>						
 						 <!-- IF SALE -->
 							<?php if(isset($recordtypes) && ($recordtypes == 'sale') ){ ?> 
+						<div class="jqcorner">							
 							<select name="tenure">
 								<option value="">Tenure</option>
 								<option value="Leasehold">Leasehold</option>
 								<option value="Freehold">Freehold</option>
 								<option value="Share of Freehold">Share of Freehold</option>
 							</select>
+						</div>		
 						<?php } ?>		
 						<!-- END IF SALE -->
+					<div class="jqcorner">
 						<select name="bedrooms_from">
 							<option value="1">Bedrooms</option>
 							<option value="2">2</option>
@@ -174,8 +195,9 @@
 							<option value="4">4</option>
 							<option value="5">5+</option>
 						</select>
-		
+					</div>
 					<br>
+					<div class="jqcorner">
 						<select name="bathrooms_from">
 							<option value="1">Bathrooms</option>
 							<option value="2">2</option>
@@ -183,7 +205,7 @@
 							<option value="4">4</option>
 							<option value="5">5+</option>
 						</select>
-		
+					</div>
 						<div class="filter__submit">
 								<a href="#" class="js-clear-all-filters">Clear Filters</a>
 								<!-- <button type="submit" class="js-run-pb-search">See Results</button> -->
@@ -224,8 +246,8 @@
 		  				</fieldset>
 		
 		
-						<select name="orderby">
-							<option value="">Order By:</option>
+						<select name="orderby" style="background:none!important;">
+							<option value="">SORT BY:</option>
 							<option value="CreatedDate;DESC">Created Date DESC</option>
 							<option value="CreatedDate;ASC">Created Date ASC</option>
 							<option value="pba__ListingPrice_pb__c;DESC">Price DESC</option>
@@ -234,8 +256,8 @@
 							<option value="pba__Bedrooms_pb__c;ASC">Bedrooms ASC</option>
 						</select>
 		
-						<select name="itemsperpage">
-							<option value="20">20</option>
+						<select name="itemsperpage" style="background:none!important;">
+							<option value="20">PER PAGE</option>
 							<option value="30">30</option>
 							<option value="50">50</option>
 						</select>
