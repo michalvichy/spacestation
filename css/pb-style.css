@@ -88,14 +88,31 @@ font-family: 'Andale Mono',sans-serif;
 
 /*//////// SINGLE VIEW //////*/
 
+.single_view_media{
+	min-height: 750px;
+}
+
+.single_view_description{
+	position: relative;
+	display: block;
+	width: 570px;
+	min-height: 700px;
+	float: right;
+	margin: -200px 50px 50px 0;
+	/*margin-right: 100px;*/
+	/*height: 100%;*/
+	background: rgba(255,255,255,0.5);
+
+}
+
 .single_view_info{
 	position: absolute;
-	top:450px;
-	right: 200px;
-	z-index: 150;
+	top:10px;
+	left:0;
+	/*right: 200px;*/
+	/*z-index: 150;*/
 	padding: 10px;
-	background: rgba(255,255,255,0.5);
-	width: 500px;
+	/*width: 500px;*/
 	/*transition: opacity .55s ease-in-out;*/
 }
 
@@ -178,17 +195,17 @@ h3.mainTitle{
 	left:0;
 	z-index: 0;
 	overflow:hidden;
-	height:500px;
-	width:100%;
+	height:500px; // must match inline on #gmap_canvas
+	width:100%; //// must match inline on #gmap_canvas
 	position: absolute!important; 
 	transition: opacity .55s ease-in-out;
 }
 
 /*/////// FLICKITY*/
 
-.gallery{
+/*.gallery{
 	transition: opacity .55s ease-in-out;
-}
+}*/
 
 
 /*//////////// FORM STYLING ////////////*/

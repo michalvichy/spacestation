@@ -2,6 +2,8 @@
 <script>
   var lat;
   var lng;
+  var property_name;
+  var property_address;
   var video_url;
   var youtube_url;
   var external;
@@ -127,7 +129,7 @@
                           <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?>
                            <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                             <?php if ($image->tags == 'Floorplan Quick (JPG)') {?>
-                                  <img style="max-height:700px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
+                                  <img style="max-height:500px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
                             <?php $floorplan=true; } ?>
                            <?php endforeach; ?>
                           <?php endif; ?>
@@ -158,7 +160,7 @@
                           <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?>
                            <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                             <?php if ($image->tags == 'EPC') {?>
-                                  <img style="max-height:700px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
+                                  <img style="max-height:500px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
                             <?php $epc=true; } ?>
                            <?php endforeach; ?>
                           <?php endif; ?>
@@ -177,7 +179,9 @@
                         // check if latituee and longitude exists and init map is both does
                          <?php if ( !empty($item->data->pba__latitude_pb__c) && !empty($item->data->pba__longitude_pb__c) ){ ?> 
                             lat =  <?php echo  $item->data->pba__latitude_pb__c; ?>;
-                            lng =  <?php echo  $item->data->pba__longitude_pb__c; ?>;     
+                            lng =  <?php echo  $item->data->pba__longitude_pb__c; ?>; 
+                            property_name = <?php echo  "'".$item->data->name."';" ?>;
+                            property_address = <?php echo  "'".$item->data->pba__address_pb__c."';" ?>;    
                          <?php } ?>   
 
                       </script>
@@ -189,7 +193,7 @@
                     <!-- END VIDEO -->
                    
                 </div> <!-- // end single_view_media -->
-
+        <div class="single_view_description">
           <div class="single_view_info arrange">
             <div class="single_view_arrange_header">
                 <p>REQUEST THE VIEWING OF</p>
@@ -313,6 +317,7 @@
                        </ul>
             </div> <!-- // end panel --> 
           </div> <!-- // end single_view_info  --> 
+        </div> <!-- end single_view_description -->
 
       </div>
     <!-- END RESULT -->
