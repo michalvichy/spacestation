@@ -16,6 +16,10 @@ Template: bridge
     background-color: transparent;
   }
 
+  div.full_width{
+    /*margin-left: -40px!important;*/
+  }
+
 /*------------- HEADER ------------*/
 
   /* center logo */
@@ -258,6 +262,22 @@ div.jqcorner{
 }
 
 /*LEFT VERTICAL MENU AREA PANEL*/
+
+aside.vertical_menu_area{
+  opacity: 0;
+}
+
+#find-a-property{
+  position: absolute; 
+  top:10px; 
+  left: 20px; 
+  background: black;
+  color: white;
+  padding: 3px;
+  font-weight: 600;
+}
+a.vertical_menu_hidden_button{ width: 130px; margin-left: 20px; } /* !!! reflect in default.js line 2190 */
+span.vertical_menu_hidden_button_line{ left: 20px; }
 
 /*<-- RADIO -->*/
 

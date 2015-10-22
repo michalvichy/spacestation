@@ -2178,10 +2178,26 @@ function showHideVerticalMenu(){
                 current_scroll = $j(window).scrollTop(); //current scroll is defined in front of "initSideMenu" function
                 vertical_menu.addClass('active');
 				 vertical_menu_bottom_logo.addClass('active');
+				 vertical_menu.animate({opacity: 0.9}, 200);
+				 
+				 $j('a.vertical_menu_hidden_button').css({
+				 	'width': '40px',
+				 	'margin-left': '0'
+				 });
+
+				 $j('#find-a-property').animate({opacity: 0}, 200);
             }else{
                 hovered_flag = true;
                 vertical_menu.removeClass('active');
-				 vertical_menu_bottom_logo.removeClass('active');
+				vertical_menu_bottom_logo.removeClass('active');
+				vertical_menu.animate({opacity: 0}, 200);
+				$j('#find-a-property').animate({opacity: 1}, 200);
+				
+				$j('a.vertical_menu_hidden_button').css({
+					'width' : '180px',
+					'margin-left': '20px'   // !!! must match css width property
+
+				}); 
             }
         });
 
