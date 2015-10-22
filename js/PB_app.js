@@ -83,7 +83,7 @@ function clearForm() {
 		// 	e.preventDefault();
 		// 	var post_id = $j(this).attr("rel");
 		// 	$j("#results").html("loading...");
-		// 	$j("#results").load("http://localhost/ss/wp-content/themes/spacestation/listing.php?id="+post_id,{id:post_id});
+		// 	$j("#results").load("http://localhost/ss/wp-content/themes/spacestation/PB_listing.php?id="+post_id,{id:post_id});
 		// 	return false;
 		// });
 

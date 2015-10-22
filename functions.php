@@ -23,7 +23,7 @@ function redirect_on_submit($id) {
   // check if the post is set
   // if (isset($_POST['id']) && !empty ($_POST['id'])) 
 	// {
-    	header( "Location: http://localhost/ss/app/listing.php?id=" . $id );
+    	header( "Location: http://localhost/ss/app/PB_listing.php?id=" . $id );
   	// }
 }
 

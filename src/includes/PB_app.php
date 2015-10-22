@@ -397,7 +397,7 @@
 		
 		
 		</script>
-			<script src="<?php echo get_childTheme_url(); ?>/js/main.js"></script>
+			<script src="<?php echo get_childTheme_url(); ?>/js/PB_app.js"></script>
 
 		</div>
 	</div>

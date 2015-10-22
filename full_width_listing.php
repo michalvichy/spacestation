@@ -64,9 +64,9 @@ else { $paged = 1; }
 			<!-- <?php the_content(); ?> -->
 
 			
-			<?php require_once ('includes/listing-connection.php'); ?> 
+			<?php require_once ('src/includes/PB_listing-connection.php'); ?> 
 
-			<?php require_once ('includes/listing.php'); ?>	
+			<?php require_once ('src/includes/PB_listing.php'); ?>	
 
 
 <!-- GET FOOTER	 -->
