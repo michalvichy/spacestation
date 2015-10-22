@@ -69,53 +69,69 @@
                         <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?> <!-- begin if images not empty -->
                         
                         <div class="ls-wp-fullwidth-container" style="height: 500px;">  
-                          <div class="gallery">
-                          
+                          <div class="ls-wp-fullwidth-helper" style="width: 1402px; height: 500px; left: -40px;">
+                            <div id="layerslider_6" style="width: 1402px; height: 500px; margin: 0px auto; visibility: visible;">
+                              <div class="ls-inner" style="background-color: transparent; width: 1402px; height: 500px;">
                             <?php $i = 0; foreach ($item->media->images->image as $image): ?> <!-- begin foreach $image -->
                             
                                 
                                 <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior' || $image->tags == '' ) {?><!-- exclude floorplan from gallery flow -->
-                                  <div class="gallery-cell">
-                                    <img class="itemImage" src="<?php echo $image->baseurl . "/" . $image->filename; ?>"/>
+                                  <div class="ls-layer ls-slide ls-slide-<?php echo $i; ?>" style="width: 1402px; height: 500px;">  
+                                    <img src="<?php echo $image->baseurl . "/" . $image->filename; ?>" class="ls-bg" alt="<?php echo $image->filename; ?>"/>
+                                    <div class="ls-gpuhack"></div>
                                     <?php $i++; ?>
                                   </div>
                                 <?php } ?>
 
                             <?php endforeach; ?> <!-- end foreach $image -->
 
-                          </div>
-                            <!-- BEGIN THUMBNAILS -->
-        
-                                    <div class="ls-thumbnail-wrapper" style="position:fixed; z-index:50; bottom:50px; height:60px; width:auto; background: rgba(255,255,255,0.1); visibility: visible;">
-                                        <div class="ls-thumbnail">
-                                            <div class="ls-thumbnail-inner">
-                                                <div class="ls-thumbnail-slide-container">
-                                                    <div class="ls-thumbnail-slide" style="height: 60px; margin-left: 0px;">
-          
-                                                          
-                                                          <?php $i = 0; foreach ($item->media->images->image as $image): ?>
-                                                            
-                                                            <!-- exclude floorplan from gallery flow -->
-                                                            <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior' || $image->tags == '' ) {?>
-                                                              
-                                                              <a class="ls-thumb-<?php echo $i; ?>" href="#" style="width: 100px; height: 60px;">
-        
-                                                                <img src="<?php echo get_childTheme_url(); ?>/includes/show_image.php?file=<?php echo urldecode($image->url); ?>" /> 
-                                                                
-                                                                <?php $i++; ?>
-                                                              
-                                                              </a>
-                                                          
-                                                            <?php } ?>
-        
-                                                      <?php endforeach; ?>
-        
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="ls-circle-timer">
+                                  <div class="ls-ct-left">
+                                    <div class="ls-ct-rotate">
+                                      <div class="ls-ct-hider">
+                                        <div class="ls-ct-half">
                                         </div>
+                                      </div>
                                     </div>
-                            <!-- END THUMBNAILS -->            
+                                  </div>
+                    
+                                  <div class="ls-ct-right">
+                                    <div class="ls-ct-rotate">
+                                      <div class="ls-ct-hider">
+                                        <div class="ls-ct-half">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                    
+                                  <div class="ls-ct-center"></div>
+                                </div>
+
+                              </div>
+
+
+                            <div class="ls-loading-container" style="z-index: -1; display: none;">
+                              <div class="ls-loading-indicator">
+                              </div>
+                            </div>
+                            
+                            <a class="ls-nav-prev" href="#" style="visibility: visible;"></a>
+                            <a class="ls-nav-next" href="#" style="visibility: visible;"></a>
+                            
+                            <div class="ls-bottom-nav-wrapper ls-above-thumbnails" style="visibility: visible;">
+                              <a class="ls-nav-start" href="#"></a>
+                              <a class="ls-nav-stop ls-nav-stop-active" href="#"></a>
+                            </div>
+
+                            
+                            <div class="ls-bottom-nav-wrapper ls-below-thumbnails" style="visibility: visible;">
+                              <a class="ls-nav-start" href="#"></a>
+                              <a class="ls-nav-stop ls-nav-stop-active" href="#"></a>
+                            </div>
+                            <div class="ls-shadow"></div>
+                            
+                            </div>
+                          </div>
                         </div>  
                         <?php endif; ?> <!-- end if images not empty -->
 

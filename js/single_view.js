@@ -268,6 +268,28 @@ function pauseVid() {
 // WINDOW LOAD - 3rd
 	$j(window).load(function(){
 
+		$j("#layerslider_6").layerSlider({
+			responsiveUnder: 1280, 
+			layersContainer: 1280, 
+			autoStart: false, 
+			startInViewport: false, 
+			skin: 'noskin', 
+			globalBGColor: 'transparent', 
+			hoverPrevNext: false, 
+			thumbnailNavigation: 'always', 
+			autoPlayVideos: false, 
+			yourLogoStyle: 'left: 10px; top: 10px;', 
+			cbInit: function(element) { }, 
+			cbStart: function(data) { }, 
+			cbStop: function(data) { }, 
+			cbPause: function(data) { }, 
+			cbAnimStart: function(data) { }, 
+			cbAnimStop: function(data) { }, 
+			cbPrev: function(data) { }, 
+			cbNext: function(data) { }, 
+			skinsPath: 'http://localhost/ss/wp-content/plugins/LayerSlider/static/skins/'
+		});
+
    		// Initialize flickity
    		$j('.gallery').flickity({
   			contain: false,
