@@ -101,49 +101,37 @@
                     
                     <!-- BEGIN FLOORPLAN -->
                       <div id="floorplan_container">
-                        <?php foreach ($xmlResult->listings->listing as $item): ?>
-                          
+
                           <!-- if images not empty -->
-                          <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?>
+
                            <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                             <?php if ($image->tags == 'Floorplan Quick (JPG)') {?>
                                   <img style="max-height:500px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
                             <?php $floorplan=true; } ?>
                            <?php endforeach; ?>
-                          <?php endif; ?>
-  
+
                           <!-- if documents not empty -->
-                          <?php if ($item->media->documents->document != null && count($item->media->documents->document) > 0){ ?>
                             <?php $i = 0; foreach ($item->media->documents->document as $document): ?>
-                                <!-- if floorplan PDF       -->
-                                <?php if ($document->tags == 'Floorplan Enhanced (PDF)') {?>
+                              <!-- if floorplan PDF       -->
+                              <?php if ($document->tags == 'Floorplan Enhanced (PDF)') {?>
                                 <br>
                                   <a href="<?php echo $document[$i]->url; ?>" target="_blank">Download Floor Plan PDF</a>
-                                <?php $floorplan=true; } ?>
-                                
-                                <?php $i++; ?>
-                            <?php endforeach; ?>
-                          <?php } ?>
+                              <?php $floorplan=true; } ?>
+                            <?php endforeach; ?> 
                           <!-- end if documents not empty -->
-  
-                        <?php endforeach; ?>
+                       
                       </div>
                     <!-- END FLOORPLAN -->
 
                     <!-- BEGIN EPC -->
                       <div id="epc_container">
-                        <?php foreach ($xmlResult->listings->listing as $item): ?>
-                          
-                          <!-- if images not empty -->
-                          <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?>
+
                            <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                             <?php if ($image->tags == 'EPC') {?>
                                   <img style="max-height:500px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
                             <?php $epc=true; } ?>
                            <?php endforeach; ?>
-                          <?php endif; ?>
-  
-                        <?php endforeach; ?>
+
                       </div>
                     <!-- END EPC -->
                     
@@ -311,7 +299,7 @@
                 </script>
        <?php } ?>
 
-                 <?php endforeach; ?>
+                 <?php endforeach; // end foreach $item ?> 
                 <?php } ?>
                 <!-- END ELSE EMPTY RESULT -->
 
