@@ -1715,11 +1715,13 @@ function initSideMenu(){
 			if(!$j('.side_menu_button_wrapper a.side_menu_button_link').hasClass('opened')){
 				$j('.side_menu').css({'visibility':'visible'});
 				$j(this).addClass('opened');
+				$j('.side_menu_button').animate({opacity: 0}, 200).css('visibility', 'hidden');
 				$j('body').addClass('right_side_menu_opened');
 				current_scroll = $j(window).scrollTop();
 				
 				$j(window).scroll(function() {
 					if(Math.abs($scroll - current_scroll) > 400){
+						$j('.side_menu_button').css('visibility', 'visible').animate({opacity: 1}, 200);
 						$j('body').removeClass('right_side_menu_opened');
 						$j('.side_menu_button_wrapper a').removeClass('opened');
 						var hide_side_menu = setTimeout(function(){
@@ -1730,6 +1732,7 @@ function initSideMenu(){
 				});
 			}else{
 				$j('.side_menu_button_wrapper a.side_menu_button_link').removeClass('opened');
+				$j('.side_menu_button').css('visibility', 'visible').animate({opacity: 1}, 200);
 				$j('body').removeClass('right_side_menu_opened');
 				var hide_side_menu = setTimeout(function(){
 					$j('.side_menu').css({'visibility':'hidden'});

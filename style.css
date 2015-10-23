@@ -33,6 +33,8 @@ Template: bridge
 
 /*------------- HEADER ------------*/
 
+  .qode_search_form{ background-color: #000;}
+
   /* center logo */
   div.header_inner_left{
   	left:50%!important; 
@@ -65,8 +67,14 @@ Template: bridge
   .side_menu_button>a, .mobile_menu_button span{color: #fff;}
 
   header div.header_inner_right{
-    margin-right: -206px!important;
-    margin-top: -3px!important;
+    position: fixed;
+    right: 20px;
+    top: -3px;
+  }
+
+  .side_menu a.close_side_menu{
+    top:10px;
+    right: 10px;
   }
 
 /*-------- PB_request_form ------------*/
@@ -290,7 +298,7 @@ aside.vertical_menu_area{
 }
 
 #find-a-property{
-  position: absolute; 
+  position: fixed; 
   top:10px; 
   left: 20px; 
   background: black;
