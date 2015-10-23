@@ -16,6 +16,8 @@ Template: bridge
     background-color: transparent;
   }
 
+  .wrapper{z-index: 0;}
+
   /* overwrite default css -> remove left side 40px padding / marging when vertical_menu_enabled */
   .vertical_menu_enabled.vertical_menu_hidden .full_screen_holder,
   .vertical_menu_enabled.vertical_menu_hidden .q_slider, .vertical_menu_enabled.vertical_menu_hidden .full_width,
@@ -289,6 +291,21 @@ div.jqcorner{
   background-color: #C5C7C8!important;
   margin-bottom: 10px ;
   display: inline-block;
+}
+
+/*RIGHT MENU AREA PANEL*/
+
+
+section.side_menu{
+opacity: 0.95;
+    -webkit-transition-duration: 0.15s!important;
+      -moz-transition-duration: 0.15s!important;
+       -ms-transition-duration: 0.15s!important;
+        -o-transition-duration: 0.15s!important;
+           transition-duration: 0.15s!important;
+
+-webkit-transition-property: all;
+        transition-property: all;
 }
 
 /*LEFT VERTICAL MENU AREA PANEL*/
