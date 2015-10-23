@@ -16,9 +16,20 @@ Template: bridge
     background-color: transparent;
   }
 
-  div.full_width{
-    /*margin-left: -40px!important;*/
+  /* overwrite default css -> remove left side 40px padding / marging when vertical_menu_enabled */
+  .vertical_menu_enabled.vertical_menu_hidden .full_screen_holder,
+  .vertical_menu_enabled.vertical_menu_hidden .q_slider, .vertical_menu_enabled.vertical_menu_hidden .full_width,
+  body.page-template-blog-masonry-full-width-php.vertical_menu_enabled.vertical_menu_hidden .content .full_width,
+  .vertical_menu_enabled.vertical_menu_hidden .content .container,
+  .vertical_menu_enabled.vertical_menu_hidden .title_outer, .vertical_menu_enabled.vertical_menu_hidden footer,
+  .boxed.vertical_menu_enabled.vertical_menu_hidden, .boxed.vertical_menu_enabled.vertical_menu_hidden footer.uncover,
+  .vertical_menu_enabled.vertical_menu_hidden .full_screen_holder {
+      padding-left: 0!important;
   }
+  .vertical_menu_enabled.vertical_menu_hidden .carousel-inner:not(.relative_position) {
+      left: 0!important
+  }
+
 
 /*------------- HEADER ------------*/
 
@@ -45,6 +56,17 @@ Template: bridge
   
   body.vertical_menu_enabled header div.header_inner{
   	display: block;
+  }
+
+  header.fixed .header_bottom{
+    box-shadow: none!important;
+  }
+
+  .side_menu_button>a, .mobile_menu_button span{color: #fff;}
+
+  header div.header_inner_right{
+    margin-right: -206px!important;
+    margin-top: -3px!important;
   }
 
 /*-------- PB_request_form ------------*/

@@ -1,10 +1,10 @@
 	
 		
-		a:link {text-decoration:none; color: #092A3D;}    /* unvisited link */
-		a:visited {text-decoration:none; color: #999;} /* visited link */
-		a:hover {text-decoration:none;}   /* mouse over link */
-		a:active {text-decoration:none; color: red;}  /* selected link */
-		a.active{color: #9a751e;}
+		/*a:link {text-decoration:none; color: #092A3D;}  */  /* unvisited link */
+		/*a:visited {text-decoration:none; color: #999;}*/ /* visited link */
+		/*a:hover {text-decoration:none;} */  /* mouse over link */
+		/*a:active {text-decoration:none; color: red;} */ /* selected link */
+		/*a.active{color: #9a751e;}*/
 
 li{list-style: none;}
 
