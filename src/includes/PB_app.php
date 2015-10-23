@@ -327,11 +327,11 @@
 					<div id="results">
 						<?php foreach ($xmlResult->listings->listing as $item): ?>
 		    				<div class="post <?php echo $item->data->pba__status__c; ?>">
-		    					<h1><a href="http://localhost/ss/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
+		    					<h1><a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
 		    					<p><?php echo $item->data->pba__status__c; ?></p>
 		    					<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
 		    				    <div class="thumbnail">
-		    				    	<a href= "http://localhost/ss/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
+		    				    	<a href= "<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
 		    				    	<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>"></a>
 		    				    </div>
 		    				    <?php }; ?>

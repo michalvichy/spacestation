@@ -21,10 +21,10 @@ function get_childTheme_url() {
 
 function redirect_on_submit($id) {
   // check if the post is set
-  // if (isset($_POST['id']) && !empty ($_POST['id'])) 
-	// {
+  if (isset($_POST['id']) && !empty ($_POST['id'])) 
+	{
     	header( "Location: http://localhost/ss/app/PB_listing.php?id=" . $id );
-  	// }
+  	}
 }
 
 // add_action('init', redirect_on_submit);
