@@ -251,8 +251,23 @@
                           <!-- IF SALE END-->
                           
                           <br>
+                          <?php if(!empty($item->data->ff_aircon__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-megaphone"></i><?php echo $item->data->ff_aircon__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_architect__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-user"></i><?php echo $item->data->ff_architect__c; ?></li>
+                          <?php } ?>
                           <?php if(!empty($item->data->ff_award__c)){ ?>
                             <li class="itemFact"><i class="demo-icon icon-award"></i><?php echo $item->data->ff_award__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_balcony__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-cloud"></i><?php echo $item->data->ff_balcony__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_basement__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-database"></i><?php echo $item->data->ff_basement__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_blue_plaque__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-note"></i><?php echo $item->data->ff_blue_plaque__c; ?></li>
                           <?php } ?>
                            <?php if(!empty($item->data->ff_bottle__c)){ ?>
                             <li class="itemFact"><i class="demo-icon icon-beaker"></i><?php echo $item->data->ff_bottle__c; ?></li>
@@ -263,11 +278,140 @@
                            <?php if(!empty($item->data->ff_built__c)){ ?>
                             <li class="itemFact"><i class="demo-icon icon-thumbs-up"></i><?php echo $item->data->ff_built__c; ?></li>
                           <?php } ?>
-                           <?php if(!empty($item->data->ff_champagne__c)){ ?>
+                          <?php if(!empty($item->data->ff_celings__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-cloud"></i><?php echo $item->data->ff_celings__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_champagne__c)){ ?>
                             <li class="itemFact"><i class="demo-icon icon-wine"></i><?php echo $item->data->ff_champagne__c; ?></li>
                           <?php } ?>
-                           <?php if(!empty($item->data->ff_desiner__c)){ ?>
+                          <?php if(!empty($item->data->ff_church__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-money"></i><?php echo $item->data->ff_church__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_cinema__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-desktop"></i><?php echo $item->data->ff_cinema__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_concierge__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-key"></i><?php echo $item->data->ff_concierge__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_desiner__c)){ ?>
                             <li class="itemFact"><i class="demo-icon icon-user"></i><?php echo $item->data->ff_desiner__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_eco__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-heart"></i><?php echo $item->data->ff_eco__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_elephant__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-thumbs-up"></i><?php echo $item->data->ff_elephant__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_extension__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-shop"></i><?php echo $item->data->ff_extension__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_factory__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-params"></i><?php echo $item->data->ff_factory__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_fireplace__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-fire"></i><?php echo $item->data->ff_fireplace__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_garden__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-cloud"></i><?php echo $item->data->ff_garden__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_gym__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-t-shirt"></i><?php echo $item->data->ff_gym__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_high_specification__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-star"></i><?php echo $item->data->ff_high_specification__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_history__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-comment"></i><?php echo $item->data->ff_history__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_hot_tap__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-cd"></i><?php echo $item->data->ff_hot_tap__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_lateral_space__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-plane"></i><?php echo $item->data->ff_lateral_space__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_library__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-doc"></i><?php echo $item->data->ff_library__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_lift__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-params"></i><?php echo $item->data->ff_lift__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_light__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-lightbulb"></i><?php echo $item->data->ff_light__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_listed_grade_i__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-cog"></i><?php echo $item->data->ff_listed_grade_i__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_listed_grade_ii__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-cog"></i><?php echo $item->data->ff_listed_grade_ii__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_map__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-globe"></i><?php echo $item->data->ff_map__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_mews__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-camera"></i><?php echo $item->data->ff_mews__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_mezzanine__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-wallet"></i><?php echo $item->data->ff_mezzanine__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_parking__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-attach"></i><?php echo $item->data->ff_parking__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_penthouse__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-cup"></i><?php echo $item->data->ff_penthouse__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_planning__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-calendar"></i><?php echo $item->data->ff_planning__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_pool__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-inbox"></i><?php echo $item->data->ff_pool__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_refurbished__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-videocam"></i><?php echo $item->data->ff_refurbished__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_roof_terrace__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-diamond"></i><?php echo $item->data->ff_roof_terrace__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_school__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-graduation-cap"></i><?php echo $item->data->ff_school__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_security__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-lock"></i><?php echo $item->data->ff_security__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_solar__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-food"></i><?php echo $item->data->ff_solar__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_sound_system__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-sound"></i><?php echo $item->data->ff_sound_system__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_south_facing__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-camera"></i><?php echo $item->data->ff_south_facing__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_stairs__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-star"></i><?php echo $item->data->ff_stairs__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_townhouse__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-music"></i><?php echo $item->data->ff_townhouse__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_tube__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-photo"></i><?php echo $item->data->ff_tube__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_underfloor_heating__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-mobile"></i><?php echo $item->data->ff_underfloor_heating__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_view__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-eye"></i><?php echo $item->data->ff_view__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_warehouse__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-truck"></i><?php echo $item->data->ff_warehouse__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_windows__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-tv"></i><?php echo $item->data->ff_windows__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_wine_cellar__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-trash"></i><?php echo $item->data->ff_wine_cellar__c; ?></li>
+                          <?php } ?>
+                          <?php if(!empty($item->data->ff_wooden_floors__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-pencil"></i><?php echo $item->data->ff_wooden_floors__c; ?></li>
                           <?php } ?>
                           <br>
 
