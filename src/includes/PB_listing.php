@@ -192,8 +192,8 @@
           <div class="single_view_info description">
             <div class="single_view_info_header">
                <h3 class="itemFact"><?php echo  $item->data->name; ?><br><?php echo $item->data->pba__city_pb__c.', '; ?><?php echo $item->data->pba__postalcode_pb__c; ?></h3>
-               <strong>&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></strong>
-               <p><?php echo $item->data->tenure__c; ?></p>
+               <p><strong>&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></strong><?php echo ' '.$item->data->tenure__c; ?></p>
+               <p><?php echo $item->data->pba__status__c; ?></p>
                <p> 
                <?php
                 $listing_bedrooms = $item->data->pba__bedrooms_pb__c;
