@@ -4,6 +4,7 @@
   var lng;
   var property_name;
   var property_address;
+  var property_city_postal;
   var video_url;
   var youtube_url;
   var external;
@@ -49,7 +50,7 @@
     <!-- BEGIN RESULT -->
       <div id="result">
 
-                  <h3 class="mainTitle"><?php echo  $mainTitle; ?></h3>   
+                  <h3 class="mainTitle"><?php echo  $mainTitle; ?><br><?php echo $xmlResult->listings->listing->data->pba__city_pb__c.', '; ?><?php echo $xmlResult->listings->listing->data->pba__postalcode_pb__c; ?></h3>   
                   
                   <div class="single_view_navigation">
                     <ul>
@@ -148,6 +149,7 @@
                             lng =  <?php echo  $item->data->pba__longitude_pb__c; ?>; 
                             property_name = <?php echo  "'".$item->data->name."';" ?>;
                             property_address = <?php echo  "'".$item->data->pba__address_pb__c."';" ?>;    
+                            property_city_postal = <?php echo "'".$item->data->pba__city_pb__c.', '.$item->data->pba__postalcode_pb__c."';" ?>;
                          <?php } ?>   
 
                       </script>
@@ -189,7 +191,7 @@
 
           <div class="single_view_info description">
             <div class="single_view_info_header">
-               <h3 class="itemFact"><?php echo  $item->data->name; ?></h3>
+               <h3 class="itemFact"><?php echo  $item->data->name; ?><br><?php echo $item->data->pba__city_pb__c.', '; ?><?php echo $item->data->pba__postalcode_pb__c; ?></h3>
                <strong>&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></strong>
                <p><?php echo $item->data->tenure__c; ?></p>
                <p> 

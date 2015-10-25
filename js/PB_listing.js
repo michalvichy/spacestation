@@ -55,7 +55,7 @@ function init_map(){
 	  		position: new google.maps.LatLng(lat,lng)
 		});
 	
-		infowindow = new google.maps.InfoWindow({content:"<b>"+property_name+"</b><br/>"+property_address });
+		infowindow = new google.maps.InfoWindow({content:"<b>"+property_name+"</b><br/>"+property_city_postal });
 	
 	  	var usRoadMapType = new google.maps.StyledMapType(roadAtlasStyles, styledMapOptions);
 	
