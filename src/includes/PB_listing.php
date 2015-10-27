@@ -251,6 +251,10 @@
                           <li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
                           <?php } ?>
                           <!-- IF SALE END-->
+
+                          <li class="itemFact">Room list: <?php echo  $item->data->room_list__c; ?></li>
+                          <li class="itemFact">Local Authority: <?php echo  $item->data->local_authority__c; ?></li>
+                          <li class="itemFact">Council Tax Band: <?php echo  $item->data->council_tax_band__c; ?></li>
                           
                           <br>
                           <?php if(!empty($item->data->ff_aircon__c)){ ?>
@@ -416,16 +420,6 @@
                             <li class="itemFact"><i class="demo-icon icon-pencil"></i><?php echo $item->data->ff_wooden_floors__c; ?></li>
                           <?php } ?>
                           <br>
-
-                          <li class="itemFact">Room list: <?php echo  $item->data->room_list__c; ?></li>
-                          <li class="itemFact">Local Authority: <?php echo  $item->data->local_authority__c; ?></li>
-                          <li class="itemFact">Council Tax Band: <?php echo  $item->data->council_tax_band__c; ?></li>
-                          <li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>
-                          <li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>
-                          <li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>
-                          <br>
-                          <li class="itemFact"><em>lat & long: <?php echo  $item->data->pba__latitude_pb__c .' | '. $item->data->pba__longitude_pb__c; ?></em></li>
-                          <li class="itemFact"><em>Video: <a href="<?php echo $item->media->videos->video->url; ?>"><?php echo $item->media->videos->video->title; ?></a></em> </li>  
                        </ul>
             </div> <!-- // end panel --> 
           </div> <!-- // end single_view_info  --> 
@@ -455,23 +449,93 @@
 
 <!-- RELATED POSTS -->
 
-<?php query_posts('tag='.$item->data->pba__propertytype__c); ?>
-<?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
-<?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<div class="wpb_tabstabs_holder clearfix" data-interval="0">
+    <div class="q_tabs vertical left" style="visibility: visible;">
+        <ul class="tabs-nav">
+            <li class="active">
+                <a href="#tab-1394535786-1-22" style="border-right-color: rgb(255, 255, 255);">SHOP</a>
+            </li>
+            <li>
+                <a href="#tab-1394536165449-1-1">DISCOVER</a>
+            </li>
+            <li>
+                <a href="#tab-1394536167784-2-10">ENJOY</a>
+            </li>
+        </ul>
+        <div class="tabs-container">
+            <div class="tab-content" id="tab-1394535786-1-22" style="display: block;">
+                <div class="vc_row wpb_row section vc_row-fluid" style=" text-align:left;">
+                    <div class=" full_section_inner clearfix">
+                        <div class="vc_col-sm-12 wpb_column vc_column_container">
+                            <div class="wpb_wrapper">
+                                <div class="wpb_text_column wpb_content_element">
+                                    <div class="wpb_wrapper">
+                                        <?php query_posts('tag='.$item->data->pba__propertytype__c.',art'); ?>
+                                        <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
+                                        <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-  <li><a href="<?php the_permalink()?>" target="_self"><?php the_post_thumbnail(); ?></a></li>
+                                          <li><a href="<?php the_permalink()?>" target="_self"><?php the_post_thumbnail(); ?></a></li>
 
-<?php endwhile; endif ;?>
-                    </ul>
+                                        <?php endwhile; endif ;?>
+                                        <?php echo '</ul></div><a href="#" class="jcarousel-control-prev">&lsaquo;</a><a href="#" class="jcarousel-control-next">&rsaquo;</a><p class="jcarousel-pagination"></p></div>'; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="tab-content" id="tab-1394536165449-1-1" style="display: none;">
+                <div class="vc_row wpb_row section vc_row-fluid" style=" text-align:left;">
+                    <div class=" full_section_inner clearfix">
+                        <div class="vc_col-sm-12 wpb_column vc_column_container">
+                            <div class="wpb_wrapper">
+                                <div class="wpb_text_column wpb_content_element">
+                                    <div class="wpb_wrapper">
+                                        <?php query_posts('tag=art'); ?>
+                                        <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
+                                        <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
-                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+                                          <li><a href="<?php the_permalink()?>" target="_self"><?php the_post_thumbnail(); ?></a></li>
 
-                <p class="jcarousel-pagination"></p>
+                                        <?php endwhile; endif ;?>
+                                        <?php echo '</ul></div><a href="#" class="jcarousel-control-prev">&lsaquo;</a><a href="#" class="jcarousel-control-next">&rsaquo;</a><p class="jcarousel-pagination"></p></div>'; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab-1394536167784-2-10" style="display: none;">
+                <div class="vc_row wpb_row section vc_row-fluid" style=" text-align:left;">
+                    <div class=" full_section_inner clearfix">
+                        <div class="vc_col-sm-12 wpb_column vc_column_container">
+                            <div class="wpb_wrapper">
+                                <div class="wpb_text_column wpb_content_element">
+                                    <div class="wpb_wrapper">
+                                       <?php query_posts('tag=business'); ?>
+                                        <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
+                                        <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
+                                          <li><a href="<?php the_permalink()?>" target="_self"><?php the_post_thumbnail(); ?></a></li>
+
+                                        <?php endwhile; endif ;?>
+                                        <?php echo '</ul></div><a href="#" class="jcarousel-control-prev">&lsaquo;</a><a href="#" class="jcarousel-control-next">&rsaquo;</a><p class="jcarousel-pagination"></p></div>'; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<?php query_posts('tag='.$item->data->pba__propertytype__c.',art'); ?>
+<!-- RELATED PROPERTIES -->
+
+<?php query_posts('tag=business,art'); ?>
 <?php echo '<div class="vc_row wpb_row section vc_row-fluid" style=" text-align:left;"><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="wpb_wrapper"><div class="qode_carousels_holder clearfix"><div class="qode_carousels"><div class="caroufredsel_wrapper" style="display: block; text-align: left; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: 0; width: 1360px; margin: 0px; overflow: hidden; cursor: move; height: 146px;"><ul class="slides" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: -264.50476799999996px; margin: 0px; width: 5712px; opacity: 1; z-index: 0;">'; ?>
 <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

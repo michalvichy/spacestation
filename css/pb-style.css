@@ -270,7 +270,7 @@ h3.mainTitle{
 }
 
 .jcarousel li {
-    width: 200px;
+    width: 200px!important;
     float: left;
     border: 1px solid #fff;
     -moz-box-sizing: border-box;
@@ -359,3 +359,14 @@ h3.mainTitle{
     -moz-box-shadow: 0 0 2px #F0EFE7;
     box-shadow: 0 0 2px #F0EFE7;
 }
+
+
+/* //////////// TABS ///////////// */
+
+.wpb_tabstabs_holder{float: right;}
+.tabs-nav{width: 100px!important;}
+.q_tabs.vertical.left .tabs-container{width: 400px;}
+.q_tabs.vertical .tabs-nav li a{text-align: left;}
+.q_tabs.vertical .tabs-nav li.active a{border:none; padding: 13px 17px;}
+.q_tabs.vertical.left .tab-content{border: none;}
+
