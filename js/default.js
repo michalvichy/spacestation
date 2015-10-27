@@ -1519,8 +1519,8 @@ function initQodeCarousel(){
                         max: 6
                     }
                 },
-                auto: true,
-                mousewheel: false,
+                auto: false,
+                mousewheel: true,
                 swipe: {
                     onMouse: true,
                     onTouch: true

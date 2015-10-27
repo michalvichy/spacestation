@@ -54,6 +54,8 @@
 			<link rel="stylesheet" href="<?php echo get_childTheme_url(); ?>/css/px-video.css" />
 			<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/fontello.css">
 
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jcarousel/0.3.4/jquery.jcarousel.min.js"></script>
+			<script type="text/javascript" src="<?php echo get_childTheme_url(); ?>/js/jcarousel.responsive.js"></script>
 			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	
 	<?php } 
