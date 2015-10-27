@@ -2,7 +2,6 @@
 var $j = jQuery.noConflict();
 var $rslts;
 var $grid;
-var appName = 'app';
 
 
 // Range SLIDER
@@ -138,32 +137,6 @@ function clearForm() {
 		e.preventDefault();
 		clearForm();
 	})
-
-	// sidebar form SUBMIT button 
-	
-	$j('.filter__submit').on('click', '.js-run-pb-search', function(event) {
-		event.preventDefault();
-
-		var pathname = window.location.pathname;
-		var documentURL = document.URL;
-		// var baseUrl = documentURL.substring(0,documentURL.lastIndexOf(appName))
-
-		// alert(baseUrl+appName);
-
-
-    	if (pathname.indexOf(appName) >= 0)
-    	{
-    		alert('app');
-			$j(this).closest("form").submit();    	
-
-    	}else
-    	{
-			alert('not app');
-   			$j("form#theForm").attr('action', '/ss/'+appName).closest("form").submit();
-	
-    	}
-
-	});
 
 	
 	
