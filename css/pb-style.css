@@ -70,7 +70,8 @@ font-family: 'Andale Mono',sans-serif;
 /*//////// SINGLE VIEW //////*/
 
 .single_view_media{
-	min-height: 750px;
+	/*min-height: 750px;*/
+
 }
 
 .single_view_description{
@@ -363,7 +364,7 @@ h3.mainTitle{
 
 /* //////////// TABS ///////////// */
 
-.wpb_tabstabs_holder{float: right;}
+.wpb_tabstabs_holder{margin-left: 40px;}
 .tabs-nav{width: 100px!important;}
 .q_tabs.vertical.left .tabs-container{width: 400px;}
 .q_tabs.vertical .tabs-nav li a{text-align: left;}

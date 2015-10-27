@@ -358,9 +358,7 @@
 		
 		        </div>
 		      </td>
-		      
-		           
-		            
+		        
 		
 			</div>
 		
@@ -374,7 +372,6 @@
 
 		    $j("select[name='price_from'] option[value='"+<?php Print($price_from)  ?>+"']").prop('selected', true);
     $j("select[name='price_to'] option[value='"+<?php Print($price_to) ?>+"']").prop('selected', true);
-    // $j("select[name='bedrooms_from'] option[value='"+<?php Print($bedrooms_from) ?>+"']").prop('selected', true);
 
     <?php if( $default_recordtypes == "sale;rent" ){ ?>
      $j("input[name='recordtypes']").first().prop('checked', true);
@@ -390,14 +387,9 @@
     	if (!empty($default_propertytype)) echo( "\$j(\"select[name='propertytype'] option[value='".$default_propertytype."']\").prop('selected', true);");
     	if (!empty($default_tenure)) echo( "\$j(\"select[name='tenure'] option[value='".$default_tenure."']\").prop('selected', true);");
     	if (!empty($default_propertystatus)) echo( "\$j(\"input[name='propertystatus'][value='".$default_propertystatus."']\").prop('checked', true);"); 
-    ?>
-
-		    
-		    
-		
-		
+    ?>	
 		</script>
-			<script src="<?php echo get_childTheme_url(); ?>/js/PB_app.js"></script>
+			
 
 		</div>
 	</div>

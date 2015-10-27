@@ -27,51 +27,6 @@
 	<link rel="apple-touch-icon" href="<?php echo esc_url($qode_options_proya['favicon_image']); ?>"/>
 	<?php wp_head(); ?>
 
-	<!-- HEADER MODS -->
-
-	<?php
-	// IF RUNNING SPACE STATION THEME
-	 if(wp_get_theme() == "Space Station"){
-		
-	 	/**
-	 	 * LOAD SCRIPTS BASED ON TEMPLATE NAME
-	 	 */
-
-		// IF CURRENT TEMPLATE IS APP
-	 	if(get_option('current_page_template') === 'Full Width App'){
-	?>
-	
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
-		<script type="text/javascript" src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
-		<script type="text/javascript" src="http://jquery-list-grid.ssdtutorials.com/js/cookie.js"></script>
-	
-	<?php } 
-	
-		// IF CURRENT TEMPLATE IS LISTING
-		if(get_option('current_page_template') === 'Full Width Listing'){
-	
-	?>
-			<link rel="stylesheet" href="<?php echo get_childTheme_url(); ?>/css/px-video.css" />
-			<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/fontello.css">
-
-			<script type="text/javascript" src="<?php get_theme_root(); ?>/wp-includes/js/jquery/ui/tabs.min.js"></script>
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jcarousel/0.3.4/jquery.jcarousel.min.js"></script>
-			<script type="text/javascript" src="<?php echo get_childTheme_url(); ?>/js/jcarousel.responsive.js"></script>
-			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-	
-	<?php } 
-
-		// ALWAYS LOAD IF RUNNING SPACE STATION THEME
-	?>
-
-		<link rel="stylesheet" type="text/css" href="<?php echo get_childTheme_url(); ?>/css/pb-style.css">
-	
-	<?php } else{
-	echo '<script>alert("?");</script>';
-	}?>
-
-	<!-- END HEADER MODS -->
-
 </head>
 
 <body <?php body_class(); ?>>
