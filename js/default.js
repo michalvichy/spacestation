@@ -85,6 +85,9 @@ if(typeof paspartu_width_init == 'undefined'){ //check if variable is defined in
 $j(document).ready(function() {
 	"use strict";
 
+	$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
+		// $j(this).closest("form").submit(function(e) { return false;});
+	});
 
 	// sidebar form SUBMIT button 
 	
@@ -92,21 +95,17 @@ $j(document).ready(function() {
 		event.preventDefault();
 
 		var pathname = window.location.pathname;
-		var documentURL = document.URL;
-		// var baseUrl = documentURL.substring(0,documentURL.lastIndexOf(appName))
-
-		// alert(baseUrl+appName);
-
+		var f = pathname.split('/').slice(-3);
 
     	if (pathname.indexOf(appName) >= 0)
     	{
-    		alert('app');
+    		// alert('app');
 			$j(this).closest("form").submit();    	
 
     	}else
     	{
-			alert('not app');
-   			$j("form#theForm").attr('action', '/ss/'+appName).closest("form").submit();
+			// alert('not app');
+   			$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').closest("form").submit();
 	
     	}
 

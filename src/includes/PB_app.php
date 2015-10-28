@@ -18,7 +18,7 @@
 			
 			<!-- BEGIN SEARCHFORM -->
 	<div id="searchform">
-			<form method="post" id="theForm" class="PB_request_form" >
+			<form method="post" id="theForm" class="PB_request_form" name="PB_page_form">
 		
 				<!-- RECORD TYPES -->
 						<fieldset id="record-types">
