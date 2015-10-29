@@ -16,7 +16,30 @@ Template: bridge
     background-color: transparent;
   }
 
+  .content.content_top_margin{
+    margin-top: 0px !important;
+  }
+
+  .wrapper{z-index: 0;}
+
+  /* overwrite default css -> remove left side 40px padding / marging when vertical_menu_enabled */
+  .vertical_menu_enabled.vertical_menu_hidden .full_screen_holder,
+  .vertical_menu_enabled.vertical_menu_hidden .q_slider, .vertical_menu_enabled.vertical_menu_hidden .full_width,
+  body.page-template-blog-masonry-full-width-php.vertical_menu_enabled.vertical_menu_hidden .content .full_width,
+  .vertical_menu_enabled.vertical_menu_hidden .content .container,
+  .vertical_menu_enabled.vertical_menu_hidden .title_outer, .vertical_menu_enabled.vertical_menu_hidden footer,
+  .boxed.vertical_menu_enabled.vertical_menu_hidden, .boxed.vertical_menu_enabled.vertical_menu_hidden footer.uncover,
+  .vertical_menu_enabled.vertical_menu_hidden .full_screen_holder {
+      padding-left: 0!important;
+  }
+  .vertical_menu_enabled.vertical_menu_hidden .carousel-inner:not(.relative_position) {
+      left: 0!important
+  }
+
+
 /*------------- HEADER ------------*/
+
+  .qode_search_form{ background-color: #000;}
 
   /* center logo */
   div.header_inner_left{
@@ -41,6 +64,23 @@ Template: bridge
   
   body.vertical_menu_enabled header div.header_inner{
   	display: block;
+  }
+
+  header.fixed .header_bottom{
+    box-shadow: none!important;
+  }
+
+  .side_menu_button>a, .mobile_menu_button span{color: #fff;}
+
+  header div.header_inner_right{
+    position: fixed;
+    right: 20px;
+    top: -3px;
+  }
+
+  .side_menu a.close_side_menu{
+    top:10px;
+    right: 10px;
   }
 
 /*-------- PB_request_form ------------*/
@@ -257,7 +297,38 @@ div.jqcorner{
   display: inline-block;
 }
 
+/*RIGHT MENU AREA PANEL*/
+
+
+section.side_menu{
+opacity: 0.95;
+    -webkit-transition-duration: 0.15s!important;
+      -moz-transition-duration: 0.15s!important;
+       -ms-transition-duration: 0.15s!important;
+        -o-transition-duration: 0.15s!important;
+           transition-duration: 0.15s!important;
+
+-webkit-transition-property: all;
+        transition-property: all;
+}
+
 /*LEFT VERTICAL MENU AREA PANEL*/
+
+aside.vertical_menu_area{
+  opacity: 0;
+}
+
+#find-a-property{
+  position: fixed; 
+  top:10px; 
+  left: 20px; 
+  background: black;
+  color: white;
+  padding: 3px;
+  font-weight: 600;
+}
+a.vertical_menu_hidden_button{ width: 130px; margin-left: 20px; } /* !!! reflect in default.js line 2190 */
+span.vertical_menu_hidden_button_line{ left: 20px; }
 
 /*<-- RADIO -->*/
 

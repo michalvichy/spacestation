@@ -128,9 +128,14 @@ function clearForm() {
 
 	//onChange FORM SUBMIT
 
-	$j('form#theForm').on('change', 'input, select', function() {
+	$j('form#theForm').on('change', 'input', function() {
 		$j(this).closest("form").submit();
 	});
+
+	$j('form[name="PB_page_form"]').on('change', 'select, input', function() {
+		$j(this).closest("form").submit();
+	});
+
 
 	// Clear Filters
 	$j('.js-clear-all-filters').on('click',function(e){ 
@@ -139,7 +144,8 @@ function clearForm() {
 	})
 
 	
-	});
+	
+});
 
 // WINDOW LOAD - 3rd
 	$j(window).load(function(){

@@ -1,10 +1,10 @@
 	
 		
-		a:link {text-decoration:none; color: #092A3D;}    /* unvisited link */
-		a:visited {text-decoration:none; color: #999;} /* visited link */
-		a:hover {text-decoration:none;}   /* mouse over link */
-		a:active {text-decoration:none; color: red;}  /* selected link */
-		a.active{color: #9a751e;}
+		/*a:link {text-decoration:none; color: #092A3D;}  */  /* unvisited link */
+		/*a:visited {text-decoration:none; color: #999;}*/ /* visited link */
+		/*a:hover {text-decoration:none;} */  /* mouse over link */
+		/*a:active {text-decoration:none; color: red;} */ /* selected link */
+		/*a.active{color: #9a751e;}*/
 
 li{list-style: none;}
 
@@ -57,10 +57,11 @@ div#results{display: inline-block; width: 100%; /*max-width: 1000px;*/ backgroun
 div#error{
 
 color: green!important;
-/*position: absolute;*/
+position: fixed;
 background: rgba(255,255,255,0.9);
 display: inline-block;
-top:-30px;
+/*top:-30px;*/
+bottom: 0;
 height: 70px;
 font-size: 10px;
 font-family: 'Andale Mono',sans-serif;
@@ -70,25 +71,27 @@ font-family: 'Andale Mono',sans-serif;
 /*//////// SINGLE VIEW //////*/
 
 .single_view_media{
-	min-height: 750px;
+	/*min-height: 750px;*/
+
 }
 
 .single_view_description{
 	position: relative;
 	display: block;
 	width: 570px;
-	min-height: 700px;
+	/*min-height: 700px;*/
 	float: right;
 	margin: -200px 50px 50px 0;
-	background: rgba(255,255,255,0.5);
+	z-index: 500;
 
 }
 
 .single_view_info{
-	position: absolute;
+	position: relative;
 	top:10px;
 	left:0;
 	padding: 10px;
+	background: rgba(255,255,255,0.9);
 }
 
 .arrange{
@@ -171,7 +174,7 @@ h3.mainTitle{
 	left:0;
 	z-index: 0;
 	overflow:hidden;
-	height:500px; // must match inline on #gmap_canvas
+	height:770px; // must match inline on #gmap_canvas
 	width:100%; //// must match inline on #gmap_canvas
 	position: absolute!important; 
 	transition: opacity .55s ease-in-out;
@@ -244,4 +247,129 @@ h3.mainTitle{
 		#property-status input[type="radio"]:checked + label {
     	color: #9a751e;
 		}
+
+
+/* //////////// JCAROUSEL ///////////// */
+
+.jcarousel-wrapper {
+    width: 600px;
+    position: relative;
+}
+
+/** Carousel **/
+
+.jcarousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.jcarousel ul {
+    width: 20000em;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jcarousel li {
+    width: 200px!important;
+    float: left;
+    border: 1px solid #fff;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.jcarousel img {
+    display: block;
+    max-width: 100%;
+    height: auto !important;
+}
+
+/** Carousel Controls **/
+
+.jcarousel-control-prev,
+.jcarousel-control-next {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #4E443C;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 1px #000;
+    font: 24px/27px Arial, sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 0 4px #F0EFE7;
+    -moz-box-shadow: 0 0 4px #F0EFE7;
+    box-shadow: 0 0 4px #F0EFE7;
+}
+
+.jcarousel-control-prev {
+    left: 15px;
+}
+
+.jcarousel-control-next {
+    right: 15px;
+}
+
+/** Carousel Pagination **/
+
+
+.jcarousel-pagination {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    margin: 0;
+}
+
+.jcarousel-pagination a {
+    text-decoration: none;
+    display: inline-block;
+
+    font-size: 11px;
+    height: 10px;
+    width: 10px;
+    line-height: 10px;
+
+    background: #fff;
+    color: #4E443C;
+    border-radius: 10px;
+    text-indent: -9999px;
+
+    margin-right: 7px;
+
+
+    -webkit-box-shadow: 0 0 2px #4E443C;
+    -moz-box-shadow: 0 0 2px #4E443C;
+    box-shadow: 0 0 2px #4E443C;
+}
+
+.jcarousel-pagination a.active {
+    background: #4E443C;
+    color: #fff;
+    opacity: 1;
+
+    -webkit-box-shadow: 0 0 2px #F0EFE7;
+    -moz-box-shadow: 0 0 2px #F0EFE7;
+    box-shadow: 0 0 2px #F0EFE7;
+}
+
+
+/* //////////// TABS ///////////// */
+
+.wpb_tabstabs_holder{margin-left: 40px;}
+.tabs-nav{width: 100px!important;}
+.q_tabs.vertical.left .tabs-container{width: 400px;}
+.q_tabs.vertical .tabs-nav li a{text-align: left;}
+.q_tabs.vertical .tabs-nav li.active a{border:none; padding: 13px 17px;}
+.q_tabs.vertical.left .tab-content{border: none;}
 

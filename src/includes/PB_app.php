@@ -18,7 +18,7 @@
 			
 			<!-- BEGIN SEARCHFORM -->
 	<div id="searchform">
-			<form method="post" id="theForm" class="PB_request_form" >
+			<form method="post" id="theForm" class="PB_request_form" name="PB_page_form">
 		
 				<!-- RECORD TYPES -->
 						<fieldset id="record-types">
@@ -327,11 +327,11 @@
 					<div id="results">
 						<?php foreach ($xmlResult->listings->listing as $item): ?>
 		    				<div class="post <?php echo $item->data->pba__status__c; ?>">
-		    					<h1><a href="http://localhost/ss/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
+		    					<h1><a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
 		    					<p><?php echo $item->data->pba__status__c; ?></p>
 		    					<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
 		    				    <div class="thumbnail">
-		    				    	<a href= "http://localhost/ss/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
+		    				    	<a href= "<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
 		    				    	<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>"></a>
 		    				    </div>
 		    				    <?php }; ?>
@@ -341,7 +341,7 @@
 									<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
 									<li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>			
 									<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
-									<li class="itemFact">Tenure: <?php echo  $item->data->pba__propertytype__c; ?></li>			
+									<li class="itemFact">Tenure: <?php echo  $item->data->tenure__c; ?></li>			
 									<li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>	
 		    				    </ul>
 		    				</div>
@@ -358,9 +358,7 @@
 		
 		        </div>
 		      </td>
-		      
-		           
-		            
+		        
 		
 			</div>
 		
@@ -374,7 +372,6 @@
 
 		    $j("select[name='price_from'] option[value='"+<?php Print($price_from)  ?>+"']").prop('selected', true);
     $j("select[name='price_to'] option[value='"+<?php Print($price_to) ?>+"']").prop('selected', true);
-    // $j("select[name='bedrooms_from'] option[value='"+<?php Print($bedrooms_from) ?>+"']").prop('selected', true);
 
     <?php if( $default_recordtypes == "sale;rent" ){ ?>
      $j("input[name='recordtypes']").first().prop('checked', true);
@@ -390,14 +387,9 @@
     	if (!empty($default_propertytype)) echo( "\$j(\"select[name='propertytype'] option[value='".$default_propertytype."']\").prop('selected', true);");
     	if (!empty($default_tenure)) echo( "\$j(\"select[name='tenure'] option[value='".$default_tenure."']\").prop('selected', true);");
     	if (!empty($default_propertystatus)) echo( "\$j(\"input[name='propertystatus'][value='".$default_propertystatus."']\").prop('checked', true);"); 
-    ?>
-
-		    
-		    
-		
-		
+    ?>	
 		</script>
-			<script src="<?php echo get_childTheme_url(); ?>/js/PB_app.js"></script>
+			
 
 		</div>
 	</div>

@@ -55,7 +55,7 @@ function init_map(){
 	  		position: new google.maps.LatLng(lat,lng)
 		});
 	
-		infowindow = new google.maps.InfoWindow({content:"<b>"+property_name+"</b><br/>"+property_address });
+		infowindow = new google.maps.InfoWindow({content:"<b>"+property_name+"</b><br/>"+property_city_postal });
 	
 	  	var usRoadMapType = new google.maps.StyledMapType(roadAtlasStyles, styledMapOptions);
 	
@@ -267,6 +267,10 @@ function pauseVid() {
 // WINDOW LOAD - 3rd
 	$j(window).load(function(){
 
+
+		var URLlocation = window.location.pathname;
+		var URLdir = URLlocation.substring(0, URLlocation.indexOf('/', 1));
+
 		$j("#layerslider_6").layerSlider({
 			responsiveUnder: 768, 
 			layersContainer: 768, 
@@ -286,7 +290,7 @@ function pauseVid() {
 			cbAnimStop: function(data) { }, 
 			cbPrev: function(data) { }, 
 			cbNext: function(data) { }, 
-			skinsPath: 'http://localhost/ss/wp-content/plugins/LayerSlider/static/skins/'
+			skinsPath: URLdir+'/wp-content/plugins/LayerSlider/static/skins/'
 		});
 
 	});

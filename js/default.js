@@ -1,3 +1,5 @@
+var appName = 'app';
+
 /**
 	 *  LEFT AREA RANGE SLIDER
 	 */
@@ -82,6 +84,34 @@ if(typeof paspartu_width_init == 'undefined'){ //check if variable is defined in
 
 $j(document).ready(function() {
 	"use strict";
+
+	$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
+		// $j(this).closest("form").submit(function(event) { event.preventDefault(); });
+	});
+
+	// sidebar form SUBMIT button 
+	
+	$j('.filter__submit').on('click', '.js-run-pb-search', function(event) {
+		event.preventDefault();
+
+		var pathname = window.location.pathname;
+		var f = pathname.split('/').slice(-3);
+
+    	if (pathname.indexOf(appName) >= 0)
+    	{
+    		// alert('app');
+			$j(this).closest("form").submit();    	
+
+    	}else
+    	{
+			// alert('not app');
+   			$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').submit();
+	
+    	}
+
+	});
+
+
 
 	/**
 	 * Apply Corners
@@ -1519,8 +1549,8 @@ function initQodeCarousel(){
                         max: 6
                     }
                 },
-                auto: true,
-                mousewheel: false,
+                auto: false,
+                mousewheel: true,
                 swipe: {
                     onMouse: true,
                     onTouch: true
@@ -1713,28 +1743,31 @@ function initSideMenu(){
 			e.preventDefault();
 			$j('.side_menu').css({'right':'0'});
 			if(!$j('.side_menu_button_wrapper a.side_menu_button_link').hasClass('opened')){
-				$j('.side_menu').css({'visibility':'visible'});
+				$j('.side_menu').css({'visibility':'visible','right':'0'});
 				$j(this).addClass('opened');
-				$j('body').addClass('right_side_menu_opened');
+				$j('.side_menu_button').animate({opacity: 0}, 200).css('visibility', 'hidden');
+				// $j('body').addClass('right_side_menu_opened');
 				current_scroll = $j(window).scrollTop();
 				
 				$j(window).scroll(function() {
 					if(Math.abs($scroll - current_scroll) > 400){
-						$j('body').removeClass('right_side_menu_opened');
+						$j('.side_menu_button').css('visibility', 'visible').animate({opacity: 0.95}, 200);
+						// $j('body').removeClass('right_side_menu_opened');
 						$j('.side_menu_button_wrapper a').removeClass('opened');
 						var hide_side_menu = setTimeout(function(){
-							$j('.side_menu').css({'visibility':'hidden'});
+							$j('.side_menu').css({'visibility':'hidden','right':'-270px'});
 							clearTimeout(hide_side_menu);
 						},400);
 					}
 				});
 			}else{
 				$j('.side_menu_button_wrapper a.side_menu_button_link').removeClass('opened');
-				$j('body').removeClass('right_side_menu_opened');
+				$j('.side_menu_button').css('visibility', 'visible').animate({opacity: 0.95}, 200);
+				// $j('body').removeClass('right_side_menu_opened');
 				var hide_side_menu = setTimeout(function(){
-					$j('.side_menu').css({'visibility':'hidden'});
+					$j('.side_menu').css({'visibility':'hidden','right':'-270px'});
 					clearTimeout(hide_side_menu);
-				},400);
+				},0);
 			}
 		});	
 	}	
@@ -2178,10 +2211,26 @@ function showHideVerticalMenu(){
                 current_scroll = $j(window).scrollTop(); //current scroll is defined in front of "initSideMenu" function
                 vertical_menu.addClass('active');
 				 vertical_menu_bottom_logo.addClass('active');
+				 vertical_menu.animate({opacity: 0.9}, 200);
+				 
+				 $j('a.vertical_menu_hidden_button').css({
+				 	'width': '40px',
+				 	'margin-left': '0'
+				 });
+
+				 $j('#find-a-property').animate({opacity: 0}, 200);
             }else{
                 hovered_flag = true;
                 vertical_menu.removeClass('active');
-				 vertical_menu_bottom_logo.removeClass('active');
+				vertical_menu_bottom_logo.removeClass('active');
+				vertical_menu.animate({opacity: 0}, 200);
+				$j('#find-a-property').animate({opacity: 1}, 200);
+				
+				$j('a.vertical_menu_hidden_button').css({
+					'width' : '180px',
+					'margin-left': '20px'   // !!! must match css width property
+
+				}); 
             }
         });
 
