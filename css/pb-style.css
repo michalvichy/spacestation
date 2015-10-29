@@ -65,7 +65,7 @@ bottom: 0;
 height: 70px;
 font-size: 10px;
 font-family: 'Andale Mono',sans-serif;
-
+z-index: 500;
 }
 
 /*//////// SINGLE VIEW //////*/
@@ -368,12 +368,23 @@ h3.mainTitle{
 }
 
 
-/* //////////// TABS ///////////// */
+/* //////////// TABS -> RELATED POSTS ///////////// */
 
-.wpb_tabstabs_holder{margin-left: 40px;}
+.wpb_tabstabs_holder{
+	margin-left: -765px;
+	margin-bottom: 50px;
+	display: inline-block;
+	left: 100%;
+	position: relative;
+}
 .tabs-nav{width: 100px!important;}
 .q_tabs.vertical.left .tabs-container{width: 400px;}
 .q_tabs.vertical .tabs-nav li a{text-align: left;}
 .q_tabs.vertical .tabs-nav li.active a{border:none; padding: 13px 17px;}
 .q_tabs.vertical.left .tab-content{border: none;}
 
+/* //////////// GALLERY -> LAYERSLIDER ///////////// */
+
+.ls-thumbnail{
+	margin: 0 0 0 20px;
+}
