@@ -36,6 +36,8 @@ Template: bridge
       left: 0!important
   }
 
+  .vertical_menu_hidden aside.vertical_menu_area, .vertical_menu_hidden .vertical_area_background{left:-260px;}
+
 
 /*------------- HEADER ------------*/
 
