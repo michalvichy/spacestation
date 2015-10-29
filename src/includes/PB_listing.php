@@ -249,12 +249,14 @@
                           <!-- IF SALE -->
                           <?php if($listing_type == 'Sale'){ ?>
                           <li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
+                          <li class="itemFact">Stamp Duty: <?php echo  $item->data->stamp_duty__c; ?></li>
                           <?php } ?>
                           <!-- IF SALE END-->
 
                           <li class="itemFact">Room list: <?php echo  $item->data->room_list__c; ?></li>
                           <li class="itemFact">Local Authority: <?php echo  $item->data->local_authority__c; ?></li>
                           <li class="itemFact">Council Tax Band: <?php echo  $item->data->council_tax_band__c; ?></li>
+
                           
                           <br>
                           <?php if(!empty($item->data->ff_aircon__c)){ ?>

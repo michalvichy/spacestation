@@ -86,7 +86,7 @@ $j(document).ready(function() {
 	"use strict";
 
 	$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
-		// $j(this).closest("form").submit(function(e) { return false;});
+		// $j(this).closest("form").submit(function(event) { event.preventDefault(); });
 	});
 
 	// sidebar form SUBMIT button 
@@ -105,7 +105,7 @@ $j(document).ready(function() {
     	}else
     	{
 			// alert('not app');
-   			$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').closest("form").submit();
+   			$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').submit();
 	
     	}
 

@@ -132,7 +132,7 @@ function clearForm() {
 		$j(this).closest("form").submit();
 	});
 
-	$j('form[name="PB_page_form"]').on('change', 'select', function() {
+	$j('form[name="PB_page_form"]').on('change', 'select, input', function() {
 		$j(this).closest("form").submit();
 	});
 

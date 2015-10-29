@@ -341,7 +341,7 @@
 									<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
 									<li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>			
 									<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
-									<li class="itemFact">Tenure: <?php echo  $item->data->pba__propertytype__c; ?></li>			
+									<li class="itemFact">Tenure: <?php echo  $item->data->tenure__c; ?></li>			
 									<li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>	
 		    				    </ul>
 		    				</div>
