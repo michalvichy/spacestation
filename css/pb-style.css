@@ -48,8 +48,8 @@ div.post.Sold{
 	opacity: 0.5;
 }
 
-/*div#result{text-align: center;}*/
-div#results{display: inline-block; width: 100%; /*max-width: 1000px;*/ background: white; text-align: left;}
+div#result{display: inline-block; width: 100%;}
+/*div#results{display: inline-block; width: 100%; background: white; text-align: left;}*/
 
 
 #container_multiple_view{padding: 20px!important;}
@@ -71,27 +71,27 @@ font-family: 'Andale Mono',sans-serif;
 /*//////// SINGLE VIEW //////*/
 
 .single_view_media{
-	/*min-height: 750px;*/
+	height: 770px; /*!!! must match inline on #gmap_canvas and other*/
 
 }
 
 .single_view_description{
 	position: relative;
-	display: block;
+	display: inline-block;
 	width: 570px;
-	/*min-height: 700px;*/
+	height: 560px;
 	float: right;
-	margin: -200px 50px 50px 0;
+	margin: -150px 50px 50px 0;
 	z-index: 500;
-
+	background: rgba(255,255,255,0.9);
 }
 
 .single_view_info{
-	position: relative;
+	position: absolute;
+	display: inline-block;
 	top:10px;
 	left:0;
 	padding: 10px;
-	background: rgba(255,255,255,0.9);
 }
 
 .arrange{
@@ -119,7 +119,11 @@ padding: 10px;
 
 ul.itemFacts{
 	padding: 10px;
+	overflow-y: auto;
+	height: 390px;
 }
+
+
 
 .single_view_navigation{
 	position: absolute;

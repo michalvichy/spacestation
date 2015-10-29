@@ -225,7 +225,7 @@
                 <li><a href="#">SHARE</a></li>
               </ul>
             <br>
-            <p style="verflow-y: auto;"><?php echo $item->data->pba__description_pb__c; ?> </p>
+            <p style="overflow-y: auto; height: 353px;"><?php echo $item->data->pba__description_pb__c; ?> </p>
                 
             </div> <!-- // end panel -->  
             <div class="panel half_width">  
