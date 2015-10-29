@@ -69,15 +69,15 @@
                         
                         <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?> <!-- begin if images not empty -->
                         
-                        <div class="ls-wp-fullwidth-container" style="height: 500px;">  
-                          <div class="ls-wp-fullwidth-helper" style="width: 1402px; height: 500px; left: -40px;">
-                            <div id="layerslider_6" style="width: 1402px; height: 500px; margin: 0px auto; visibility: visible;">
-                              <div class="ls-inner" style="background-color: transparent; width: 1402px; height: 500px;">
+                        <div class="ls-wp-fullwidth-container" style="height: 770px;">  
+                          <div class="ls-wp-fullwidth-helper" style="width: 1402px; height: 770px; left: -40px;">
+                            <div id="layerslider_6" style="width: 1402px; height: 770px; margin: 0px auto; visibility: visible;">
+                              <div class="ls-inner" style="background-color: transparent; width: 1402px; height: 770px;">
                             <?php $i = 0; foreach ($item->media->images->image as $image): ?> <!-- begin foreach $image -->
                             
                                 
                                 <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior' || $image->tags == '' ) {?><!-- exclude floorplan from gallery flow -->
-                                  <div class="ls-layer ls-slide ls-slide-<?php echo $i; ?>" style="width: 1402px; height: 500px;">  
+                                  <div class="ls-layer ls-slide ls-slide-<?php echo $i; ?>" style="width: 1402px; height: 770px;">  
                                     <img src="<?php echo $image->baseurl . "/" . $image->filename; ?>" class="ls-bg" alt="<?php echo $image->filename; ?>"/>
                                     <div class="ls-gpuhack"></div>
                                     <?php $i++; ?>
@@ -107,7 +107,7 @@
 
                            <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                             <?php if ($image->tags == 'Floorplan Quick (JPG)') {?>
-                                  <img style="max-height:500px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
+                                  <img style="max-height:770px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
                             <?php $floorplan=true; } ?>
                            <?php endforeach; ?>
 
@@ -129,7 +129,7 @@
 
                            <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                             <?php if ($image->tags == 'EPC') {?>
-                                  <img style="max-height:500px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
+                                  <img style="max-height:770px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
                             <?php $epc=true; } ?>
                            <?php endforeach; ?>
 
@@ -139,7 +139,7 @@
                     <!-- BEGIN MAP -->
                      
                       <div id="map_container">
-                        <div id="gmap_canvas" style="height:500px;width:100%;"></div>
+                        <div id="gmap_canvas" style="height:770px;width:100%;"></div> <!-- !!! must match in pb-style.css -->
                             <style>#gmap_canvas img{max-width:none!important;background:none!important; }</style>
                         </div>
                       <script type="text/javascript"> 
@@ -225,7 +225,7 @@
                 <li><a href="#">SHARE</a></li>
               </ul>
             <br>
-            <p style="height:345px; overflow-y: auto;"><?php echo $item->data->pba__description_pb__c; ?> </p>
+            <p style="verflow-y: auto;"><?php echo $item->data->pba__description_pb__c; ?> </p>
                 
             </div> <!-- // end panel -->  
             <div class="panel half_width">  
@@ -537,10 +537,10 @@
 <!-- RELATED PROPERTIES -->
 
 <?php query_posts('tag=business,art'); ?>
-<?php echo '<div class="qode_carousels_holder clearfix"><div class="qode_carousels"><div class="caroufredsel_wrapper" style="display: block; text-align: left; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: 0; width: 1360px; margin: 0px; overflow: hidden; cursor: move; height: 146px;"><ul class="slides" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: -264.50476799999996px; margin: 0px; width: 5712px; opacity: 1; z-index: 0;">'; ?>
+<?php echo '<div class="qode_carousels_holder clearfix"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; ?>
 <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-        <li class="item" style="width: 270px;">
+        <li class="item">
           <div class="carousel_item_holder">
             <a href="<?php the_permalink()?>" target="_self">
               <span class="first_image_holder has_hover_image">

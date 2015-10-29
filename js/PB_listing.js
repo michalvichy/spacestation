@@ -267,6 +267,7 @@ function pauseVid() {
 // WINDOW LOAD - 3rd
 	$j(window).load(function(){
 
+
 		var URLlocation = window.location.pathname;
 		var URLdir = URLlocation.substring(0, URLlocation.indexOf('/', 1));
 

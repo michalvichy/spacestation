@@ -57,10 +57,11 @@ div#results{display: inline-block; width: 100%; /*max-width: 1000px;*/ backgroun
 div#error{
 
 color: green!important;
-/*position: absolute;*/
+position: fixed;
 background: rgba(255,255,255,0.9);
 display: inline-block;
-top:-30px;
+/*top:-30px;*/
+bottom: 0;
 height: 70px;
 font-size: 10px;
 font-family: 'Andale Mono',sans-serif;
@@ -78,18 +79,19 @@ font-family: 'Andale Mono',sans-serif;
 	position: relative;
 	display: block;
 	width: 570px;
-	min-height: 700px;
+	/*min-height: 700px;*/
 	float: right;
 	margin: -200px 50px 50px 0;
-	background: rgba(255,255,255,0.5);
+	z-index: 500;
 
 }
 
 .single_view_info{
-	position: absolute;
+	position: relative;
 	top:10px;
 	left:0;
 	padding: 10px;
+	background: rgba(255,255,255,0.9);
 }
 
 .arrange{
@@ -172,7 +174,7 @@ h3.mainTitle{
 	left:0;
 	z-index: 0;
 	overflow:hidden;
-	height:500px; // must match inline on #gmap_canvas
+	height:770px; // must match inline on #gmap_canvas
 	width:100%; //// must match inline on #gmap_canvas
 	position: absolute!important; 
 	transition: opacity .55s ease-in-out;

@@ -16,6 +16,10 @@ Template: bridge
     background-color: transparent;
   }
 
+  .content.content_top_margin{
+    margin-top: 0px !important;
+  }
+
   .wrapper{z-index: 0;}
 
   /* overwrite default css -> remove left side 40px padding / marging when vertical_menu_enabled */
