@@ -71,7 +71,7 @@
                         
                         <div class="ls-wp-fullwidth-container" style="height: 770px;">  
                           <div class="ls-wp-fullwidth-helper" style="width: 1402px; height: 770px; left: -40px;">
-                            <div id="layerslider_6" style="width: 1402px; height: 770px; margin: 0px auto; visibility: visible;">
+                            <div id="listing_gallery_layerslider" style="width: 1402px; height: 770px; margin: 0px auto; visibility: visible;">
                               <div class="ls-inner" style="background-color: transparent; width: 1402px; height: 770px;">
                             <?php $i = 0; foreach ($item->media->images->image as $image): ?> <!-- begin foreach $image -->
                             

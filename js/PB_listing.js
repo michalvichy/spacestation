@@ -172,6 +172,7 @@ function pauseVid() {
 
     		    	hideItem([gallery_view,video_view,floorplan_view,epc_view]);
     		    	showItem([map_view]);
+    		    	gallery_view.addClass('niema'); // ! window resize glitch fix
 
     		    	if( $j('#gmap_canvas').is(':empty') )
     		    	{
@@ -192,6 +193,7 @@ function pauseVid() {
 
     		     	hideItem([map_view,video_view,floorplan_view,epc_view]);
 					showItem([gallery_view]);
+					gallery_view.removeClass('niema');
 
     		    break;
 
@@ -201,6 +203,9 @@ function pauseVid() {
     		    if(video1 != undefined){ pauseVid(); }
 
     		    	if(floorplan){
+
+    		    		gallery_view.addClass('niema'); // ! window resize glitch fix
+
     		     		hideItem([map_view,video_view,gallery_view,epc_view]);
 				 		showItem([floorplan_view]);
 				 	}else{
@@ -216,6 +221,9 @@ function pauseVid() {
 
     		    	if(epc)
     		    	{
+
+    		    		gallery_view.addClass('niema'); // ! window resize glitch fix
+
     		    		hideItem([map_view,video_view,gallery_view,floorplan_view]);
 						showItem([epc_view]);
 					}
@@ -228,6 +236,8 @@ function pauseVid() {
     		    break;
     		
     		case 'single_view_nav_video':
+
+    				gallery_view.addClass('niema'); // ! window resize glitch fix
     				
     				// if video hasn't been initialised yet -> do it
     				if(video_url == undefined){
@@ -276,7 +286,7 @@ function pauseVid() {
 		var URLlocation = window.location.pathname;
 		var URLdir = URLlocation.substring(0, URLlocation.indexOf('/', 1));
 
-		$j("#layerslider_6").layerSlider({
+		$j("#listing_gallery_layerslider").layerSlider({
 			responsiveUnder: 768, 
 			layersContainer: 768, 
 			autoStart: false, 
@@ -286,7 +296,6 @@ function pauseVid() {
 			hoverPrevNext: false, 
 			thumbnailNavigation: 'always', 
 			autoPlayVideos: false, 
-			yourLogoStyle: 'left: 10px; top: 10px;', 
 			cbInit: function(element) { }, 
 			cbStart: function(data) { }, 
 			cbStop: function(data) { }, 

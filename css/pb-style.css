@@ -416,6 +416,12 @@ h3.mainTitle{
 
 /*  ---- LAYERSLIDER ---- */
 
+	/*//// window resize glitch fix -> class .niema toggled in PB_listing.js ////*/
+  	.niema img.ls-bg.ls-preloaded{
+    	width: inherit!important;
+    	height: inherit!important;
+  	}
+
 	.ls-thumbnail{
 		margin: 0 0 0 20px;
 	}	
