@@ -367,17 +367,6 @@ aside.vertical_menu_area form.PB_request_form input{width: 100%;}
 /* ////////////////////////////////// */
 /*  ------------ CONTENT ------------ */
 
-/*  ---- LAYERSLIDER ---- */
-  .ls-nav-prev{
-    left:15px;
-    top:70%;
-  }
-
-  .ls-nav-next{
-    right:55px;
-    top: 70%;
-  }
-
 /* top serch spacing fix */
 .content_inner{margin-top: 0!important;}
 

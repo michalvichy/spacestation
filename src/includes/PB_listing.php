@@ -54,11 +54,11 @@
                   
                   <div class="single_view_navigation">
                     <ul>
-                      <li><a id="single_view_nav_gallery" href="#">Gallery</a></li>
-                      <li><a id="single_view_nav_floorplan" href="#">Floor Plan</a></li>
-                       <li><a id="single_view_nav_epc" href="#">EPC</a></li>
-                      <li><a id="single_view_nav_map" href="#">Map</a></li>
-                      <li><a id="single_view_nav_video" href="#">Video</a></li>
+                      <li id="single_view_nav_gallery">Gallery</li>
+                      <li id="single_view_nav_floorplan">Floor Plan</a></li>
+                      <li id="single_view_nav_epc">EPC</a></li>
+                      <li id="single_view_nav_map">Map</a></li>
+                      <li id="single_view_nav_video">Video</a></li>
                     </ul>
                   </div>
 				  

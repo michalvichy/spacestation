@@ -155,7 +155,7 @@ function pauseVid() {
 		
 	//LAYOUT CHANGE BUTTONS LOGIC
 
-	$j('.single_view_navigation ul li').on('click','a',function(event){
+	$j('.single_view_navigation ul').on('click','li',function(event){
 		event.preventDefault();
 		event.stopPropagation();
 		switch( $j(this).attr('id') ) {

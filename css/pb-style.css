@@ -127,25 +127,54 @@ ul.itemFacts{
 
 .single_view_navigation{
 	position: absolute;
-	left:50px;
-	top:200px;
+	left:20px;
+	top:500px;
 	z-index:5000;
 }
 
-.single_view_navigation ul li {margin: 5px 0;}
+.single_view_navigation ul li {
+	margin: 10px 0;
+	width: 155px;
+	height: 22px;
+	background: none;
+	background-color: transparent!important;
+	cursor: pointer;
+	text-align: center;
+	color: white;
+	font-weight: 600;
+	background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="155px" height="22px" viewBox="0 0 155 22" enable-background="new 0 0 155 22" xml:space="preserve"><path class="single_view_navigation_svg" fill="#ccc" d="M149.947,0L155,5.159v11.682L149.947,22H5.053L0,16.841V5.159L5.053,0H149.947z"/></svg>');
+	opacity: 0.9;
+	line-height: 1.6em;
+	text-transform: uppercase;
+}
+
+.single_view_navigation_svg{
+	fill: #ACABA6!important;
+}
+
+.single_view_navigation ul li:hover{
+	cursor: pointer;
+}
+
+.single_view_navigation ul li:hover + .single_view_navigation_svg{
+	fill: red!important;
+}
+
+
 
 .single_view_navigation ul li a{
-	display: inline;
-	padding: 2px;
-	background: white;
+	display: block;
+	padding: 4px 2px;
+	text-align: center;
+	/*background: white;*/
 }
 
 
 
 h3.mainTitle{
 	position: absolute;
-	left:150px;
-	top:110px;
+	left:20px;
+	top:450px;
 	z-index: 100;
 }
 
@@ -385,6 +414,18 @@ h3.mainTitle{
 
 /* //////////// GALLERY -> LAYERSLIDER ///////////// */
 
-.ls-thumbnail{
-	margin: 0 0 0 20px;
-}
+/*  ---- LAYERSLIDER ---- */
+
+	.ls-thumbnail{
+		margin: 0 0 0 20px;
+	}	
+
+  .ls-nav-prev{
+    left:15px;
+    top:40%;
+  }
+
+  .ls-nav-next{
+    right:15px;
+    top: 40%;
+  }
