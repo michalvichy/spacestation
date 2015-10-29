@@ -45,6 +45,11 @@ function init_map(){
 		var myOptions = {
 		    zoom:16,
 		    center:new google.maps.LatLng(lat,lng),
+		    scrollwheel: false,
+		    mapTypeControlOptions: {
+        		style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        		position: google.maps.ControlPosition.LEFT_BOTTOM
+    		},
 		    mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 	
