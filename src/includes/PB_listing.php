@@ -229,9 +229,8 @@
                 
             </div> <!-- // end panel -->  
             <div class="panel half_width">  
+                <h4>FAST FACTS</h4>
                         <ul class="itemFacts">
-                          <li><h4>FAST FACTS</h4></li>
-                          <br>
                           <li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>
                           
                           <!-- IF RENT -->
