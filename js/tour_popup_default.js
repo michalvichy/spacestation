@@ -30,16 +30,18 @@ $j(document).ready(function(){
         $j('.tooltip1').fadeToggle('fast');
     });
 
-     /////////// DELETE COOKIE BUTTON /////////////
+    /////////// DELETE COOKIE BUTTON /////////////
         
-     $j(document).on('click', '.tooltip_link_1', function(event) {
-         event.preventDefault();
-         /* Act on the event */
-         $j.removeCookie('saved_cookie', { path: '/' });
-         $j('.tooltip1 ul').html('');
-         // $j('.tooltip1').fadeToggle('fast');
-         updateSavedCounter();
-     });
+    $j(document).on('click', '.tooltip_link_1', function(event) {
+        event.preventDefault();
+
+        if($j.super_cookie().check("saved_cookie")){
+            $j.removeCookie('saved_cookie', { path: '/' });
+            $j('.tooltip1 ul').html('');
+            // $j('.tooltip1').fadeToggle('fast');
+            updateSavedCounter();
+        }
+    });
     
 
 });
