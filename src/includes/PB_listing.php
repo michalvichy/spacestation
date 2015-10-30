@@ -221,7 +221,7 @@
                           <?php $i = 0; foreach ($item->media->documents->document as $document): ?>
                               <!-- if Brochure PDF -->
                               <?php if ($document->tags == 'Brochure') {?>
-                                 <li><a href="<?php echo $document[$i]->url; ?>">PRINT</a></li>
+                                 <li class="print_button"><a href="#">PRINT</a></li>
                               <?php } ?>
                               <?php $i++; ?>
                           <?php endforeach; ?>

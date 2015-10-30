@@ -276,6 +276,13 @@ function pauseVid() {
 		showItem([description_view],true);
 	})
 
+	// -------- PRINT BUTTON ------------
+	
+	$j('.print_button').on('click', 'a', function(event) {
+		event.preventDefault();
+		print();
+	});
+
 	// -------- SAVE BUTTON ------------
 	
 	$j('.add_to_saved_button').on('click', 'a', function(event) {

@@ -6,11 +6,15 @@ Function wp_schools_enqueue_scripts() {
 
 wp_register_style( 'childstyle', get_stylesheet_directory_uri() . '/style.css'  );
 wp_enqueue_style( 'childstyle' );
+// wp_register_style( 'tour_popup_stylesheet', get_stylesheet_directory_uri() . '/css/tour_popup_stylesheet.css'  );
+// wp_enqueue_style( 'tour_popup_stylesheet' );
+
 wp_enqueue_script("default", get_stylesheet_directory_uri()."/js/default.js",array(),false,true);
 wp_enqueue_script("corner", "http://malsup.github.io/jquery.corner.js",array(),false,true);
 wp_enqueue_script("cookie", get_stylesheet_directory_uri()."/js/jquery.cookie.js",array(),false,true);
 wp_enqueue_script("json3", get_stylesheet_directory_uri()."/js/json3.min.js",array(),false,true);
 wp_enqueue_script("SuperCookie", get_stylesheet_directory_uri()."/js/jquery.SuperCookie.js",array(),false,true);
+wp_enqueue_script("tour_popup_default", get_stylesheet_directory_uri()."/js/tour_popup_default.js",array(),false,true);
 
 	/**
 	  * LOAD SCRIPTS BASED ON TEMPLATE NAME
