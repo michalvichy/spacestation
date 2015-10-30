@@ -74,6 +74,10 @@ function init_map(){
 		infowindow.open(map,marker);
 }
 
+///////////// updateSavedCounter
+function updateSavedCounter(number){
+	$j('.saved_button span').html(number);
+}
 
 ///////////// hideItem / showItem
 function hideItem(items, opacity)
@@ -276,6 +280,19 @@ function pauseVid() {
 		hideItem([arrange_view],true);
 		showItem([description_view],true);
 	})
+
+	// -------- SAVE BUTTON ------------
+	
+	$j('.add_to_saved_button').on('click', 'a', function(event) {
+		event.preventDefault();
+
+		if(listing_id)
+		{
+			$j.cookie('id_list', listing_id);
+			updateSavedCounter(+1);
+		}
+
+	});
 	
 	});
 

@@ -1,5 +1,6 @@
 <!-- JS VARS -->
 <script>
+  var listing_id;
   var lat;
   var lng;
   var property_name;
@@ -35,8 +36,14 @@
     <?php }else{ ?>
   <!-- END EMPTY RESULT --> 
    
+        // VARS
+
+        <script type="text/javascript">
+                  listing_id = <?php echo ("'".$xmlResult->listings->listing->data->id."';");  ?>
+        </script>                  
+
         <?php 
-         // VARS
+         
          
           // ini_set('memory_limit','256M');
         
@@ -221,7 +228,7 @@
                         <?php } ?>
                       <!-- end if documents not empty -->
                
-                <li><a href="#">SAVE</a></li>
+                <li class="add_to_saved_button"><a href="#">SAVE</a></li>
                 <li><a href="#">SHARE</a></li>
               </ul>
             <br>

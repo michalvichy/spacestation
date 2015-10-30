@@ -85,6 +85,20 @@ if(typeof paspartu_width_init == 'undefined'){ //check if variable is defined in
 $j(document).ready(function() {
 	"use strict";
 
+	// COOKIE CHECK - 1st
+			$j(function() {
+				var il = $j.cookie('id_list');
+				
+				alert(il);
+
+				// if(il){
+				// 	alert(il);
+				// }else{
+				// 	updateSavedCounter(0);
+				// }
+			
+			});
+
 	$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
 		// $j(this).closest("form").submit(function(event) { event.preventDefault(); });
 	});

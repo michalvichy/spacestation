@@ -12,6 +12,12 @@ Template: bridge
 /* ///////////////////////////////// */
 /* -------- GENERAL STYLES -------- */
 
+  .saved_button span{
+    font-weight: 600;
+    font-size: 18px!important;
+    padding-left: 4px;
+  }
+
   .content .container{
     background-color: transparent;
   }

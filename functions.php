@@ -38,6 +38,7 @@ wp_enqueue_script("corner", "http://malsup.github.io/jquery.corner.js",array(),f
 		wp_register_style( 'fontello', get_stylesheet_directory_uri() . '/css/fontello.css'  );
 		wp_enqueue_style( 'fontello' );
 	
+		wp_enqueue_script("cookie", "http://jquery-list-grid.ssdtutorials.com/js/cookie.js",array(),false,true);
 		wp_enqueue_script("tabs", site_url()."/wp-includes/js/jquery/ui/tabs.min.js",array(),false,true);
 		wp_enqueue_script("jcarousel", "https://cdnjs.cloudflare.com/ajax/libs/jcarousel/0.3.4/jquery.jcarousel.min.js",array(),false,true);
 		wp_enqueue_script("jcarouselResponsive", get_stylesheet_directory_uri()."/js/jcarousel.responsive.js",array(),false,true);
