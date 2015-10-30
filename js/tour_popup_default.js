@@ -1,19 +1,26 @@
 var $j = jQuery.noConflict();
 
+var data = $j.super_cookie().read_JSON("saved_cookie");
+var str = " ";
+$j.each(data,function(i, item) { str = str + '<li><a href="listing/?id='+data[i]+'">listig</a></li>'; })
+
 var tooltip1 = '<div class="tooltip tooltip1"><a href="#" class="tooltip_marker"></a> \
 									<div class="popup_tooltip popup_tooltip1"> \
 										<div class="popup_tooltip_inner"><i class="fa fa-times"></i> \
 											<div class="tooltip_row clearfix"> \
-													<h5 class="tooltip_title">Header Options</h5> \
-													<p>Bridge theme comes with an amazing new Qode functionality - choose main menu colors from slide to slide and from page to page. Combine it with dark/light header backgrounds to create beautiful contrasts between pages.</p> \
-													<h5>Try a different style</h5> \
-													<img class="tooltip_image_1" src="http://demo.qodeinteractive.com/bridge/demo_images/tooltip_image_1.jpg" alt="&nbsp;" /> \
-													<a class="qbutton small white tooltip_link_1" href="#">Change</a> \
+													</br>\
+                                                    <h5 class="tooltip_title">SAVED LISTINGS</h5> \
+													<ul> \
+													'+str+'\
+                                                    </ul> \
+                                                    </br>\
+													<a class="qbutton small green tooltip_link_1" href="#">Delete ALL</a> \
 											</div> \
 										</div> \
 									</div> \
 								</div>\
 								';
+
 
 $j(document).ready(function(){
 	"use strict";
@@ -87,6 +94,17 @@ $j(document).ready(function(){
         event.preventDefault();
         $j('.tooltip1').fadeToggle('fast');
     });
+
+     /////////// DELETE COOKIE BUTTON /////////////
+        
+     $j(document).on('click', '.tooltip_link_1', function(event) {
+         event.preventDefault();
+         /* Act on the event */
+         $j.removeCookie('saved_cookie', { path: '/' });
+         $j('.tooltip1').fadeToggle('fast');
+         updateSavedCounter();
+     });
+    
 
 });
 
