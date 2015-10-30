@@ -297,10 +297,12 @@ function pauseVid() {
 					//if available -> add another id value to cookie
 					var i = $j.super_cookie().read_indexes("saved_cookie").length + 1;
 					$j.super_cookie().add_value("saved_cookie","listing_"+i,listing_id);
+					$j('.tooltip1 ul').append('<li><a href="listing/?id='+listing_id+'">listing</a></li>');
 
 				}else{
 					//if not available create saved_cookie and add first id value
 					$j.super_cookie({expires: 7,path: "/"}).create("saved_cookie",{listing_0:listing_id});
+					$j('.tooltip1 ul').append('<li><a href="listing/?id='+listing_id+'">listing</a></li>');
 				}
 
 			updateSavedCounter();

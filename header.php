@@ -919,6 +919,22 @@ $display_header_top = "yes";
                         }
                         ?>
 					</nav>
+
+					<div class="tooltip tooltip1"><a href="#" class="tooltip_marker"></a> 
+									<div class="popup_tooltip popup_tooltip1"> 
+										<div class="popup_tooltip_inner"><i class="fa fa-times"></i> 
+											<div class="tooltip_row clearfix"> 
+													</br>
+                                                    <h5 class="tooltip_title">SAVED LISTINGS</h5> 
+													<ul> 
+													</ul>
+													</br>
+													<a class="qbutton small green tooltip_link_1" href="#">Delete ALL</a> 
+											</div>
+										</div>
+									</div>
+					</div>
+
 			<?php if($header_in_grid){ ?>
                     <?php if(isset($qode_options_proya['overlapping_content']) && $qode_options_proya['overlapping_content'] == 'yes') {?></div><?php } ?>
 					</div>
