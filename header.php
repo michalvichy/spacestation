@@ -691,7 +691,7 @@ $display_header_top = "yes";
 										dynamic_sidebar('woocommerce_dropdown');
 									} ?>
                                     <div class="side_menu_button">
-									
+                                    	<a class="saved_button normal" href="javascript:void(0)"><i class="qode_icon_font_awesome fa fa-heart "></i><span>0</span></a>
 										<?php if(isset($qode_options_proya['enable_search']) && $qode_options_proya['enable_search'] == 'yes') {
 											$search_type_class = 'search_slides_from_window_top';
 											if(isset($qode_options_proya['search_type']) && $qode_options_proya['search_type'] !== '') {

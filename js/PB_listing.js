@@ -45,6 +45,11 @@ function init_map(){
 		var myOptions = {
 		    zoom:16,
 		    center:new google.maps.LatLng(lat,lng),
+		    scrollwheel: false,
+		    mapTypeControlOptions: {
+        		style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        		position: google.maps.ControlPosition.LEFT_BOTTOM
+    		},
 		    mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 	
@@ -69,6 +74,10 @@ function init_map(){
 		infowindow.open(map,marker);
 }
 
+///////////// updateSavedCounter
+function updateSavedCounter(number){
+	$j('.saved_button span').html(number);
+}
 
 ///////////// hideItem / showItem
 function hideItem(items, opacity)
@@ -150,7 +159,7 @@ function pauseVid() {
 		
 	//LAYOUT CHANGE BUTTONS LOGIC
 
-	$j('.single_view_navigation ul li').on('click','a',function(event){
+	$j('.single_view_navigation ul').on('click','li',function(event){
 		event.preventDefault();
 		event.stopPropagation();
 		switch( $j(this).attr('id') ) {
@@ -167,6 +176,7 @@ function pauseVid() {
 
     		    	hideItem([gallery_view,video_view,floorplan_view,epc_view]);
     		    	showItem([map_view]);
+    		    	gallery_view.addClass('niema'); // ! window resize glitch fix
 
     		    	if( $j('#gmap_canvas').is(':empty') )
     		    	{
@@ -187,6 +197,7 @@ function pauseVid() {
 
     		     	hideItem([map_view,video_view,floorplan_view,epc_view]);
 					showItem([gallery_view]);
+					gallery_view.removeClass('niema');
 
     		    break;
 
@@ -196,6 +207,9 @@ function pauseVid() {
     		    if(video1 != undefined){ pauseVid(); }
 
     		    	if(floorplan){
+
+    		    		gallery_view.addClass('niema'); // ! window resize glitch fix
+
     		     		hideItem([map_view,video_view,gallery_view,epc_view]);
 				 		showItem([floorplan_view]);
 				 	}else{
@@ -211,6 +225,9 @@ function pauseVid() {
 
     		    	if(epc)
     		    	{
+
+    		    		gallery_view.addClass('niema'); // ! window resize glitch fix
+
     		    		hideItem([map_view,video_view,gallery_view,floorplan_view]);
 						showItem([epc_view]);
 					}
@@ -223,6 +240,8 @@ function pauseVid() {
     		    break;
     		
     		case 'single_view_nav_video':
+
+    				gallery_view.addClass('niema'); // ! window resize glitch fix
     				
     				// if video hasn't been initialised yet -> do it
     				if(video_url == undefined){
@@ -261,6 +280,19 @@ function pauseVid() {
 		hideItem([arrange_view],true);
 		showItem([description_view],true);
 	})
+
+	// -------- SAVE BUTTON ------------
+	
+	$j('.add_to_saved_button').on('click', 'a', function(event) {
+		event.preventDefault();
+
+		if(listing_id)
+		{
+			$j.cookie('id_list', listing_id);
+			updateSavedCounter(+1);
+		}
+
+	});
 	
 	});
 
@@ -271,7 +303,7 @@ function pauseVid() {
 		var URLlocation = window.location.pathname;
 		var URLdir = URLlocation.substring(0, URLlocation.indexOf('/', 1));
 
-		$j("#layerslider_6").layerSlider({
+		$j("#listing_gallery_layerslider").layerSlider({
 			responsiveUnder: 768, 
 			layersContainer: 768, 
 			autoStart: false, 
@@ -281,7 +313,6 @@ function pauseVid() {
 			hoverPrevNext: false, 
 			thumbnailNavigation: 'always', 
 			autoPlayVideos: false, 
-			yourLogoStyle: 'left: 10px; top: 10px;', 
 			cbInit: function(element) { }, 
 			cbStart: function(data) { }, 
 			cbStop: function(data) { }, 

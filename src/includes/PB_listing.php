@@ -1,5 +1,6 @@
 <!-- JS VARS -->
 <script>
+  var listing_id;
   var lat;
   var lng;
   var property_name;
@@ -35,8 +36,14 @@
     <?php }else{ ?>
   <!-- END EMPTY RESULT --> 
    
+        // VARS
+
+        <script type="text/javascript">
+                  listing_id = <?php echo ("'".$xmlResult->listings->listing->data->id."';");  ?>
+        </script>                  
+
         <?php 
-         // VARS
+         
          
           // ini_set('memory_limit','256M');
         
@@ -54,11 +61,11 @@
                   
                   <div class="single_view_navigation">
                     <ul>
-                      <li><a id="single_view_nav_gallery" href="#">Gallery</a></li>
-                      <li><a id="single_view_nav_floorplan" href="#">Floor Plan</a></li>
-                       <li><a id="single_view_nav_epc" href="#">EPC</a></li>
-                      <li><a id="single_view_nav_map" href="#">Map</a></li>
-                      <li><a id="single_view_nav_video" href="#">Video</a></li>
+                      <li id="single_view_nav_gallery">Gallery</li>
+                      <li id="single_view_nav_floorplan">Floor Plan</a></li>
+                      <li id="single_view_nav_epc">EPC</a></li>
+                      <li id="single_view_nav_map">Map</a></li>
+                      <li id="single_view_nav_video">Video</a></li>
                     </ul>
                   </div>
 				  
@@ -71,7 +78,7 @@
                         
                         <div class="ls-wp-fullwidth-container" style="height: 770px;">  
                           <div class="ls-wp-fullwidth-helper" style="width: 1402px; height: 770px; left: -40px;">
-                            <div id="layerslider_6" style="width: 1402px; height: 770px; margin: 0px auto; visibility: visible;">
+                            <div id="listing_gallery_layerslider" style="width: 1402px; height: 770px; margin: 0px auto; visibility: visible;">
                               <div class="ls-inner" style="background-color: transparent; width: 1402px; height: 770px;">
                             <?php $i = 0; foreach ($item->media->images->image as $image): ?> <!-- begin foreach $image -->
                             
@@ -221,7 +228,7 @@
                         <?php } ?>
                       <!-- end if documents not empty -->
                
-                <li><a href="#">SAVE</a></li>
+                <li class="add_to_saved_button"><a href="#">SAVE</a></li>
                 <li><a href="#">SHARE</a></li>
               </ul>
             <br>
@@ -229,9 +236,8 @@
                 
             </div> <!-- // end panel -->  
             <div class="panel half_width">  
+                <h4>FAST FACTS</h4>
                         <ul class="itemFacts">
-                          <li><h4>FAST FACTS</h4></li>
-                          <br>
                           <li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>
                           
                           <!-- IF RENT -->
