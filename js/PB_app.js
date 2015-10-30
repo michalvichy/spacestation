@@ -76,32 +76,28 @@ function clearForm() {
 	$j(document).ready(function() {
 
 
-		// AJAX
-		// $j.ajaxSetup({cache:false});
-		
-		// $j("h1 a").click(function(e){ 
-		// 	e.preventDefault();
-		// 	var post_id = $j(this).attr("rel");
-		// 	$j("#results").html("loading...");
-		// 	$j("#results").load("http://localhost/ss/wp-content/themes/spacestation/PB_listing.php?id="+post_id,{id:post_id});
-		// 	return false;
-		// });
-
-
 		$rslts = $j('#results');
 		$grid = $j('.grid');
 
 
-		// COOKIE CHECK - 1st
+		// LAYOUT COOKIE CHECK - 1st
 			$j(function() {
-				var cc = $j.cookie('list_grid');
-				if (cc == 'g') {
-					layoutButtonActive('grid');
-					$rslts.removeClass('list').addClass('grid');
-					inintMsnry();
-				} else {
-					layoutButtonActive('list');
-					$rslts.removeClass('grid').addClass('list');
+
+				switch($j.super_cookie().read_value("layout_cookie","layout")){
+					
+					case 'grid':
+						layoutButtonActive('grid');
+						$rslts.removeClass('list').addClass('grid');
+						inintMsnry();
+						break;
+					
+					case 'dynamic':
+						layoutButtonActive('list');
+						$rslts.removeClass('grid').addClass('list');
+						break;
+					
+					default:
+						alert('no "layout_cookie"');
 				}
 			});
 		
@@ -109,7 +105,16 @@ function clearForm() {
 		$j('#grid').click(function() {
 			$rslts.fadeOut(300, function() {
 				$j(this).removeClass('list').addClass('grid').fadeIn(300);
-				$j.cookie('list_grid', 'g');
+				
+				// check if layout_cookie exists
+				if($j.super_cookie().check("layout_cookie")){
+					//if available -> replace value to 'grid'
+					$j.super_cookie().replace_value("layout_cookie","layout","grid");
+				}else{
+					//if not available create layout_cookie with value "grid"
+					$j.super_cookie({expires: 7,path: "/"}).create("layout_cookie",{layout:"grid"});
+				}
+				
 				inintMsnry();
 			});
 			layoutButtonActive('grid');
@@ -119,7 +124,16 @@ function clearForm() {
 		$j('#list').click(function() {
 			$rslts.fadeOut(300, function() {
 				$j(this).removeClass('grid').addClass('list').fadeIn(300);
-				$j.cookie('list_grid', null);
+
+				// check if layout_cookie exists
+				if($j.super_cookie().check("layout_cookie")){
+					//if available -> replace value to 'dynamic'
+					$j.super_cookie().replace_value("layout_cookie","layout","dynamic");
+				}else{
+					//if not available create layout_cookie with value "dynamic"
+					$j.super_cookie({expires: 7,path: "/"}).create("layout_cookie",{layout:"dynamic"});
+				}
+
 				killMsnry();
 			});
 			layoutButtonActive('list');
