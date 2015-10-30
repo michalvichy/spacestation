@@ -8,6 +8,9 @@ wp_register_style( 'childstyle', get_stylesheet_directory_uri() . '/style.css'  
 wp_enqueue_style( 'childstyle' );
 wp_enqueue_script("default", get_stylesheet_directory_uri()."/js/default.js",array(),false,true);
 wp_enqueue_script("corner", "http://malsup.github.io/jquery.corner.js",array(),false,true);
+wp_enqueue_script("cookie", get_stylesheet_directory_uri()."/js/jquery.cookie.js",array(),false,true);
+wp_enqueue_script("json3", get_stylesheet_directory_uri()."/js/json3.min.js",array(),false,true);
+wp_enqueue_script("SuperCookie", get_stylesheet_directory_uri()."/js/jquery.SuperCookie.js",array(),false,true);
 
 	/**
 	  * LOAD SCRIPTS BASED ON TEMPLATE NAME
@@ -22,7 +25,6 @@ wp_enqueue_script("corner", "http://malsup.github.io/jquery.corner.js",array(),f
 	
 		wp_enqueue_script("masonry", "https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js",array(),false,true);
 		wp_enqueue_script("imagesLoaded", "http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js",array(),false,true);
-		wp_enqueue_script("cookie", "http://jquery-list-grid.ssdtutorials.com/js/cookie.js",array(),false,true);
 		wp_enqueue_script("PB_app", get_stylesheet_directory_uri()."/js/PB_app.js",array(),false,true);
 	
 	}
@@ -38,7 +40,6 @@ wp_enqueue_script("corner", "http://malsup.github.io/jquery.corner.js",array(),f
 		wp_register_style( 'fontello', get_stylesheet_directory_uri() . '/css/fontello.css'  );
 		wp_enqueue_style( 'fontello' );
 	
-		wp_enqueue_script("cookie", "http://jquery-list-grid.ssdtutorials.com/js/cookie.js",array(),false,true);
 		wp_enqueue_script("tabs", site_url()."/wp-includes/js/jquery/ui/tabs.min.js",array(),false,true);
 		wp_enqueue_script("jcarousel", "https://cdnjs.cloudflare.com/ajax/libs/jcarousel/0.3.4/jquery.jcarousel.min.js",array(),false,true);
 		wp_enqueue_script("jcarouselResponsive", get_stylesheet_directory_uri()."/js/jcarousel.responsive.js",array(),false,true);

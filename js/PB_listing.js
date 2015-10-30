@@ -74,11 +74,6 @@ function init_map(){
 		infowindow.open(map,marker);
 }
 
-///////////// updateSavedCounter
-function updateSavedCounter(number){
-	$j('.saved_button span').html(number);
-}
-
 ///////////// hideItem / showItem
 function hideItem(items, opacity)
 	{

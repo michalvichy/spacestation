@@ -55,7 +55,11 @@ function setValue(val,num,vertical) {
   showValue(val,num,vertical);
 }
 
-
+///////////// updateSavedCounter
+function updateSavedCounter(number){
+	$j('.saved_button span').html(number);
+}
+///////////////////////////////////
 
 var $j = jQuery.noConflict();
 var $scroll = 0;
@@ -87,17 +91,49 @@ $j(document).ready(function() {
 
 	// COOKIE CHECK - 1st
 			$j(function() {
-				var il = $j.cookie('id_list');
+				// var il = Cookies.get('id_list');
 				
-				alert(il);
+				// alert(il);
 
 				// if(il){
 				// 	alert(il);
 				// }else{
 				// 	updateSavedCounter(0);
 				// }
+				
+			      $j.super_cookie({expires: 7,path: "/"}).create("name_of_the_cookie",{name_field_1:"value1",name_field_2:"value2"});
 			
 			});
+
+		console.log("1. Create cookie: cookie name: 'name_of_the_cookie'; cookie values: {name_field_1:\"value1\",name_field_2:\"value2\"}");
+        $j.super_cookie({expires: 7,path: "/"}).create("name_of_the_cookie",{name_field_1:"value1",name_field_2:"value2"});
+    
+        console.log("2. Check if cookie exists.");
+        console.log($j.super_cookie().check("name_of_the_cookie"));
+    
+        console.log("3. Check if cookie value is a valid JSON.");
+        console.log($j.super_cookie().verify("name_of_the_cookie"));
+        
+        console.log("4. Read cookie values as string.");
+        console.log($j.super_cookie().read_values("name_of_the_cookie"));
+        
+        console.log("5. Read cookie values as JSON object.");
+        console.log($j.super_cookie().read_JSON("name_of_the_cookie"));
+        
+        console.log("6. Read a single value from the stored JSON: index: \"name_field_1\"");
+        console.log($j.super_cookie().read_value("name_of_the_cookie","name_field_1"));
+        
+        console.log("7. Replace a value from the stored JSON: index: \"name_field_1\", value: \"new_value\"");
+        $j.super_cookie().replace_value("name_of_the_cookie","name_field_1","new_value");
+        console.log($j.super_cookie().read_JSON("name_of_the_cookie"));
+        
+        console.log("8. Add a value to the stored JSON: index: \"name_field_3\", value: \"value3\"");
+        $j.super_cookie().add_value("name_of_the_cookie","name_field_3","value3");
+        console.log($j.super_cookie().read_JSON("name_of_the_cookie"));
+        
+        console.log("9. Remove a value from the stored JSON: index: \"name_field_1\"");
+        $j.super_cookie().remove_value("name_of_the_cookie","name_field_1");
+        console.log($j.super_cookie().read_JSON("name_of_the_cookie"));
 
 	$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
 		// $j(this).closest("form").submit(function(event) { event.preventDefault(); });
