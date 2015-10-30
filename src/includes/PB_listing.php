@@ -39,7 +39,8 @@
         <!-- // VARS -->
 
         <script type="text/javascript">
-                  listing_id = <?php echo ("'".$xmlResult->listings->listing->data->id."';");  ?>
+                  listing_id = <?php echo("'".$xmlResult->listings->listing->data->id."';");  ?>
+                  property_name = <?php echo("'".$xmlResult->listings->listing->data->name."';"); ?>;
         </script>                  
 
         <?php 
@@ -154,7 +155,6 @@
                          <?php if ( !empty($item->data->pba__latitude_pb__c) && !empty($item->data->pba__longitude_pb__c) ){ ?> 
                             lat =  <?php echo  $item->data->pba__latitude_pb__c; ?>;
                             lng =  <?php echo  $item->data->pba__longitude_pb__c; ?>; 
-                            property_name = <?php echo  "'".$item->data->name."';" ?>;
                             property_address = <?php echo  "'".$item->data->pba__address_pb__c."';" ?>;    
                             property_city_postal = <?php echo "'".$item->data->pba__city_pb__c.', '.$item->data->pba__postalcode_pb__c."';" ?>;
                          <?php } ?>   
