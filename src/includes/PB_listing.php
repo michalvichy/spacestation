@@ -36,7 +36,7 @@
     <?php }else{ ?>
   <!-- END EMPTY RESULT --> 
    
-        // VARS
+        <!-- // VARS -->
 
         <script type="text/javascript">
                   listing_id = <?php echo ("'".$xmlResult->listings->listing->data->id."';");  ?>
@@ -451,7 +451,13 @@
                 <?php } ?>
                 <!-- END ELSE EMPTY RESULT -->
 
-      
+<!-- MESSAGE BOXED -->
+<!-- SUCCESS BOX -->
+<div class="q_message  with_icon message_box success" style="background-color: #2ecc71;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-thumbs-o-up fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">Sample success message box</div></div></div></div></div>
+<!-- WARNING BOX  -->
+<div class="q_message  with_icon message_box warning" style="background-color: #f1c40f;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-exclamation fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">Sample warning message box</div></div></div></div></div>
+<!-- ERROR BOX -->
+<div class="q_message  with_icon message_box error" style="background-color: #e74c3c;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-exclamation-triangle fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">Sample error message box</div></div></div></div></div>
 </div>
 
 <!-- RELATED POSTS -->

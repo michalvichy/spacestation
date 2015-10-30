@@ -435,3 +435,10 @@ h3.mainTitle{
     right:15px;
     top: 40%;
   }
+
+/* //////////// MESSAGE BOXES ///////////// */
+
+.message_box{position: fixed; top:50px; left:25%; width: 50%; height: 20px; z-index: 1000;}
+.success{display: none;}
+.warning{display: none;}
+.error{display: none;}

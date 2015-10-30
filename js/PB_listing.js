@@ -281,10 +281,23 @@ function pauseVid() {
 	$j('.add_to_saved_button').on('click', 'a', function(event) {
 		event.preventDefault();
 
+		// if 'listing_id' variable is available
 		if(listing_id)
 		{
-			$j.cookie('id_list', listing_id);
-			updateSavedCounter(+1);
+
+			// check if saved_cookie exists
+				if($j.super_cookie().check("saved_cookie")){
+					//if available -> add another id value to cookie
+					var i = $j.super_cookie().read_indexes("saved_cookie").length + 1;
+					$j.super_cookie().add_value("saved_cookie","listing_"+i,listing_id);
+
+				}else{
+					//if not available create saved_cookie and add first id value
+					$j.super_cookie({expires: 7,path: "/"}).create("saved_cookie",{listing_0:listing_id});
+				}
+
+			updateSavedCounter();
+			$j('.success').fadeIn().delay(400).fadeOut('fast');
 		}
 
 	});

@@ -80,7 +80,7 @@ function clearForm() {
 		$grid = $j('.grid');
 
 
-		// COOKIE CHECK - 1st
+		// LAYOUT COOKIE CHECK - 1st
 			$j(function() {
 
 				switch($j.super_cookie().read_value("layout_cookie","layout")){
