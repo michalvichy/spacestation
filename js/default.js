@@ -56,9 +56,12 @@ function setValue(val,num,vertical) {
 }
 
 ///////////// updateSavedCounter
-function updateSavedCounter()
+function updateSavedCounter(listing_id,property_name)
 {
 	if($j.super_cookie().check("saved_cookie")){
+		if(listing_id !== undefined && property_name !== undefined){
+			$j('.tooltip1 ul').append('<li><a href="listing/?id='+listing_id+'">'+property_name+'</a></li>');
+		}
 		$j('.saved_button span').html($j.super_cookie().read_indexes("saved_cookie").length);
 		 console.log($j.super_cookie().read_JSON("saved_cookie"));
 	}else{
