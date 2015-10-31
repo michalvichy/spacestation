@@ -319,6 +319,7 @@ function pauseVid() {
 					//if not available create saved_cookie and add first id value
 					$j.super_cookie({expires: 7,path: "/"}).create("saved_cookie",{'property_1': listing_id+'|'+property_name});
 					updateSavedCounter(listing_id,property_name);
+					$j('.success').fadeIn().delay(600).fadeOut('fast');
 				}
 		}
 
