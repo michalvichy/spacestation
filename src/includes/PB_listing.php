@@ -255,7 +255,7 @@
                           <!-- IF SALE -->
                           <?php if($listing_type == 'Sale'){ ?>
                           <li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
-                          <li class="itemFact">Stamp Duty: <?php echo  $item->data->stamp_duty__c; ?></li>
+                          <li class="itemFact">Stamp Duty: &#163;<?php echo  number_format((float) $item->data->stamp_duty__c); ?></li>
                           <?php } ?>
                           <!-- IF SALE END-->
 
