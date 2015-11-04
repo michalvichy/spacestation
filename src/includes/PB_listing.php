@@ -547,29 +547,51 @@
 </div>
 
 <!-- RELATED PROPERTIES -->
+<?php 
 
-<?php query_posts('tag=business,art'); ?>
-<?php echo '<div class="qode_carousels_holder clearfix"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; ?>
-<?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+  /////////////// QUERY ARRAY ///////////////
+  $reqArray = array("token"       => PB_SECURITYTOKEN,
+            "fields"      => "Id;name;",
+            "recordtypes" => (string)$listing_type,
+            "pba__PropertyType__c" => (string)$item->data->pba__propertytype__c,
+            // "orderby"      => "pba__ListingPrice_pb__c;ASC",
+            "debugmode"   => "true"
+            );
+  // BUILD HTTP QUERY STRING
+  $query    = http_build_query($reqArray,'','&');
+  // RETURN XML RESULT
+  $xmlResult  = simplexml_load_file(PB_WEBSERVICEENDPOINT . "?" . $query);
+  
+  if (!empty($xmlResult->errorMessages->message)) {
+    $errorMessage = 'Error: '.$xmlResult->errorMessages->message;
+    echo '<script>alert("'.$errorMessage.'");</script>';
+  } else {
+
+    if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0))
+    { 
+      echo '<script>alert("no listings found");</script>';
+    }else{ 
+      echo '<div class="qode_carousels_holder clearfix"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; 
+        foreach ($xmlResult->listings->listing as $item){?>
 
         <li class="item">
           <div class="carousel_item_holder">
-            <a href="<?php the_permalink()?>" target="_self">
+            <a href="listing/?id=<?php echo $item->data->id; ?>" target="_self">
               <span class="first_image_holder has_hover_image">
-                <?php the_post_thumbnail(); ?>
+                <img width="1100" height="619" src="<?php echo $item->media->images->image->url; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
               </span>
               <span class="second_image_holder has_hover_image">
-                <?php the_post_thumbnail(); ?>
+                <img width="1100" height="619" src="<?php echo $item->media->images->image->url; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
               </span>
             </a>
           </div>
         </li>
 
-<?php endwhile; endif ;?>
-<?php echo '</ul></div></div></div>'; ?>
+  <?php }
+      echo '</ul></div></div></div>';  
+    }
 
-<!--<script src="<?php echo get_childTheme_url(); ?>/js/px-video.js"></script>-->
-<!--<script type="text/javascript" src="<?php echo get_childTheme_url(); ?>/js/PB_listing.js"></script>-->
+  }
 
-
+?>
  
