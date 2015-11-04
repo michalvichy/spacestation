@@ -278,35 +278,49 @@ function pauseVid() {
 
 	// -------- PRINT BUTTON ------------
 	
-	$j('.print_button').on('click', 'a', function(event) {
-		event.preventDefault();
-		print();
-	});
+	// $j('.print_button').on('click', 'a', function(event) {
+	// 	event.preventDefault();
+	// 	print();
+	// });
 
 	// -------- SAVE BUTTON ------------
 	
 	$j('.add_to_saved_button').on('click', 'a', function(event) {
 		event.preventDefault();
 
-		// if 'listing_id' variable is available
-		if(listing_id)
+		// if 'listing_id' & 'property_name' variable is available
+		if(listing_id !== undefined && property_name !== undefined )
 		{
 
 			// check if saved_cookie exists
 				if($j.super_cookie().check("saved_cookie")){
 					//if available -> add another id value to cookie
-					var i = $j.super_cookie().read_indexes("saved_cookie").length + 1;
-					$j.super_cookie().add_value("saved_cookie","listing_"+i,listing_id);
-					$j('.tooltip1 ul').append('<li><a href="listing/?id='+listing_id+'">listing</a></li>');
+					var arr = $j.super_cookie().read_indexes("saved_cookie");
+					var jso = $j.super_cookie().read_JSON("saved_cookie");
+					var already_added_flag = false;
+
+					for (var k = 1; k < arr.length+1; k++) {
+						if( jso['property_'+k] == listing_id+'|'+property_name ){
+							already_added_flag = true;
+							break;
+						}
+					};
+
+					if( already_added_flag == false ){
+						var i = $j.super_cookie().read_indexes("saved_cookie").length + 1;
+						$j.super_cookie().add_value("saved_cookie",'property_'+i, listing_id+'|'+property_name);
+						updateSavedCounter(listing_id,property_name);
+						$j('.success').fadeIn().delay(600).fadeOut('fast');
+					}else{
+						$j('.warning').fadeIn();
+					}
 
 				}else{
 					//if not available create saved_cookie and add first id value
-					$j.super_cookie({expires: 7,path: "/"}).create("saved_cookie",{listing_0:listing_id});
-					$j('.tooltip1 ul').append('<li><a href="listing/?id='+listing_id+'">listing</a></li>');
+					$j.super_cookie({expires: 7,path: "/"}).create("saved_cookie",{'property_1': listing_id+'|'+property_name});
+					updateSavedCounter(listing_id,property_name);
+					$j('.success').fadeIn().delay(600).fadeOut('fast');
 				}
-
-			updateSavedCounter();
-			$j('.success').fadeIn().delay(400).fadeOut('fast');
 		}
 
 	});

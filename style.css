@@ -458,10 +458,12 @@ div.caroufredsel_wrapper{
 /* -------- SAVED PROPERTIES DROPDOWN / TOOLTIP --------- */
 
 div.tooltip.tooltip1{
-  /*display: none;*/
+  display: none;
   width: 300px;
   float: right;
   margin-right: -180px;
   background: rgba(255,255,255,0.9);
   padding: 10px;
 }
+
+div.tooltip.tooltip1 i{cursor: pointer;}

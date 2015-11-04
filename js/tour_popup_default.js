@@ -6,9 +6,18 @@ $j(document).ready(function(){
 	"use strict";
 
     if($j.super_cookie().check("saved_cookie")){
-        var data = $j.super_cookie().read_JSON("saved_cookie");
+        var p = $j.super_cookie().read_JSON("saved_cookie");
+        var PBarray = $j.super_cookie().read_indexes("saved_cookie");
         var str = " ";
-        $j.each(data,function(i, item) { str = str + '<li><a href="listing/?id='+data[i]+'">listing</a></li>'; });
+
+        for (var key in p) {
+            if (p.hasOwnProperty(key)) {
+                // alert(key + " -> " + p[key]);
+                var temp = p[key];
+                temp= temp.split('|');
+                str = str + '<li><a href="listing/?id='+temp[0]+'">'+temp[1]+'</a></li>';
+            }
+        }
 
         $j('.tooltip1 ul').append(str); 
     }
@@ -30,16 +39,18 @@ $j(document).ready(function(){
         $j('.tooltip1').fadeToggle('fast');
     });
 
-     /////////// DELETE COOKIE BUTTON /////////////
+    /////////// DELETE COOKIE BUTTON /////////////
         
-     $j(document).on('click', '.tooltip_link_1', function(event) {
-         event.preventDefault();
-         /* Act on the event */
-         $j.removeCookie('saved_cookie', { path: '/' });
-         $j('.tooltip1 ul').html('');
-         // $j('.tooltip1').fadeToggle('fast');
-         updateSavedCounter();
-     });
+    $j(document).on('click', '.tooltip_link_1', function(event) {
+        event.preventDefault();
+
+        if($j.super_cookie().check("saved_cookie")){
+            $j.removeCookie('saved_cookie', { path: '/' });
+            $j('.tooltip1 ul').html('');
+            // $j('.tooltip1').fadeToggle('fast');
+            updateSavedCounter();
+        }
+    });
     
 
 });
