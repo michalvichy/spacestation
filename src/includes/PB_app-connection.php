@@ -53,10 +53,11 @@ function getFromToParam($from,$to){
 	}
 	// PER PAGE
 	if (empty($_POST["itemsperpage"])){
-		$default_perpage = "20"; //-
+		$default_perpage = "2"; //-
 	}else{ 
 		$default_perpage = $_POST["itemsperpage"];
 	}
+
 	//RECORDTYPES
 	if (empty($_POST["recordtypes"])){
 		$default_recordtypes = "sale;rent"; //=
@@ -121,7 +122,7 @@ $errorMessage 	= null;
 	if (!empty($default_bedrooms_from)) $reqArray["pba__Bedrooms_pb__c"] 		= $bedsParam;
 	if (!empty($default_bathrooms_from)) $reqArray["pba__FullBathrooms_pb__c"] 	= $bathsParam;
 	if (!empty($default_orderby)) $reqArray["orderby"] 							= $orderby; 
-	if (!empty($default_perpage)) $reqArray["itemsperpage"] 					= $itemsperpage; 
+	if (!empty($default_perpage)) $reqArray["itemsperpage"] 					= $default_perpage; 
 	if (!empty($default_recordtypes)) $reqArray["recordtypes"] 					= $recordtypes; 
 	if (!empty($default_propertytype)) $reqArray["pba__PropertyType__c"] 		= $default_propertytype; 
 	if (!empty($default_tenure)) $reqArray["Tenure__c"] 						= $default_tenure; 
@@ -135,13 +136,12 @@ $errorMessage 	= null;
 	if (!empty($xmlResult->errorMessages->message)) {
 		$errorMessage = 'Error: '.$xmlResult->errorMessages->message;
 	} else {
-		$debugMessages = 'Debug: '.$xmlResult->debugMessages->message;
+		$DisplayDebug = 'Debug: '.$xmlResult->debugMessages->message;
 		$previousPage 	= $page > 0 ? $page - 1 : null;
 		$nextPage 		= ($xmlResult->listingsPerPage * ($page+1) < $xmlResult->numberOfListings) ? $page + 1 : null;
 	}
 	
 	$DisplayQuery = $query;
-	$DisplayDebug = $debugMessages;
 
 	
 ?>
