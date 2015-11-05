@@ -157,7 +157,6 @@
 					<div class="jqcorner">						 
 						<select name="propertytype">
 							<option value="">Type</option>
-							<option value="Flat/Apartment">Flat/Apartment</option>
 							<option value="Apartment">Apartment</option>
 							<option value="Chalet">Chalet</option>
 							<option value="Commercial">Commercial</option>
