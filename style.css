@@ -390,6 +390,50 @@ div.caroufredsel_wrapper{
   left: 0!important;
 }
 
+/* ////////////////////////////////// */
+/* ------------- CONTENT BOTTOM ------------- */
+
+.content_bottom{
+  text-align: center;
+  max-height: 235px;
+}
+
+.content_bottom_content{
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 30px 0;
+
+  background: url("assets/imgs/stay-in-touch-background.png") no-repeat;
+  background-size: cover;
+
+}
+
+.content_bottom_content h3{color: white;}
+
+.content_bottom img{
+  width: 100%;
+}
+
+
+/* ------------- JOIN US ------------- */
+
+
+.join-us_content{
+  height: 100%;
+  padding: 30px 25%;
+}
+
+.join-us_content h3{
+  color: white;
+  float: left;
+}
+
+.join-us_social{
+  float: right;
+  padding-bottom: 25px;
+}
+
 
 /* ////////////////////////////////// */
 /* ------------- FOOTER ------------- */
