@@ -60,6 +60,7 @@
 	if (!empty($priceParam))	$reqArray["pba__ListingPrice_pb__c"] 			= $priceParam;
 	if (!empty($size_from)) 	$reqArray["pba__TotalArea_pb__c"] 				= $sizeParam;
 	if (!empty($default_bedrooms_from)) $reqArray["pba__Bedrooms_pb__c"] 		= $bedsParam;
+	$reqArray["show_on_website__c"] 			= "true"; 
 
 // BUILD HTTP QUERY STRING	
 	$query 		= http_build_query($reqArray,'','&');

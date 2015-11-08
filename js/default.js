@@ -127,6 +127,13 @@ $j(document).ready(function() {
 	});
 
 
+	// top-nav-social
+	
+	$j("#top-nav-social").click(function(event) {
+		/* Act on the event */
+		$j( ".top-nav-social-icons" ).toggle( "slide" );
+	});
+
 
 	/**
 	 * Apply Corners
