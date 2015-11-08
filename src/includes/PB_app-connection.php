@@ -126,7 +126,8 @@ $errorMessage 	= null;
 	if (!empty($default_recordtypes)) $reqArray["recordtypes"] 					= $recordtypes; 
 	if (!empty($default_propertytype)) $reqArray["pba__PropertyType__c"] 		= $default_propertytype; 
 	if (!empty($default_tenure)) $reqArray["Tenure__c"] 						= $default_tenure; 
-	if (!empty($default_propertystatus)) $reqArray["pba__status__c"] 			= $default_propertystatus; 
+	if (!empty($default_propertystatus)) $reqArray["pba__status__c"] 			= $default_propertystatus;
+	$reqArray["show_on_website__c"] 			= "true"; 
 
 // BUILD HTTP QUERY STRING
 	$query 		= http_build_query($reqArray,'','&');
