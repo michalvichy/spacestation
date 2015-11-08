@@ -359,7 +359,7 @@ aside.vertical_menu_area{
   padding: 3px 3px 3px 10px;
  }
 
-a.vertical_menu_hidden_button{ width: 130px; margin-left: 20px; } /* !!! reflect in default.js line 2190 */
+a.vertical_menu_hidden_button{ width: 128px; margin-left: 20px; } /* !!! reflect in default.js line 2190 */
 span.vertical_menu_hidden_button_line{ left: 20px; }
 
 /*<-- RADIO -->*/

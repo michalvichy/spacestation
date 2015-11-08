@@ -2240,16 +2240,16 @@ function showHideVerticalMenu(){
 				 	'margin-left': '0'
 				 });
 
-				 $j('#find-a-property').animate({opacity: 0}, 200);
+				 $j('#find-a-property, #top-nav-social').animate({opacity: 0}, 200);
             }else{
                 hovered_flag = true;
                 vertical_menu.removeClass('active');
 				vertical_menu_bottom_logo.removeClass('active');
 				vertical_menu.animate({opacity: 0}, 200);
-				$j('#find-a-property').animate({opacity: 1}, 200);
+				$j('#find-a-property, #top-nav-social').animate({opacity: 1}, 200);
 				
 				$j('a.vertical_menu_hidden_button').css({
-					'width' : '180px',
+					'width' : '128px',
 					'margin-left': '20px'   // !!! must match css width property
 
 				}); 
