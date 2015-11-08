@@ -2315,13 +2315,13 @@ function showHideVerticalMenu(){
                 return outclick.trigger(e);
             });
         }).call(this);
-        $j(vertical_menu).outclick({
-            callback: function() {
-                hovered_flag = true;
-                vertical_menu.removeClass('active');
-				vertical_menu_bottom_logo.removeClass('active');
-            }
-        });
+    //     $j(vertical_menu).outclick({
+    //         callback: function() {
+    //             hovered_flag = true;
+    //             vertical_menu.removeClass('active');
+				// vertical_menu_bottom_logo.removeClass('active');
+    //         }
+    //     });
     }
 }
 
