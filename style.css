@@ -308,6 +308,9 @@ div.jqcorner{
 /*RIGHT MENU AREA PANEL*/
 
 
+/*icons colour change on top scroll fix !*/
+.dark:not(.sticky):not(.scrolled) .side_menu_button>a, .dark.header_style_on_scroll .side_menu_button>a{color: white!important;}
+
 section.side_menu{
 opacity: 0.95;
     -webkit-transition-duration: 0.15s!important;
