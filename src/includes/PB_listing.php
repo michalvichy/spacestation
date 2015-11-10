@@ -16,9 +16,12 @@
   <!-- BEGIN EMPTY RESULT -->
   
     <?php if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0)){ ?>
-      <div id="noresult"> 
-        no listings found: 
-      </div>
+      <script type="text/javascript">
+
+        window.location.replace("http://localhost/ss/app/#no_listing");
+
+      </script>
+    
     <?php }else{ ?>
   <!-- END EMPTY RESULT --> 
    

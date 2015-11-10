@@ -164,6 +164,11 @@ function clearForm() {
 // WINDOW LOAD - 3rd
 	$j(window).load(function(){
 
+		var param = document.URL.split('#')[1];
+
+		if(param === 'no_listing'){
+			$j('.error').fadeIn();
+		}
 
 	});
 
