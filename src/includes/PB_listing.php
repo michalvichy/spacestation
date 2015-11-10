@@ -16,7 +16,11 @@
   <!-- BEGIN EMPTY RESULT -->
   
     <?php if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0)){ ?>
-      <script type="text/javascript"> window.location.replace("http://localhost/ss/app/#no_listing");</script>
+      <script type="text/javascript"> 
+      var URLlocation = window.location.pathname;
+      var URLdir = URLlocation.substring(0, URLlocation.indexOf('/', 1));
+
+      window.location.replace(URLdir+"/app/#no_listing");</script>
     <?php }else{ ?>
   <!-- END EMPTY RESULT --> 
    
