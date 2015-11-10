@@ -16,12 +16,7 @@
   <!-- BEGIN EMPTY RESULT -->
   
     <?php if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0)){ ?>
-      <script type="text/javascript">
-
-        window.location.replace("http://localhost/ss/app/#no_listing");
-
-      </script>
-    
+      <script type="text/javascript"> window.location.replace("http://localhost/ss/app/#no_listing");</script>
     <?php }else{ ?>
   <!-- END EMPTY RESULT --> 
    
@@ -473,7 +468,7 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                        <?php query_posts('posts_per_page=3&tag='.$item->data->pba__propertytype__c.',art'); ?>
+                                        <?php query_posts('posts_per_page=3&tag='.$item->data->pba__propertytype__c.',Boxpark,Ally-Capellino,Labour-and-Wait'); ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -495,7 +490,7 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                        <?php query_posts('posts_per_page=3tag=art'); ?>
+                                        <?php query_posts('posts_per_page=3&tag=art'); ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -517,7 +512,7 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                       <?php query_posts('posts_per_page=3tag=business'); ?>
+                                       <?php query_posts('posts_per_page=3&tag=business'); ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
