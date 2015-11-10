@@ -473,7 +473,7 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                        <?php query_posts('tag='.$item->data->pba__propertytype__c.',art'); ?>
+                                        <?php query_posts('posts_per_page=3&tag='.$item->data->pba__propertytype__c.',art'); ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -495,7 +495,7 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                        <?php query_posts('tag=art'); ?>
+                                        <?php query_posts('posts_per_page=3tag=art'); ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -517,7 +517,7 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                       <?php query_posts('tag=business'); ?>
+                                       <?php query_posts('posts_per_page=3tag=business'); ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

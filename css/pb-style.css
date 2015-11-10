@@ -412,6 +412,10 @@ h3.mainTitle{
 .q_tabs.vertical .tabs-nav li a{text-align: left;}
 .q_tabs.vertical .tabs-nav li.active a{border:none; padding: 13px 17px;}
 .q_tabs.vertical.left .tab-content{border: none;}
+.jcarousel li{border: none;}
+
+	/*hide navigation*/
+	.jcarousel-control-prev,.jcarousel-control-next,.jcarousel-pagination{display: none;}
 
 /* //////////// GALLERY -> LAYERSLIDER ///////////// */
 
