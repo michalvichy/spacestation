@@ -400,10 +400,11 @@ h3.mainTitle{
 /* //////////// TABS -> RELATED POSTS ///////////// */
 
 .wpb_tabstabs_holder{
-	margin-left: -765px;
+	width: 720px;
+	margin-left: 100%;
 	margin-bottom: 50px;
 	display: inline-block;
-	left: 100%;
+	left: -760px;
 	position: relative;
 }
 .tabs-nav{width: 100px!important;}
