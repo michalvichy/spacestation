@@ -472,8 +472,16 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                        <?php $related_shop = str_replace(";",",",(string)$item->data->related_shop__c); 
-                                        query_posts('posts_per_page=3&cat=178&tag='.str_replace(" ", "-", $related_shop)); ?>
+                                        <?php 
+                                        $related_shop = str_replace(";",",",(string)$item->data->related_shop__c); 
+                                        $tags = str_replace(" ", "-", $related_shop);
+                                        $args = array(
+                                          'posts_per_page' => 3, 
+                                          'category_name' => 'related-businesses',
+                                          'tag' => $tags
+                                          );
+                                        query_posts($args); 
+                                        ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -495,8 +503,16 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                        <?php $related_discover = str_replace(";",",",(string)$item->data->related_discover__c); 
-                                         query_posts('posts_per_page=3&cat=178&tag='.str_replace(" ", "-", $related_discover)); ?>
+                                        <?php 
+                                          $related_discover = str_replace(";",",",(string)$item->data->related_discover__c); 
+                                          $tags = str_replace(" ", "-", $related_discover);
+                                          $args = array(
+                                          'posts_per_page' => 3, 
+                                          'category_name' => 'related-businesses',
+                                          'tag' => $tags
+                                          );
+                                        query_posts($args);  
+                                         ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -518,8 +534,16 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                       <?php $related_enjoy = str_replace(";",",",(string)$item->data->related_enjoy__c); 
-                                       query_posts('posts_per_page=3&tag='.str_replace(" ", "-", $related_enjoy)); ?>
+                                       <?php 
+                                        $related_enjoy = str_replace(";",",",(string)$item->data->related_enjoy__c); 
+                                        $tags = str_replace(" ", "-", $related_enjoy);
+                                        $args = array(
+                                          'posts_per_page' => 3, 
+                                          'category_name' => 'related-businesses',
+                                          'tag' => $tags
+                                          );
+                                        query_posts($args);  
+                                       ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
