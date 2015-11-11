@@ -100,21 +100,31 @@ $j(document).ready(function() {
 
 	updateSavedCounter();
 
-	// sidebar form SUBMIT button 
+		// sidebar form SUBMIT button 
 
 		var pathname = window.location.pathname;
 		var f = pathname.split('/').slice(-3);
 		var appnoapp;
 
+		// alert(f[0].length);
+
 		if (pathname.indexOf(appName) >= 0){ appnoapp = true; }else{ appnoapp = false; }
 	
 		if(!appnoapp){
 			$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
-				// event.preventDefault();
-				$j("form#theForm").submit(function(event) { event.preventDefault(); });
+				event.preventDefault();
+				// $j("form#theForm").submit(function(event) { event.preventDefault(); });
+				$j("form#theForm").on('submit', function(event) {
+					event.preventDefault();
+					/* Act on the event */
+				});
 				// alert('c');
 			});
+
+
 		}
+
+
 
 		$j('.filter__submit').on('click', '.js-run-pb-search', function(event) {
 			event.preventDefault();
@@ -122,19 +132,24 @@ $j(document).ready(function() {
     		switch(appnoapp){
 				case true:
 					alert('app');
-					$j(this).closest("form").submit(); 
+					$j(this).closest("form").off('submit').submit(); 
 					break;
 				case false:
-					alert('not app: '+f[0]+'/'+appName);
-   					$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').submit();
+					if(f[0].length === 0){
+						alert('not app->HOME '+window.location+appName);
+						$j("form#theForm").attr('action', window.location+appName+'/').off('submit').submit();
+					}
+					else{
+						alert('not app: '+f[0]+'/'+appName);
+   						$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').off('submit').submit();
+   					}
 					break;;
 				default:
 					alert('default not app');
-   					$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').submit();
+   					$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').off('submit').submit();
 			}
 	
 		});
-
 
 	// top-nav-social
 		$j("#top-nav-social").click(function(event) { $j( ".top-nav-social-icons" ).toggle( "slide" );});
