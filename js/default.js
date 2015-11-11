@@ -63,7 +63,7 @@ function updateSavedCounter(listing_id,property_name)
 			$j('.tooltip1 ul').append('<li><a href="listing/?id='+listing_id+'">'+property_name+'</a></li>');
 		}
 		$j('.saved_button span').html($j.super_cookie().read_indexes("saved_cookie").length);
-		 console.log($j.super_cookie().read_JSON("saved_cookie"));
+		 // console.log($j.super_cookie().read_JSON("saved_cookie"));
 	}else{
 		$j('.saved_button span').html('0');
 	}
@@ -100,48 +100,49 @@ $j(document).ready(function() {
 
 	updateSavedCounter();
 
-	$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
-		// $j(this).closest("form").submit(function(event) { event.preventDefault(); });
-	});
-
 	// sidebar form SUBMIT button 
-	
-	$j('.filter__submit').on('click', '.js-run-pb-search', function(event) {
-		event.preventDefault();
 
 		var pathname = window.location.pathname;
 		var f = pathname.split('/').slice(-3);
+		var appnoapp;
 
-    	if (pathname.indexOf(appName) >= 0)
-    	{
-    		// alert('app');
-			$j(this).closest("form").submit();    	
-
-    	}else
-    	{
-			// alert('not app');
-   			$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').submit();
+		if (pathname.indexOf(appName) >= 0){ appnoapp = true; }else{ appnoapp = false; }
 	
-    	}
+		if(!appnoapp){
+			$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
+				// event.preventDefault();
+				$j("form#theForm").submit(function(event) { event.preventDefault(); });
+				// alert('c');
+			});
+		}
 
-	});
+		$j('.filter__submit').on('click', '.js-run-pb-search', function(event) {
+			event.preventDefault();
+	
+    		switch(appnoapp){
+				case true:
+					alert('app');
+					$j(this).closest("form").submit(); 
+					break;
+				case false:
+					alert('not app: '+f[0]+'/'+appName);
+   					$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').submit();
+					break;;
+				default:
+					alert('default not app');
+   					$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').submit();
+			}
+	
+		});
 
 
 	// top-nav-social
-	
-	$j("#top-nav-social").click(function(event) {
-		/* Act on the event */
-		$j( ".top-nav-social-icons" ).toggle( "slide" );
-	});
+		$j("#top-nav-social").click(function(event) { $j( ".top-nav-social-icons" ).toggle( "slide" );});
 
+	// Apply Corners
+		$j('.jqcorner').corner("4px bevel");
 
-	/**
-	 * Apply Corners
-	 */
-	
-	$j('.jqcorner').corner("4px bevel");
-
-
+	////////////// ORIGINAL THEME's CODE ///////////////
 	
 	if($j('header').hasClass('regular')){
 		content_menu_top = 0;
@@ -257,8 +258,6 @@ $j(document).ready(function() {
 
 $j(window).load(function(){
 	"use strict";
-
-	alert('default: '+window.URLdir);
 	
 	$j('.touch .main_menu li:has(div.second)').doubleTapToGo(); // load script to close menu on touch devices
 	initSmallImageBlogHeight();
