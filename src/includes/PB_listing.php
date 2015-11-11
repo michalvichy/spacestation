@@ -1,3 +1,4 @@
+
  <!-- BEGIN ERROR -->
     <?php if (!empty($errorMessage) || !empty($DisplayDebug) || !empty($DisplayQuery) ): ?>
     <div id="error">
@@ -14,13 +15,9 @@
 <div id="container_single_view">
   
   <!-- BEGIN EMPTY RESULT -->
-  
     <?php if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0)){ ?>
-      <script type="text/javascript"> 
-      var URLlocation = window.location.pathname;
-      var URLdir = URLlocation.substring(0, URLlocation.indexOf('/', 1));
-
-      window.location.replace(URLdir+"/app/#no_listing");</script>
+      <!-- redirect to search results with '#no_listing' query  -->
+      <script type="text/javascript"> window.location.replace(window.URLdir+"/app/#no_listing");</script> 
     <?php }else{ ?>
   <!-- END EMPTY RESULT --> 
    

@@ -27,6 +27,9 @@
 	<link rel="apple-touch-icon" href="<?php echo esc_url($qode_options_proya['favicon_image']); ?>"/>
 	<?php wp_head(); ?>
 
+	<!-- !!! assign global URLdir variable to a property on window  !!! -->
+ 	<script type="text/javascript"> window.URLdir = window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1));</script>
+
 </head>
 
 <body <?php body_class(); ?>>

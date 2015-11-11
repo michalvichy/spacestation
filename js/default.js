@@ -257,6 +257,8 @@ $j(document).ready(function() {
 
 $j(window).load(function(){
 	"use strict";
+
+	alert('default: '+window.URLdir);
 	
 	$j('.touch .main_menu li:has(div.second)').doubleTapToGo(); // load script to close menu on touch devices
 	initSmallImageBlogHeight();

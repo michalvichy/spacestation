@@ -5,15 +5,15 @@ var $grid;
 
 
 // Range SLIDER
-/* We need to change slider appearance oninput and onchange */
-function showValue(val,slidernum) {
-  // console.log(val);
-}
-/* we often need a function to set the slider values on page load */
-function setValue(val,num) {
-  $j("#slider"+num).value = val;
-  showValue(val,num);
-}
+	/* We need to change slider appearance oninput and onchange */
+	function showValue(val,slidernum) {
+	  // console.log(val);
+	}
+	/* we often need a function to set the slider values on page load */
+	function setValue(val,num) {
+	  $j("#slider"+num).value = val;
+	  showValue(val,num);
+	}
 
 
 // clearForm
@@ -164,9 +164,8 @@ function clearForm() {
 // WINDOW LOAD - 3rd
 	$j(window).load(function(){
 
-		var param = document.URL.split('#')[1];
-
-		if(param === 'no_listing'){
+		// fade in error box if '#no_listing' url query
+		if(document.URL.split('#')[1] === 'no_listing'){
 			$j('.error').fadeIn();
 		}
 

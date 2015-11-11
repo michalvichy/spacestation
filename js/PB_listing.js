@@ -330,10 +330,6 @@ function pauseVid() {
 // WINDOW LOAD - 3rd
 	$j(window).load(function(){
 
-
-		var URLlocation = window.location.pathname;
-		var URLdir = URLlocation.substring(0, URLlocation.indexOf('/', 1));
-
 		$j("#listing_gallery_layerslider").layerSlider({
 			responsiveUnder: 768, 
 			layersContainer: 768, 
@@ -352,7 +348,7 @@ function pauseVid() {
 			cbAnimStop: function(data) { }, 
 			cbPrev: function(data) { }, 
 			cbNext: function(data) { }, 
-			skinsPath: URLdir+'/wp-content/plugins/LayerSlider/static/skins/'
+			skinsPath: window.URLdir+'/wp-content/plugins/LayerSlider/static/skins/'
 		});
 
 	});

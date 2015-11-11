@@ -1,3 +1,4 @@
+
 <!-- BEGIN ERROR -->
 	<?php if (!empty($errorMessage) || !empty($DisplayQuery)|| !empty($DisplayDebug) ): ?>
 			<div id="error">
@@ -290,7 +291,7 @@
 								<input type="hidden" name="reference" value="<?php echo $reference;?>">
 								<input type="hidden" name="price_from" value="<?php echo $price_from;?>">
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
-								<input type="hidden" name="bedrooms_from" value="<?php echo $bedrooms_from;?>">	
+								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="bathrooms_from" value="<?php if( !empty($bathrooms_from)) {echo $bathrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">	
 								<input type="hidden" name="itemsperpage" value="<?php echo $itemsperpage;?>">
