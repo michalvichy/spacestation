@@ -362,6 +362,53 @@ aside.vertical_menu_area{
 a.vertical_menu_hidden_button{ width: 128px; margin-left: 20px; } /* !!! reflect in default.js line 2190 */
 span.vertical_menu_hidden_button_line{ left: 20px; }
 
+/* ------- vertical_responsive.css overwrite ---------- */
+@media only screen and (max-width: 1000px){
+  .vertical_menu_enabled header{
+    display: inline-block;
+  }
+    .vertical_menu_enabled header .header_inner{
+        display: block;
+    }
+  aside.vertical_menu_area{
+    display: block;
+  }
+  
+  .vertical_menu_hidden.vertical_menu_hidden_with_logo .vertical_menu_area_bottom_logo {
+    display: block;
+  }
+
+    .vertical_menu_enabled .q_slider,
+    .vertical_menu_enabled .full_width,
+    .vertical_menu_enabled .content .container,
+    .vertical_menu_enabled .title_outer,
+    .vertical_menu_enabled footer{
+        padding-left: 0px !important;
+    }
+
+  body.page-template-blog-masonry-full-width-php.vertical_menu_enabled .content .full_width{
+    padding-left:45px !important;
+  }
+
+    .boxed.vertical_menu_enabled,
+    .boxed.vertical_menu_enabled footer.uncover{
+        padding-left: 0px !important;
+    }
+
+    .vertical_menu_enabled .content .container,
+    .vertical_menu_enabled .q_slider,
+    .vertical_menu_enabled footer{
+        width: 100%;
+    }
+
+  .vertical_menu_enabled .carousel-inner:not(.relative_position),
+    .vertical_menu_enabled.vertical_menu_hidden .carousel-inner:not(.relative_position),
+    .vertical_menu_enabled.vertical_menu_hidden.vertical_menu_right .carousel-inner:not(.relative_position){
+    left: 0 !important;
+  }
+
+}
+
 /*<-- RADIO -->*/
 
   aside.vertical_menu_area form fieldset.record-types input[type="radio"]{
