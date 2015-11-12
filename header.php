@@ -86,7 +86,10 @@
                     <h5><?php echo $qode_options_proya['side_area_title'] ?></h5>
                 </div>
             <?php } ?>
-            <a href="#" target="_self" class="close_side_menu"></a>
+            <a href="#" target="_self" class="close_side_menu">
+            	<i class="qode_icon_font_awesome fa fa-close fa-lg"></i>
+            </a>
+
 			<?php dynamic_sidebar('sidearea'); ?>
 		</section>
 	<?php } ?>
@@ -381,7 +384,8 @@ $display_header_top = "yes";
 			<div class="vertical_menu_area_inner">
 				<?php if(isset($qode_options_proya['vertical_area_type']) && $qode_options_proya['vertical_area_type'] == 'hidden') { ?>
 					<a href="#" class="vertical_menu_hidden_button">
-						<span class="vertical_menu_hidden_button_line"></span>
+						<!-- <span class="vertical_menu_hidden_button_line"></span> -->
+						<i class="qode_icon_font_awesome fa fa-close fa-lg"></i>
 					</a>
 				<?php } ?>
 

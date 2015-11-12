@@ -171,7 +171,7 @@ $j(document).ready(function() {
 		});
 
 	// top-nav-social
-		$j("#top-nav-social").click(function(event) { $j( ".top-nav-social-icons" ).toggle( "slide" );});
+		$j("#top-nav-social").click(function(event) { $j( ".top-nav-social-icons" ).toggle( "slide", "fast" );});
 
 	// Apply Corners
 		$j('.jqcorner').corner("4px bevel");
@@ -2271,6 +2271,7 @@ function showHideVerticalMenu(){
 				vertical_menu_bottom_logo.addClass('active');
 				vertical_menu.animate({opacity: 0.9}, 200);
 
+				$j('.vertical_menu_hidden_button').show();
 				$j('#find-a-property, #top-nav-social').animate({opacity: 0}, 200);
 			}
         });
@@ -2284,6 +2285,7 @@ function showHideVerticalMenu(){
 				vertical_menu_bottom_logo.removeClass('active');
 				vertical_menu.animate({opacity: 0}, 200);
 
+				$j('.vertical_menu_hidden_button').hide();
 				$j('#find-a-property, #top-nav-social').animate({opacity: 1}, 200);
 			}
         });

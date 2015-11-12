@@ -325,6 +325,27 @@ opacity: 0.95;
 
 /*LEFT VERTICAL MENU AREA PANEL*/
 
+.side_menu a.close_side_menu{
+  background: none;
+  top:10px;
+  right: 12px;
+}
+.side_menu a.close_side_menu:hover{
+        transform: none;
+    -ms-transform: none;
+-webkit-transform: none;
+     -o-transform: none;
+   -moz-transform: none;
+}
+
+.vertical_menu_hidden_button{
+  display: none;
+  top:5px;
+  left: 10px;
+  width: 15px;
+  height: 20px;
+}
+
 aside.vertical_menu_area{
   opacity: 0;
 }
