@@ -60,12 +60,25 @@ else { $paged = 1; }
         <![endif]-->
 
         <?php wp_head(); ?>
+        <style type="text/css">
+        header,#left_side_logo{
+            opacity: 0;
+        }
+        </style>
 		<script>
+
 			window.onload = function() {
-				var intro_image_left = document.getElementById("intro_image-left");
-				var intro_image_right = document.getElementById("intro_image-right");				
+				var intro_image_left = $j("#intro_image-left");
+				var intro_image_right = $j("#intro_image-right");
+                // var wrapper_inner = $j("header");
+
+                function showElements(){
+                    // TweenLite.from(wrapper_inner, 1, {opacity:"0"});
+                    $j("header,#left_side_logo").animate({opacity: 1}, 300)
+                }
+
 				TweenLite.from(intro_image_left, 2, {top:"-1000px"});
-				TweenLite.from(intro_image_right, 2, {bottom:"-1000px"});
+				TweenLite.from(intro_image_right, 2, {bottom:"-1000px",onComplete: showElements});
 				
 			}
 		</script>

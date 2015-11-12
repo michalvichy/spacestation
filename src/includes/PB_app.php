@@ -1,3 +1,4 @@
+
 <!-- BEGIN ERROR -->
 	<?php if (!empty($errorMessage) || !empty($DisplayQuery)|| !empty($DisplayDebug) ): ?>
 			<div id="error">
@@ -158,17 +159,18 @@
 						<select name="propertytype">
 							<option value="">Type</option>
 							<option value="Apartment">Apartment</option>
+							<option value="Chalet">Chalet</option>
 							<option value="Commercial">Commercial</option>
-							<option value="Condo">Condo</option>
 							<option value="Detached">Detached</option>
 							<option value="End Terrace">End Terrace</option>
 							<option value="House">House</option>
+							<option value="Land">Land</option>
 							<option value="Loft">Loft</option>
 							<option value="Maisonette">Maisonette</option>
-							<option value="Multi Family">Multi Family</option>
+							<option value="Mews House">Mews House</option>
 							<option value="Other">Other</option>
 							<option value="Penthouse">Penthouse</option>
-							<option value="Single Family">Single Family</option>
+							<option value="Semi-detached">Semi-detached</option>
 							<option value="Studio">Studio</option>
 							<option value="Terraced">Terraced</option>
 							<option value="Townhouse">Townhouse</option>
@@ -289,7 +291,7 @@
 								<input type="hidden" name="reference" value="<?php echo $reference;?>">
 								<input type="hidden" name="price_from" value="<?php echo $price_from;?>">
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
-								<input type="hidden" name="bedrooms_from" value="<?php echo $bedrooms_from;?>">	
+								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="bathrooms_from" value="<?php if( !empty($bathrooms_from)) {echo $bathrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">	
 								<input type="hidden" name="itemsperpage" value="<?php echo $itemsperpage;?>">
@@ -393,3 +395,5 @@
 
 		</div>
 	</div>
+	<!-- ERROR BOX -->
+<div class="q_message  with_icon message_box error" style="background-color: #e74c3c;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-exclamation-triangle fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">No such listing. Please pick different one.</div></div></div></div></div>

@@ -63,7 +63,7 @@ function updateSavedCounter(listing_id,property_name)
 			$j('.tooltip1 ul').append('<li><a href="listing/?id='+listing_id+'">'+property_name+'</a></li>');
 		}
 		$j('.saved_button span').html($j.super_cookie().read_indexes("saved_cookie").length);
-		 console.log($j.super_cookie().read_JSON("saved_cookie"));
+		 // console.log($j.super_cookie().read_JSON("saved_cookie"));
 	}else{
 		$j('.saved_button span').html('0');
 	}
@@ -100,41 +100,72 @@ $j(document).ready(function() {
 
 	updateSavedCounter();
 
-	$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
-		// $j(this).closest("form").submit(function(event) { event.preventDefault(); });
-	});
-
 	// sidebar form SUBMIT button 
-	
-	$j('.filter__submit').on('click', '.js-run-pb-search', function(event) {
-		event.preventDefault();
 
 		var pathname = window.location.pathname;
 		var f = pathname.split('/').slice(-3);
+		var appnoapp;
 
-    	if (pathname.indexOf(appName) >= 0)
-    	{
-    		// alert('app');
-			$j(this).closest("form").submit();    	
+		// alert(f[0].length);
 
-    	}else
-    	{
-			// alert('not app');
-   			$j("form#theForm").attr('action', '/'+f[0]+'/'+appName+'/').submit();
+	// detect of we're on app page or on some other page
+		if (pathname.indexOf(appName) >= 0){ appnoapp = true; }else{ appnoapp = false; }
+			
+	// SIDEBAR FORM 'ALL/SALE/RENT' PREVENT FROM SUBMIT + SHOW / HIDE FIELDS
+		$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
+			event.preventDefault();
+			$j(this).closest("form").on('submit', function(event) { event.preventDefault(); });
+			
+			// alert($j(event.currentTarget).attr('id'));
+			// show / hide fileds
+			switch($j(event.currentTarget).attr('id')){
+				case 'all-types-sidebar':
+					$j('select[name="price_from"], select[name="price_to"], select[name="tenure"]').parent().closest('.jqcorner').hide();
+					break;
+				case 'sale-sidebar':
+					break;
+				case 'rent-sidebar':
+					break;
+				default:
+			}
+			
+		});
+	// PAGE FORM 'ALL/SALE/RENT' RE-INITIATE SUBMIT 
+		$j('form[name="PB_page_form"]').on('change', 'input', function(event) { $j(this).closest("form").off('submit').submit(); });
+
+	// SIDEBAR FORM 'SUBMIT' BUTTON
+		$j('.filter__submit').on('click', '.js-run-pb-search', function(event) {
+			event.preventDefault();
 	
-    	}
-
-	});
-
-
-
-	/**
-	 * Apply Corners
-	 */
+    		switch(appnoapp){
+				case true:
+					// alert('app');
+					$j(this).closest("form").off('submit').submit(); 
+					break;
+				case false:
+					if(f[0].length === 0){
+						// alert('not app->HOME '+window.location+appName);
+						$j(this).closest("form").attr('action', window.location+appName+'/').off('submit').submit();
+					}
+					else{
+						// alert('not app: '+f[0]+'/'+appName);
+   						$j(this).closest("form").attr('action', '/'+f[0]+'/'+appName+'/').off('submit').submit();
+   					}
+					break;;
+				default:
+					// alert('default not app');
+   					$j(this).closest("form").attr('action', '/'+f[0]+'/'+appName+'/').off('submit').submit();
+			}
 	
-	$j('.jqcorner').corner("4px bevel");
+		});
 
+	// top-nav-social
+		$j("#top-nav-social").click(function(event) { $j( ".top-nav-social-icons" ).toggle( "slide" );});
 
+	// Apply Corners
+		$j('.jqcorner').corner("4px bevel");
+
+	////////////// ORIGINAL THEME's CODE ///////////////
 	
 	if($j('header').hasClass('regular')){
 		content_menu_top = 0;
@@ -2233,16 +2264,16 @@ function showHideVerticalMenu(){
 				 	'margin-left': '0'
 				 });
 
-				 $j('#find-a-property').animate({opacity: 0}, 200);
+				 $j('#find-a-property, #top-nav-social').animate({opacity: 0}, 200);
             }else{
                 hovered_flag = true;
                 vertical_menu.removeClass('active');
 				vertical_menu_bottom_logo.removeClass('active');
 				vertical_menu.animate({opacity: 0}, 200);
-				$j('#find-a-property').animate({opacity: 1}, 200);
+				$j('#find-a-property, #top-nav-social').animate({opacity: 1}, 200);
 				
 				$j('a.vertical_menu_hidden_button').css({
-					'width' : '180px',
+					'width' : '128px',
 					'margin-left': '20px'   // !!! must match css width property
 
 				}); 
@@ -2315,13 +2346,13 @@ function showHideVerticalMenu(){
                 return outclick.trigger(e);
             });
         }).call(this);
-        $j(vertical_menu).outclick({
-            callback: function() {
-                hovered_flag = true;
-                vertical_menu.removeClass('active');
-				vertical_menu_bottom_logo.removeClass('active');
-            }
-        });
+    //     $j(vertical_menu).outclick({
+    //         callback: function() {
+    //             hovered_flag = true;
+    //             vertical_menu.removeClass('active');
+				// vertical_menu_bottom_logo.removeClass('active');
+    //         }
+    //     });
     }
 }
 

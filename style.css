@@ -308,6 +308,9 @@ div.jqcorner{
 /*RIGHT MENU AREA PANEL*/
 
 
+/*icons colour change on top scroll fix !*/
+.dark:not(.sticky):not(.scrolled) .side_menu_button>a, .dark.header_style_on_scroll .side_menu_button>a{color: white!important;}
+
 section.side_menu{
 opacity: 0.95;
     -webkit-transition-duration: 0.15s!important;
@@ -326,7 +329,7 @@ aside.vertical_menu_area{
   opacity: 0;
 }
 
-#find-a-property{
+#find-a-property, #top-nav-social{
   position: fixed; 
   top:10px; 
   left: 20px; 
@@ -335,7 +338,28 @@ aside.vertical_menu_area{
   padding: 3px;
   font-weight: 600;
 }
-a.vertical_menu_hidden_button{ width: 130px; margin-left: 20px; } /* !!! reflect in default.js line 2190 */
+
+ #top-nav-social{
+  left: 160px;
+  z-index: -1;
+  background-color: transparent;
+  padding: 0;
+ }
+
+ #top-nav-social p{
+  background: black;
+  float: left;
+  padding: 3px;
+  cursor: pointer;
+ }
+
+ .top-nav-social-icons{
+  display: none;
+  background-color: rgba(0,0,0,0.75);
+  padding: 3px 3px 3px 10px;
+ }
+
+a.vertical_menu_hidden_button{ width: 128px; margin-left: 20px; } /* !!! reflect in default.js line 2190 */
 span.vertical_menu_hidden_button_line{ left: 20px; }
 
 /*<-- RADIO -->*/
@@ -388,6 +412,50 @@ z-index: 1001;
 
 div.caroufredsel_wrapper{
   left: 0!important;
+}
+
+/* ////////////////////////////////// */
+/* ------------- CONTENT BOTTOM ------------- */
+
+.content_bottom{
+  text-align: center;
+  max-height: 235px;
+}
+
+.content_bottom_content{
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 30px 0;
+
+  background: url("assets/imgs/stay-in-touch-background.png") no-repeat;
+  background-size: cover;
+
+}
+
+.content_bottom_content h3{color: white;}
+
+.content_bottom img{
+  width: 100%;
+}
+
+
+/* ------------- JOIN US ------------- */
+
+
+.join-us_content{
+  height: 100%;
+  padding: 30px 25%;
+}
+
+.join-us_content h3{
+  color: white;
+  float: left;
+}
+
+.join-us_social{
+  float: right;
+  padding-bottom: 25px;
 }
 
 

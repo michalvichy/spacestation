@@ -1,17 +1,4 @@
-<!-- JS VARS -->
-<script>
-  var listing_id;
-  var lat;
-  var lng;
-  var property_name;
-  var property_address;
-  var property_city_postal;
-  var video_url;
-  var youtube_url;
-  var external;
-  var epc;
-  var floorplan;
-</script>
+
  <!-- BEGIN ERROR -->
     <?php if (!empty($errorMessage) || !empty($DisplayDebug) || !empty($DisplayQuery) ): ?>
     <div id="error">
@@ -28,19 +15,27 @@
 <div id="container_single_view">
   
   <!-- BEGIN EMPTY RESULT -->
-  
     <?php if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0)){ ?>
-      <div id="noresult"> 
-        no listings found: 
-      </div>
+      <!-- redirect to search results with '#no_listing' query  -->
+      <script type="text/javascript"> window.location.replace(window.URLdir+"/app/#no_listing");</script> 
     <?php }else{ ?>
   <!-- END EMPTY RESULT --> 
    
-        <!-- // VARS -->
+        <!-- JS VARS -->
 
         <script type="text/javascript">
-                  listing_id = <?php echo("'".$xmlResult->listings->listing->data->id."';");  ?>
-                  property_name = <?php echo("'".$xmlResult->listings->listing->data->name."';"); ?>;
+                  
+                  var listing_id = <?php echo("'".$xmlResult->listings->listing->data->id."';");  ?>;
+                  var lat;
+                  var lng;
+                  var property_name = <?php echo("'".$xmlResult->listings->listing->data->name."';"); ?>;
+                  var property_address;
+                  var property_city_postal;
+                  var video_url;
+                  var youtube_url;
+                  var external;
+                  var epc;
+                  var floorplan;
         </script>                  
 
         <?php 
@@ -451,15 +446,6 @@
                 <?php } ?>
                 <!-- END ELSE EMPTY RESULT -->
 
-<!-- MESSAGE BOXED -->
-<!-- SUCCESS BOX -->
-<div class="q_message  with_icon message_box success" style="background-color: #2ecc71;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-thumbs-o-up fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">Successfully saved to favourites</div></div></div></div></div>
-<!-- WARNING BOX  -->
-<div class="q_message  with_icon message_box warning" style="background-color: #f1c40f;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-exclamation fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">Already in favourites - select different property</div></div></div></div></div>
-<!-- ERROR BOX -->
-<div class="q_message  with_icon message_box error" style="background-color: #e74c3c;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-exclamation-triangle fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">Sample error message box</div></div></div></div></div>
-</div>
-
 <!-- RELATED POSTS -->
 
 <div class="wpb_tabstabs_holder clearfix" data-interval="0">
@@ -483,7 +469,16 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                        <?php query_posts('tag='.$item->data->pba__propertytype__c.',art'); ?>
+                                        <?php 
+                                        $related_shop = str_replace(";",",",(string)$item->data->related_shop__c); 
+                                        $tags = str_replace(" ", "-", $related_shop);
+                                        $args = array(
+                                          'posts_per_page' => 3, 
+                                          'category_name' => 'related-businesses',
+                                          'tag' => $tags
+                                          );
+                                        query_posts($args); 
+                                        ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -505,7 +500,16 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                        <?php query_posts('tag=art'); ?>
+                                        <?php 
+                                          $related_discover = str_replace(";",",",(string)$item->data->related_discover__c); 
+                                          $tags = str_replace(" ", "-", $related_discover);
+                                          $args = array(
+                                          'posts_per_page' => 3, 
+                                          'category_name' => 'related-businesses',
+                                          'tag' => $tags
+                                          );
+                                        query_posts($args);  
+                                         ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -527,7 +531,16 @@
                             <div class="wpb_wrapper">
                                 <div class="wpb_text_column wpb_content_element">
                                     <div class="wpb_wrapper">
-                                       <?php query_posts('tag=business'); ?>
+                                       <?php 
+                                        $related_enjoy = str_replace(";",",",(string)$item->data->related_enjoy__c); 
+                                        $tags = str_replace(" ", "-", $related_enjoy);
+                                        $args = array(
+                                          'posts_per_page' => 3, 
+                                          'category_name' => 'related-businesses',
+                                          'tag' => $tags
+                                          );
+                                        query_posts($args);  
+                                       ?>
                                         <?php echo '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>'; ?>
                                         <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -547,51 +560,62 @@
 </div>
 
 <!-- RELATED PROPERTIES -->
-<?php 
-
-  /////////////// QUERY ARRAY ///////////////
-  $reqArray = array("token"       => PB_SECURITYTOKEN,
-            "fields"      => "Id;name;",
-            "recordtypes" => (string)$listing_type,
-            "pba__PropertyType__c" => (string)$item->data->pba__propertytype__c,
-            // "orderby"      => "pba__ListingPrice_pb__c;ASC",
-            "debugmode"   => "true"
-            );
-  // BUILD HTTP QUERY STRING
-  $query    = http_build_query($reqArray,'','&');
-  // RETURN XML RESULT
-  $xmlResult  = simplexml_load_file(PB_WEBSERVICEENDPOINT . "?" . $query);
+  <?php 
   
-  if (!empty($xmlResult->errorMessages->message)) {
-    $errorMessage = 'Error: '.$xmlResult->errorMessages->message;
-    echo '<script>alert("'.$errorMessage.'");</script>';
-  } else {
-
-    if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0))
-    { 
-      echo '<script>alert("no listings found");</script>';
-    }else{ 
-      echo '<div class="qode_carousels_holder clearfix"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; 
-        foreach ($xmlResult->listings->listing as $item){?>
-
-        <li class="item">
-          <div class="carousel_item_holder">
-            <a href="listing/?id=<?php echo $item->data->id; ?>" target="_self">
-              <span class="first_image_holder has_hover_image">
-                <img width="1100" height="619" src="<?php echo $item->media->images->image->url; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
-              </span>
-              <span class="second_image_holder has_hover_image">
-                <img width="1100" height="619" src="<?php echo $item->media->images->image->url; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
-              </span>
-            </a>
-          </div>
-        </li>
-
-  <?php }
-      echo '</ul></div></div></div>';  
+    // VARS
+    $opened_listing_id = $item->data->id;
+  
+    /////////////// QUERY ARRAY ///////////////
+    $reqArray = array("token"       => PB_SECURITYTOKEN,
+              "fields"      => "Id;name;",
+              "recordtypes" => (string)$listing_type,
+              "pba__PropertyType__c" => (string)$item->data->pba__propertytype__c,
+              // "orderby"      => "pba__ListingPrice_pb__c;ASC",
+              "debugmode"   => "true"
+              );
+    // BUILD HTTP QUERY STRING
+    $query    = http_build_query($reqArray,'','&');
+    // RETURN XML RESULT
+    $xmlResult  = simplexml_load_file(PB_WEBSERVICEENDPOINT . "?" . $query);
+    
+    if (!empty($xmlResult->errorMessages->message)) {
+      $errorMessage = 'Error: '.$xmlResult->errorMessages->message;
+      echo '<script>alert("'.$errorMessage.'");</script>';
+    } else {
+  
+      if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0))
+      { 
+        echo '<script>alert("no listings found");</script>';
+      }else{ 
+        echo '<div class="qode_carousels_holder clearfix"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; 
+          foreach ($xmlResult->listings->listing as $item):
+            if( (string)$opened_listing_id !== (string)$item->data->id ):?>
+              <li class="item">
+                <div class="carousel_item_holder">
+                  <a href="listing/?id=<?php echo $item->data->id; ?>" target="_self">
+                    <span class="first_image_holder has_hover_image">
+                      <img width="1100" height="619" src="<?php echo $item->media->images->image->url; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
+                    </span>
+                    <span class="second_image_holder has_hover_image">
+                      <img width="1100" height="619" src="<?php echo $item->media->images->image->url; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
+                    </span>
+                  </a>
+                </div>
+              </li>
+      <?php endif; 
+          endforeach;
+        echo '</ul></div></div></div>';  
+      }
+  
     }
-
-  }
-
-?>
+  
+  ?>
  
+<!-- MESSAGE BOXED -->
+<!-- SUCCESS BOX -->
+<div class="q_message  with_icon message_box success" style="background-color: #2ecc71;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-thumbs-o-up fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">Successfully saved to favourites</div></div></div></div></div>
+<!-- WARNING BOX  -->
+<div class="q_message  with_icon message_box warning" style="background-color: #f1c40f;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-exclamation fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">Already in favourites - select different property</div></div></div></div></div>
+<!-- ERROR BOX -->
+<div class="q_message  with_icon message_box error" style="background-color: #e74c3c;"><div class="q_message_inner"><div class="q_message_icon_holder"><div class="q_message_icon"><div class="q_message_icon_inner"><i class="fa fa-exclamation-triangle fa-lg" style=""></i></div></div></div><a href="#" class="close"><i class="fa fa-times" style=""></i></a><div class="message_text_holder"><div class="message_text" style="height: 26px;"><div class="message_text_inner">Sample error message box</div></div></div></div></div>
+</div>

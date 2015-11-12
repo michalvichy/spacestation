@@ -27,6 +27,9 @@
 	<link rel="apple-touch-icon" href="<?php echo esc_url($qode_options_proya['favicon_image']); ?>"/>
 	<?php wp_head(); ?>
 
+	<!-- !!! assign global URLdir variable to a property on window  !!! -->
+ 	<script type="text/javascript"> window.URLdir = window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1));</script>
+
 </head>
 
 <body <?php body_class(); ?>>
@@ -562,6 +565,15 @@ $display_header_top = "yes";
 	<?php } ?>
 	<div class="header_top_bottom_holder">
 		<div id="find-a-property" class="normal">FIND A PROPERTY</div>
+		<div id="top-nav-social" class="normal"><p style="float:left;">SOCIAL</p>
+			<div class="top-nav-social-icons" style="float:left">
+				<span class="q_social_icon_holder normal_social"><a href="http://twitter.com" target="_blank"><i class="qode_icon_font_awesome fa fa-twitter fa-lg simple_social" style="font-size: 17px;"></i></a></span>
+				<span class="q_social_icon_holder normal_social"><a href="http://www.facebook.com" target="_blank"><i class="qode_icon_font_awesome fa fa-facebook fa-lg simple_social" style="font-size: 17px;"></i></a></span>
+				<span class="q_social_icon_holder normal_social"><a href="https://plus.google.com" target="_blank"><i class="qode_icon_font_awesome fa fa-google-plus fa-lg simple_social" style="font-size: 17px;"></i></a></span>
+				<span class="q_social_icon_holder normal_social"><a href="http://instagram.com" target="_blank"><i class="qode_icon_font_awesome fa fa-instagram fa-lg simple_social" style="font-size: 17px;"></i></a></span>
+				<span class="q_social_icon_holder normal_social"><a href="https://www.tumblr.com" target="_blank"><i class="qode_icon_font_awesome fa fa-tumblr fa-lg simple_social" style="font-size: 17px;"></i></a></span>
+			</div>
+		</div>
 	<?php if($display_header_top == "yes"){ ?>
 		<div class="header_top clearfix" <?php echo $header_top_color_per_page; ?> >
 			<?php if($header_in_grid){ ?>
