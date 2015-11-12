@@ -105,7 +105,7 @@
 						 <!-- END IF SALE + IF RENT -->
 						<?php }else if(isset($recordtypes) && ($recordtypes == 'rent') ){ ?>
 						<div class="jqcorner">
-							<select name="price_from">
+							<select name="rent_from">
 							<option value="0">No Min rent</option>
 							<option value="300">&#163;300 <?php echo '(&#163;'. number_format((float)(300*52)/12) .'/month)'; ?></option>
 							<option value="350">&#163;350 <?php echo '(&#163;'. number_format((float)(350*52)/12) .'/month)'; ?></option>
@@ -127,7 +127,7 @@
 						</div>
 		
 					<div class="jqcorner">	
-						<select name="price_to">
+						<select name="rent_to">
 							<option value="0">No Max rent</option>
 							<option value="300">&#163;300 <?php echo '(&#163;'. number_format((float)(300*52)/12) .'/month)'; ?></option>
 							<option value="350">&#163;350 <?php echo '(&#163;'. number_format((float)(350*52)/12) .'/month)'; ?></option>
@@ -291,6 +291,8 @@
 								<input type="hidden" name="reference" value="<?php echo $reference;?>">
 								<input type="hidden" name="price_from" value="<?php echo $price_from;?>">
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
+								<input type="hidden" name="rent_from" value="<?php echo $rent_from;?>">
+								<input type="hidden" name="rent_to" value="<?php echo $rent_to;?>">
 								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="bathrooms_from" value="<?php if( !empty($bathrooms_from)) {echo $bathrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">	
@@ -309,6 +311,8 @@
 								<input type="hidden" name="reference" value="<?php echo $reference;?>">
 								<input type="hidden" name="price_from" value="<?php echo $price_from;?>">
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
+								<input type="hidden" name="rent_from" value="<?php echo $rent_from;?>">
+								<input type="hidden" name="rent_to" value="<?php echo $rent_to;?>">
 								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="bathrooms_from" value="<?php if( !empty($bathrooms_from)) {echo $bathrooms_from;}else{ echo '1'; }?>">	
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">
@@ -339,7 +343,8 @@
 		    				    <?php }; ?>
 		    				    
 		    				    <ul>
-									<li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>			
+									<li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
+									<li class="itemFact">Weekly Rent: <?php $weekly = number_format((float)$item->data->weekly_rent__c); $monthly = number_format((float)($weekly * 52)/12); echo  '&#163;'.$weekly.' (&#163;'.$monthly.'/month)'; ?></li>			
 									<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
 									<li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>			
 									<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
@@ -373,7 +378,9 @@
 
 
 		    $j("select[name='price_from'] option[value='"+<?php Print($price_from)  ?>+"']").prop('selected', true);
-    $j("select[name='price_to'] option[value='"+<?php Print($price_to) ?>+"']").prop('selected', true);
+    		$j("select[name='price_to'] option[value='"+<?php Print($price_to) ?>+"']").prop('selected', true);
+    		$j("select[name='rent_from'] option[value='"+<?php Print($rent_from)  ?>+"']").prop('selected', true);
+    		$j("select[name='rent_to'] option[value='"+<?php Print($rent_to) ?>+"']").prop('selected', true);
 
     <?php if( $default_recordtypes == "sale;rent" ){ ?>
      $j("input[name='recordtypes']").first().prop('checked', true);

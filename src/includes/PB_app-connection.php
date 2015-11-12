@@ -5,6 +5,8 @@ $SuccessVis = "none";
 $reference="";
 $price_to = 0;
 $price_from = 0;
+$rent_to = 0;
+$rent_from = 0;
 $reference = "";
 $orderby = ""; 
 $itemsperpage ="";
@@ -87,6 +89,8 @@ function getFromToParam($from,$to){
 if(isset($_POST["reference"])){			$reference 				= $_POST["reference"];		}
 if(isset($_POST["price_from"])){		$price_from 			= $_POST["price_from"];		}
 if(isset($_POST["price_to"])){			$price_to 				= $_POST["price_to"];		}
+if(isset($_POST["rent_from"])){			$rent_from 				= $_POST["rent_from"];		}
+if(isset($_POST["rent_to"])){			$rent_to 				= $_POST["rent_to"];		}
 if(isset($_POST["bedrooms_from"])){		$bedrooms_from 			= $default_bedrooms_from;	}                      
 if(isset($_POST["bathrooms_from"])){	$bathrooms_from 		= $default_bathrooms_from;	}                     
 if(isset($_POST["orderby"])){			$orderby 				= $default_orderby;			}                 
@@ -97,6 +101,7 @@ if(isset($_POST["tenure"])){			$tenure 				= $default_tenure;			}
 if(isset($_POST["propertystatus"])){	$propertystatus 		= $default_propertystatus;	}                   
 if(isset($_POST["page"])){				$page 					= $_POST["page"];			}                       
 if(isset($_POST["price_from"])){		$priceParam 			= getFromToParam($price_from,$price_to);}
+if(isset($_POST["rent_from"])){			$rentParam 				= getFromToParam($rent_from,$rent_to);}
 										$bedsParam 				= getFromToParam($default_bedrooms_from	,null);
 										$bathsParam 			= getFromToParam($default_bathrooms_from ,null);
 
@@ -110,7 +115,7 @@ $errorMessage 	= null;
 
 /////////////// QUERY ARRAY ///////////////
 	$reqArray = array("token" 			=> PB_SECURITYTOKEN,
-					  "fields"			=> "ID;name;pba__ListingType__c;pba__PropertyType__c;Tenure__c;pba__Status__c;pba__ListingPrice_pb__c;pba__description_pb__c;pba__Bedrooms_pb__c;pba__FullBathrooms_pb__c;pba__totalarea_pb__c;",
+					  "fields"			=> "ID;name;pba__ListingType__c;pba__PropertyType__c;Tenure__c;pba__Status__c;pba__ListingPrice_pb__c;Weekly_Rent__c;pba__description_pb__c;pba__Bedrooms_pb__c;pba__FullBathrooms_pb__c;pba__totalarea_pb__c;",
 		              "page" 			=> $page ,
 		              "getvideos"		=> "true",
 		              "debugmode"		=> "true"
@@ -119,6 +124,7 @@ $errorMessage 	= null;
 // add FILTERS to QUERY ARRAY
 	if (!empty($reference))		$reqArray["name"] 								= '%' . $reference . '%';
 	if (!empty($priceParam))	$reqArray["pba__ListingPrice_pb__c"] 			= $priceParam;
+	if (!empty($rentParam))		$reqArray["Weekly_Rent__c"] 					= $rentParam;
 	if (!empty($default_bedrooms_from)) $reqArray["pba__Bedrooms_pb__c"] 		= $bedsParam;
 	if (!empty($default_bathrooms_from)) $reqArray["pba__FullBathrooms_pb__c"] 	= $bathsParam;
 	if (!empty($default_orderby)) $reqArray["orderby"] 							= $orderby; 
