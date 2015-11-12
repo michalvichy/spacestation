@@ -68,6 +68,23 @@ function updateSavedCounter(listing_id,property_name)
 		$j('.saved_button span').html('0');
 	}
 }
+///////////// Show_Hide_SidebarFormFields
+	function Show_Hide_SidebarFormFields(id){
+		switch(id){
+				case 'all-types-sidebar':
+					$j('form[name="PB_sidebar_form"] select[name="price_from"], form[name="PB_sidebar_form"] select[name="price_to"], form[name="PB_sidebar_form"] select[name="rent_from"], form[name="PB_sidebar_form"] select[name="rent_to"], form[name="PB_sidebar_form"] select[name="tenure"]').parent().closest('.jqcorner').hide();
+					break;
+				case 'sale-sidebar':
+					$j('form[name="PB_sidebar_form"] select[name="price_from"], form[name="PB_sidebar_form"] select[name="price_to"], form[name="PB_sidebar_form"] select[name="tenure"]').parent().closest('.jqcorner').show();
+					$j('form[name="PB_sidebar_form"] select[name="rent_from"], form[name="PB_sidebar_form"] select[name="rent_to"]').parent().closest('.jqcorner').hide();
+					break;
+				case 'rent-sidebar':
+					$j('form[name="PB_sidebar_form"] select[name="price_from"], form[name="PB_sidebar_form"] select[name="price_to"], form[name="PB_sidebar_form"] select[name="tenure"]').parent().closest('.jqcorner').hide();
+					$j('form[name="PB_sidebar_form"] select[name="rent_from"], form[name="PB_sidebar_form"] select[name="rent_to"]').parent().closest('.jqcorner').show();
+					break;
+				default:
+			}
+	}
 ///////////////////////////////////
 
 var $j = jQuery.noConflict();
@@ -110,7 +127,10 @@ $j(document).ready(function() {
 
 	// detect of we're on app page or on some other page
 		if (pathname.indexOf(appName) >= 0){ appnoapp = true; }else{ appnoapp = false; }
-			
+
+	// SIDEBAR FORM SHOW / HIDE FIELDS ON PAGE LOAD 
+			// alert($j('form[name="PB_sidebar_form"] input:checked').attr('id'));
+			Show_Hide_SidebarFormFields($j('form[name="PB_sidebar_form"] input:checked').attr('id'));
 	// SIDEBAR FORM 'ALL/SALE/RENT' PREVENT FROM SUBMIT + SHOW / HIDE FIELDS
 		$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
 			event.preventDefault();
@@ -118,16 +138,7 @@ $j(document).ready(function() {
 			
 			// alert($j(event.currentTarget).attr('id'));
 			// show / hide fileds
-			switch($j(event.currentTarget).attr('id')){
-				case 'all-types-sidebar':
-					$j('select[name="price_from"], select[name="price_to"], select[name="tenure"]').parent().closest('.jqcorner').hide();
-					break;
-				case 'sale-sidebar':
-					break;
-				case 'rent-sidebar':
-					break;
-				default:
-			}
+			Show_Hide_SidebarFormFields($j(event.currentTarget).attr('id'));
 			
 		});
 	// PAGE FORM 'ALL/SALE/RENT' RE-INITIATE SUBMIT 
