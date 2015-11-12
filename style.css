@@ -337,6 +337,7 @@ aside.vertical_menu_area{
   color: white;
   padding: 3px;
   font-weight: 600;
+  cursor: pointer;
 }
 
  #top-nav-social{
@@ -350,7 +351,6 @@ aside.vertical_menu_area{
   background: black;
   float: left;
   padding: 3px;
-  cursor: pointer;
  }
 
  .top-nav-social-icons{
@@ -359,7 +359,7 @@ aside.vertical_menu_area{
   padding: 3px 3px 3px 10px;
  }
 
-a.vertical_menu_hidden_button{ width: 128px; margin-left: 20px; } /* !!! reflect in default.js line 2190 */
+/*a.vertical_menu_hidden_button{ width: 128px; margin-left: 20px; } */ /* !!! reflect in default.js line 2190 */
 span.vertical_menu_hidden_button_line{ left: 20px; }
 
 /* ------- vertical_responsive.css overwrite ---------- */

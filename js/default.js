@@ -2261,34 +2261,31 @@ function showHideVerticalMenu(){
 		var vertical_menu_bottom_logo = $j('.vertical_menu_area_bottom_logo');
         var hovered_flag = true;
 
-        $j('.vertical_menu_hidden_button').on('click',function (e) {
-            e.preventDefault();
+        /// SHOW MENU
+        $j('#find-a-property').on('click',function (e) {
+        	e.preventDefault();
             if(hovered_flag) {
                 hovered_flag = false;
                 current_scroll = $j(window).scrollTop(); //current scroll is defined in front of "initSideMenu" function
                 vertical_menu.addClass('active');
-				 vertical_menu_bottom_logo.addClass('active');
-				 vertical_menu.animate({opacity: 0.9}, 200);
-				 
-				 $j('a.vertical_menu_hidden_button').css({
-				 	'width': '40px',
-				 	'margin-left': '0'
-				 });
+				vertical_menu_bottom_logo.addClass('active');
+				vertical_menu.animate({opacity: 0.9}, 200);
 
-				 $j('#find-a-property, #top-nav-social').animate({opacity: 0}, 200);
-            }else{
-                hovered_flag = true;
-                vertical_menu.removeClass('active');
+				$j('#find-a-property, #top-nav-social').animate({opacity: 0}, 200);
+			}
+        });
+
+        /// HIDE MENU
+        $j('.vertical_menu_hidden_button').on('click',function (e) {
+        	if(!hovered_flag) {
+            	e.preventDefault();
+            	hovered_flag = true;
+				vertical_menu.removeClass('active');
 				vertical_menu_bottom_logo.removeClass('active');
 				vertical_menu.animate({opacity: 0}, 200);
-				$j('#find-a-property, #top-nav-social').animate({opacity: 1}, 200);
-				
-				$j('a.vertical_menu_hidden_button').css({
-					'width' : '128px',
-					'margin-left': '20px'   // !!! must match css width property
 
-				}); 
-            }
+				$j('#find-a-property, #top-nav-social').animate({opacity: 1}, 200);
+			}
         });
 
         $j(window).scroll(function() {
