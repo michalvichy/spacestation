@@ -61,7 +61,7 @@ Template: bridge
   
   div.side_menu_button a{
   	background: black;
-  	padding: 5px!important;
+  	padding: 8px!important;
   }
   
   /* display both left and right navigation panels */
@@ -83,7 +83,7 @@ Template: bridge
   header div.header_inner_right{
     position: fixed;
     right: 20px;
-    top: -3px;
+    top: 0;
   }
 
   .side_menu a.close_side_menu{
@@ -323,6 +323,10 @@ opacity: 0.95;
         transition-property: all;
 }
 
+ul#menu-nav-right.menu ul.sub-menu li a{
+  text-transform: uppercase;
+}
+
 /*LEFT VERTICAL MENU AREA PANEL*/
 
 .side_menu a.close_side_menu{
@@ -384,7 +388,17 @@ aside.vertical_menu_area{
 span.vertical_menu_hidden_button_line{ left: 20px; }
 
 /* ------- vertical_responsive.css overwrite ---------- */
+@media only screen and (max-width: 1260px) and (min-width: 1000px){
+  .side_menu_button{height: 50px!important;}
+}
 @media only screen and (max-width: 1000px){
+
+  header, .header_inner_left, footer.uncover{
+    position: fixed!important;
+  }
+
+  .side_menu_button{height: 50px!important;}
+
   .vertical_menu_enabled header{
     display: inline-block;
   }
