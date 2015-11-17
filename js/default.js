@@ -123,7 +123,7 @@ $j(document).ready(function() {
 		var f = pathname.split('/').slice(-3);
 		var appnoapp;
 
-		// alert(f[0].length);
+		// alert('window.URLdir: '+window.URLdir+' F: '+f[0].length+' | '+f );
 
 	// detect of we're on app page or on some other page
 		if (pathname.indexOf(appName) >= 0){ appnoapp = true; }else{ appnoapp = false; }
@@ -154,9 +154,9 @@ $j(document).ready(function() {
 					$j(this).closest("form").off('submit').submit(); 
 					break;
 				case false:
-					if(f[0].length === 0){
+					if(f[0].length === 0 || f[0].length >= 6){
 						// alert('not app->HOME '+window.location+appName);
-						$j(this).closest("form").attr('action', window.location+appName+'/').off('submit').submit();
+						$j(this).closest("form").attr('action', window.URLdir+'/'+appName+'/').off('submit').submit();
 					}
 					else{
 						// alert('not app: '+f[0]+'/'+appName);
