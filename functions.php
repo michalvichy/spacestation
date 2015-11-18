@@ -811,6 +811,12 @@ if (!function_exists('portfolio_list_tuff')) {
             query_posts($args);
             if (have_posts()) : while (have_posts()) : the_post();
                 $terms = wp_get_post_terms(get_the_ID(), 'category');
+                if(get_field('post_layout')){
+                	$post_layout = get_field('post_layout');
+            	}else{
+            		$post_layout = "square_small";
+            	}
+
                 $featured_image_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); //original size
 
                 if(get_post_meta(get_the_ID(), 'qode_portfolio-lightbox-link', true) != ""){
@@ -854,6 +860,7 @@ if (!function_exists('portfolio_list_tuff')) {
                     $html .= "portfolio_category_$term->term_id ";
                 }
                 $html .=" " . $masonry_size;
+                $html .=" " . $post_layout;
                 $html .="'>";
 
                 //if $hover_type == 'default'
@@ -1066,4 +1073,7 @@ if (!function_exists('portfolio_list_tuff')) {
 
 }
 add_shortcode('portfolio_list_tuff', 'portfolio_list_tuff');
+
+
+
 
