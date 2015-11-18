@@ -814,7 +814,7 @@ if (!function_exists('portfolio_list_tuff')) {
                 if(get_field('post_layout')){
                 	$post_layout = get_field('post_layout');
             	}else{
-            		$post_layout = "square_small";
+            		$post_layout = "rectangle_landscape";
             	}
 
                 $featured_image_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); //original size
