@@ -794,7 +794,7 @@ if (!function_exists('portfolio_list_tuff')) {
             } else {
                 $args = array(
                     'post_type' => 'post',
-                    'portfolio_category' => $category,
+                    'category_name' => $category,
                     'orderby' => $order_by,
                     'order' => $order,
                     'posts_per_page' => $number,
@@ -810,7 +810,7 @@ if (!function_exists('portfolio_list_tuff')) {
             }
             query_posts($args);
             if (have_posts()) : while (have_posts()) : the_post();
-                $terms = wp_get_post_terms(get_the_ID(), 'portfolio_category');
+                $terms = wp_get_post_terms(get_the_ID(), 'category');
                 $featured_image_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); //original size
 
                 if(get_post_meta(get_the_ID(), 'qode_portfolio-lightbox-link', true) != ""){
@@ -856,6 +856,7 @@ if (!function_exists('portfolio_list_tuff')) {
                 $html .=" " . $masonry_size;
                 $html .="'>";
 
+                //if $hover_type == 'default'
                 if($hover_type == 'default') {
                     $html .= "<div class='image_holder'>";
                     $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."'>";
@@ -918,7 +919,9 @@ if (!function_exists('portfolio_list_tuff')) {
                     }
                     $html .= "</span></span></span>";
                     $html .= "</div>";
-                } else {
+                } 
+                // if $hover_type not 'default'
+                else {
                     $category_html = "";
                     $k = 1;
                     foreach ($terms as $term) {
