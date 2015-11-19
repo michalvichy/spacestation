@@ -1074,6 +1074,143 @@ if (!function_exists('portfolio_list_tuff')) {
 }
 add_shortcode('portfolio_list_tuff', 'portfolio_list_tuff');
 
+/* Social Share shortcode TUFF */
 
+if (!function_exists('social_share_tuff')) {
+    function social_share_tuff($atts, $content = null) {
+        global $qode_options_proya;
+        if(isset($qode_options_proya['twitter_via']) && !empty($qode_options_proya['twitter_via'])) {
+            $twitter_via = " via " . $qode_options_proya['twitter_via'] . " ";
+        } else {
+            $twitter_via =  "";
+        }
+        if(isset($_SERVER["https"])) {
+            $count_char = 23;
+        } else{
+            $count_char = 22;
+        }
+        $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+        $html = "";
+        if(isset($qode_options_proya['enable_social_share']) && $qode_options_proya['enable_social_share'] == "yes") {
+            $post_type = get_post_type();
+            if(isset($qode_options_proya["post_types_names_$post_type"])) {
+                if($qode_options_proya["post_types_names_$post_type"] == $post_type) {
+                    if($post_type == "portfolio_page") {
+                        $html .= '<div class="portfolio_share">';
+                    } elseif($post_type == "post") {
+                        $html .= '<div class="blog_share">';
+                    } elseif($post_type == "page") {
+                        $html .= '<div class="page_share">';
+                    }
+                    $html .= '<div class="social_share_holder">';
+                    $html .= '<a href="javascript:void(0)" target="_self"><span class="social_share_icon"></span>';
+                    $html .= '<span class="social_share_title">'.  __('Share','qode') .'</span>';
+                    $html .= '</a>';
+                    $html .= '<div class="social_share_dropdown"><div class="inner_arrow"></div><ul>';
+                    if(isset($qode_options_proya['enable_facebook_share']) &&  $qode_options_proya['enable_facebook_share'] == "yes") {
+                        $html .= '<li class="facebook_share">';
+                        $html .= '<a href="#" onclick="window.open(\'http://www.facebook.com/sharer.php?s=100&amp;p[title]=' . urlencode(qode_addslashes(get_the_title())) . '&amp;p[summary]=' . urlencode(qode_addslashes(get_the_excerpt())) . '&amp;p[url]=' . urlencode(get_permalink()) . '&amp;&p[images][0]=';
+                        if(function_exists('the_post_thumbnail')) {
+                            $html .=  wp_get_attachment_url(get_post_thumbnail_id());
+                        }
+                        $html .='\', \'sharer\', \'toolbar=0,status=0,width=620,height=280\');">';
+                        if(!empty($qode_options_proya['facebook_icon'])) {
+                            $html .= '<img src="' . $qode_options_proya["facebook_icon"] . '" alt="" />';
+                        } else {
+                            $html .= '<i class="fa fa-facebook"></i>';
+                        }
+                        //$html .= "<span class='share_text'>" . __("Facebook","qode") . "</span>";
+                        $html .= "</a>";
+                        $html .= "</li>";
+                    }
+
+                    if($qode_options_proya['enable_twitter_share'] == "yes") {
+                        $html .= '<li class="twitter_share">';
+                        // $html .= '<a href="#" onclick="popUp=window.open(\'http://twitter.com/home?status=' . urlencode(the_excerpt_max_charlength($count_char) . $twitter_via) . get_permalink() . '\', \'popupwindow\', \'scrollbars=yes,width=800,height=400\');popUp.focus();return false;">';
+                         $html .= '<a href="#" onclick="popUp=window.open(\'http://twitter.com/home?status=' . urlencode(the_excerpt_max_charlength($count_char) . $twitter_via) . "http://" . $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"] . '\', \'popupwindow\', \'scrollbars=yes,width=800,height=400\');popUp.focus();return false;">';
+                        if(!empty($qode_options_proya['twitter_icon'])) {
+                            $html .= '<img src="' . $qode_options_proya["twitter_icon"] . '" alt="" />';
+                        } else {
+                            $html .= '<i class="fa fa-twitter"></i>';
+                        }
+                        //$html .= "<span class='share_text'>" . __("Twitter", 'qode') . "</span>";
+                        $html .= "</a>";
+                        $html .= "</li>";
+                    }
+                    if($qode_options_proya['enable_google_plus'] == "yes") {
+                        $html .= '<li  class="google_share">';
+                        $html .= '<a href="#" onclick="popUp=window.open(\'https://plus.google.com/share?url=' . urlencode(get_permalink()) . '\', \'popupwindow\', \'scrollbars=yes,width=800,height=400\');popUp.focus();return false">';
+                        if(!empty($qode_options_proya['google_plus_icon'])) {
+                            $html .= '<img src="' . $qode_options_proya['google_plus_icon'] . '" alt="" />';
+                        } else {
+                            $html .= '<i class="fa fa-google-plus"></i>';
+                        }
+                        //$html .= "<span class='share_text'>" . __("Google+","qode") . "</span>";
+                        $html .= "</a>";
+                        $html .= "</li>";
+                    }
+                    if(isset($qode_options_proya['enable_linkedin']) && $qode_options_proya['enable_linkedin'] == "yes") {
+                        $html .= '<li  class="linkedin_share">';
+                        $html .= '<a href="#" onclick="popUp=window.open(\'http://linkedin.com/shareArticle?mini=true&amp;url=' . urlencode(get_permalink()). '&amp;title=' . urlencode(get_the_title()) . '\', \'popupwindow\', \'scrollbars=yes,width=800,height=400\');popUp.focus();return false">';
+                        if(!empty($qode_options_proya['linkedin_icon'])) {
+                            $html .= '<img src="' . $qode_options_proya['linkedin_icon'] . '" alt="" />';
+                        } else {
+                            $html .= '<i class="fa fa-linkedin"></i>';
+                        }
+                        //$html .= "<span class='share_text'>" . __("LinkedIn","qode") . "</span>";
+                        $html .= "</a>";
+                        $html .= "</li>";
+                    }
+                    if(isset($qode_options_proya['enable_tumblr']) && $qode_options_proya['enable_tumblr'] == "yes") {
+                        $html .= '<li  class="tumblr_share">';
+                        $html .= '<a href="#" onclick="popUp=window.open(\'http://www.tumblr.com/share/link?url=' . urlencode(get_permalink()). '&amp;name=' . urlencode(get_the_title()) .'&amp;description='.urlencode(get_the_excerpt()) . '\', \'popupwindow\', \'scrollbars=yes,width=800,height=400\');popUp.focus();return false">';
+                        if(!empty($qode_options_proya['tumblr_icon'])) {
+                            $html .= '<img src="' . $qode_options_proya['tumblr_icon'] . '" alt="" />';
+                        } else {
+                            $html .= '<i class="fa fa-tumblr"></i>';
+                        }
+                        //$html .= "<span class='share_text'>" . __("Tumblr","qode") . "</span>";
+                        $html .= "</a>";
+                        $html .= "</li>";
+                    }
+                    if(isset($qode_options_proya['enable_pinterest']) && $qode_options_proya['enable_pinterest'] == "yes") {
+                        $html .= '<li  class="pinterest_share">';
+                        $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+                        $html .= '<a href="#" onclick="popUp=window.open(\'http://pinterest.com/pin/create/button/?url=' . urlencode(get_permalink()). '&amp;description=' . qode_addslashes(get_the_title()) .'&amp;media='.urlencode($image[0]) . '\', \'popupwindow\', \'scrollbars=yes,width=800,height=400\');popUp.focus();return false">';
+                        if(!empty($qode_options_proya['pinterest_icon'])) {
+                            $html .= '<img src="' . $qode_options_proya['pinterest_icon'] . '" alt="" />';
+                        } else {
+                            $html .= '<i class="fa fa-pinterest"></i>';
+                        }
+                        //$html .= "<span class='share_text'>" . __("Pinterest","qode") . "</span>";
+                        $html .= "</a>";
+                        $html .= "</li>";
+                    }
+                    if(isset($qode_options_proya['enable_vk']) && $qode_options_proya['enable_vk'] == "yes") {
+                        $html .= '<li  class="vk_share">';
+                        $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+                        $html .= '<a href="#" onclick="popUp=window.open(\'http://vkontakte.ru/share.php?url=' . urlencode(get_permalink()). '&amp;title=' . urlencode(get_the_title()) .'&amp;description=' . urlencode(get_the_excerpt()) .'&amp;image='.urlencode($image[0]) . '\', \'popupwindow\', \'scrollbars=yes,width=800,height=400\');popUp.focus();return false">';
+                        if(!empty($qode_options_proya['vk_icon'])) {
+                            $html .= '<img src="' . $qode_options_proya['vk_icon'] . '" alt="" />';
+                        } else {
+                            $html .= '<i class="fa fa-vk"></i>';
+                        }
+                        //$html .= "<span class='share_text'>" . __("VK","qode") . "</span>";
+                        $html .= "</a>";
+                        $html .= "</li>";
+                    }
+                    $html .= "</ul></div>";
+                    $html .= "</div>";
+
+                    if($post_type == "portfolio_page" || $post_type == "post" || $post_type == "page") {
+                        $html .= '</div>';
+                    }
+                }
+            }
+        }
+        return $html;
+    }
+}
+add_shortcode('social_share_tuff', 'social_share_tuff');
 
 
