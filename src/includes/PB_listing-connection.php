@@ -34,14 +34,12 @@ if( empty($_GET['id']) ):?>
 	if(isset($_POST["price_to"])){		$price_to 		= $_POST["price_to"];}
 	if(isset($_POST["size_from"])){		$size_from 		= $_POST["size_from"];}
 	if(isset($_POST["bedrooms_from"])){	$bedrooms_from 	= $default_bedrooms_from ;}
-	if(isset($_POST["page"])){			$page 			= $_POST["page"];}
 	if(isset($_POST["price_from"])){	$priceParam 	= getFromToParam($price_from	,$price_to);}
 	if(isset($_POST["size_from"])){		$sizeParam 		= getFromToParam($size_from		,null);}
 										$bedsParam 		= getFromToParam($default_bedrooms_from	,null);
 	
 	$doSearch = !(empty($reference) && empty($priceParam) && empty($sizeParam)&& empty($bedsParam)  );
 	
-	if(isset($_POST["page"])){if (!is_numeric($page) || $page < 0 ) $page = 0;}else{$page = 0;}
 	
 	$xmlResult		= null;
 	$errorMessage 	= null;
@@ -51,7 +49,6 @@ if( empty($_GET['id']) ):?>
 					  "id"				=> $_GET['id'],	
 					  "fields"			=> "Id;Stamp_Duty__c;Related_shop__c;Related_discover__c;Related_enjoy__c;pba__Status__c;pba__ListingType__c;name;pba__PropertyType__c;Weekly_Rent__c;Room_list__c;Tenure__c;Council_Tax_Band__c;Local_Authority__c;Years_Remaining_Leasehold_only__c;pba__ListingPrice_pb__c;pba__Bedrooms_pb__c;pba__FullBathrooms_pb__c;pba__totalarea_pb__c;pba__Description_pb__c;pba__Longitude_pb__c;pba__Latitude_pb__c;pba__Address_pb__c;pba__City_pb__c;pba__PostalCode_pb__c;FF_Aircon__c;FF_Architect__c;FF_Award__c;FF_Balcony__c;FF_Basement__c;FF_Blue_plaque__c;FF_Bottle__c;FF_Brick__c;FF_Built__c;FF_Celings__c;FF_Champagne__c;FF_Church__c;FF_Cinema__c;FF_Concierge__c;FF_Designer__c;FF_Eco__c;FF_Elephant__c;FF_Extension__c;FF_Factory__c;FF_Fireplace__c;FF_Garden__c;FF_Gym__c;FF_High_Specification__c;FF_History__c;FF_Hot_tap__c;FF_Lateral_Space__c;FF_Library__c;FF_Lift__c;FF_Light__c;FF_Listed_Grade_I__c;FF_Listed_Grade_II__c;FF_Map__c;FF_Mews__c;FF_Mezzanine__c;FF_Parking__c;FF_Penthouse__c;FF_Planning__c;FF_Pool__c;FF_Refurbished__c;FF_Roof_terrace__c;FF_School__c;FF_Security__c;FF_Solar__c;FF_Sound_system__c;FF_South_facing__c;FF_Stairs__c;FF_Townhouse__c;FF_Tube__c;FF_Underfloor_heating__c;FF_View__c;FF_Warehouse__c;FF_Windows__c;FF_Wine_cellar__c;FF_Wooden_floors__c;",
 					  "itemsperpage"	=> "1",
-					  "page" 			=> $page ,
 					  // "orderby"			=> "pba__ListingPrice_pb__c;ASC",
 					  "getvideos"		=> "true",
 					  "getdocuments"	=> "true",
@@ -74,8 +71,6 @@ if( empty($_GET['id']) ):?>
 		$errorMessage = 'Error: '.$xmlResult->errorMessages->message;
 	} else {
 		$debugMessages = 'Debug: '.$xmlResult->debugMessages->message;
-		$previousPage 	= $page > 0 ? $page - 1 : null;
-		$nextPage 		= ($xmlResult->listingsPerPage * ($page+1) < $xmlResult->numberOfListings) ? $page + 1 : null;
 	}
 
 	$DisplayQuery = $query;
