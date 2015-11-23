@@ -1234,7 +1234,7 @@ if (!function_exists('qode_carousel_tuff')) {
                 $carousel_holder_classes = ' two_rows';
             }
 
-            $html .= "<div class='qode_carousels_holder clearfix " . $carousel_holder_classes  ."'><div class='qode_carousels '><ul class='slides clearfix '>";
+            $html .= "<div class='qode_carousels_holder clearfix " . $carousel_holder_classes  ."'><div class='carousel_nav'><a id='carousel_nav-prev' href='#'>&larr;</a></br><a id='carousel_nav-next' href='#'>&rarr;</a></div><div class='qode_carousels '><ul class='slides clearfix '>";
 
             // $q = array('post_type'=> 'carousels', 'carousels_category' => $carousel, 'orderby' => $orderby, 'order' => $order, 'posts_per_page' => '-1');
 
