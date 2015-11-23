@@ -1234,7 +1234,7 @@ if (!function_exists('qode_carousel_tuff')) {
                 $carousel_holder_classes = ' two_rows';
             }
 
-            $html .= "<div class='qode_carousels_holder clearfix " . $carousel_holder_classes  ."'><div class='carousel_nav'><a id='carousel_nav-prev' href='#'>&larr;</a></br><a id='carousel_nav-next' href='#'>&rarr;</a></div><div class='qode_carousels '><ul class='slides clearfix '>";
+            $html .= "<div class='tuff_carousel qode_carousels_holder clearfix " . $carousel_holder_classes  ."'><div class='carousel_nav'><a id='carousel_nav-next' href='#'><i class='qode_icon_font_awesome fa fa-angle-right '></i></a><br><br><a id='carousel_nav-prev' href='#'><i class='qode_icon_font_awesome fa fa-angle-left '></i></a></div><div class='qode_carousels '><ul class='slides clearfix '>";
 
             // $q = array('post_type'=> 'carousels', 'carousels_category' => $carousel, 'orderby' => $orderby, 'order' => $order, 'posts_per_page' => '-1');
 
@@ -1250,49 +1250,15 @@ if (!function_exists('qode_carousel_tuff')) {
 
             if ( have_posts() ) : $postCount = 1; while ( have_posts() ) : the_post();
 
-                // echo '<script>alert("'.$errorMessage.'");</script>';
-
-                // echo(get_post_meta(get_the_ID(),"qode_carousel-image",true));
-
-                // if(get_post_meta(get_the_ID(), "qode_carousel-image", true) != ""){
-                //     $image = get_post_meta(get_the_ID(), "qode_carousel-image", true);
-                // } else {
-                //     $image = "";
-                // }
-                
-                // $image = get_the_post_thumbnail(array(250,250));
-
                 $thumb_id = get_post_thumbnail_id();
                 $thumb_url = wp_get_attachment_image_src($thumb_id, array(100,100) , true);
                 $image = $thumb_url[0];
 
-
-                // $image = get_post_meta(get_the_ID(), "qode_carousel-image", true);
-
-                // if(get_post_meta(get_the_ID(), "qode_carousel-hover-image", true) != ""){
-                //     $hover_image = get_post_meta(get_the_ID(), "qode_carousel-hover-image", true);
-                //     $has_hover_image = "has_hover_image";
-                // } else {
-                //     $hover_image = "";
-                //     $has_hover_image = "";
-                // }
-
                 $hover_image = "yes";
                 $has_hover_image = "has_hover_image";
 
-                // if(get_post_meta(get_the_ID(), "qode_carousel-item-link", true) != ""){
-                //     $link = get_post_meta(get_the_ID(), "qode_carousel-item-link", true);
-                // } else {
-                //     $link = "";
-                // }
-
                 $link = get_permalink();
 
-                // if(get_post_meta(get_the_ID(), "qode_carousel-item-target", true) != ""){
-                //     $target = get_post_meta(get_the_ID(), "qode_carousel-item-target", true);
-                // } else {
-                //     $target = "_self";
-                // }
                 $target = "_self";
 
                 $title = get_the_title();
@@ -1319,9 +1285,7 @@ if (!function_exists('qode_carousel_tuff')) {
                         $html .= wp_get_attachment_image($first_image, 'full');
                     } else {
                         $html .= '<img src="'.$image.'" alt="carousel image" />';
-                        // $html .= $image;
                     }
-
 
                     $html .= "</span>";
                 }
@@ -1331,11 +1295,6 @@ if (!function_exists('qode_carousel_tuff')) {
                 if($hover_image != ""){
                     $html .= "<div class='second_image_holder clearfix ".$has_hover_image."' >";
 
-                    // if(is_int($second_image)) {
-                    //     $html .= wp_get_attachment_image($second_image, 'full');
-                    // } else {
-                    //     $html .= '<img src="'.$hover_image.'" alt="carousel image" />';
-                    // }
                     $html .= '<h3>'.$title.'</h3>';
 
 
