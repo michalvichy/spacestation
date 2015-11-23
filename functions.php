@@ -1234,7 +1234,7 @@ if (!function_exists('qode_carousel_tuff')) {
                 $carousel_holder_classes = ' two_rows';
             }
 
-            $html .= "<div class='qode_carousels_holder clearfix" . $carousel_holder_classes  ."'><div class='qode_carousels'><ul class='slides'>";
+            $html .= "<div class='qode_carousels_holder clearfix " . $carousel_holder_classes  ."'><div class='qode_carousels cover_boxes '><ul class='slides clearfix '>";
 
             // $q = array('post_type'=> 'carousels', 'carousels_category' => $carousel, 'orderby' => $orderby, 'order' => $order, 'posts_per_page' => '-1');
 
@@ -1305,15 +1305,15 @@ if (!function_exists('qode_carousel_tuff')) {
                 } elseif($show_in_two_rows == '') {
                     $html .= "<li class='item'>";
                 }
-                $html .= '<div class="carousel_item_holder">';
+                $html .= '<div class="carousel_item_holder " style="margin:0; width:100%; background: lime">';
                 if($link != ""){
-                    $html .= "<a href='".$link."' target='".$target."'>";
+                    $html .= "<a href='".$link."' target='".$target."' style=''>";
                 }
 
                 $first_image = qode_get_attachment_id_from_url($image);
 
                 if($image != ""){
-                    $html .= "<span class='first_image_holder ".$has_hover_image."'>";
+                    $html .= "<span class='first_image_holder ".$has_hover_image."' style='width: 50%;float: left;position: relative;'>";
 
                     if(is_int($first_image)) {
                         $html .= wp_get_attachment_image($first_image, 'full');
@@ -1329,14 +1329,14 @@ if (!function_exists('qode_carousel_tuff')) {
                 $second_image = qode_get_attachment_id_from_url($hover_image);
 
                 if($hover_image != ""){
-                    $html .= "<span class='second_image_holder ".$has_hover_image."'>";
+                    $html .= "<span class='second_image_holder ".$has_hover_image."' style='width: 50%; float: left;position: relative; padding:0; background:aqua;'>";
 
                     // if(is_int($second_image)) {
                     //     $html .= wp_get_attachment_image($second_image, 'full');
                     // } else {
                     //     $html .= '<img src="'.$hover_image.'" alt="carousel image" />';
                     // }
-                    $html .= $title;
+                    $html .= '<h3>'.$title.'</h3>';
 
 
                     $html .= "</span>";
