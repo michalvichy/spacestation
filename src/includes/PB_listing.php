@@ -224,7 +224,7 @@
                       <!-- end if documents not empty -->
                
                 <li class="add_to_saved_button"><a href="#">SAVE</a></li>
-                <li><a href="#">SHARE</a></li>
+                <li><?php echo do_shortcode('[social_share_tuff]',false); ?></li>
               </ul>
             <br>
             <p style="overflow-y: auto; height: 353px;"><?php echo $item->data->pba__description_pb__c; ?> </p>

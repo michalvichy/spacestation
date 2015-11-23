@@ -123,7 +123,7 @@ $j(document).ready(function() {
 		var f = pathname.split('/').slice(-3);
 		var appnoapp;
 
-		// alert(f[0].length);
+		// alert('window.URLdir: '+window.URLdir+' F: '+f[0].length+' | '+f );
 
 	// detect of we're on app page or on some other page
 		if (pathname.indexOf(appName) >= 0){ appnoapp = true; }else{ appnoapp = false; }
@@ -154,9 +154,9 @@ $j(document).ready(function() {
 					$j(this).closest("form").off('submit').submit(); 
 					break;
 				case false:
-					if(f[0].length === 0){
+					if(f[0].length === 0 || f[0].length >= 6){
 						// alert('not app->HOME '+window.location+appName);
-						$j(this).closest("form").attr('action', window.location+appName+'/').off('submit').submit();
+						$j(this).closest("form").attr('action', window.URLdir+'/'+appName+'/').off('submit').submit();
 					}
 					else{
 						// alert('not app: '+f[0]+'/'+appName);
@@ -171,7 +171,7 @@ $j(document).ready(function() {
 		});
 
 	// top-nav-social
-		$j("#top-nav-social").click(function(event) { $j( ".top-nav-social-icons" ).toggle( "slide" );});
+		$j("#top-nav-social").click(function(event) { $j( ".top-nav-social-icons" ).toggle( "slide", "fast" );});
 
 	// Apply Corners
 		$j('.jqcorner').corner("4px bevel");
@@ -2261,34 +2261,33 @@ function showHideVerticalMenu(){
 		var vertical_menu_bottom_logo = $j('.vertical_menu_area_bottom_logo');
         var hovered_flag = true;
 
-        $j('.vertical_menu_hidden_button').on('click',function (e) {
-            e.preventDefault();
+        /// SHOW MENU
+        $j('#find-a-property').on('click',function (e) {
+        	e.preventDefault();
             if(hovered_flag) {
                 hovered_flag = false;
                 current_scroll = $j(window).scrollTop(); //current scroll is defined in front of "initSideMenu" function
                 vertical_menu.addClass('active');
-				 vertical_menu_bottom_logo.addClass('active');
-				 vertical_menu.animate({opacity: 0.9}, 200);
-				 
-				 $j('a.vertical_menu_hidden_button').css({
-				 	'width': '40px',
-				 	'margin-left': '0'
-				 });
+				vertical_menu_bottom_logo.addClass('active');
+				vertical_menu.animate({opacity: 0.9}, 200);
 
-				 $j('#find-a-property, #top-nav-social').animate({opacity: 0}, 200);
-            }else{
-                hovered_flag = true;
-                vertical_menu.removeClass('active');
+				$j('.vertical_menu_hidden_button').show();
+				$j('#find-a-property, #top-nav-social').animate({opacity: 0}, 200);
+			}
+        });
+
+        /// HIDE MENU
+        $j('.vertical_menu_hidden_button').on('click',function (e) {
+        	if(!hovered_flag) {
+            	e.preventDefault();
+            	hovered_flag = true;
+				vertical_menu.removeClass('active');
 				vertical_menu_bottom_logo.removeClass('active');
 				vertical_menu.animate({opacity: 0}, 200);
-				$j('#find-a-property, #top-nav-social').animate({opacity: 1}, 200);
-				
-				$j('a.vertical_menu_hidden_button').css({
-					'width' : '128px',
-					'margin-left': '20px'   // !!! must match css width property
 
-				}); 
-            }
+				$j('.vertical_menu_hidden_button').hide();
+				$j('#find-a-property, #top-nav-social').animate({opacity: 1}, 200);
+			}
         });
 
         $j(window).scroll(function() {
