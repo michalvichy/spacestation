@@ -143,6 +143,7 @@ $j(document).ready(function() {
 		});
 	// PAGE FORM 'ALL/SALE/RENT' RE-INITIATE SUBMIT 
 		$j('form[name="PB_page_form"]').on('change', 'input', function(event) { $j(this).closest("form").off('submit').submit(); });
+		$j('form[name="category_form"]').on('change', 'input', function(event) { $j(this).closest("form").submit(); });
 
 	// SIDEBAR FORM 'SUBMIT' BUTTON
 		$j('.filter__submit').on('click', '.js-run-pb-search', function(event) {
