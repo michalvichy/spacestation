@@ -126,6 +126,7 @@ if (!function_exists('portfolio_list_tuff')) {
         $html = "";
 
 	// portfolio layout / style classes
+        $layouts = Array('standard','standard right','square_big top-left','square_big top-right'); 
         $_type_class = '';
         $_portfolio_space_class = '';
         $_portfolio_masonry_with_space_class = '';
@@ -302,7 +303,7 @@ if (!function_exists('portfolio_list_tuff')) {
                 $grid_number_of_columns = "gs4";
             }
             
-            $html .= "<div class='projects_masonry_holder portfolio_main_holder ". $grid_number_of_columns ." ".$portfolio_loading_class."'>";
+            $html .= "<div class='tuff projects_masonry_holder portfolio_main_holder ". $grid_number_of_columns ." ".$portfolio_loading_class."'>";
             
             // PAGED
             if (get_query_var('paged')) {
@@ -345,7 +346,7 @@ if (!function_exists('portfolio_list_tuff')) {
                 if(get_field('post_layout')){
                 	$post_layout = get_field('post_layout');
             	}else{
-            		$post_layout = "rectangle_landscape";
+            		$post_layout = $layouts[array_rand($layouts)];
             	}
 
                 $featured_image_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); //original size
@@ -396,54 +397,100 @@ if (!function_exists('portfolio_list_tuff')) {
 
                 //if $hover_type == 'default'
                 if($hover_type == 'default') {
-                    $html .= "<div class='image_holder'>";
-                    $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."'>";
-                    $html .= "<span class='image'>";
-                    // echo '<script>alert("'.$post_layout.'");</script>';
+
                     if($post_layout == "square_big top-right" || $post_layout == "square_big top-left"){
+                        
                         $image_size = "portfolio_masonry_large";
+
+                        $html .= "<div class='image_holder'>";
+                        $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."' style='width:50%;'>";
+                        $html .= "<span class='image'>";
+                        $html .= get_the_post_thumbnail(get_the_ID(), $image_size);
+                        $html .= "</span>";
+                        $html .= "</a>";
+                        $html .= "<span class='text_holder'>";
+                        $html .= "<span class='text_outer'>";
+                        $html .= "<span class='text_inner'>";
+                        $html .= '<div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner">';
+    
+                        if($show_categories !== 'no') {
+                            $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>';
+                            $k = 1;
+                            foreach ($terms as $term) {
+                                $html .= "$term->name";
+                                if (count($terms) != $k) {
+                                    $html .= ', ';
+                                }
+                                $k++;
+                            }
+                            $html .= '</span>';
+                        }
+    
+                        if($show_title !== 'no') {
+                            $html .= '<'.$title_tag.' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).' target="'.$target.'">' . get_the_title() . '</a></'.$title_tag.'>';
+                        }
+    
+                        $excerpt = substr(get_the_excerpt(), 0, intval(65)).'...';
+    
+                        if($portfolio_separator == "yes"){
+                            $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
+                            $html .='<div>'.$excerpt.'</div>';
+                        }else{
+                            $html .='<div>'.$excerpt.'</div>';
+                        }
+    
+                        $html .= '</div></div>';
+                        $html .= "</span></span></span>";
+                        $html .= "</div>";
+
                     } else{
                         $image_size = "portfolio_masonry_regular";
-                    }
-                    $html .= get_the_post_thumbnail(get_the_ID(), $image_size);
-                    $html .= "</span>";
-                    $html .= "</a>";
-                    $html .= "<span class='text_holder'>";
-                    $html .= "<span class='text_outer'>";
-                    $html .= "<span class='text_inner'>";
-                    $html .= '<div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner">';
 
-                    if($show_categories !== 'no') {
-                        $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>';
-                        $k = 1;
-                        foreach ($terms as $term) {
-                            $html .= "$term->name";
-                            if (count($terms) != $k) {
-                                $html .= ', ';
+                        $html .= "<div class='flex image_holder'>";
+                        $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."'>";
+                        $html .= "<span class='image'>";
+                        $html .= get_the_post_thumbnail(get_the_ID(), $image_size);
+                        $html .= "</span>";
+                        $html .= "</a>";
+                        $html .= "<span class='text_holder'>";
+                        $html .= "<span class='text_outer'>";
+                        $html .= "<span class='text_inner'>";
+                        $html .= '<div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner">';
+    
+                        if($show_categories !== 'no') {
+                            $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>';
+                            $k = 1;
+                            foreach ($terms as $term) {
+                                $html .= "$term->name";
+                                if (count($terms) != $k) {
+                                    $html .= ', ';
+                                }
+                                $k++;
                             }
-                            $k++;
+                            $html .= '</span>';
                         }
-                        $html .= '</span>';
-                    }
-
-                    if($show_title !== 'no') {
-                        $html .= '<'.$title_tag.' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).' target="'.$target.'">' . get_the_title() . '</a></'.$title_tag.'>';
-                    }
-
-                    $excerpt = substr(get_the_excerpt(), 0, intval(65)).'...';
-
-                    if($portfolio_separator == "yes"){
-                        $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                        $html .='<div>'.$excerpt.'</div>';
-                    }else{
-                        $html .='<div>'.$excerpt.'</div>';
-                    }
+    
+                        if($show_title !== 'no') {
+                            $html .= '<'.$title_tag.' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).' target="'.$target.'">' . get_the_title() . '</a></'.$title_tag.'>';
+                        }
+    
+                        $excerpt = substr(get_the_excerpt(), 0, intval(65)).'...';
+    
+                        if($portfolio_separator == "yes"){
+                            $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
+                            $html .='<div>'.$excerpt.'</div>';
+                        }else{
+                            $html .='<div>'.$excerpt.'</div>';
+                        }
+    
+                        
+    
+                        $html .= '</div></div>';
+                        $html .= "</span></span></span>";
+                        $html .= "</div>";
+                        }
 
                     
-
-                    $html .= '</div></div>';
-                    $html .= "</span></span></span>";
-                    $html .= "</div>";
                 } 
 
                 $html .= "</article>";
