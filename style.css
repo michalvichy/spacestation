@@ -496,6 +496,51 @@ div.caroufredsel_wrapper{
   left: 0!important;
 }
 
+.tuff_carousel .carousel_item_holder{
+    margin:0!important; 
+    width:100%; 
+    /*background: lime;*/
+}
+
+.tuff_carousel .has_hover_image{
+    opacity:1!important;   
+}
+
+.tuff_carousel span.first_image_holder.has_hover_image{
+ width: 50%!important;
+ float: left;
+ position: relative;
+}
+
+.tuff_carousel div.second_image_holder.has_hover_image{
+ width: 50%!important;
+ float: left;
+ position: relative!important; 
+ padding:0; 
+ /*background:aqua!important;*/
+}
+
+.tuff_carousel  .qode_carousels .slides>li{margin: 0;}
+
+.tuff_carousel li.item div.carousel_item_holder:nth-child(2) span.first_image_holder.has_hover_image{
+ float:right!important;
+}
+
+.tuff_carousel .carousel_nav{
+    position: absolute;
+    right: 30px;
+    z-index: 100;
+    top: 10px;
+}
+
+.tuff_carousel .carousel_nav a{
+    font-size: 24px;
+    background: rgba(204,204,204,0.8);
+    padding: 3px 10px;
+}
+
+
+
 /* ////////////////////////////////// */
 /* ------------- CONTENT BOTTOM ------------- */
 
@@ -617,3 +662,17 @@ div.tooltip.tooltip1{
 }
 
 div.tooltip.tooltip1 i{cursor: pointer;}
+
+/* ////////////////////////////////////////////// */
+/* -------- PORTFOLIO MASONRY => CANVAS --------- */
+/* ////////////////////////////////////////////// */
+.projects_masonry_holder .hover_feature_holder_title_inner{font-size: 12px; line-height: 1em;}
+.portfolio_main_holder .project_category{font-size: 11px; margin: 2px 0 5px 0!important;}
+.projects_masonry_holder .portfolio_title{margin-bottom: 5px; line-height: 1.2em;}
+
+
+
+
+
+
+

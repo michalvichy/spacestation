@@ -292,6 +292,23 @@ $j(document).ready(function() {
 
 $j(window).load(function(){
 	"use strict";
+
+	// CAROUSEL navigation
+
+	$j('.qode_carousels_holder .carousel_nav').on('click', 'a', function(event) {
+		event.preventDefault();
+		/* Act on the event */
+		switch( $j(event.currentTarget).attr('id') ){
+			case 'carousel_nav-next':
+				$j('.qode_carousels .slides').trigger("next", 1);
+				break;
+			case 'carousel_nav-prev':
+				$j('.qode_carousels .slides').trigger("prev", 1);
+				break;
+
+		}
+		
+	});
 	
 	$j('.touch .main_menu li:has(div.second)').doubleTapToGo(); // load script to close menu on touch devices
 	initSmallImageBlogHeight();
@@ -332,6 +349,7 @@ $j(window).load(function(){
     initParallax(); //has to be here on last place since some function is interfering with parallax
     initQodeElementAnimationSkrollr();
 	setTimeout(function(){
+		initPortfolioMasonry();
         checkAnchorOnScroll();
         checkAnchorOnLoad(); // it has to be after content top margin initialization to know where to scroll
         checkHeaderStyleOnScroll(); //moved to window load because sections are not fully initialized on dom ready and calculations are wrong
@@ -1596,7 +1614,7 @@ function initQodeCarousel(){
                 responsive: true,
                 scroll : {
                     items           : 1,
-                    duration        : 1000,
+                    duration        : 500,
                     pauseOnHover    : false
                 },
                 items: {
@@ -1607,7 +1625,7 @@ function initQodeCarousel(){
                     }
                 },
                 auto: false,
-                mousewheel: true,
+                mousewheel: false,
                 swipe: {
                     onMouse: true,
                     onTouch: true

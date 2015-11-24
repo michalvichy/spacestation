@@ -263,477 +263,8 @@ if (!function_exists('portfolio_list_tuff')) {
 		}
 	//
         $show_description_box = $show_title == 'no' && $show_categories == 'no' ? false : true;
-    
-    //////// IF NOT MASONRY
-        if($type != 'masonry') {
-            $html .= "<div class='projects_holder_outer v$columns $_portfolio_space_class $_portfolio_masonry_with_space_class'>";
-            if ($filter == "yes") {
-
-                if($type == 'masonry_with_space' || $type == 'masonry_with_space_without_description'){
-                    $html .= "<div class='filter_outer'>";
-                    $html .= "<div class='filter_holder'>
-						<ul>
-						<li class='filter' data-filter='*'><span>" . __('All', 'qode') . "</span></li>";
-                    if ($category == "") {
-                        $args = array(
-                            'parent' => 0
-                        );
-                        $portfolio_categories = get_terms('portfolio_category', $args);
-                    } else {
-                        $top_category = get_term_by('slug', $category, 'portfolio_category');
-                        $term_id = '';
-                        if (isset($top_category->term_id))
-                            $term_id = $top_category->term_id;
-                        $args = array(
-                            'parent' => $term_id
-                        );
-                        $portfolio_categories = get_terms('portfolio_category', $args);
-                    }
-                    foreach ($portfolio_categories as $portfolio_category) {
-                        $html .= "<li class='filter' data-filter='.portfolio_category_$portfolio_category->term_id'><span>$portfolio_category->name</span>";
-                        $args = array(
-                            'child_of' => $portfolio_category->term_id
-                        );
-                        $html .= '</li>';
-                    }
-                    $html .= "</ul></div>";
-                    $html .= "</div>";
-
-                }else{
-
-                    $html .= "<div class='filter_outer'>";
-                    $html .= "<div class='filter_holder'>
-                            <ul>
-                            <li class='filter' data-filter='all'><span". $filter_style .">" . __('All', 'qode') . "</span></li>";
-                    if ($category == "") {
-                        $args = array(
-                            'parent' => 0
-                        );
-                        $portfolio_categories = get_terms('portfolio_category', $args);
-                    } else {
-                        $top_category = get_term_by('slug', $category, 'portfolio_category');
-                        $term_id = '';
-                        if (isset($top_category->term_id))
-                            $term_id = $top_category->term_id;
-                        $args = array(
-                            'parent' => $term_id
-                        );
-                        $portfolio_categories = get_terms('portfolio_category', $args);
-                    }
-                    foreach ($portfolio_categories as $portfolio_category) {
-                        $html .= "<li class='filter' data-filter='portfolio_category_$portfolio_category->term_id'><span". $filter_style .">$portfolio_category->name</span>";
-                        $args = array(
-                            'child_of' => $portfolio_category->term_id
-                        );
-                        $html .= '</li>';
-                    }
-                    $html .= "</ul></div>";
-                    $html .= "</div>";
-                }
-            }
-
-            $thumb_size_class = "";
-        	//get proper image size
-            switch($image_size) {
-                case 'landscape':
-                    $thumb_size_class = 'portfolio_landscape_image';
-                    break;
-                case 'portrait':
-                    $thumb_size_class = 'portfolio_portrait_image';
-                    break;
-                case 'square':
-                    $thumb_size_class = 'portfolio_square_image';
-                    break;
-                default:
-                    $thumb_size_class = 'portfolio_full_image';
-                    break;
-            }
-
-            $html .= "<div class='projects_holder portfolio_main_holder clearfix v$columns$_type_class $thumb_size_class $portfolio_loading_class'>\n";
-            if (get_query_var('paged')) {
-                $paged = get_query_var('paged');
-            } elseif (get_query_var('page')) {
-                $paged = get_query_var('page');
-            } else {
-                $paged = 1;
-            }
-
-            if ($category == "") {
-                $args = array(
-                    'post_type' => 'post',
-                    'orderby' => $order_by,
-                    'order' => $order,
-                    'posts_per_page' => $number,
-                    'paged' => $paged
-                );
-            } else {
-                $args = array(
-                    'post_type' => 'post',
-                    'portfolio_category' => $category,
-                    'orderby' => $order_by,
-                    'order' => $order,
-                    'posts_per_page' => $number,
-                    'paged' => $paged
-                );
-            }
-            $project_ids = null;
-            if ($selected_projects != "") {
-                $project_ids = explode(",", $selected_projects);
-                $args['post__in'] = $project_ids;
-            }
-            query_posts($args);
-            if (have_posts()) : while (have_posts()) : the_post();
-                $terms = wp_get_post_terms(get_the_ID(), 'portfolio_category');
-                $html .= "<article class='mix ";
-                foreach ($terms as $term) {
-                    $html .= "portfolio_category_$term->term_id ";
-                }
-
-                $title = get_the_title();
-                $featured_image_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); //original size
-
-                if(get_post_meta(get_the_ID(), 'qode_portfolio-lightbox-link', true) != ""){
-                    $large_image = get_post_meta(get_the_ID(), 'qode_portfolio-lightbox-link', true);
-                } else {
-                    $large_image = $featured_image_array[0];
-                }
-
-                $slug_list_ = "pretty_photo_gallery";
-
-                //get proper image size
-                switch($image_size) {
-                    case 'landscape':
-                        $thumb_size = 'portfolio-landscape';
-                        break;
-                    case 'portrait':
-                        $thumb_size = 'portfolio-portrait';
-                        break;
-                    case 'square':
-                        $thumb_size = 'portfolio-square';
-                        break;
-                    default:
-                        $thumb_size = 'full';
-                        break;
-                }
-
-                if($type == "masonry_with_space" || $type == "masonry_with_space_without_description"){
-                    $thumb_size = 'portfolio_masonry_with_space';
-                }
-
-                $custom_portfolio_link = get_post_meta(get_the_ID(), 'qode_portfolio-external-link', true);
-                $portfolio_link = $custom_portfolio_link != "" ? $custom_portfolio_link : get_permalink();
-
-                if(get_post_meta(get_the_ID(), 'qode_portfolio-external-link-target', true) != ""){
-                    $custom_portfolio_link_target = get_post_meta(get_the_ID(), 'qode_portfolio-external-link-target', true);
-                } else {
-                    $custom_portfolio_link_target = '_blank';
-                }
-
-                $target = $custom_portfolio_link != "" ? $custom_portfolio_link_target : '_self';
-
-                $html .="' ";
-                $html .= $article_style;
-                $html .= ">";
-
-                if($hover_type == 'default') {
-                    $html .= "<div class='image_holder'>";
-                    $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."'>";
-                    $html .= "<span class='image'>";
-                    $html .= get_the_post_thumbnail(get_the_ID(), $thumb_size);
-                    $html .= "</span>";
-                    $html .= "</a>";
-
-                    if ($type == "standard" || $type == "standard_no_space" || $type == "masonry_with_space") {
-                        $html .= "<span class='text_holder'>";
-                        $html .= "<span class='text_outer'>";
-                        $html .= "<span class='text_inner'>";
-                        $html .= "<span class='feature_holder'>";
-                        if($lightbox == "yes" || $portfolio_qode_like == "on" || $view_button !== "no"){
-                            $html .= '<span class="feature_holder_icons">';
-                            if ($lightbox == "yes") {
-                                $html .= "<a class='lightbox qbutton small white' title='" . $title . "' href='" . $large_image . "' data-rel='prettyPhoto[" . $slug_list_ . "]'>" . __('zoom', 'qode'). "</a>";
-                            }
-                            if($view_button !== "no"){
-                                $html .= "<a class='preview qbutton small white' href='" . $portfolio_link . "' target='".$target."'>" . __('view', 'qode'). "</a>";
-                            }
-                            if ($portfolio_qode_like == "on") {
-                                $html .= "<span class='portfolio_like qbutton small white'>";
-                                $portfolio_project_id = get_the_ID();
-
-                                if (function_exists('qode_like_portfolio_list')) {
-                                    $html .= qode_like_portfolio_list();
-                                }
-                                $html .= "</span>";
-                            }
-                            $html .= "</span>";
-                        }
-                        $html .= "</span></span></span></span>";
-
-
-                    } else if ($type == "hover_text" || $type == "hover_text_no_space" || $type = 'masonry_with_space_without_description') {
-
-                        $html .= "<span class='text_holder'>";
-                        $html .= "<span class='text_outer'>";
-                        $html .= "<span class='text_inner'>";
-                        $html .= '<div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner">';
-
-                        if($show_title !== 'no') {
-                            $html .= '<'.$title_tag.' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).' target="'.$target.'">' . get_the_title() . '</a></'.$title_tag.'>';
-                        }
-
-                        if($portfolio_separator == "yes"){
-                            $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                        }
-
-                        if($show_categories !== 'no') {
-                            $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>';
-                            $k = 1;
-                            foreach ($terms as $term) {
-                                $html .= "$term->name";
-                                if (count($terms) != $k) {
-                                    $html .= ', ';
-                                }
-                                $k++;
-                            }
-                            $html .= '</span>';
-                        }
-
-                        $html .= '</div></div>';
-                        $html .= "<span class='feature_holder'>";
-                        if($lightbox == "yes" || $portfolio_qode_like == "on" || $view_button !== "no"){
-                            $html .= '<span class="feature_holder_icons">';
-                            if ($lightbox == "yes") {
-                                $html .= "<a class='lightbox qbutton small white' title='" . $title . "' href='" . $large_image . "' data-rel='prettyPhoto[" . $slug_list_ . "]'>" . __('zoom', 'qode'). "</a>";
-                            }
-                            if($view_button !== "no"){
-                                $html .= "<a class='preview qbutton small white' href='" . $portfolio_link . "' target='".$target."'>" . __('view', 'qode'). "</a>";
-                            }
-                            if ($portfolio_qode_like == "on") {
-                                $html .= "<span class='portfolio_like qbutton small white'>";
-                                $portfolio_project_id = get_the_ID();
-
-                                if (function_exists('qode_like_portfolio_list')) {
-                                    $html .= qode_like_portfolio_list();
-                                }
-                                $html .= "</span>";
-                            }
-                            $html .= "</span>";
-                        }
-                        $html .= "</span></span></span></span>";
-
-
-                    }
-                    $html .= "</div>";
-                    if (($type == "standard" || $type == "standard_no_space" || $type == "masonry_with_space") && $show_description_box) {
-                        $html .= "<div class='portfolio_description ".$portfolio_description_class."'". $portfolio_box_style .">";
-
-                        if($show_title !== 'no') {
-                            $html .= '<'.$title_tag.' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).' target="'.$target.'">' . get_the_title() . '</a></'.$title_tag.'>';
-                        }
-
-                        if($portfolio_separator == "yes"){
-                            $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                        }
-
-                        if($show_categories !== 'no') {
-                            $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>';
-                            $k = 1;
-                            foreach ($terms as $term) {
-                                $html .= "$term->name";
-                                if (count($terms) != $k) {
-                                    $html .= ', ';
-                                }
-                                $k++;
-                            }
-                            $html .= '</span>';
-                        }
-
-                        $html .= '</div>';
-                    }
-
-                } else {
-                    $category_html = "";
-                    $k = 1;
-                    foreach ($terms as $term) {
-                        $category_html .= "$term->name";
-                        if (count($terms) != $k) {
-                            $category_html .= ' / ';
-                        }
-                        $k++;
-                    }
-
-                    $show_icons = "yes";
-                    // disable icons on this hover type
-                    if ($hover_type == 'cursor_change_hover' || $hover_type == 'thin_plus_only' || $hover_type == 'split_up') {
-                        $show_icons = "no";
-                    }
-
-                    $disable_link = 'no';
-                    // disable link if icons are shown for these hover type
-                    if (($hover_type == 'subtle_vertical_hover' || $hover_type == 'image_subtle_rotate_zoom_hover' || $hover_type == 'image_text_zoom_hover') && $show_icons == 'yes') {
-                        $disable_link = "yes";
-                    }
-
-                    $html .= '<div class="item_holder ' . $hover_type . '">';
-
-                    switch ($hover_type) {
-                        case 'subtle_vertical_hover':
-                        case 'image_subtle_rotate_zoom_hover':
-                        case 'image_text_zoom_hover':
-                        case 'thin_plus_only':
-                        case 'cursor_change_hover':
-                            $html .= '<div class="text_holder">';
-                            $html .= '<div class="text_holder_outer">';
-                            $html .= '<div class="text_holder_inner">';
-                            if($hover_type == 'thin_plus_only'){
-                                $html .= '<span class="thin_plus_only_icon">+</span>';
-                            }
-
-                            elseif (in_array($type, array('hover_text', 'hover_text_no_space', 'masonry_with_space_without_description'))) {
-                                if($show_title !== 'no') {
-                                    $html .= '<' . $title_tag . ' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).'>' . get_the_title() . '</a></' . $title_tag . '>';
-                                }
-
-                                if($portfolio_separator == "yes") {
-                                    $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                                }
-
-                                if($show_categories !== 'no') {
-                                    $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>' . $category_html . '</span>';
-                                }
-                            }
-
-                            if($show_icons == 'yes') {
-                                $html .= '<div class="icons_holder">';
-
-                                if($lightbox == "yes") {
-                                    $html .= '<a class="portfolio_lightbox" title="' . $title . '" href="' . $large_image . '" data-rel="prettyPhoto[' . $slug_list_ . ']" rel="prettyPhoto[' . $slug_list_ . ']"></a>';
-                                }
-
-                                if ($portfolio_qode_like == "on" && function_exists('qode_like_portfolio_list')) {
-                                    $html .= qode_like_portfolio_list('icon');
-                                }
-
-                                if($view_button !== "no") {
-                                    $html .= '<a class="preview" title="'.__('Go to Project', 'qode').'" href="' . $portfolio_link . '" data-type="portfolio_list" target="' . $target . '" ></a>';
-                                }
-
-                                $html .= '</div>'; // icons_holder
-                            }
-
-                            $html .= '</div>'; // text_holder_inner
-                            $html .= '</div>';  // text_holder_outer
-                            $html .= '</div>'; // text_holder
-
-                            break;
-                        case 'slow_zoom':
-                        case 'split_up':
-
-                            if (in_array($type, array('hover_text', 'hover_text_no_space', 'masonry_with_space_without_description'))) {
-                                $html .= '<div class="text_holder">';
-                                $html .= '<div class="text_holder_outer">';
-                                $html .= '<div class="text_holder_inner">';
-
-                                if($show_title !== 'no') {
-                                    $html .= '<' . $title_tag . ' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).'>' . get_the_title() . '</a></' . $title_tag . '>';
-                                }
-
-                                if($portfolio_separator == "yes") {
-                                    $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                                }
-
-                                if($show_categories !== 'no') {
-                                    $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>' . $category_html . '</span>';
-                                }
-
-                                $html .= '</div>'; //text_holder_inner
-                                $html .= '</div>';  // text_holder_outer
-                                $html .= '</div>'; // text_holder
-                            }
-
-                            if ($show_icons == 'yes') {
-                                $html .= '<div class="icons_holder">';
-
-                                if($lightbox == "yes") {
-                                    $html .= '<a class="portfolio_lightbox" title="' . $title . '" href="' . $large_image . '" data-rel="prettyPhoto[' . $slug_list_ . ']" rel="prettyPhoto[' . $slug_list_ . ']"></a>';
-                                }
-
-                                if ($portfolio_qode_like == "on" && function_exists('qode_like_portfolio_list')) {
-                                    $html .= qode_like_portfolio_list('icon');
-                                }
-
-                                if($view_button !== "no") {
-                                    $html .= '<a class="preview" title="Go to Project" href="' . $portfolio_link . '" data-type="portfolio_list" target="' . $target . '" ></a>';
-                                }
-
-                                $html .= '</div>';  // icons_holder
-                            }
-                            break;
-                    }
-
-                    if($disable_link == 'no') {
-                        $html .= '<a class="portfolio_link_class" title="' . $title . '" href="' . $portfolio_link . '"></a>';
-                    }
-
-                    $html .= '<div '.qode_get_inline_style($overlay_styles).' class="portfolio_shader"></div>';
-                    $html .= '<div class="image_holder">';
-                    $html .= '<span class="image">';
-                    $html .= get_the_post_thumbnail(get_the_ID(), $thumb_size);
-                    $html .= '</span>';
-                    $html .= '</div>'; // close image_holder
-                    $html .= '</div>'; // close item_holder
-                    // portfolio description start
-
-                    if ($type == "standard" || $type == "standard_no_space" || $type == "masonry_with_space") {
-                        $html .= "<div class='portfolio_description " . $portfolio_description_class . "' ". $portfolio_box_style .">";
-
-                        if($show_title !== 'no') {
-                            $html .= '<' . $title_tag . ' class="portfolio_title"><a href="' . $portfolio_link . '" target="' . $target . '" '.qode_get_inline_style($title_styles).'>' . get_the_title() . '</a></' . $title_tag . '>';
-                        }
-
-                        if($portfolio_separator == "yes") {
-                            $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                        }
-
-                        if($show_categories !== 'no') {
-                            $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>' . $category_html . '</span>';
-                        }
-
-                        $html .= '</div>'; // close portfolio_description
-                    }
-                }
-
-                $html .= "</article>\n";
-
-            endwhile;
-
-                $i = 1;
-                while ($i <= $columns) {
-                    $i++;
-                    if ($columns != 1) {
-                        $html .= "<div class='filler'></div>\n";
-                    }
-                }
-
-            else:
-                ?>
-                <p><?php _e('Sorry, no posts matched your criteria.', 'qode'); ?></p>
-            <?php
-            endif;
-
-
-            $html .= "</div>";
-            if (get_next_posts_link()) {
-                if ($show_load_more == "yes" || $show_load_more == "") {
-                    $html .= '<div class="portfolio_paging"><span rel="' . $wp_query->max_num_pages . '" class="load_more">' . get_next_posts_link(__('Show more', 'qode')) . '</span></div>';
-                    $html .= '<div class="portfolio_paging_loading"><a href="javascript: void(0)" class="qbutton">'.__('Loading...', 'qode').'</a></div>';
-                }
-            }
-            $html .= "</div>";
-            wp_reset_query();
-        } 
     /////// IF MASONRY
-        else {
+        if($type === 'masonry') {
             if ($filter == "yes") {
 
                 $html .= "<div class='filter_outer'>";
@@ -868,6 +399,12 @@ if (!function_exists('portfolio_list_tuff')) {
                     $html .= "<div class='image_holder'>";
                     $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."'>";
                     $html .= "<span class='image'>";
+                    // echo '<script>alert("'.$post_layout.'");</script>';
+                    if($post_layout == "square_big top-right" || $post_layout == "square_big top-left"){
+                        $image_size = "portfolio_masonry_large";
+                    } else{
+                        $image_size = "portfolio_masonry_regular";
+                    }
                     $html .= get_the_post_thumbnail(get_the_ID(), $image_size);
                     $html .= "</span>";
                     $html .= "</a>";
@@ -893,169 +430,21 @@ if (!function_exists('portfolio_list_tuff')) {
                         $html .= '<'.$title_tag.' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).' target="'.$target.'">' . get_the_title() . '</a></'.$title_tag.'>';
                     }
 
+                    $excerpt = substr(get_the_excerpt(), 0, intval(65)).'...';
+
                     if($portfolio_separator == "yes"){
                         $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                        $html .='<div>'.get_the_excerpt().'</div>';
+                        $html .='<div>'.$excerpt.'</div>';
+                    }else{
+                        $html .='<div>'.$excerpt.'</div>';
                     }
 
                     
 
                     $html .= '</div></div>';
-                    if($lightbox == "yes" || $portfolio_qode_like == "on" || $view_button !== "no"){
-                        $html .= "<span class='feature_holder'>";
-
-                        $html .= '<span class="feature_holder_icons">';
-                        if ($lightbox == "yes") {
-                            $html .= "<a class='lightbox qbutton small white' title='" . $title . "' href='" . $large_image . "' data-rel='prettyPhoto[" . $slug_list_ . "]'>" . __('zoom', 'qode'). "</a>";
-                        }
-                        if($view_button !== "no"){
-                            $html .= "<a class='preview qbutton small white' href='" . $portfolio_link . "' target='".$target."'>" . __('view', 'qode'). "</i></a>";
-                        }
-                        if ($portfolio_qode_like == "on") {
-                            $html .= "<span class='portfolio_like qbutton small white'>";
-                            $portfolio_project_id = get_the_ID();
-
-                            if (function_exists('qode_like_portfolio_list')) {
-                                $html .= qode_like_portfolio_list();
-                            }
-                            $html .= "</span>";
-                        }
-                        $html .= "</span>";
-
-                        $html .= "</span>";
-                    }
                     $html .= "</span></span></span>";
                     $html .= "</div>";
                 } 
-                // if $hover_type not 'default'
-                else {
-                    $category_html = "";
-                    $k = 1;
-                    foreach ($terms as $term) {
-                        $category_html .= "$term->name";
-                        if (count($terms) != $k) {
-                            $category_html .= ' / ';
-                        }
-                        $k++;
-                    }
-
-                    $show_icons = "yes";
-                    // disable icons on this hover type
-                    if ($hover_type == 'cursor_change_hover' || $hover_type == 'thin_plus_only' || $hover_type == 'split_up') {
-                        $show_icons = "no";
-                    }
-
-                    $disable_link = 'no';
-                    // disable link if icons are shown for these hover type
-                    if (($hover_type == 'subtle_vertical_hover' || $hover_type == 'image_subtle_rotate_zoom_hover' || $hover_type == 'image_text_zoom_hover') && $show_icons == 'yes') {
-                        $disable_link = "yes";
-                    }
-
-                    $html .= '<div class="item_holder ' . $hover_type . '">';
-
-                    switch ($hover_type) {
-                        case 'subtle_vertical_hover':
-                        case 'image_subtle_rotate_zoom_hover':
-                        case 'cursor_change_hover':
-                        case 'image_text_zoom_hover':
-                        case 'thin_plus_only':
-                            if ( $show_icons == 'yes' || $hover_type == 'thin_plus_only' || $hover_type = 'cursor_change_hover') {
-                                $html .= '<div class="text_holder">';
-                                $html .= '<div class="text_holder_outer">';
-                                $html .= '<div class="text_holder_inner">';
-                                if($hover_type == 'thin_plus_only') {
-                                    $html .= '<span class="thin_plus_only_icon">+</span>';
-                                } else {
-                                    if($show_title !== 'no') {
-                                        $html .= '<' . $title_tag . ' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).'>' . get_the_title() . '</a></' . $title_tag . '>';
-                                    }
-
-                                    if($portfolio_separator == "yes") {
-                                        $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                                    }
-
-                                    if($show_categories !== 'no') {
-                                        $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>' . $category_html . '</span>';
-                                    }
-
-                                    if ($show_icons == 'yes') {
-                                        $html .= '<div class="icons_holder">';
-
-                                        if($lightbox == "yes") {
-                                            $html .= '<a class="portfolio_lightbox" title="' . $title . '" href="' . $large_image . '" data-rel="prettyPhoto[' . $slug_list_ . ']" rel="prettyPhoto[' . $slug_list_ . ']"></a>';
-                                        }
-
-                                        if ($portfolio_qode_like == "on" && function_exists('qode_like_portfolio_list')) {
-                                            $html .= qode_like_portfolio_list('icon');
-                                        }
-
-                                        if($view_button !== "no") {
-                                            $html .= '<a class="preview" title="Go to Project" href="' . $portfolio_link . '" data-type="portfolio_list" target="' . $target . '" ></a>';
-                                        }
-
-                                        $html .= '</div>'; // icons_holder
-                                    }
-                                }
-                                $html .= '</div>'; // text_holder_inner
-                                $html .= '</div>';  // text_holder_outer
-                                $html .= '</div>'; // text_holder
-                            }
-
-                            break;
-                        case 'slow_zoom':
-                        case 'split_up':
-                            $html .= '<div class="text_holder">';
-                            $html .= '<div class="text_holder_outer">';
-                            $html .= '<div class="text_holder_inner">';
-
-                            if($show_title !== 'no') {
-                                $html .= '<' . $title_tag . ' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).'>' . get_the_title() . '</a></' . $title_tag . '>';
-                            }
-
-                            if($portfolio_separator == "yes") {
-                                $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                            }
-
-                            if($show_categories !== 'no') {
-                                $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>' . $category_html . '</span>';
-                            }
-
-                            $html .= '</div>'; //text_holder_inner
-                            $html .= '</div>'; // text_holder_outer
-                            $html .= '</div>';  // text_holder
-                            if ($show_icons == "yes") {
-                                $html .= '<div class="icons_holder">';
-
-                                if($lightbox == "yes") {
-                                    $html .= '<a class="portfolio_lightbox" title="' . $title . '" href="' . $large_image . '" data-rel="prettyPhoto[' . $slug_list_ . ']" rel="prettyPhoto[' . $slug_list_ . ']"></a>';
-                                }
-
-                                if ($portfolio_qode_like == "on" && function_exists('qode_like_portfolio_list')) {
-                                    $html .= qode_like_portfolio_list('icon');
-                                }
-
-                                if($view_button !== "no") {
-                                    $html .= '<a class="preview" title="Preview" href="' . $portfolio_link . '" data-type="portfolio_list" target="' . $target . '" ></a>';
-                                }
-
-                                $html .= '</div>';  // icons_holder
-                            }
-
-                            break;
-                    }
-
-                    if($disable_link == 'no') {
-                        $html .= '<a class="portfolio_link_class" title="' . $title . '" href="' . $portfolio_link . '"></a>';
-                    }
-
-                    $html .= '<div '.qode_get_inline_style($overlay_styles).' class="portfolio_shader"></div>';
-                    $html .= '<div class="image_holder">';
-                    $html .= '<span class="image">';
-                    $html .= get_the_post_thumbnail(get_the_ID(), $image_size);
-                    $html .= '</span>';
-                    $html .= '</div>'; // close text_holder
-                    $html .= '</div>'; // close item_holder
-                }
 
                 $html .= "</article>";
 
@@ -1234,7 +623,7 @@ if (!function_exists('qode_carousel_tuff')) {
                 $carousel_holder_classes = ' two_rows';
             }
 
-            $html .= "<div class='qode_carousels_holder clearfix " . $carousel_holder_classes  ."'><div class='qode_carousels '><ul class='slides clearfix '>";
+            $html .= "<div class='tuff_carousel qode_carousels_holder clearfix " . $carousel_holder_classes  ."'><div class='carousel_nav'><a id='carousel_nav-next' href='#'><i class='qode_icon_font_awesome fa fa-angle-right '></i></a><br><br><a id='carousel_nav-prev' href='#'><i class='qode_icon_font_awesome fa fa-angle-left '></i></a></div><div class='qode_carousels '><ul class='slides clearfix '>";
 
             // $q = array('post_type'=> 'carousels', 'carousels_category' => $carousel, 'orderby' => $orderby, 'order' => $order, 'posts_per_page' => '-1');
 
@@ -1250,49 +639,15 @@ if (!function_exists('qode_carousel_tuff')) {
 
             if ( have_posts() ) : $postCount = 1; while ( have_posts() ) : the_post();
 
-                // echo '<script>alert("'.$errorMessage.'");</script>';
-
-                // echo(get_post_meta(get_the_ID(),"qode_carousel-image",true));
-
-                // if(get_post_meta(get_the_ID(), "qode_carousel-image", true) != ""){
-                //     $image = get_post_meta(get_the_ID(), "qode_carousel-image", true);
-                // } else {
-                //     $image = "";
-                // }
-                
-                // $image = get_the_post_thumbnail(array(250,250));
-
                 $thumb_id = get_post_thumbnail_id();
                 $thumb_url = wp_get_attachment_image_src($thumb_id, array(100,100) , true);
                 $image = $thumb_url[0];
 
-
-                // $image = get_post_meta(get_the_ID(), "qode_carousel-image", true);
-
-                // if(get_post_meta(get_the_ID(), "qode_carousel-hover-image", true) != ""){
-                //     $hover_image = get_post_meta(get_the_ID(), "qode_carousel-hover-image", true);
-                //     $has_hover_image = "has_hover_image";
-                // } else {
-                //     $hover_image = "";
-                //     $has_hover_image = "";
-                // }
-
                 $hover_image = "yes";
                 $has_hover_image = "has_hover_image";
 
-                // if(get_post_meta(get_the_ID(), "qode_carousel-item-link", true) != ""){
-                //     $link = get_post_meta(get_the_ID(), "qode_carousel-item-link", true);
-                // } else {
-                //     $link = "";
-                // }
-
                 $link = get_permalink();
 
-                // if(get_post_meta(get_the_ID(), "qode_carousel-item-target", true) != ""){
-                //     $target = get_post_meta(get_the_ID(), "qode_carousel-item-target", true);
-                // } else {
-                //     $target = "_self";
-                // }
                 $target = "_self";
 
                 $title = get_the_title();
@@ -1319,9 +674,7 @@ if (!function_exists('qode_carousel_tuff')) {
                         $html .= wp_get_attachment_image($first_image, 'full');
                     } else {
                         $html .= '<img src="'.$image.'" alt="carousel image" />';
-                        // $html .= $image;
                     }
-
 
                     $html .= "</span>";
                 }
@@ -1331,11 +684,6 @@ if (!function_exists('qode_carousel_tuff')) {
                 if($hover_image != ""){
                     $html .= "<div class='second_image_holder clearfix ".$has_hover_image."' >";
 
-                    // if(is_int($second_image)) {
-                    //     $html .= wp_get_attachment_image($second_image, 'full');
-                    // } else {
-                    //     $html .= '<img src="'.$hover_image.'" alt="carousel image" />';
-                    // }
                     $html .= '<h3>'.$title.'</h3>';
 
 
