@@ -126,6 +126,7 @@ if (!function_exists('portfolio_list_tuff')) {
         $html = "";
 
 	// portfolio layout / style classes
+        $layouts = Array('standard','standard right','square_big top-left','square_big top-right'); 
         $_type_class = '';
         $_portfolio_space_class = '';
         $_portfolio_masonry_with_space_class = '';
@@ -345,7 +346,7 @@ if (!function_exists('portfolio_list_tuff')) {
                 if(get_field('post_layout')){
                 	$post_layout = get_field('post_layout');
             	}else{
-            		$post_layout = "rectangle_landscape";
+            		$post_layout = $layouts[array_rand($layouts)];
             	}
 
                 $featured_image_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); //original size

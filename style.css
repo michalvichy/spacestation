@@ -517,7 +517,6 @@ div.caroufredsel_wrapper{
  float: left;
  position: relative!important; 
  padding:0; 
- /*background:aqua!important;*/
 }
 
 .tuff_carousel  .qode_carousels .slides>li{margin: 0;}
@@ -671,7 +670,15 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 .tuff .projects_holder_outer.masonry_with_space .projects_holder.portfolio_one_by_one article.show, 
 .tuff.projects_masonry_holder.portfolio_one_by_one article.show{
     width:50%;
-    background: aqua;
+    /*background: aqua;*/
+}
+
+.tuff .text_holder{
+  background: rgba(255,255,255,0.9);
+}
+
+.tuff .text_holder *, .tuff .portfolio_title{
+  color: black!important;
 }
 
 .projects_masonry_holder .image_holder{margin: 0;}
@@ -681,8 +688,8 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 .tuff.portfolio_main_holder .project_category{font-size: 11px; margin: 2px 0 5px 0!important;}
 .tuff.projects_masonry_holder .portfolio_title{margin-bottom: 5px; line-height: 1.2em;}
 
-/*/////// RECTANGLE_LANDSCAPE (LEFT-> default) */
-.tuff .portfolio_masonry_item.rectangle_landscape .text_holder{
+/*/////// STANDARD LEFT (default) */
+.tuff .portfolio_masonry_item.standard .text_holder{
     /*width:50%;*/
     /*position:relative;*/
     /*float:left;*/
@@ -690,22 +697,26 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 }
 
 
-/*/////// SQUARE_BIG */
+/*/////// BIG */
 .tuff .portfolio_masonry_item.square_big .image_holder img, 
 .tuff .attachment-portfolio_masonry_large{
   width: 200%!important;   
 }
 
 .tuff .portfolio_masonry_item.square_big .text_holder{
-    height:50%!important;
+    height:50%;
     width:50%;
-    margin-top:50%!important;
-    opacity:1!important;
+    /*margin-top:50%!important;*/
+    opacity:1;
 }
 
-/*/////// SQUARE_SMALL */
-.tuff .portfolio_masonry_item.square_small .text_holder{ display:none;}
-.tuff .portfolio_masonry_item.square_small.show{background:none!important;}
+.tuff .portfolio_masonry_item.square_big.top-right .text_holder{
+  margin-left: 50%;
+}
+
+/*/////// SQUARE */
+.tuff .portfolio_masonry_item.square .text_holder{ display:none;}
+.tuff .portfolio_masonry_item.square.show{background:none!important;}
 
 
 /*/////////////////////////////////*/
@@ -716,9 +727,9 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 .tuff .flex.image_holder a.portfolio_link_for_touch{width: 50%;}
 .tuff .flex.image_holder .text_holder{position:absolute!important; width:50%;}
 
-/*/////// RECTANGLE_LANDSCAPE RIGHT*/
-.tuff .portfolio_masonry_item.rectangle_landscape.right .flex.image_holder{ flex-direction: row;}
-.tuff .portfolio_masonry_item.rectangle_landscape.right .flex .text_holder{ left:50%; }
+/*/////// STANDARD RIGHT*/
+.tuff .portfolio_masonry_item.standard.right .flex.image_holder{ flex-direction: row;}
+.tuff .portfolio_masonry_item.standard.right .flex .text_holder{ left:50%; }
 
 
 
