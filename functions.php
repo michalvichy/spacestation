@@ -430,9 +430,12 @@ if (!function_exists('portfolio_list_tuff')) {
                         $html .= '<'.$title_tag.' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).' target="'.$target.'">' . get_the_title() . '</a></'.$title_tag.'>';
                     }
 
+                    $excerpt = substr(get_the_excerpt(), 0, intval(65)).'...';
+
                     if($portfolio_separator == "yes"){
                         $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
-                        $excerpt = substr(get_the_excerpt(), 0, intval(20)).'...';
+                        $html .='<div>'.$excerpt.'</div>';
+                    }else{
                         $html .='<div>'.$excerpt.'</div>';
                     }
 

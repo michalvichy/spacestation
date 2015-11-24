@@ -662,3 +662,17 @@ div.tooltip.tooltip1{
 }
 
 div.tooltip.tooltip1 i{cursor: pointer;}
+
+/* ////////////////////////////////////////////// */
+/* -------- PORTFOLIO MASONRY => CANVAS --------- */
+/* ////////////////////////////////////////////// */
+.projects_masonry_holder .hover_feature_holder_title_inner{font-size: 12px; line-height: 1em;}
+.portfolio_main_holder .project_category{font-size: 11px; margin: 2px 0 5px 0!important;}
+.projects_masonry_holder .portfolio_title{margin-bottom: 5px; line-height: 1.2em;}
+
+
+
+
+
+
+
