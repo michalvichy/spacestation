@@ -349,6 +349,7 @@ $j(window).load(function(){
     initParallax(); //has to be here on last place since some function is interfering with parallax
     initQodeElementAnimationSkrollr();
 	setTimeout(function(){
+		initPortfolioMasonry();
         checkAnchorOnScroll();
         checkAnchorOnLoad(); // it has to be after content top margin initialization to know where to scroll
         checkHeaderStyleOnScroll(); //moved to window load because sections are not fully initialized on dom ready and calculations are wrong
