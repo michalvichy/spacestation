@@ -666,11 +666,59 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 /* ////////////////////////////////////////////// */
 /* -------- PORTFOLIO MASONRY => CANVAS --------- */
 /* ////////////////////////////////////////////// */
-.projects_masonry_holder .hover_feature_holder_title_inner{font-size: 12px; line-height: 1em;}
-.portfolio_main_holder .project_category{font-size: 11px; margin: 2px 0 5px 0!important;}
-.projects_masonry_holder .portfolio_title{margin-bottom: 5px; line-height: 1.2em;}
+
+/*/////// GENERAL STYLES */
+.tuff .projects_holder_outer.masonry_with_space .projects_holder.portfolio_one_by_one article.show, 
+.tuff.projects_masonry_holder.portfolio_one_by_one article.show{
+    width:50%;
+    background: aqua;
+}
+
+.projects_masonry_holder .image_holder{margin: 0;}
+
+/*/////// TEXT STYLING */
+.tuff.projects_masonry_holder .hover_feature_holder_title_inner{font-size: 12px; line-height: 1em;}
+.tuff.portfolio_main_holder .project_category{font-size: 11px; margin: 2px 0 5px 0!important;}
+.tuff.projects_masonry_holder .portfolio_title{margin-bottom: 5px; line-height: 1.2em;}
+
+/*/////// RECTANGLE_LANDSCAPE (LEFT-> default) */
+.tuff .portfolio_masonry_item.rectangle_landscape .text_holder{
+    /*width:50%;*/
+    /*position:relative;*/
+    /*float:left;*/
+    opacity:1;
+}
 
 
+/*/////// SQUARE_BIG */
+.tuff .portfolio_masonry_item.square_big .image_holder img, 
+.tuff .attachment-portfolio_masonry_large{
+  width: 200%!important;   
+}
+
+.tuff .portfolio_masonry_item.square_big .text_holder{
+    height:50%!important;
+    width:50%;
+    margin-top:50%!important;
+    opacity:1!important;
+}
+
+/*/////// SQUARE_SMALL */
+.tuff .portfolio_masonry_item.square_small .text_holder{ display:none;}
+.tuff .portfolio_masonry_item.square_small.show{background:none!important;}
+
+
+/*/////////////////////////////////*/
+/*/////// FLEX APPROACH //////////*/
+/*/////////////////////////////////*/
+
+.tuff .flex.image_holder{display:flex; flex-direction: row-reverse; align-items: stretch;}
+.tuff .flex.image_holder a.portfolio_link_for_touch{width: 50%;}
+.tuff .flex.image_holder .text_holder{position:absolute!important; width:50%;}
+
+/*/////// RECTANGLE_LANDSCAPE RIGHT*/
+.tuff .portfolio_masonry_item.rectangle_landscape.right .flex.image_holder{ flex-direction: row;}
+.tuff .portfolio_masonry_item.rectangle_landscape.right .flex .text_holder{ left:50%; }
 
 
 
