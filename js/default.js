@@ -135,40 +135,18 @@ $j(document).ready(function() {
 		$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
 			event.preventDefault();
 			$j(this).closest("form").on('submit', function(event) { event.preventDefault(); });
-			
-			// alert($j(event.currentTarget).attr('id'));
-			// show / hide fileds
+			// show / hide fields
 			Show_Hide_SidebarFormFields($j(event.currentTarget).attr('id'));
 			
 		});
+	
 	// PAGE FORM 'ALL/SALE/RENT' RE-INITIATE SUBMIT 
 		$j('form[name="PB_page_form"]').on('change', 'input', function(event) { $j(this).closest("form").off('submit').submit(); });
+	
 	// CANVAS PAGE FORM 'CATEGORIES' INITIATE SUBMIT 
 		$j('form[name="category_form"]').on('change', 'input', function(event) { 
 		
-		$j(this).closest("form").attr('action', window.URLdir+'/canvas/').submit();
-			// switch(appnoapp){
-			// 	case true:
-			// 		// alert('app');
-			// 		$j(this).closest("form").off('submit').submit(); 
-			// 		break;
-			// 	case false:
-			// 		if(f[0].length === 0 || f[0].length >= 6){
-			// 			// alert('not app->HOME '+window.location+appName);
-			// 			$j(this).closest("form").attr('action', window.URLdir+'/'+appName+'/').off('submit').submit();
-			// 		}
-			// 		else{
-			// 			// alert('not app: '+f[0]+'/'+appName);
-   // 						$j(this).closest("form").attr('action', '/'+f[0]+'/'+appName+'/').off('submit').submit();
-   // 					}
-			// 		break;;
-			// 	default:
-			// 		// alert('default not app');
-   // 					$j(this).closest("form").attr('action', '/'+f[0]+'/'+appName+'/').off('submit').submit();
-			// }
-
-			// $j(this).closest("form").submit(); 
-
+			$j(this).closest("form").attr('action', window.URLdir+'/canvas/').submit();
 
 		});
 
@@ -2995,6 +2973,12 @@ function initPortfolioMasonry(){
 				
 				if($this.hasClass('portfolio_one_by_one')) {
 					$this.find('article').each(function(l) {
+
+						// if(!!Math.floor(Math.random() * 2)){
+						// 	alert('true');
+						// }
+
+
 						var $this = $j(this);
 						setTimeout(function() {
 							$this.addClass('show');
