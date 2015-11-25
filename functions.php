@@ -126,7 +126,7 @@ if (!function_exists('portfolio_list_tuff')) {
         $html = "";
 
 	// portfolio layout / style classes
-        $layouts = Array('standard','standard right','square_big top-left','square_big top-right'); 
+        $layouts = Array('standard','standard space','standard right','standard right space','square_big top-left','square_big top-right'); 
         $_type_class = '';
         $_portfolio_space_class = '';
         $_portfolio_masonry_with_space_class = '';
@@ -265,7 +265,9 @@ if (!function_exists('portfolio_list_tuff')) {
 	//
         $show_description_box = $show_title == 'no' && $show_categories == 'no' ? false : true;
     /////// IF MASONRY
+
         if($type === 'masonry') {
+
             if ($filter == "yes") {
 
                 $html .= "<div class='filter_outer'>";
@@ -342,6 +344,7 @@ if (!function_exists('portfolio_list_tuff')) {
             }
             query_posts($args);
             if (have_posts()) : while (have_posts()) : the_post();
+
                 $terms = wp_get_post_terms(get_the_ID(), 'category');
                 if(get_field('post_layout')){
                 	$post_layout = get_field('post_layout');
@@ -398,12 +401,12 @@ if (!function_exists('portfolio_list_tuff')) {
                 //if $hover_type == 'default'
                 if($hover_type == 'default') {
 
-                    if($post_layout == "square_big top-right" || $post_layout == "square_big top-left"){
+                    if(strpos($post_layout,'square_big') !== false){
                         
                         $image_size = "portfolio_masonry_large";
 
                         $html .= "<div class='image_holder'>";
-                        $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."' style='width:50%;'>";
+                        $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."' >";
                         $html .= "<span class='image'>";
                         $html .= get_the_post_thumbnail(get_the_ID(), $image_size);
                         $html .= "</span>";

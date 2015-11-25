@@ -135,14 +135,20 @@ $j(document).ready(function() {
 		$j('form[name="PB_sidebar_form"]').on('change', 'input', function(event) {
 			event.preventDefault();
 			$j(this).closest("form").on('submit', function(event) { event.preventDefault(); });
-			
-			// alert($j(event.currentTarget).attr('id'));
-			// show / hide fileds
+			// show / hide fields
 			Show_Hide_SidebarFormFields($j(event.currentTarget).attr('id'));
 			
 		});
+	
 	// PAGE FORM 'ALL/SALE/RENT' RE-INITIATE SUBMIT 
 		$j('form[name="PB_page_form"]').on('change', 'input', function(event) { $j(this).closest("form").off('submit').submit(); });
+	
+	// CANVAS PAGE FORM 'CATEGORIES' INITIATE SUBMIT 
+		$j('form[name="category_form"]').on('change', 'input', function(event) { 
+		
+			$j(this).closest("form").attr('action', window.URLdir+'/canvas/').submit();
+
+		});
 
 	// SIDEBAR FORM 'SUBMIT' BUTTON
 		$j('.filter__submit').on('click', '.js-run-pb-search', function(event) {
@@ -2967,6 +2973,12 @@ function initPortfolioMasonry(){
 				
 				if($this.hasClass('portfolio_one_by_one')) {
 					$this.find('article').each(function(l) {
+
+						// if(!!Math.floor(Math.random() * 2)){
+						// 	alert('true');
+						// }
+
+
 						var $this = $j(this);
 						setTimeout(function() {
 							$this.addClass('show');

@@ -690,9 +690,6 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 
 /*/////// STANDARD LEFT (default) */
 .tuff .portfolio_masonry_item.standard .text_holder{
-    /*width:50%;*/
-    /*position:relative;*/
-    /*float:left;*/
     opacity:1;
 }
 
@@ -710,8 +707,18 @@ div.tooltip.tooltip1 i{cursor: pointer;}
     opacity:1;
 }
 
-.tuff .portfolio_masonry_item.square_big.top-right .text_holder{
-  margin-left: 50%;
+/*/////// BIG + SPACE */
+.tuff .square_big.space{width: 75%;}
+.tuff .square_big.space .image_holder{width: 66.7%!important;}
+
+.tuff .square_big.space .text_holder{
+    width:33.2%;
+}
+
+
+
+.tuff .portfolio_masonry_item.square_big.top-right.space .text_holder{
+  margin-left: 33.5%;
 }
 
 /*/////// SQUARE */
@@ -728,9 +735,24 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 .tuff .flex.image_holder .text_holder{position:absolute!important; width:50%;}
 
 /*/////// STANDARD RIGHT*/
-.tuff .portfolio_masonry_item.standard.right .flex.image_holder{ flex-direction: row;}
+.tuff .portfolio_masonry_item.standard.right .flex.image_holder{ flex-direction: row; }
 .tuff .portfolio_masonry_item.standard.right .flex .text_holder{ left:50%; }
 
+/*/////// STANDARD RIGHT + SPACE */
+.tuff .portfolio_masonry_item.standard.right.space{ width: 75%!important;}
+.tuff .portfolio_masonry_item.standard.right.space .flex.image_holder{ flex-direction: row; width: 66.5%!important;}
+.tuff .portfolio_masonry_item.standard.right.space .flex .text_holder{ left:33.5%; width: 33.2%!important;}
+
+/*/////// STANDARD + SPACE */
+.tuff .portfolio_masonry_item.standard.space{ width: 75%!important;}
+.tuff .portfolio_masonry_item.standard.space .flex.image_holder{ left:33.5%; width: 66.5%!important;}
+.tuff .portfolio_masonry_item.standard.space .flex .text_holder{ left:67%; width: 33.2%!important;}
+
+
+/*////////////////////////////////////////////////////////*/
+/* -------- CANVAS CATEGORIES NAVIGATION FORM --------- */
+
+/*fieldset#selected_category input[type="radio"]{display: none;}*/
 
 
 
