@@ -112,10 +112,18 @@ if(typeof paspartu_width_init == 'undefined'){ //check if variable is defined in
     var paspartu_width_init = 0.02;
 }
 
+var category_form_value;
+
 $j(document).ready(function() {
 	"use strict";
 
 	updateSavedCounter();
+
+	// Get # parameter
+		var param = document.URL.split('#')[1];
+
+	if($j('.page-template-canvas_page').length && param){ $j('form[name="category_form"] input#'+param).prop('checked', true); }
+	
 
 	// sidebar form SUBMIT button 
 
@@ -145,8 +153,9 @@ $j(document).ready(function() {
 	
 	// CANVAS PAGE FORM 'CATEGORIES' INITIATE SUBMIT 
 		$j('form[name="category_form"]').on('change', 'input', function(event) { 
-		
-			$j(this).closest("form").attr('action', window.URLdir+'/canvas/').submit();
+
+			$j('form[name="category_form"]').attr('action', window.URLdir+'/canvas/#'+event.currentTarget.id).submit();
+			
 
 		});
 

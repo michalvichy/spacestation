@@ -307,6 +307,7 @@ div.jqcorner{
 
 /*RIGHT MENU AREA PANEL*/
 
+fieldset#record-types input[type="radio"]{ display: none;}
 
 /*icons colour change on top scroll fix !*/
 .dark:not(.sticky):not(.scrolled) .side_menu_button>a, .dark.header_style_on_scroll .side_menu_button>a{color: white!important;}
@@ -752,7 +753,12 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 /*////////////////////////////////////////////////////////*/
 /* -------- CANVAS CATEGORIES NAVIGATION FORM --------- */
 
-/*fieldset#selected_category input[type="radio"]{display: none;}*/
+fieldset#selected_category input[type="radio"]{display: none;}
+fieldset#selected_category label{cursor: pointer;}
+fieldset#selected_category input[type="radio"]:checked + label {
+      color: #9a751e;
+      font-weight: 600;
+  }
 
 
 
