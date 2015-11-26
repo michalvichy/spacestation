@@ -126,7 +126,7 @@ if (!function_exists('portfolio_list_tuff')) {
         $html = "";
 
 	// portfolio layout / style classes
-        $layouts = Array('standard','standard space','standard right','standard right space','square_big top-left','square_big top-right'); 
+        $layouts = Array('standard left','standard left space','standard right','standard right space','square_big top-left','square_big top-right'); 
         $_type_class = '';
         $_portfolio_space_class = '';
         $_portfolio_masonry_with_space_class = '';

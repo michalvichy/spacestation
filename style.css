@@ -708,6 +708,17 @@ div.tooltip.tooltip1 i{cursor: pointer;}
     opacity:1;
 }
 
+/*/////// BIG RIGHT*/
+.tuff .portfolio_masonry_item.square_big .image_holder img, 
+.tuff .attachment-portfolio_masonry_large{
+  width: 200%!important;   
+}
+
+.tuff .portfolio_masonry_item.square_big.top-right .text_holder{
+margin-left: 50%;
+
+}
+
 /*/////// BIG + SPACE */
 .tuff .square_big.space{width: 75%;}
 .tuff .square_big.space .image_holder{width: 66.7%!important;}
@@ -739,15 +750,15 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 .tuff .portfolio_masonry_item.standard.right .flex.image_holder{ flex-direction: row; }
 .tuff .portfolio_masonry_item.standard.right .flex .text_holder{ left:50%; }
 
+/*/////// STANDARD + SPACE */
+.tuff .portfolio_masonry_item.standard.left.space{ width: 75%!important;}
+.tuff .portfolio_masonry_item.standard.left.space .flex.image_holder{ margin-left:33.5%; width: 66.5%!important;}
+.tuff .portfolio_masonry_item.standard.left.space .flex .text_holder{ left:33.5%; width: 33.2%!important;}
+
 /*/////// STANDARD RIGHT + SPACE */
 .tuff .portfolio_masonry_item.standard.right.space{ width: 75%!important;}
 .tuff .portfolio_masonry_item.standard.right.space .flex.image_holder{ flex-direction: row; width: 66.5%!important;}
 .tuff .portfolio_masonry_item.standard.right.space .flex .text_holder{ left:33.5%; width: 33.2%!important;}
-
-/*/////// STANDARD + SPACE */
-.tuff .portfolio_masonry_item.standard.space{ width: 75%!important;}
-.tuff .portfolio_masonry_item.standard.space .flex.image_holder{ left:33.5%; width: 66.5%!important;}
-.tuff .portfolio_masonry_item.standard.space .flex .text_holder{ left:67%; width: 33.2%!important;}
 
 
 /*////////////////////////////////////////////////////////*/

@@ -143,7 +143,7 @@ else { $paged = 1; }
 										<?php echo do_shortcode( '[portfolio_list_tuff 
 											type="masonry" 
 											hover_type_masonry="default" 
-											grid_size="4" 
+											grid_size="1" 
 											portfolio_loading_type_masonry="portfolio_one_by_one" 
 											overlay_background_color="" 
 											order="ASC" 
