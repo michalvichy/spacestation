@@ -753,6 +753,16 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 /*////////////////////////////////////////////////////////*/
 /* -------- CANVAS CATEGORIES NAVIGATION FORM --------- */
 
+/*.page-template-canvas_page .content{
+  background: url('assets/imgs/canvas-background.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: 0;
+    margin-top: 0!important;
+}*/
+
 fieldset#selected_category input[type="radio"]{display: none;}
 fieldset#selected_category label{cursor: pointer;}
 fieldset#selected_category input[type="radio"]:checked + label {
