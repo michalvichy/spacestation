@@ -776,10 +776,11 @@ margin-left: 50%;
 
 fieldset#selected_category input[type="radio"]{display: none;}
 fieldset#selected_category label{cursor: pointer;}
-fieldset#selected_category input[type="radio"]:checked + label {
+fieldset#selected_category input[type="radio"]:checked + label, .sidebar .checked {
       color: #9a751e;
       font-weight: 600;
   }
+
 
 
 
