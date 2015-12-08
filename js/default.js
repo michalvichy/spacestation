@@ -363,8 +363,9 @@ $j(window).load(function(){
     initVerticalSplitSlider();
     initParallax(); //has to be here on last place since some function is interfering with parallax
     initQodeElementAnimationSkrollr();
+    setTimeout(function(){ initPortfolioMasonry(); },300 );
 	setTimeout(function(){
-		initPortfolioMasonry();
+		// initPortfolioMasonry();
         checkAnchorOnScroll();
         checkAnchorOnLoad(); // it has to be after content top margin initialization to know where to scroll
         checkHeaderStyleOnScroll(); //moved to window load because sections are not fully initialized on dom ready and calculations are wrong
@@ -2983,15 +2984,10 @@ function initPortfolioMasonry(){
 				if($this.hasClass('portfolio_one_by_one')) {
 					$this.find('article').each(function(l) {
 
-						// if(!!Math.floor(Math.random() * 2)){
-						// 	alert('true');
-						// }
-
-
 						var $this = $j(this);
 						setTimeout(function() {
 							$this.addClass('show');
-						}, 100*l);
+						}, 10*l);
 					});
 				}
 				

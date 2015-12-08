@@ -15,6 +15,7 @@ wp_enqueue_script("cookie", get_stylesheet_directory_uri()."/js/jquery.cookie.js
 wp_enqueue_script("json3", get_stylesheet_directory_uri()."/js/json3.min.js",array(),false,true);
 wp_enqueue_script("SuperCookie", get_stylesheet_directory_uri()."/js/jquery.SuperCookie.js",array(),false,true);
 wp_enqueue_script("tour_popup_default", get_stylesheet_directory_uri()."/js/tour_popup_default.js",array(),false,true);
+wp_enqueue_script("imagesLoaded", "http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js",array(),false,true);
 
 	/**
 	  * LOAD SCRIPTS BASED ON TEMPLATE NAME
@@ -346,10 +347,10 @@ if (!function_exists('portfolio_list_tuff')) {
             if (have_posts()) : while (have_posts()) : the_post();
 
                 $terms = wp_get_post_terms(get_the_ID(), 'category');
-                if(get_field('post_layout')){
-                	$post_layout = get_field('post_layout');
+                if(get_field('masonry_layout')){
+                	$masonry_layout = get_field('masonry_layout');
             	}else{
-            		$post_layout = $layouts[array_rand($layouts)];
+            		$masonry_layout = $layouts[array_rand($layouts)];
             	}
 
                 $featured_image_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); //original size
@@ -395,13 +396,13 @@ if (!function_exists('portfolio_list_tuff')) {
                     $html .= "portfolio_category_$term->term_id ";
                 }
                 $html .=" " . $masonry_size;
-                $html .=" " . $post_layout;
+                $html .=" " . $masonry_layout;
                 $html .="'>";
 
                 //if $hover_type == 'default'
                 if($hover_type == 'default') {
 
-                    if(strpos($post_layout,'square_big') !== false){
+                    if(strpos($masonry_layout,'square_big') !== false){
                         
                         $image_size = "portfolio_masonry_large";
 
@@ -702,7 +703,7 @@ if (!function_exists('qode_carousel_tuff')) {
 
                 $title = get_the_title();
 
-                $post_layout = get_post_meta(get_the_ID(), "post_layout", true);
+                $masonry_layout = get_post_meta(get_the_ID(), "masonry_layout", true);
 
                 //is current item not on even position in array and two rows option is chosen?
                 if($postCount % 2 !== 0 && $show_in_two_rows == 'yes') {

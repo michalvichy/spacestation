@@ -694,7 +694,6 @@ div.tooltip.tooltip1 i{cursor: pointer;}
     opacity:1;
 }
 
-
 /*/////// BIG */
 .tuff .portfolio_masonry_item.square_big .image_holder img, 
 .tuff .attachment-portfolio_masonry_large{
@@ -759,6 +758,26 @@ margin-left: 50%;
 .tuff .portfolio_masonry_item.standard.right.space{ width: 75%!important;}
 .tuff .portfolio_masonry_item.standard.right.space .flex.image_holder{ flex-direction: row; width: 66.5%!important;}
 .tuff .portfolio_masonry_item.standard.right.space .flex .text_holder{ left:33.5%; width: 33.2%!important;}
+
+
+
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  
+  border-left: 10px solid white;
+}
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  
+  border-right:10px solid white; 
+}
 
 
 /*////////////////////////////////////////////////////////*/
