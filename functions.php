@@ -407,6 +407,11 @@ if (!function_exists('portfolio_list_tuff')) {
                         $image_size = "portfolio_masonry_large";
 
                         $html .= "<div class='image_holder'>";
+                        if($masonry_layout === 'square_big top-left'){
+                            $html .= "<span class='arrow-right_big_square'></span>";
+                        }else{
+                            $html .= "<span class='arrow-left_big_square'></span>";
+                        }
                         $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."' >";
                         $html .= "<span class='image'>";
                         $html .= get_the_post_thumbnail(get_the_ID(), $image_size);
@@ -456,6 +461,12 @@ if (!function_exists('portfolio_list_tuff')) {
                         $html .= get_the_post_thumbnail(get_the_ID(), $image_size);
                         $html .= "</span>";
                         $html .= "</a>";
+                        if(strpos($masonry_layout,'left') !== false){ 
+                            $html .= "<span class='arrow-right'></span>";
+                        }else{
+                            $html .= "<span class='arrow-left'></span>";
+                        }
+
                         $html .= "<span class='text_holder'>";
                         $html .= "<span class='text_outer'>";
                         $html .= "<span class='text_inner'>";

@@ -191,10 +191,12 @@
 						<!-- END IF SALE -->
 					<div class="jqcorner">
 						<select name="bedrooms_from">
-							<option value="1">Bedrooms</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
+							<option>Bedrooms Any</option>
+							<option value="0">Studio</option>
+							<option value="1">1+</option>
+							<option value="2">2+</option>
+							<option value="3">3+</option>
+							<option value="4">4+</option>
 							<option value="5">5+</option>
 						</select>
 					</div>
@@ -293,7 +295,7 @@
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
 								<input type="hidden" name="rent_from" value="<?php echo $rent_from;?>">
 								<input type="hidden" name="rent_to" value="<?php echo $rent_to;?>">
-								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo '1'; }?>">
+								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo ''; }?>">
 								<input type="hidden" name="bathrooms_from" value="<?php if( !empty($bathrooms_from)) {echo $bathrooms_from;}else{ echo '1'; }?>">
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">	
 								<input type="hidden" name="itemsperpage" value="<?php echo $itemsperpage;?>">
@@ -313,7 +315,7 @@
 								<input type="hidden" name="price_to" value="<?php echo $price_to;?>">
 								<input type="hidden" name="rent_from" value="<?php echo $rent_from;?>">
 								<input type="hidden" name="rent_to" value="<?php echo $rent_to;?>">
-								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo '1'; }?>">
+								<input type="hidden" name="bedrooms_from" value="<?php if( !empty($bedrooms_from)) {echo $bedrooms_from;}else{ echo ''; }?>">
 								<input type="hidden" name="bathrooms_from" value="<?php if( !empty($bathrooms_from)) {echo $bathrooms_from;}else{ echo '1'; }?>">	
 								<input type="hidden" name="orderby" value="<?php echo $orderby;?>">
 								<input type="hidden" name="itemsperpage" value="<?php echo $itemsperpage;?>">
