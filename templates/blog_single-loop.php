@@ -246,14 +246,17 @@ $_post_format = get_post_format();
 				<?php } } ?>
 				<div class="post_text">
 					<div class="post_text_inner">
-						<h2><span class="date"><?php the_time('d M'); ?></span> <?php the_title(); ?></h2>
+						<small><?php the_category(', '); ?></small>
+						<h2><?php the_title(); ?></h2>
 						<div class="post_info">
-							<span class="time"><?php _e('Posted at','qode'); ?> <?php the_time('H:i'); ?><?php _e('h','qode'); ?></span>
-							<?php _e('in','qode'); ?> <?php the_category(', '); ?>
+							<!-- <span class="time"><?php _e('Posted at','qode'); ?> <?php the_time('H:i'); ?><?php _e('h','qode'); ?></span> -->
+							<!-- <?php _e('in','qode'); ?>  -->
 							<span class="post_author">
-								<?php _e('by','qode'); ?>
+								<?php _e('Posted by','qode'); ?> 
 								<a class="post_author_link" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author_meta('display_name'); ?></a>
+								<?php _e(', ','qode'); ?>
 							</span>
+							<span class="date"><?php the_time('l F j Y'); ?></span> 
 							<?php if($blog_hide_comments != "yes"){ ?>
 								<span class="dots"><i class="fa fa-square"></i></span><a class="post_comments" href="<?php comments_link(); ?>" target="_self"><?php comments_number('0 ' . __('Comments','qode'), '1 '.__('Comment','qode'), '% '.__('Comments','qode') ); ?></a>
 							<?php } ?>

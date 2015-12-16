@@ -831,6 +831,21 @@ fieldset#selected_category input[type="radio"]:checked + label, .sidebar .checke
   }
 
 
+/* ////////////////////////////////////////////// */
+/* -------------- CANVAS => POST ---------------- */
+/* ////////////////////////////////////////////// */
+
+.single-format-standard .social_share_list_holder{text-align: center; border: 1px solid black;}
+.single-format-standard .social_share_list_holder span{display: none;}
+.single-format-standard .social_share_list_holder i{color: black;}
+
+/* -- most viewed articles -- */
+
+.single-format-standard div.pop-inside , .single-format-standard div.pop-inside ul li{border: none;}
+.single-format-standard ul.pop-widget-tabs li:first-child{display: none;}
+
+
+
 
 
 
