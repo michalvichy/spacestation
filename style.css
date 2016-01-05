@@ -566,6 +566,25 @@ div.caroufredsel_wrapper{
   width: 100%;
 }
 
+.content_bottom_content label{display: none;}
+.content_bottom_content input:not([type="submit"]){
+  width: 30%;
+  height: 25px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.content_bottom input[type="submit"]{
+
+  -webkit-appearance: none;
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  padding: 5px 10px;
+
+}
+
 
 /* ------------- JOIN US ------------- */
 
