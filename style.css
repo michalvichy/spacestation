@@ -873,11 +873,14 @@ margin-left: 50%;
 }*/
 
 fieldset#selected_category input[type="radio"]{display: none;}
-fieldset#selected_category label{cursor: pointer;}
+fieldset#selected_category label{cursor: pointer; padding: 0 0 10px 20px; display: inline-block; width: 150px; color: black;}
 fieldset#selected_category input[type="radio"]:checked + label, .sidebar .checked {
-      color: #9a751e;
+      /*color: #9a751e;*/
       font-weight: 600;
+      background: url('assets/imgs/canvas-sidebar-highlight.png') no-repeat;
   }
+
+.sidebar .textwidget > a{padding: 0 0 10px 20px; display: inline-block; width: 150px; color: black;}
 
 
 /* ////////////////////////////////////////////// */
