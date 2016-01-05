@@ -618,7 +618,37 @@ div.caroufredsel_wrapper{
   
   }
 
+  footer i.simple_social{
+    width: 25px;
+    height: 25px;
+    padding: 13px 0 0 13px;
+    background: #ccc;
+    color: white!important;
+    margin-right: 0!important;
+    margin-bottom: 10px;
+  }
 
+  footer .q_social_icon_holder a{
+    color: white!important;
+  }
+
+  footer .footer_top .widget #searchform input[type="submit"]{
+    float: left;
+    background: #ccc;
+    color: white;
+  }
+
+  footer .footer_top .widget #searchform input[type="text"]{
+    float: right;
+  }
+
+  ::-webkit-input-placeholder { color: white; }
+
+:-moz-placeholder { /* Firefox 18- */ color: white;  }
+
+::-moz-placeholder {  /* Firefox 19+ */ color: white;  }
+
+:-ms-input-placeholder {  color: white;  }
 
 /* ////////////////////////////////// */
 /* -------- PAGE TEMPLATES --------- */
