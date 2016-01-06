@@ -21,6 +21,9 @@
 	do_action('qode_header_meta');
 	?>
 
+	<script src="https://use.typekit.net/grh0xvf.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo esc_url($qode_options_proya['favicon_image']); ?>">
