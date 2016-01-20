@@ -347,6 +347,13 @@ ul#menu-nav-right.menu ul.sub-menu li a{
   text-transform: uppercase;
 }
 
+ul#menu-nav-right.menu ul.sub-menu li, section.side_menu.right label{
+  margin-bottom: 0;
+  line-height: 22px;
+}
+
+section.side_menu.right label{padding: 0 20px!important;}
+
 /*LEFT VERTICAL MENU AREA PANEL*/
 
 .side_menu a.close_side_menu{
