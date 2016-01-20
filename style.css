@@ -10,9 +10,28 @@ Template: bridge
 @import url("../bridge/style.css");
 
 /* ///////////////////////////////// */
+/* ----------- TYPOGRAPHY ---------- */
+
+.caslon-pro > a{font-family: "adobe-caslon-pro",serif; font-style: italic; color: #9a751e!important;}
+
+.futura-light{font-family: "futura-pt",sans-serif; font-weight: 300;}
+.futura-book{font-family: "futura-pt",sans-serif; font-weight: 400;}
+.futura-heavy{font-family: "futura-pt",sans-serif; font-weight: 700;}
+
+section.side_menu.right label, section.side_menu.right li:not(.caslon-pro) a, #theForm-sidebar label{
+  font-family: "futura-pt",sans-serif; 
+  font-weight: 700; 
+  font-size: 20px; 
+  letter-spacing: 1px;
+}
+
+fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-pt",sans-serif; font-weight: 400; text-transform: uppercase;}
+
+
+/* ///////////////////////////////// */
 /* -------- GENERAL STYLES -------- */
 
-  .saved_button span{
+  .saved_button span{©
     font-weight: 600;
     font-size: 18px!important;
     padding-left: 4px;
@@ -61,7 +80,7 @@ Template: bridge
   
   div.side_menu_button a{
   	background: black;
-  	padding: 8px!important;
+  	padding: 10px!important;
   }
   
   /* display both left and right navigation panels */
@@ -82,8 +101,8 @@ Template: bridge
 
   header div.header_inner_right{
     position: fixed;
-    right: 20px;
-    top: 0;
+    right: 0;
+    top: -7px;
   }
 
   .side_menu a.close_side_menu{
@@ -307,6 +326,7 @@ div.jqcorner{
 
 /*RIGHT MENU AREA PANEL*/
 
+fieldset#record-types input[type="radio"]{ display: none;}
 
 /*icons colour change on top scroll fix !*/
 .dark:not(.sticky):not(.scrolled) .side_menu_button>a, .dark.header_style_on_scroll .side_menu_button>a{color: white!important;}
@@ -326,6 +346,13 @@ opacity: 0.95;
 ul#menu-nav-right.menu ul.sub-menu li a{
   text-transform: uppercase;
 }
+
+ul#menu-nav-right.menu ul.sub-menu li, section.side_menu.right label{
+  margin-bottom: 0;
+  line-height: 22px;
+}
+
+section.side_menu.right label{padding: 0 20px!important;}
 
 /*LEFT VERTICAL MENU AREA PANEL*/
 
@@ -356,17 +383,17 @@ aside.vertical_menu_area{
 
 #find-a-property, #top-nav-social{
   position: fixed; 
-  top:10px; 
-  left: 20px; 
+  top:0; 
+  left: 0; 
   background: black;
   color: white;
-  padding: 3px;
+  padding: 5px 15px;
   font-weight: 600;
   cursor: pointer;
 }
 
  #top-nav-social{
-  left: 160px;
+  left: 150px;
   z-index: -1;
   background-color: transparent;
   padding: 0;
@@ -375,13 +402,13 @@ aside.vertical_menu_area{
  #top-nav-social p{
   background: black;
   float: left;
-  padding: 3px;
+  padding: 5px 15px;
  }
 
  .top-nav-social-icons{
   display: none;
   background-color: rgba(0,0,0,0.75);
-  padding: 3px 3px 3px 10px;
+  padding: 5px 10px 5px 10px;
  }
 
 /*a.vertical_menu_hidden_button{ width: 128px; margin-left: 20px; } */ /* !!! reflect in default.js line 2190 */
@@ -565,6 +592,25 @@ div.caroufredsel_wrapper{
   width: 100%;
 }
 
+.content_bottom_content label, .content_bottom_content_black_book label{display: none;}
+.content_bottom_content input:not([type="submit"]), .content_bottom_content_black_book input:not([type="submit"]){
+  width: 30%;
+  height: 25px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.content_bottom input[type="submit"], .content_bottom_content_black_book input[type="submit"]{
+
+  -webkit-appearance: none;
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  padding: 5px 10px;
+
+}
+
 
 /* ------------- JOIN US ------------- */
 
@@ -598,7 +644,37 @@ div.caroufredsel_wrapper{
   
   }
 
+  footer i.simple_social{
+    width: 25px;
+    height: 25px;
+    padding: 13px 0 0 13px;
+    background: #ccc;
+    color: white!important;
+    margin-right: 0!important;
+    margin-bottom: 10px;
+  }
 
+  footer .q_social_icon_holder a{
+    color: white!important;
+  }
+
+  footer .footer_top .widget #searchform input[type="submit"]{
+    float: left;
+    background: #ccc;
+    color: white;
+  }
+
+  footer .footer_top .widget #searchform input[type="text"]{
+    float: right;
+  }
+
+  ::-webkit-input-placeholder { color: white; }
+
+:-moz-placeholder { /* Firefox 18- */ color: white;  }
+
+::-moz-placeholder {  /* Firefox 19+ */ color: white;  }
+
+:-ms-input-placeholder {  color: white;  }
 
 /* ////////////////////////////////// */
 /* -------- PAGE TEMPLATES --------- */
@@ -693,7 +769,6 @@ div.tooltip.tooltip1 i{cursor: pointer;}
     opacity:1;
 }
 
-
 /*/////// BIG */
 .tuff .portfolio_masonry_item.square_big .image_holder img, 
 .tuff .attachment-portfolio_masonry_large{
@@ -705,6 +780,17 @@ div.tooltip.tooltip1 i{cursor: pointer;}
     width:50%;
     /*margin-top:50%!important;*/
     opacity:1;
+}
+
+/*/////// BIG RIGHT*/
+.tuff .portfolio_masonry_item.square_big .image_holder img, 
+.tuff .attachment-portfolio_masonry_large{
+  width: 200%!important;   
+}
+
+.tuff .portfolio_masonry_item.square_big.top-right .text_holder{
+margin-left: 50%;
+
 }
 
 /*/////// BIG + SPACE */
@@ -738,21 +824,103 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 .tuff .portfolio_masonry_item.standard.right .flex.image_holder{ flex-direction: row; }
 .tuff .portfolio_masonry_item.standard.right .flex .text_holder{ left:50%; }
 
+/*/////// STANDARD + SPACE */
+.tuff .portfolio_masonry_item.standard.left.space{ width: 75%!important;}
+.tuff .portfolio_masonry_item.standard.left.space .flex.image_holder{ margin-left:33.5%; width: 66.5%!important;}
+.tuff .portfolio_masonry_item.standard.left.space .flex .text_holder{ left:33.5%; width: 33.2%!important;}
+
 /*/////// STANDARD RIGHT + SPACE */
 .tuff .portfolio_masonry_item.standard.right.space{ width: 75%!important;}
 .tuff .portfolio_masonry_item.standard.right.space .flex.image_holder{ flex-direction: row; width: 66.5%!important;}
 .tuff .portfolio_masonry_item.standard.right.space .flex .text_holder{ left:33.5%; width: 33.2%!important;}
 
-/*/////// STANDARD + SPACE */
-.tuff .portfolio_masonry_item.standard.space{ width: 75%!important;}
-.tuff .portfolio_masonry_item.standard.space .flex.image_holder{ left:33.5%; width: 66.5%!important;}
-.tuff .portfolio_masonry_item.standard.space .flex .text_holder{ left:67%; width: 33.2%!important;}
+
+
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 0 solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 40px solid white;
+  margin-right: -39px;
+  margin-top: 20%;
+}
+
+.arrow-right_big_square {
+  width: 0; 
+  height: 0; 
+  border-top: 0 solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 40px solid rgba(255,255,255,0.9);
+  margin-right: -40px;
+  position: relative;
+  display: flex;
+  margin-bottom: -19%;
+  margin-left: 50%;
+  margin-top: 13.3%;
+}
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 0 solid transparent;
+  border-bottom: 20px solid transparent; 
+  border-right:40px solid white; 
+  margin-left: -39px;
+  margin-top: 20%;
+}
+
+.arrow-left_big_square {
+  width: 0; 
+  height: 0; 
+  border-top: 0 solid transparent;
+  border-bottom: 20px solid transparent; 
+  border-right:40px solid rgba(255,255,255,0.9); 
+  margin-left: -40px;
+  position: relative;
+  display: flex;
+  margin-bottom: -19%;
+  left: 50%;
+  margin-top: 13.3%;
+}
 
 
 /*////////////////////////////////////////////////////////*/
 /* -------- CANVAS CATEGORIES NAVIGATION FORM --------- */
 
-/*fieldset#selected_category input[type="radio"]{display: none;}*/
+/*.page-template-canvas_page .content{
+  background: url('assets/imgs/canvas-background.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: 0;
+    margin-top: 0!important;
+}*/
+
+fieldset#selected_category input[type="radio"]{display: none;}
+fieldset#selected_category label{cursor: pointer; padding: 0 0 10px 20px; display: inline-block; width: 150px; color: black;}
+fieldset#selected_category input[type="radio"]:checked + label, .sidebar .checked {
+      background: url('assets/imgs/canvas-sidebar-highlight.png') no-repeat;
+  }
+
+.sidebar .textwidget > a{padding: 0 0 10px 20px; display: inline-block; width: 150px; color: black;}
+
+
+/* ////////////////////////////////////////////// */
+/* -------------- CANVAS => POST ---------------- */
+/* ////////////////////////////////////////////// */
+
+.single-format-standard .social_share_list_holder{text-align: center; border: 1px solid black;}
+.single-format-standard .social_share_list_holder span{display: none;}
+.single-format-standard .social_share_list_holder i{color: black;}
+
+/* -- most viewed articles -- */
+
+.single-format-standard div.pop-inside , .single-format-standard div.pop-inside ul li{border: none;}
+.single-format-standard ul.pop-widget-tabs li:first-child{display: none;}
+
+
 
 
 

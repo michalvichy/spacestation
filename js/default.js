@@ -112,10 +112,18 @@ if(typeof paspartu_width_init == 'undefined'){ //check if variable is defined in
     var paspartu_width_init = 0.02;
 }
 
+var category_form_value;
+
 $j(document).ready(function() {
 	"use strict";
 
 	updateSavedCounter();
+
+	// Get # parameter
+		var param = document.URL.split('#')[1];
+
+	if($j('.page-template-canvas_page').length && param){ $j('form[name="category_form"] input#'+param).prop('checked', true); }
+	
 
 	// sidebar form SUBMIT button 
 
@@ -145,8 +153,9 @@ $j(document).ready(function() {
 	
 	// CANVAS PAGE FORM 'CATEGORIES' INITIATE SUBMIT 
 		$j('form[name="category_form"]').on('change', 'input', function(event) { 
-		
-			$j(this).closest("form").attr('action', window.URLdir+'/canvas/').submit();
+
+			$j('form[name="category_form"]').attr('action', window.URLdir+'/canvas/#'+event.currentTarget.id).submit();
+			
 
 		});
 
@@ -354,8 +363,9 @@ $j(window).load(function(){
     initVerticalSplitSlider();
     initParallax(); //has to be here on last place since some function is interfering with parallax
     initQodeElementAnimationSkrollr();
+    setTimeout(function(){ initPortfolioMasonry(); },300 );
 	setTimeout(function(){
-		initPortfolioMasonry();
+		// initPortfolioMasonry();
         checkAnchorOnScroll();
         checkAnchorOnLoad(); // it has to be after content top margin initialization to know where to scroll
         checkHeaderStyleOnScroll(); //moved to window load because sections are not fully initialized on dom ready and calculations are wrong
@@ -2974,15 +2984,10 @@ function initPortfolioMasonry(){
 				if($this.hasClass('portfolio_one_by_one')) {
 					$this.find('article').each(function(l) {
 
-						// if(!!Math.floor(Math.random() * 2)){
-						// 	alert('true');
-						// }
-
-
 						var $this = $j(this);
 						setTimeout(function() {
 							$this.addClass('show');
-						}, 100*l);
+						}, 10*l);
 					});
 				}
 				
