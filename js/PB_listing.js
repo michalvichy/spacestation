@@ -164,8 +164,8 @@ function pauseVid() {
     		    if(video1 != undefined){  pauseVid(); }
 
     		    // if lat & lng defined load map
-    		    if(lat != undefined && lng != undefined)
-    		    {
+    		    // if(lat != undefined && lng != undefined)
+    		    // {
 
     		    	map_view.css('z-index', '0');
 
@@ -173,15 +173,15 @@ function pauseVid() {
     		    	showItem([map_view]);
     		    	gallery_view.addClass('niema'); // ! window resize glitch fix
 
-    		    	if( $j('#gmap_canvas').is(':empty') )
-    		    	{
-    		    		init_map();
+    		    	if( $j('#poi_map').is(':empty') ) 
+    		    	{ 
+    		    		loadPOI();
     		    	}
 
-				}else
-				{
-						alert('no longitude and latitude');
-				}
+				// }else
+				// {
+						// alert('no longitude and latitude');
+				// }
 
     		    break;
     		

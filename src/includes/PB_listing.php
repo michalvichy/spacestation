@@ -13,6 +13,7 @@
   
   <!-- END ERROR -->
 <div id="container_single_view">
+  </div>
   
   <!-- BEGIN EMPTY RESULT -->
     <?php if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0)){ ?>
@@ -36,7 +37,11 @@
                   var external;
                   var epc;
                   var floorplan;
-        </script>                  
+                  var poiAddress = <?php echo '"'. $xmlResult->listings->listing->data->pba__city_pb__c.', '; ?><?php echo $xmlResult->listings->listing->data->pba__postalcode_pb__c .'";';?>
+                  var poiHTML = <?php echo '"'. $xmlResult->listings->listing->data->name.'";'; ?>
+                  var poiZoomLevel = 16;
+        </script>    
+
 
         <?php 
          
@@ -50,6 +55,7 @@
           $epc = false;
         
          ?>
+
     <!-- BEGIN RESULT -->
       <div id="result">
 
@@ -142,9 +148,30 @@
                     <!-- BEGIN MAP -->
                      
                       <div id="map_container">
-                        <div id="gmap_canvas" style="height:770px;width:100%;"></div> <!-- !!! must match in pb-style.css -->
-                            <style>#gmap_canvas img{max-width:none!important;background:none!important; }</style>
-                        </div>
+
+                          <div id="poi_sidebar">
+                          <ul id="poiList">
+                            <li class="hidden" data-title="university" id="university">University</li>
+                            <li class="hidden" data-title="bank" id="bank">Bank</li>
+                            <li data-title="db:playground" id="playground">Playgrounds</li>
+                            <li class="" data-title="doctor" id="doctor">Doctors</li>
+                            <li class="" data-title="police" id="police">Police</li>
+                            <li class="hidden" data-title="gym" id="gym">Fitness</li>
+                            <li data-title="food" id="pizza" name="pizza">Pizza</li>
+                            <li class="hidden" data-title="establishment" id="church" name="catholic">Catholic Churches</li>
+                            <li class="hidden" data-title="dentist" id="dentist">Dentist</li>
+                            <li class="" data-title="bakery" id="bread">Bakery</li>
+                      
+                          </ul>
+                          </div>
+                          <div id="poi_map" style="height:770px;width:100%;"></div> <!-- !!! must match in pb-style.css -->
+                          <!-- /*<style>#poi_map img{max-width:none!important;background:none!important; }</style>*/ -->
+
+                      </div>
+                      
+
+
+
                       <script type="text/javascript"> 
                         // check if latituee and longitude exists and init map is both does
                          <?php if ( !empty($item->data->pba__latitude_pb__c) && !empty($item->data->pba__longitude_pb__c) ){ ?> 

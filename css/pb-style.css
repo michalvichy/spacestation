@@ -203,12 +203,12 @@ h3.mainTitle{
 /*/////// MAP /////////*/
 
 #map_container{
-	top:90px;
+	top:0;
 	left:0;
 	z-index: 0;
 	overflow:hidden;
-	height:770px; // must match inline on #gmap_canvas
-	width:100%; //// must match inline on #gmap_canvas
+	height:770px; /*// must match inline on #gmap_canvas*/
+	width:100%; /*//// must match inline on #gmap_canvas*/
 	position: absolute!important; 
 	transition: opacity .55s ease-in-out;
 }
