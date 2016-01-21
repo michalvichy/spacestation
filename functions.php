@@ -44,11 +44,14 @@ wp_enqueue_script("imagesLoaded", "http://imagesloaded.desandro.com/imagesloaded
 		wp_enqueue_style( 'px-video' );
 		wp_register_style( 'fontello', get_stylesheet_directory_uri() . '/css/fontello.css'  );
 		wp_enqueue_style( 'fontello' );
+        wp_register_style( 'poi-style', get_stylesheet_directory_uri() . '/css/poi_style.css'  );
+        wp_enqueue_style( 'poi-style' );
 	
 		wp_enqueue_script("tabs", site_url()."/wp-includes/js/jquery/ui/tabs.min.js",array(),false,true);
 		wp_enqueue_script("jcarousel", "https://cdnjs.cloudflare.com/ajax/libs/jcarousel/0.3.4/jquery.jcarousel.min.js",array(),false,true);
 		wp_enqueue_script("jcarouselResponsive", get_stylesheet_directory_uri()."/js/jcarousel.responsive.js",array(),false,true);
 		wp_enqueue_script("px-video", get_stylesheet_directory_uri()."/js/px-video.js",array(),false,true);
+        wp_enqueue_script("POI", get_stylesheet_directory_uri()."/js/poi.js",array(),false,true);
 		wp_enqueue_script("PB_listing", get_stylesheet_directory_uri()."/js/PB_listing.js",array(),false,true);
 
 	}
