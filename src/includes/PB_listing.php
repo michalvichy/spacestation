@@ -39,7 +39,7 @@
                   var floorplan;
                   var poiAddress = <?php echo '"'. $xmlResult->listings->listing->data->pba__city_pb__c.', '; ?><?php echo $xmlResult->listings->listing->data->pba__postalcode_pb__c .'";';?>
                   var poiHTML = <?php echo '"'. $xmlResult->listings->listing->data->name.'";'; ?>
-                  var poiZoomLevel = 16;
+                  var poiZoomLevel = 17;
         </script>    
 
 

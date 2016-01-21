@@ -213,6 +213,8 @@ h3.mainTitle{
 	transition: opacity .55s ease-in-out;
 }
 
+div.gmnoprint > div.gmnoprint[controlwidth="28"]{top:40px!important;}
+
 
 /*//////////// FORM STYLING ////////////*/
 
