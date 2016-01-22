@@ -8,13 +8,13 @@ li{list-style: none;}
     display: inline-block;
 }
 
-.grid .thumbnail img{
+.grid .property_search_result_thumbnail img{
 display: inline;
 margin: 0 0 15px 0;
 height: 195px;
 width: 280px;
 }
-.grid .post{
+.grid .property_search_result{
 float: left;
 margin: 0 0 30px 0;
 padding: 0 5px 0 0;
@@ -26,7 +26,7 @@ font-size: 18px;
 .list h1 {
     font-size: 20px;
 }
-.list .post{
+.list .property_search_result{
     width: 100%!important;
     margin: 0 0 30px 0;
     float: left!important;
@@ -36,10 +36,10 @@ font-size: 18px;
 
 
 /*//// STATUS*/
-	div.post.Active{
+	div.property_search_result.Active{
 		background-color: rgba(0,0,0,0.1);
 	}
-	div.post.Sold{
+	div.property_search_result.Sold{
 		opacity: 0.5;
 	}
 	

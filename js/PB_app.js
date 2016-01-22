@@ -49,7 +49,7 @@ function clearForm() {
 	
 		$rslts.masonry({
 	    	// options
-	    	itemSelector : '.post',
+	    	itemSelector : '.property_search_result',
 	    	columnWidth: 300,
 	    	gutterWidth: 20
 	     });

@@ -13,12 +13,12 @@
 	<?php else: ?>
 	<?php endif;?>	
 			
-			<!-- END ERROR -->
+<!-- END ERROR -->
 		
 <div id="container_multiple_view">
 			
-			<!-- BEGIN SEARCHFORM -->
-	<div id="searchform">
+	<!-- BEGIN SEARCHFORM -->
+		<div id="searchform">
 			<form method="post" id="theForm" class="PB_request_form" name="PB_page_form">
 		
 				<!-- RECORD TYPES -->
@@ -272,16 +272,16 @@
 		    		<a id="grid" href="#"> Grid View </a>
 				</div>
 				</div>
-			<!-- END SEARCHFORM -->      
+	<!-- END SEARCHFORM -->      
 		             
 			
 			<!-- BEGIN EMPTY RESULT -->
-			<?php if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0)){ ?>
-				<div id="noresult">
-					no listings found: 
-				</div>
-			<?php }else{ ?>
-				<!-- END EMPTY RESULT -->
+					<?php if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0)){ ?>
+						<div id="noresult">
+							no listings found: 
+						</div>
+					<?php }else{ ?>
+			<!-- END EMPTY RESULT -->
 				
 				
 				<!-- PAGINATION -->
@@ -328,37 +328,82 @@
 						<?php endif;?>
 						<br>
 					</div>
-					<!-- END PAGINATION -->
+				<!-- END PAGINATION -->
 				<!-- BEGIN RESULT -->
-				<div id="result">
-		
-					<div id="results">
-						<?php foreach ($xmlResult->listings->listing as $item): ?>
-		    				<div class="post <?php echo $item->data->pba__status__c; ?>">
-		    					<h1><a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
-		    					<p><?php echo $item->data->pba__status__c; ?></p>
-		    					<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
-		    				    <div class="thumbnail">
-		    				    	<a href= "<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
-		    				    	<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>"></a>
-		    				    </div>
-		    				    <?php }; ?>
-		    				    
-		    				    <ul>
-									<li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
-									<li class="itemFact">Weekly Rent: <?php $weekly = number_format((float)$item->data->weekly_rent__c); $monthly = number_format((float)($weekly * 52)/12); echo  '&#163;'.$weekly.' (&#163;'.$monthly.'/month)'; ?></li>			
-									<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
-									<li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>			
-									<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
-									<li class="itemFact">Tenure: <?php echo  $item->data->tenure__c; ?></li>			
-									<li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>	
-		    				    </ul>
-		    				</div>
-		    			<?php endforeach; ?>
+					<div id="result">
+
+						<?php 
+
+						// $ck = $_COOKIE["layout_cookie"];
+						$ck='';
+
+						// echo '<script>alert("'.$ck.'");</script>'; 
+						?>
+			
+						<div id="results">
+
+							<?php 
+
+							if($ck == 'dynamic'){
+
+								 foreach ($xmlResult->listings->listing as $item): ?>
+		    						
+		    						<div class="property_search_result <?php echo $item->data->pba__status__c; ?>">
+		    							<h1><a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
+		    							<p><?php echo $item->data->pba__status__c; ?></p>
+		    							<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
+		    						    <div class="property_search_result_thumbnail">
+		    						    	<a href= "<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
+		    						    	<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>"></a>
+		    						    </div>
+		    						    <?php }; ?>
+		    						    
+		    						    <ul>
+											<li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
+											<li class="itemFact">Weekly Rent: <?php $weekly = number_format((float)$item->data->weekly_rent__c); $monthly = number_format((float)($weekly * 52)/12); echo  '&#163;'.$weekly.' (&#163;'.$monthly.'/month)'; ?></li>			
+											<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
+											<li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>			
+											<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
+											<li class="itemFact">Tenure: <?php echo  $item->data->tenure__c; ?></li>			
+											<li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>	
+		    						    </ul>
+		    						</div>
+		    					
+		    					 <?php endforeach;
+
+							
+							}else{
+							
+								 foreach ($xmlResult->listings->listing as $item): ?>
+		    						
+		    						<div class="property_search_result <?php echo $item->data->pba__status__c; ?>">
+		    							<h1><a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
+		    							<p><?php echo $item->data->pba__status__c; ?></p>
+		    							<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
+		    						    <div class="property_search_result_thumbnail">
+		    						    	<a href= "<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
+		    						    	<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>"></a>
+		    						    </div>
+		    						    <?php }; ?>
+		    						    
+		    						    <ul>
+											<li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
+											<li class="itemFact">Weekly Rent: <?php $weekly = number_format((float)$item->data->weekly_rent__c); $monthly = number_format((float)($weekly * 52)/12); echo  '&#163;'.$weekly.' (&#163;'.$monthly.'/month)'; ?></li>			
+											<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
+											<li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>			
+											<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
+											<li class="itemFact">Tenure: <?php echo  $item->data->tenure__c; ?></li>			
+											<li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>	
+		    						    </ul>
+		    						</div>
+		    					
+		    					<?php endforeach;
+
+		    				 } ?>	
+						</div>
+			
+						
 					</div>
-		
-					
-				</div>
 				<!-- END RESULT -->
 			
 			<?php }; ?>
