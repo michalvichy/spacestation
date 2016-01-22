@@ -3,6 +3,15 @@ var $j = jQuery.noConflict();
 var $rslts;
 var $grid;
 
+var layouts = new Array(
+            'standard left',
+            'standard left space',
+            'standard right',
+            'standard right space',
+            'square_big top-left',
+            'square_big top-right'
+            );
+
 
 // Range SLIDER
 	/* We need to change slider appearance oninput and onchange */
@@ -35,34 +44,35 @@ function clearForm() {
             }
 
 //(re)triggerMasonry
-	function triggerMasonry(){
+	// function triggerMasonry(){
 
-		// don't proceed if $grid has not been selected
-		if ( !$grid.length ){
-			return;
-		}
+	// 	// don't proceed if $grid has not been selected
+	// 	if ( !$grid.length ){
+	// 		return;
+	// 	}
 
-		$rslts.masonry('layout');
-	}
+	// 	$rslts.masonry('layout');
+	// }
 // inintMsnry
-	function inintMsnry(){ 
+	// function inintMsnry(){ 
 	
-		$rslts.masonry({
-	    	// options
-	    	itemSelector : '.property_search_result',
-	    	columnWidth: 300,
-	    	gutterWidth: 20
-	     });
+	// 	$rslts.masonry({
+	//     	// options
+	//     	itemSelector : '.property_search_result',
+	//     	columnWidth: 300,
+	//     	gutterWidth: 20
+	//      });
 
-		imagesLoaded( '#result', function() {
-        	$rslts.masonry('layout');
-    	});
+	// 	imagesLoaded( '#result', function() {
+ //        	$rslts.masonry('layout');
+ //    	});
 
-	}
+	// }
 // killMsnry
-	function killMsnry(){ 
-			$rslts.masonry('destroy');
-	}
+	// function killMsnry(){ 
+	// 		$rslts.masonry('destroy');
+	// }
+
 // layoutButtonActive
 	function layoutButtonActive(currentLayout){
 		
@@ -76,7 +86,7 @@ function clearForm() {
 	$j(document).ready(function() {
 
 
-		$rslts = $j('#results');
+		$rslts = $j('.tuff');
 		$grid = $j('.grid');
 
 
@@ -88,24 +98,34 @@ function clearForm() {
 					case 'grid':
 						layoutButtonActive('grid');
 						$rslts.removeClass('list').addClass('grid');
-						inintMsnry();
+						$j('article.portfolio_masonry_item').removeClass('standard').removeClass('left').removeClass('space').removeClass('right').removeClass('top-left').removeClass('top-right').addClass('square_big').addClass('top-full');
 						break;
 					
 					case 'dynamic':
 						layoutButtonActive('list');
 						$rslts.removeClass('grid').addClass('list');
+
+						$j('article.portfolio_masonry_item').removeClass('square_big').removeClass('top-full').each(function(index, el) {
+							var randomLayout = layouts[Math.floor(Math.random()*layouts.length)];
+							$j(this).addClass(randomLayout);
+
+						});
+
 						break;
 					
 					default:
 						alert('no "layout_cookie"');
 				}
+
 			});
 		
 	//LAYOUT CHANGE BUTTONS
 		$j('#grid').click(function() {
 			$rslts.fadeOut(300, function() {
 				$j(this).removeClass('list').addClass('grid').fadeIn(300);
-				
+				$j('article.portfolio_masonry_item').removeClass('standard').removeClass('left').removeClass('space').removeClass('right').removeClass('top-left').removeClass('top-right').addClass('square_big').addClass('top-full');
+				$j('.arrow-right , .arrow-left').remove();
+
 				// check if layout_cookie exists
 				if($j.super_cookie().check("layout_cookie")){
 					//if available -> replace value to 'grid'
@@ -115,15 +135,27 @@ function clearForm() {
 					$j.super_cookie({expires: 7,path: "/"}).create("layout_cookie",{layout:"grid"});
 				}
 				
-				inintMsnry();
+				setTimeout(function(){ initPortfolioMasonry(); },300 );
 			});
 			layoutButtonActive('grid');
 			return false;
 		});
 		
-		$j('#list').click(function() {
+		$j('#list').click(function() { 
 			$rslts.fadeOut(300, function() {
 				$j(this).removeClass('grid').addClass('list').fadeIn(300);
+				
+
+				$j('article.portfolio_masonry_item').removeClass('square_big').removeClass('top-full').each(function(index, el) {
+					var randomLayout = layouts[Math.floor(Math.random()*layouts.length)];
+					$j(this).addClass(randomLayout);
+
+					if (randomLayout.toLowerCase().indexOf("left") >= 0){
+						$j(this).find('.portfolio_link_for_touch').after("<span class='arrow-right'></span>");
+					}else if (randomLayout.toLowerCase().indexOf("right") >= 0){
+						$j(this).find('.portfolio_link_for_touch').after("<span class='arrow-left'></span>");
+					}
+				});
 
 				// check if layout_cookie exists
 				if($j.super_cookie().check("layout_cookie")){
@@ -134,7 +166,7 @@ function clearForm() {
 					$j.super_cookie({expires: 7,path: "/"}).create("layout_cookie",{layout:"dynamic"});
 				}
 
-				killMsnry();
+				setTimeout(function(){ initPortfolioMasonry(); },300 );
 			});
 			layoutButtonActive('list');
 			return false;

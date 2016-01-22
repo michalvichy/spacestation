@@ -2957,7 +2957,7 @@ function initPortfolioZIndex(){
 	}
 }
 
-function initPortfolioMasonry(){
+function initPortfolioMasonry(){ 
 	"use strict";
 
 	if($j('.projects_masonry_holder, .masonry_with_space').length){
@@ -3008,11 +3008,11 @@ function resizeMasonry(container){
     var $window = jQuery(window);
 
     if($j('.full_width').length){
-		if($j('body').hasClass('vertical_menu_enabled') && $window_width > 1000){
-			portfolio_width = $window.innerWidth() - $j('.vertical_menu_area').innerWidth();
-		}else {
+		// if($j('body').hasClass('vertical_menu_enabled') && $window_width > 1000){
+			// portfolio_width = $window.innerWidth() - $j('.vertical_menu_area').innerWidth();
+		// }else {
        		portfolio_width = $window.innerWidth();
-		}
+		// }
     }else{
         var closest_container =  container.closest('.container_inner');
         if(closest_container.has('.column_inner').length) {
