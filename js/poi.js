@@ -33,7 +33,7 @@ var autoGeolocation = false;
 //Database Bounds Search Extension
 var extendLat = 0.05;
 var extendLng = 0.005;
-var dbPath = window.URLdir+'/wp-content/themes/spacestation/db/';
+var dbPath = window.URLdir+'/wp-content/themes/spacestation/src/poi/db/';
 //Places Search Radius (metres)
 var searchRadius = 2000;
 var autoRadius = false; //Use the visible map instead of searchRadius
@@ -43,7 +43,7 @@ var mainIconHeight = 50;
 var mainAnchorPointX = 18;
 var mainAnchorPointY = 50;
 // Icon Configuration
-var iconPath = window.URLdir+'/wp-content/themes/spacestation/icons/';
+var iconPath = window.URLdir+'/wp-content/themes/spacestation/src/poi/icons/';
 var iconWidth = 32;
 var iconHeight = 37;
 var anchorPointX = 16;
