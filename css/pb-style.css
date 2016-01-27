@@ -1,12 +1,15 @@
 	
-
+/*BEIGE: 9a751e */
 
 li{list-style: none;}
 
 .view {
     margin: 0 0 50px 50px;
     display: inline-block;
+    font-size: 12px;
 }
+
+.view a:hover, .view a.active{color: #9a751e;}
 
 .grid .property_search_result_thumbnail img{
 display: inline;
@@ -44,8 +47,18 @@ font-size: 18px;
 	}
 	
 	div#result{display: inline-block; width: 100%;}
-	
-	#container_multiple_view{padding: 20px!important;}
+
+	div#result .tuff.projects_masonry_holder .portfolio_title{font-size: 18px;}
+	div#result .projects_masonry_holder article .project_category{
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 1.2em;
+		text-transform: uppercase;
+		letter-spacing: 1px
+	}
+
+	div#result div.tuff.projects_masonry_holder.portfolio_one_by_one.list{padding-left: 7%;}
+
 	
 	div#error{
 	
@@ -104,7 +117,28 @@ font-size: 18px;
 		position: absolute;
 		top:10px;
 		right: 20px;
+		width: 155px;
+		height: 22px;
+		background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="155px" height="22px" viewBox="0 0 155 22" enable-background="new 0 0 155 22" xml:space="preserve"><path class="single_view_navigation_svg" fill="#9a751e" d="M149.947,0L155,5.159v11.682L149.947,22H5.053L0,16.841V5.159L5.053,0H149.947z"/></svg>');
+		line-height: 1.6em;
+		opacity: 0.9;
+		text-align: center;
 	}
+
+	.arrange_viewing_mailto_button{
+		position: absolute;
+		right: 20px;
+		top: 40px;
+		background: none;
+	}
+
+	.arrange_viewing_phone_button{
+		position: absolute;
+		right: 20px;
+		top: 60px;
+		background: none;
+	}
+
 	
 	ul.result{
 	padding: 10px;
@@ -116,7 +150,7 @@ font-size: 18px;
 		height: 365px;
 	}
 	
-	
+	.page_share .social_share_title{text-transform: uppercase;;}
 	
 	.single_view_navigation{
 		position: absolute;
@@ -175,6 +209,22 @@ font-size: 18px;
 	
 	.in { opacity: 1; }
 
+/*/////// SCROLLBAR /////////*/
+
+	.single_view_info.description ::-webkit-scrollbar {
+    	width: 5px;
+	}
+ 
+	.single_view_info.description ::-webkit-scrollbar-track {
+    	display: none;
+	}
+ 
+	.single_view_info.description ::-webkit-scrollbar-thumb {
+    	border-radius: 10px;
+    	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); */
+    	background-color: #9a751e;
+	}
+
 /*/////// FLOORPLAN /////////*/
 
 	#floorplan_container{
@@ -211,7 +261,17 @@ font-size: 18px;
 
 /*//////////// FORM STYLING ////////////*/
 
-	div#searchForm{display: inline-block; margin-top: 20px;}
+	div#filtersform{ margin-left: 10%;}
+
+	div#filtersform small{
+		font-family: "adobe-caslon-pro", serif;
+		font-style: italic;
+		color: #9a751e;
+		margin-left: 10px;
+	}
+	h1#app_header{
+		margin: 20px 0 20px -7%;
+	}
 
 	/*RECORD TYPES //////////*/
 	fieldset#record-types{
@@ -226,15 +286,20 @@ font-size: 18px;
 		display: none;
 	}
 
-	#record-types label{
+	#filtersform #record-types label{
 		display:inline-block;
     	padding:4px 11px;
     	cursor: pointer;
+    	font-weight: 300;
+    	color: #000;
 	}
 
-	#record-types input[type="radio"]:checked + label {
+	#record-types label{cursor: pointer;}
+
+	#filtersform #record-types input[type="radio"]:checked + label, #record-types input[type="radio"]:checked + label {
     	color: #9a751e;
     	font-weight: 600;
+    	cursor: default;
 	}
 
 	/*PARAMETERS*/
@@ -258,9 +323,11 @@ font-size: 18px;
 	
 		#property-status label{
 			display:inline-block;
-    		/*background-color:#ddd;*/
     		padding:0;
     		cursor: pointer;
+    		font-weight: 300;
+			font-size: 12px;
+			text-transform: uppercase;
 		}
 
 		#property-status label::after{

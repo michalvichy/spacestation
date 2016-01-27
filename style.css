@@ -18,6 +18,10 @@ Template: bridge
 .futura-book{font-family: "futura-pt",sans-serif; font-weight: 400;}
 .futura-heavy{font-family: "futura-pt",sans-serif; font-weight: 700;}
 
+body, select, input{
+  font-family: "futura-pt",sans-serif; font-weight: 400;
+}
+
 section.side_menu.right label, section.side_menu.right li:not(.caslon-pro) a, #theForm-sidebar label{
   font-family: "futura-pt",sans-serif; 
   font-weight: 700; 
@@ -122,7 +126,6 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
   line-height: 17px;
   background-color: #C5C7C8;
   color: #222;
-  font-family: 'Raleway';
   font-weight: 400;
   
   -moz-box-sizing: border-box;
@@ -769,7 +772,7 @@ div.tooltip.tooltip1 i{cursor: pointer;}
     opacity:1;
 }
 
-/*/////// BIG */
+/*/////// BIG LEFT*/
 .tuff .portfolio_masonry_item.square_big .image_holder img, 
 .tuff .attachment-portfolio_masonry_large{
   width: 200%!important;   
@@ -793,6 +796,13 @@ margin-left: 50%;
 
 }
 
+/*/////// BIG FULL*/
+.tuff .portfolio_masonry_item.square_big.top-full .text_holder{
+margin-left: 0;
+width: 100%;
+height: 25%;
+}
+
 /*/////// BIG + SPACE */
 .tuff .square_big.space{width: 75%;}
 .tuff .square_big.space .image_holder{width: 66.7%!important;}
@@ -807,6 +817,8 @@ margin-left: 50%;
   margin-left: 33.5%;
 }
 
+.tuff .portfolio_masonry_item.square_big .flex.image_holder a.portfolio_link_for_touch{width: 100%;}
+
 /*/////// SQUARE */
 .tuff .portfolio_masonry_item.square .text_holder{ display:none;}
 .tuff .portfolio_masonry_item.square.show{background:none!important;}
@@ -817,7 +829,7 @@ margin-left: 50%;
 /*/////////////////////////////////*/
 
 .tuff .flex.image_holder{display:flex; flex-direction: row-reverse; align-items: stretch;}
-.tuff .flex.image_holder a.portfolio_link_for_touch{width: 50%;}
+.tuff .flex.image_holder a.portfolio_link_for_touch{width: 50%;} /*was 50%*/
 .tuff .flex.image_holder .text_holder{position:absolute!important; width:50%;}
 
 /*/////// STANDARD RIGHT*/
@@ -827,12 +839,12 @@ margin-left: 50%;
 /*/////// STANDARD + SPACE */
 .tuff .portfolio_masonry_item.standard.left.space{ width: 75%!important;}
 .tuff .portfolio_masonry_item.standard.left.space .flex.image_holder{ margin-left:33.5%; width: 66.5%!important;}
-.tuff .portfolio_masonry_item.standard.left.space .flex .text_holder{ left:33.5%; width: 33.2%!important;}
+.tuff .portfolio_masonry_item.standard.left.space .flex .text_holder{ left:33.5%; width: 33.2%!important;} /*was left:33.5%;*/
 
 /*/////// STANDARD RIGHT + SPACE */
 .tuff .portfolio_masonry_item.standard.right.space{ width: 75%!important;}
 .tuff .portfolio_masonry_item.standard.right.space .flex.image_holder{ flex-direction: row; width: 66.5%!important;}
-.tuff .portfolio_masonry_item.standard.right.space .flex .text_holder{ left:33.5%; width: 33.2%!important;}
+.tuff .portfolio_masonry_item.standard.right.space .flex .text_holder{ left:33.5%; width: 33.2%!important;} /*was left:33.5%;*/
 
 
 

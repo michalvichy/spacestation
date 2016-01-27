@@ -128,7 +128,15 @@ if (!function_exists('portfolio_list_tuff')) {
         $html = "";
 
 	// portfolio layout / style classes
-        $layouts = Array('standard left','standard left space','standard right','standard right space','square_big top-left','square_big top-right'); 
+        $layouts = Array(
+            'standard left',
+            'standard left space',
+            'standard right',
+            'standard right space',
+            'square_big top-left',
+            'square_big top-right'
+            ); 
+        
         $_type_class = '';
         $_portfolio_space_class = '';
         $_portfolio_masonry_with_space_class = '';
@@ -354,6 +362,8 @@ if (!function_exists('portfolio_list_tuff')) {
             		$masonry_layout = $layouts[array_rand($layouts)];
             	}
 
+                // $masonry_layout = 'square_big top-full';
+
                 $featured_image_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); //original size
 
                 if(get_post_meta(get_the_ID(), 'qode_portfolio-lightbox-link', true) != ""){
@@ -400,7 +410,6 @@ if (!function_exists('portfolio_list_tuff')) {
                 $html .=" " . $masonry_layout;
                 $html .="'>";
 
-                //if $hover_type == 'default'
                 if($hover_type == 'default') {
 
                     if(strpos($masonry_layout,'square_big') !== false){
@@ -410,9 +419,12 @@ if (!function_exists('portfolio_list_tuff')) {
                         $html .= "<div class='image_holder'>";
                         if($masonry_layout === 'square_big top-left'){
                             $html .= "<span class='arrow-right_big_square'></span>";
-                        }else{
+                        }else if($masonry_layout === 'square_big top-right'){
                             $html .= "<span class='arrow-left_big_square'></span>";
+                        }else{
+                            // square_big top-full
                         }
+
                         $html .= "<a class='portfolio_link_for_touch' href='".$portfolio_link."' target='".$target."' >";
                         $html .= "<span class='image'>";
                         $html .= get_the_post_thumbnail(get_the_ID(), $image_size);

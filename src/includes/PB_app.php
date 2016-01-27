@@ -17,8 +17,10 @@
 		
 <div id="container_multiple_view">
 			
-	<!-- BEGIN SEARCHFORM -->
-		<div id="searchform">
+	<!-- BEGIN FILTERSFORM -->
+		<div id="filtersform">
+			<small>Propert Search</small>
+			<h1 id="app_header"></h1>
 			<form method="post" id="theForm" class="PB_request_form" name="PB_page_form">
 		
 				<!-- RECORD TYPES -->
@@ -27,7 +29,7 @@
 							<label for="all-types">ALL</label>
 							<br>
 							<input type="radio" name="recordtypes" id="sale" value="sale"> 
-							<label for="sale">SALE</label> 				
+							<label for="sale">SELL</label> 				
 							<br>
 		  					<input type="radio" name="recordtypes" id="rent" value="rent">
 		  					<label for="rent">RENT</label> 		
@@ -35,7 +37,7 @@
 		
 		  			<fieldset id="parameters">
 						<div class="jqcorner">
-							<input type="text" name="reference" placeholder="LOCATION" value="<?php echo $reference;?>" style="width: 170px;">
+							<input type="text" name="reference" placeholder=" LOCATION" value="<?php echo $reference;?>" style="width: 170px;">
 						</div>
 						
 						<br>
@@ -268,8 +270,8 @@
 				</fieldset>		
 			</form>
 				<div class="view">
-					<a id="list" href="#"> List View </a><span>|<span>
-		    		<a id="grid" href="#"> Grid View </a>
+					<a id="dynamic_view" href="#"> DYNAMIC VIEW </a><span>|</span>
+		    		<a id="grid_view" href="#"> GRID VIEW </a>
 				</div>
 				</div>
 	<!-- END SEARCHFORM -->      
@@ -331,30 +333,22 @@
 				<!-- END PAGINATION -->
 				<!-- BEGIN RESULT -->
 					<div id="result">
-
-						<?php 
-
-						// $ck = $_COOKIE["layout_cookie"];
-						$ck='';
-
-						// echo '<script>alert("'.$ck.'");</script>'; 
-						?>
 			
-						<div id="results">
+						<!-- <div id="results"> -->
+							<div class="tuff projects_masonry_holder portfolio_one_by_one" >
+							<?php foreach ($xmlResult->listings->listing as $item): ?>
+							
+								<?php $statusClass = strtolower( str_replace(' ', '_', $item->data->pba__status__c) ); ?>
 
-							<?php 
-
-							if($ck == 'dynamic'){
-
-								 foreach ($xmlResult->listings->listing as $item): ?>
 		    						
-		    						<div class="property_search_result <?php echo $item->data->pba__status__c; ?>">
+		    						<!-- <div class="property_search_result <?php echo $item->data->pba__status__c; ?>">
 		    							<h1><a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
 		    							<p><?php echo $item->data->pba__status__c; ?></p>
 		    							<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
 		    						    <div class="property_search_result_thumbnail">
 		    						    	<a href= "<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
-		    						    	<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>"></a>
+		    						    		<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>">
+		    						    	</a>
 		    						    </div>
 		    						    <?php }; ?>
 		    						    
@@ -367,26 +361,32 @@
 											<li class="itemFact">Tenure: <?php echo  $item->data->tenure__c; ?></li>			
 											<li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>	
 		    						    </ul>
-		    						</div>
-		    					
-		    					 <?php endforeach;
-
-							
-							}else{
-							
-								 foreach ($xmlResult->listings->listing as $item): ?>
-		    						
-		    						<div class="property_search_result <?php echo $item->data->pba__status__c; ?>">
-		    							<h1><a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
-		    							<p><?php echo $item->data->pba__status__c; ?></p>
-		    							<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
-		    						    <div class="property_search_result_thumbnail">
-		    						    	<a href= "<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
-		    						    	<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>"></a>
-		    						    </div>
-		    						    <?php }; ?>
-		    						    
-		    						    <ul>
+		    						</div> -->
+	
+										<article class="portfolio_masonry_item show <?php echo $statusClass ?>">
+											<div class="flex image_holder">
+												<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
+												<a class="portfolio_link_for_touch" href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" target="_self" rel="<?php echo  $item->data->id; ?>">
+													<span class="image">
+														<img src="<?php echo $item->media->images->image[0]->baseurl . "/" . $item->media->images->image[0]->filename; ?>" class="attachment-portfolio_masonry_regular wp-post-image" alt="qode interactive strata">
+													</span>
+												</a>
+												<?php }; ?>
+												<span class="text_holder">
+													<span class="text_outer">
+														<span class="text_inner">
+															<div class="hover_feature_holder_title">
+																<div class="hover_feature_holder_title_inner">
+																	<h5 class="portfolio_title">
+																		<a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" target="_self"><?php echo  $item->data->name; ?></a>
+																	</h5>
+																	<span class="project_category">&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?><br><?php echo $item->data->pba__status__c; ?></span>
+																</div>
+															</div>
+														</span>
+													</span>
+												</span>
+												<ul style=" display:none; position: absolute; left:0; top: 70px; font-size:12px; color: purple; line-height:1em; background: white;">
 											<li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
 											<li class="itemFact">Weekly Rent: <?php $weekly = number_format((float)$item->data->weekly_rent__c); $monthly = number_format((float)($weekly * 52)/12); echo  '&#163;'.$weekly.' (&#163;'.$monthly.'/month)'; ?></li>			
 											<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
@@ -394,13 +394,13 @@
 											<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
 											<li class="itemFact">Tenure: <?php echo  $item->data->tenure__c; ?></li>			
 											<li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>	
-		    						    </ul>
-		    						</div>
+		    						    					</ul>
+											</div>
+										</article>
 		    					
-		    					<?php endforeach;
-
-		    				 } ?>	
-						</div>
+		    				<?php endforeach;?>	
+		    				</div>
+						<!-- </div> -->
 			
 						
 					</div>
@@ -431,8 +431,10 @@
 
     <?php if( $default_recordtypes == "sale;rent" ){ ?>
      $j("input[name='recordtypes']").first().prop('checked', true);
+     var $rt = <?php echo("'".$default_recordtypes."';");  ?>;
     <?php }else{ ?>
      $j("input[name='recordtypes'][value=<?php echo("'".$recordtypes."'"); ?>]").prop('checked', true);
+     var $rt = <?php echo("'".$recordtypes."';");  ?>;
      <?php } ?>
   
     $j("select[name='orderby'] option[value=<?php echo("'".$orderby."'"); ?>]").prop('selected', true);
