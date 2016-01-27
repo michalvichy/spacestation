@@ -268,8 +268,8 @@
 				</fieldset>		
 			</form>
 				<div class="view">
-					<a id="list" href="#"> List View </a><span>|<span>
-		    		<a id="grid" href="#"> Grid View </a>
+					<a id="dynamic_view" href="#"> Dynamic View </a><span>|</span>
+		    		<a id="grid_view" href="#"> Grid View </a>
 				</div>
 				</div>
 	<!-- END SEARCHFORM -->      
@@ -335,6 +335,9 @@
 						<!-- <div id="results"> -->
 							<div class="tuff projects_masonry_holder portfolio_one_by_one" >
 							<?php foreach ($xmlResult->listings->listing as $item): ?>
+							
+								<?php $statusClass = strtolower( str_replace(' ', '_', $item->data->pba__status__c) ); ?>
+
 		    						
 		    						<!-- <div class="property_search_result <?php echo $item->data->pba__status__c; ?>">
 		    							<h1><a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
@@ -358,7 +361,7 @@
 		    						    </ul>
 		    						</div> -->
 	
-										<article class="portfolio_masonry_item show <?php echo $item->data->pba__status__c; ?>">
+										<article class="portfolio_masonry_item show <?php echo $statusClass ?>">
 											<div class="flex image_holder">
 												<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
 												<a class="portfolio_link_for_touch" href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" target="_self" rel="<?php echo  $item->data->id; ?>">
@@ -375,7 +378,7 @@
 																	<h5 class="portfolio_title">
 																		<a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" target="_self"><?php echo  $item->data->name; ?></a>
 																	</h5>
-																	<span class="project_category"><?php echo $item->data->pba__status__c; ?></span>
+																	<span class="project_category">&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?><br><?php echo $item->data->pba__status__c; ?></span>
 																</div>
 															</div>
 														</span>

@@ -234,6 +234,9 @@
                 ?>
                </p>
                <a href="#" class="arrange_viewing_button beige angle_edges_button open">ARRANGE A VIEWING</a>
+               <a href="mailto:" class="arrange_viewing_mailto_button">EMAIL US</a>
+               <p class="arrange_viewing_phone_button">020 7613 6262</p>
+
             </div><!-- // end single_view_info_header -->
             <div class="panel half_width">  
               <ul class="info_panel_nav">

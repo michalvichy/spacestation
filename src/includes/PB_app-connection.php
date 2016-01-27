@@ -34,6 +34,8 @@ function getFromToParam($from,$to){
 }
 
 // SET DEDAULTS FOR SELECTED FILTERS
+
+	// echo '<script>alert("'.$_POST["bedrooms_from"].'");</script>';
 	
 	// BEDROOMS
 	if (empty($_POST["bedrooms_from"])){ 					// if variable is empty

@@ -2,6 +2,8 @@
 var $j = jQuery.noConflict();
 var $rslts;
 var $grid;
+var $dynamic_view = $j('#dynamic_view');
+var $grid_view = $j('#grid_view');
 
 var layouts = new Array(
             'standard left',
@@ -43,42 +45,50 @@ function clearForm() {
                 $j('form#theForm').submit();
             }
 
-//(re)triggerMasonry
-	// function triggerMasonry(){
 
-	// 	// don't proceed if $grid has not been selected
-	// 	if ( !$grid.length ){
-	// 		return;
-	// 	}
 
-	// 	$rslts.masonry('layout');
-	// }
-// inintMsnry
-	// function inintMsnry(){ 
-	
-	// 	$rslts.masonry({
-	//     	// options
-	//     	itemSelector : '.property_search_result',
-	//     	columnWidth: 300,
-	//     	gutterWidth: 20
-	//      });
 
-	// 	imagesLoaded( '#result', function() {
- //        	$rslts.masonry('layout');
- //    	});
 
-	// }
-// killMsnry
-	// function killMsnry(){ 
-	// 		$rslts.masonry('destroy');
-	// }
+	function generateLayout(currentLayout){
 
-// layoutButtonActive
-	function layoutButtonActive(currentLayout){
-		
-		$j('.view a').removeClass('active');
-		$j('#'+currentLayout).addClass('active');
-		
+		$j('article.portfolio_masonry_item').removeClass('standard').removeClass('left').removeClass('right').removeClass('space').removeClass('top-left').removeClass('top-right').addClass('square_big').addClass('top-full');
+		if($j('.arrow-right , .arrow-left').length){
+						$j('.arrow-right , .arrow-left').remove();
+					}
+
+		switch(currentLayout){
+
+					case 'grid':
+					
+						$rslts.removeClass('list').addClass('grid');
+						$grid_view.addClass('active');
+						$dynamic_view.removeClass('active');
+						break;
+					
+					case 'dynamic':
+
+						$rslts.removeClass('grid').addClass('list');
+						$dynamic_view.addClass('active');
+						$grid_view.removeClass('active');
+
+						$j('article.portfolio_masonry_item').removeClass('square_big').removeClass('top-full').each(function(index, el) {
+							var randomLayout = layouts[Math.floor(Math.random()*layouts.length)];
+							$j(this).addClass(randomLayout);
+
+							if (randomLayout.toLowerCase().indexOf("square_big") == -1 && randomLayout.toLowerCase().indexOf("left") >= 0){
+								$j(this).find('.portfolio_link_for_touch').after("<span class='arrow-right'></span>");
+							}else if (randomLayout.toLowerCase().indexOf("square_big") == -1 && randomLayout.toLowerCase().indexOf("right") >= 0){
+								$j(this).find('.portfolio_link_for_touch').after("<span class='arrow-left'></span>");
+							}
+
+						});
+
+						break;
+					
+					default:
+						alert('no "layout_cookie"');
+				}
+
 	}
 
 
@@ -93,38 +103,17 @@ function clearForm() {
 		// LAYOUT COOKIE CHECK - 1st
 			$j(function() {
 
-				switch($j.super_cookie().read_value("layout_cookie","layout")){
-					
-					case 'grid':
-						layoutButtonActive('grid');
-						$rslts.removeClass('list').addClass('grid');
-						$j('article.portfolio_masonry_item').removeClass('standard').removeClass('left').removeClass('space').removeClass('right').removeClass('top-left').removeClass('top-right').addClass('square_big').addClass('top-full');
-						break;
-					
-					case 'dynamic':
-						layoutButtonActive('list');
-						$rslts.removeClass('grid').addClass('list');
-
-						$j('article.portfolio_masonry_item').removeClass('square_big').removeClass('top-full').each(function(index, el) {
-							var randomLayout = layouts[Math.floor(Math.random()*layouts.length)];
-							$j(this).addClass(randomLayout);
-
-						});
-
-						break;
-					
-					default:
-						alert('no "layout_cookie"');
-				}
+				generateLayout($j.super_cookie().read_value("layout_cookie","layout"));
 
 			});
 		
 	//LAYOUT CHANGE BUTTONS
-		$j('#grid').click(function() {
+		$j('#grid_view').click(function(event) {
+			event.preventDefault();
 			$rslts.fadeOut(300, function() {
 				$j(this).removeClass('list').addClass('grid').fadeIn(300);
-				$j('article.portfolio_masonry_item').removeClass('standard').removeClass('left').removeClass('space').removeClass('right').removeClass('top-left').removeClass('top-right').addClass('square_big').addClass('top-full');
-				$j('.arrow-right , .arrow-left').remove();
+				
+				generateLayout('grid');
 
 				// check if layout_cookie exists
 				if($j.super_cookie().check("layout_cookie")){
@@ -137,25 +126,18 @@ function clearForm() {
 				
 				setTimeout(function(){ initPortfolioMasonry(); },300 );
 			});
-			layoutButtonActive('grid');
+
+			$j(this).addClass('active');
+			$j('#dynamic_view').removeClass('active');
 			return false;
 		});
 		
-		$j('#list').click(function() { 
+		$j('#dynamic_view').click(function(event) {
+			event.preventDefault(); 
 			$rslts.fadeOut(300, function() {
 				$j(this).removeClass('grid').addClass('list').fadeIn(300);
 				
-
-				$j('article.portfolio_masonry_item').removeClass('square_big').removeClass('top-full').each(function(index, el) {
-					var randomLayout = layouts[Math.floor(Math.random()*layouts.length)];
-					$j(this).addClass(randomLayout);
-
-					if (randomLayout.toLowerCase().indexOf("left") >= 0){
-						$j(this).find('.portfolio_link_for_touch').after("<span class='arrow-right'></span>");
-					}else if (randomLayout.toLowerCase().indexOf("right") >= 0){
-						$j(this).find('.portfolio_link_for_touch').after("<span class='arrow-left'></span>");
-					}
-				});
+				generateLayout('dynamic');
 
 				// check if layout_cookie exists
 				if($j.super_cookie().check("layout_cookie")){
@@ -168,7 +150,7 @@ function clearForm() {
 
 				setTimeout(function(){ initPortfolioMasonry(); },300 );
 			});
-			layoutButtonActive('list');
+
 			return false;
 		});
 
