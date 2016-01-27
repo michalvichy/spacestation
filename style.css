@@ -18,6 +18,10 @@ Template: bridge
 .futura-book{font-family: "futura-pt",sans-serif; font-weight: 400;}
 .futura-heavy{font-family: "futura-pt",sans-serif; font-weight: 700;}
 
+body, select, input{
+  font-family: "futura-pt",sans-serif; font-weight: 400;
+}
+
 section.side_menu.right label, section.side_menu.right li:not(.caslon-pro) a, #theForm-sidebar label{
   font-family: "futura-pt",sans-serif; 
   font-weight: 700; 
@@ -122,7 +126,6 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
   line-height: 17px;
   background-color: #C5C7C8;
   color: #222;
-  font-family: 'Raleway';
   font-weight: 400;
   
   -moz-box-sizing: border-box;

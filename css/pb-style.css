@@ -6,9 +6,8 @@ li{list-style: none;}
 .view {
     margin: 0 0 50px 50px;
     display: inline-block;
+    font-size: 12px;
 }
-
-
 
 .view a:hover, .view a.active{color: #9a751e;}
 
@@ -48,6 +47,17 @@ font-size: 18px;
 	}
 	
 	div#result{display: inline-block; width: 100%;}
+
+	div#result .tuff.projects_masonry_holder .portfolio_title{font-size: 18px;}
+	div#result .projects_masonry_holder article .project_category{
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 1.2em;
+		text-transform: uppercase;
+		letter-spacing: 1px
+	}
+
+	div#result div.tuff.projects_masonry_holder.portfolio_one_by_one.list{padding-left: 7%;}
 
 	
 	div#error{
@@ -251,7 +261,17 @@ font-size: 18px;
 
 /*//////////// FORM STYLING ////////////*/
 
-	div#filtersform{ margin-left: 20px;}
+	div#filtersform{ margin-left: 10%;}
+
+	div#filtersform small{
+		font-family: "adobe-caslon-pro", serif;
+		font-style: italic;
+		color: #9a751e;
+		margin-left: 10px;
+	}
+	h1#app_header{
+		margin: 20px 0 20px -7%;
+	}
 
 	/*RECORD TYPES //////////*/
 	fieldset#record-types{
@@ -266,15 +286,20 @@ font-size: 18px;
 		display: none;
 	}
 
-	#record-types label{
+	#filtersform #record-types label{
 		display:inline-block;
     	padding:4px 11px;
     	cursor: pointer;
+    	font-weight: 300;
+    	color: #000;
 	}
 
-	#record-types input[type="radio"]:checked + label {
+	#record-types label{cursor: pointer;}
+
+	#filtersform #record-types input[type="radio"]:checked + label, #record-types input[type="radio"]:checked + label {
     	color: #9a751e;
     	font-weight: 600;
+    	cursor: default;
 	}
 
 	/*PARAMETERS*/
@@ -298,9 +323,11 @@ font-size: 18px;
 	
 		#property-status label{
 			display:inline-block;
-    		/*background-color:#ddd;*/
     		padding:0;
     		cursor: pointer;
+    		font-weight: 300;
+			font-size: 12px;
+			text-transform: uppercase;
 		}
 
 		#property-status label::after{

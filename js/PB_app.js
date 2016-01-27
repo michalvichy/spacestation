@@ -4,6 +4,7 @@ var $rslts;
 var $grid;
 var $dynamic_view = $j('#dynamic_view');
 var $grid_view = $j('#grid_view');
+var $app_header = $j('#app_header');
 
 var layouts = new Array(
             'standard left',
@@ -95,9 +96,29 @@ function clearForm() {
 // DOCUMENT READY - 2st
 	$j(document).ready(function() {
 
+		// $j('#app_header').html('ALL');
+
 
 		$rslts = $j('.tuff');
 		$grid = $j('.grid');
+
+		switch($rt){
+			
+			case 'sale;rent':
+				$j('#app_header').html('ALL PROPERTIES');
+				break;
+			
+			case 'sale':
+				$app_header.html('FOR SALE');
+				break;
+			
+			case 'rent':
+				$app_header.html('FOR RENT');
+				break;
+
+			default:
+				$app_header.html('');
+		}
 
 
 		// LAYOUT COOKIE CHECK - 1st
@@ -156,20 +177,50 @@ function clearForm() {
 
 	//onChange FORM SUBMIT
 
-	$j('form#theForm').on('change', 'input', function() {
-		$j(this).closest("form").submit();
-	});
+		$j('form#theForm').on('change', 'input', function() {
+			$j(this).closest("form").submit();
+		});
+	
+		$j('form[name="PB_page_form"]').on('change', 'select, input', function() {
+			$j(this).closest("form").submit();
+		});
 
-	$j('form[name="PB_page_form"]').on('change', 'select, input', function() {
-		$j(this).closest("form").submit();
-	});
+	// app header change
+	
+	function app_header_change(section){
 
+		// switch(section){
+			
+		// 	case 'all-types':
+		// 		$j('#app_header').html('ALL');
+		// 		break;
+			
+		// 	case 'sale':
+		// 		$app_header.html('FOR SALE');
+		// 		break;
+			
+		// 	case 'rent':
+		// 		$app_header.html('FOR RENT');
+		// 		break;
+
+		// 	default:
+		// 		$app_header.html('');
+		// }
+	}
+
+	$j('#record-types').on('click', 'input[type="radio"]', function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+		/* Act on the event */
+		// alert($j(this).attr('id'));
+		app_header_change($j(this).attr('id'));
+	});
 
 	// Clear Filters
-	$j('.js-clear-all-filters').on('click',function(e){ 
-		e.preventDefault();
-		clearForm();
-	})
+		$j('.js-clear-all-filters').on('click',function(e){ 
+			e.preventDefault();
+			clearForm();
+		})
 
 	
 	

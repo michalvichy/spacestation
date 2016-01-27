@@ -19,6 +19,8 @@
 			
 	<!-- BEGIN FILTERSFORM -->
 		<div id="filtersform">
+			<small>Propert Search</small>
+			<h1 id="app_header"></h1>
 			<form method="post" id="theForm" class="PB_request_form" name="PB_page_form">
 		
 				<!-- RECORD TYPES -->
@@ -27,7 +29,7 @@
 							<label for="all-types">ALL</label>
 							<br>
 							<input type="radio" name="recordtypes" id="sale" value="sale"> 
-							<label for="sale">SALE</label> 				
+							<label for="sale">SELL</label> 				
 							<br>
 		  					<input type="radio" name="recordtypes" id="rent" value="rent">
 		  					<label for="rent">RENT</label> 		
@@ -35,7 +37,7 @@
 		
 		  			<fieldset id="parameters">
 						<div class="jqcorner">
-							<input type="text" name="reference" placeholder="LOCATION" value="<?php echo $reference;?>" style="width: 170px;">
+							<input type="text" name="reference" placeholder=" LOCATION" value="<?php echo $reference;?>" style="width: 170px;">
 						</div>
 						
 						<br>
@@ -268,8 +270,8 @@
 				</fieldset>		
 			</form>
 				<div class="view">
-					<a id="dynamic_view" href="#"> Dynamic View </a><span>|</span>
-		    		<a id="grid_view" href="#"> Grid View </a>
+					<a id="dynamic_view" href="#"> DYNAMIC VIEW </a><span>|</span>
+		    		<a id="grid_view" href="#"> GRID VIEW </a>
 				</div>
 				</div>
 	<!-- END SEARCHFORM -->      
@@ -429,8 +431,10 @@
 
     <?php if( $default_recordtypes == "sale;rent" ){ ?>
      $j("input[name='recordtypes']").first().prop('checked', true);
+     var $rt = <?php echo("'".$default_recordtypes."';");  ?>;
     <?php }else{ ?>
      $j("input[name='recordtypes'][value=<?php echo("'".$recordtypes."'"); ?>]").prop('checked', true);
+     var $rt = <?php echo("'".$recordtypes."';");  ?>;
      <?php } ?>
   
     $j("select[name='orderby'] option[value=<?php echo("'".$orderby."'"); ?>]").prop('selected', true);
