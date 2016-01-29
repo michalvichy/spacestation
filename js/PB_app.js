@@ -185,37 +185,6 @@ function clearForm() {
 			$j(this).closest("form").submit();
 		});
 
-	// app header change
-	
-	function app_header_change(section){
-
-		// switch(section){
-			
-		// 	case 'all-types':
-		// 		$j('#app_header').html('ALL');
-		// 		break;
-			
-		// 	case 'sale':
-		// 		$app_header.html('FOR SALE');
-		// 		break;
-			
-		// 	case 'rent':
-		// 		$app_header.html('FOR RENT');
-		// 		break;
-
-		// 	default:
-		// 		$app_header.html('');
-		// }
-	}
-
-	$j('#record-types').on('click', 'input[type="radio"]', function(event) {
-		event.preventDefault();
-		event.stopPropagation();
-		/* Act on the event */
-		// alert($j(this).attr('id'));
-		app_header_change($j(this).attr('id'));
-	});
-
 	// Clear Filters
 		$j('.js-clear-all-filters').on('click',function(e){ 
 			e.preventDefault();

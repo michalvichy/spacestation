@@ -1,4 +1,4 @@
-	
+
 /*BEIGE: 9a751e */
 
 li{list-style: none;}
@@ -609,4 +609,34 @@ font-size: 18px;
 	#user {background-image: none !important}
 	#user form {background: url(../scr/poi/icons/menu/user.png) 0px -12px no-repeat; padding-left: 38px; padding-top: 4px; height: 24px; margin: 0px}
 	#userPOITxt {width: 123px}
+
+
+
+/*-------- RELATED PROPERTIES ---------*/
+
+.related_properties .caroufredsel_wrapper{cursor: default!important;}
+.related_properties .qode_carousels .slides>li{margin-right: 0;}
+.related_properties .hover_feature_holder_title{float: left; width: 50%;}
+.related_properties .hover_feature_holder_title_inner{color: #fff; text-align: center; margin-top: 20%; margin-bottom: 20%;}
+.related_properties .hover_feature_holder_title_inner small{
+	font-family: "adobe-caslon-pro", serif;
+	font-style: italic;
+}
+.related_properties .hover_feature_holder_title_inner h5{font-size: 24px; font-weight: 600; color: #fff;}
+.related_properties .hover_feature_holder_title_inner span{display: inline-block; font-weight: 300; line-height: 1.2em; margin-bottom: 20px;
+text-transform: uppercase;}
+.related_properties .hover_feature_holder_title_inner a{border: 1px solid #c4c4c4; padding: 5px 10px; color: #fff; margin-top: 10px;}
+.related_properties .carousel_item_holder img{float: left; width:50%;}
+.related_properties span.arrow-right{
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	border-left-color: rgb(4, 4, 4);
+}
+
+
+
+
+
+
 	

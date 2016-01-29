@@ -1623,21 +1623,21 @@ function initQodeCarousel(){
     "use strict";
 
     if($j('.qode_carousels').length){
-        $j('.qode_carousels').each(function(){
+        $j('.qode_carousels').each(function(){ 
             var itemWidth = ($j(this).parents('.grid_section').length == 1) ? 170 : 315;
             $j(this).find('.slides').carouFredSel({
                 circular: true,
                 responsive: true,
                 scroll : {
                     items           : 1,
-                    duration        : 500,
+                    duration        : 1000,
                     pauseOnHover    : false
                 },
                 items: {
                     width: itemWidth,
                     visible: {
-                        min: 1,
-                        max: 6
+                        min: 4,
+                        max: 4
                     }
                 },
                 auto: false,
