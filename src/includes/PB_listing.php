@@ -775,7 +775,7 @@
         $numberOfListings = $xmlResult->numberOfListings;
 
         echo '<div class="qode_carousels_holder clearfix recently_viewed"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="background-color: #fff; text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; 
-          echo '<script>alert("'.$numberOfListings.'");</script>';
+          echo '<script></script>';
           foreach ($xmlResult->listings->listing as $item):
             #if( (string)$opened_listing_id !== (string)$item->data->id ):?>
               <li class="item" style="width:3.57%!important; margin:0;">

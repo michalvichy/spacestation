@@ -636,6 +636,7 @@ text-transform: uppercase;}
 
 /*-------- RECENTLY VIEWED ---------*/
 
+#recently_viewed_header{margin: 20px 0 20px 11%;}
 .recently_viewed .hover_feature_holder_title{float: left; width: 50%;}
 .recently_viewed .carousel_item_holder img{float: left; width:50%;}
 .recently_viewed .hover_feature_holder_title_inner{color: #fff; text-align: center; margin-top: 20%; margin-bottom: 20%;}
