@@ -699,15 +699,15 @@
           switch ($numberOfListings) {
                                   case 1:
                                     # code...
-                                    echo '<li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li><li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li><li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li>';
+                                    echo '<li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li><li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li><li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li>';
                                     break;
                                   case 2:
                                     # code...
-                                    echo '<li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li><li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li>';
+                                    echo '<li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li><li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li>';
                                     break;
                                   case 3:
                                     # code...
-                                    echo '<li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li>';
+                                    echo '<li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li>';
                                     break;
                                   
                                   default:
@@ -717,6 +717,91 @@
                                 }
 
 
+        echo '</ul></div></div></div>';  
+      }
+  
+    }
+  
+    ?>
+
+<!-- RECENTLY VIEWED -->
+
+<h5 id="recently_viewed_header">RECENTLY VIEWED</h5>
+
+<?php 
+  
+    // VARS
+    $opened_listing_id = $item->data->id;
+    $recently_viewed_ids = array();
+    $hello = str_replace(':',' => ',stripcslashes($_COOKIE["recently_viewed"]));
+    $hello2 = str_replace('{', '(', $hello);
+    $hello3 = str_replace('}', ')', $hello2);
+    // $hello4 = 'array'.$hello3;
+    // $hello3 = 'array("property_1" => "a0924000007FkyqAAC", "property_2" => "a0924000007Fkz2AAC", "property_3" => "a09240000028j2eAAA", "property_4" => "a09240000028j28AAA")';
+    // $recently_viewed_cookie = array("property_1" => "a0924000007FkyqAAC", "property_2" => "a0924000007Fkz2AAC", "property_3" => "a09240000028j2eAAA", "property_4" => "a09240000028j28AAA");
+    eval('$recently_viewed_cookie = array'.$hello3.';'); 
+
+    $recently_viewed_cookie_slice = array_slice($recently_viewed_cookie, -4);
+    
+    foreach ($recently_viewed_cookie_slice as $item) {
+       array_push($recently_viewed_ids, $item);
+    }
+
+    // $recently_viewed_ids = array('a0924000007FkyqAAC' , 'a0924000007Fkz2AAC' ,'a09240000028j2eAAA' ,'a09240000028j28AAA');
+    $id_request = implode(";", $recently_viewed_ids);
+  
+    /////////////// QUERY ARRAY ///////////////
+    $reqArray = array("token"       => PB_SECURITYTOKEN,
+              "fields"      => "Id;name;pba__ListingPrice_pb__c;pba__status__c;Tenure__c;",
+              // "id" => 'IN(a0924000007FkyqAAC;a0924000007Fkz2AAC;a09240000028j2eAAA;a09240000028j28AAA)',
+              "id" => 'IN('.$id_request.')',
+              "debugmode"   => "true"
+              );
+    // BUILD HTTP QUERY STRING
+    $query    = http_build_query($reqArray,'','&');
+    // RETURN XML RESULT
+    $xmlResult  = simplexml_load_file(PB_WEBSERVICEENDPOINT . "?" . $query);
+    
+    if (!empty($xmlResult->errorMessages->message)) {
+      $errorMessage = 'Error: '.$xmlResult->errorMessages->message;
+      echo '<script>alert("'.$errorMessage.'");</script>';
+    } else {
+  
+      if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0))
+      { 
+        echo '<script>alert("no listings found");</script>';
+      }else{ 
+
+        $numberOfListings = $xmlResult->numberOfListings;
+
+        echo '<div class="qode_carousels_holder clearfix recently_viewed"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="background-color: #fff; text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; 
+          echo '<script>alert("'.$numberOfListings.'");</script>';
+          foreach ($xmlResult->listings->listing as $item):
+            #if( (string)$opened_listing_id !== (string)$item->data->id ):?>
+              <li class="item" style="width:3.57%!important; margin:0;">
+                <div class="carousel_item_holder">
+                    <span class="first_image_holder">
+                      <span class="text_holder">
+                          <span class="text_outer">
+                            <span class="text_inner">
+                              <div class="hover_feature_holder_title">
+                                <div class="hover_feature_holder_title_inner">
+                                  <h5 class="portfolio_title">
+                                    <?php echo  $item->data->name; ?>
+                                  </h5>
+                                  <span class="project_category">&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?><p></p><?php echo $item->data->pba__status__c; ?></span><p></p>
+                                  <a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" target="_self">VIEW</a>
+                                </div>
+                              </div>
+                            </span>
+                          </span>
+                        </span>
+                      <img width="1100" height="619" src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
+                    </span>
+                </div>
+              </li>
+      <?php #endif; 
+          endforeach;
         echo '</ul></div></div></div>';  
       }
   

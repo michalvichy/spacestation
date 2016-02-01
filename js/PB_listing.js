@@ -153,40 +153,40 @@ function pauseVid() {
 	$j(document).ready(function() {
 
 	//SAVE TO RECENTLY VIEWED COOKIE
-		// if 'listing_id' & 'property_name' variable is available
-			// if(listing_id !== undefined && property_name !== undefined )
-			// {
+	//if 'listing_id' & 'property_name' variable is available
+			if(listing_id !== undefined && property_name !== undefined )
+			{
 	
-			// 	// check if saved_cookie exists
-			// 		if($j.super_cookie().check("recently_viewed")){
-			// 			//if available -> add another id value to cookie
-			// 			var arr = $j.super_cookie().read_indexes("recently_viewed");
-			// 			var jso = $j.super_cookie().read_JSON("recently_viewed");
-			// 			var already_added_flag = false;
+				// check if saved_cookie exists
+					if($j.super_cookie().check("recently_viewed")){
+						//if available -> add another id value to cookie
+						var arr = $j.super_cookie().read_indexes("recently_viewed");
+						var jso = $j.super_cookie().read_JSON("recently_viewed");
+						var already_added_flag = false;
 	
-			// 			for (var k = 1; k < arr.length+1; k++) {
-			// 				if( jso['property_'+k] == listing_id ){
-			// 					already_added_flag = true;
-			// 					break;
-			// 				}
-			// 			};
+						for (var k = 1; k < arr.length+1; k++) {
+							if( jso['property_'+k] == listing_id ){
+								already_added_flag = true;
+								break;
+							}
+						};
 	
-			// 			if( already_added_flag == false ){
-			// 				var i = $j.super_cookie().read_indexes("recently_viewed").length + 1;
-			// 				$j.super_cookie().add_value("recently_viewed",'property_'+i, listing_id);
-			// 				$j('.success').fadeIn().delay(600).fadeOut('fast');
-			// 			}else{
-			// 				$j('.warning').fadeIn();
-			// 			}
+						if( already_added_flag == false ){
+							var i = $j.super_cookie().read_indexes("recently_viewed").length + 1;
+							$j.super_cookie().add_value("recently_viewed",'property_'+i, listing_id);
+							// $j('.success').fadeIn().delay(600).fadeOut('fast');
+						}else{
+							// $j('.warning').fadeIn();
+						}
 	
-			// 		}else{
-			// 			//if not available create saved_cookie and add first id value
-			// 			$j.super_cookie({expires: 7,path: "/"}).create("recently_viewed",{'property_1': listing_id});
-			// 			$j('.success').fadeIn().delay(600).fadeOut('fast');
-			// 		}
-			// }
+					}else{
+						//if not available create saved_cookie and add first id value
+						$j.super_cookie({expires: 1,path: "/"}).create("recently_viewed",{'property_1': listing_id});
+						// $j('.success').fadeIn().delay(600).fadeOut('fast');
+					}
+			}
 
-			// $j.super_cookie().remove_value("recently_viewed",'property_2');
+			// $j.super_cookie().remove_value("recently_viewed","property_5");
 
 			console.log($j.super_cookie().read_JSON("recently_viewed"));
 
