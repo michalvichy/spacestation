@@ -7,6 +7,7 @@ var map_view = $j('#map_container');
 var video_view = $j('#myvid');
 var description_view = $j('.single_view_info.description');
 var arrange_view = $j('.single_view_info.arrange');
+var navigation = $j('.single_view_navigation ul');
 
 var video1;
 
@@ -196,6 +197,8 @@ function pauseVid() {
 	$j('.single_view_navigation ul').on('click','li',function(event){
 		event.preventDefault();
 		event.stopPropagation();
+		navigation.find('li').removeClass('active_single_view_nav');
+		navigation.find('li#'+$j(this).attr('id')).addClass('active_single_view_nav');
 		switch( $j(this).attr('id') ) {
     		case 'single_view_nav_map': 
     			
@@ -211,6 +214,7 @@ function pauseVid() {
     		    	hideItem([gallery_view,video_view,floorplan_view,epc_view]);
     		    	showItem([map_view]);
     		    	gallery_view.addClass('niema'); // ! window resize glitch fix
+
 
     		    	if( $j('#poi_map').is(':empty') ) 
     		    	{ 

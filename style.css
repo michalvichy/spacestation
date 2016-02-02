@@ -35,7 +35,9 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
 /* ///////////////////////////////// */
 /* -------- GENERAL STYLES -------- */
 
-  .saved_button span{©
+  a:hover, p a:hover{color: #222;}
+
+  .saved_button span{
     font-weight: 600;
     font-size: 18px!important;
     padding-left: 4px;
@@ -590,6 +592,7 @@ div.caroufredsel_wrapper{
 }
 
 .content_bottom_content h3{color: white;}
+.content_bottom_content i{font-family: "adobe-caslon-pro",serif;  }
 
 .content_bottom img{
   width: 100%;

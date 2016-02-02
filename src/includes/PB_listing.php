@@ -63,7 +63,7 @@
                   
                   <div class="single_view_navigation">
                     <ul>
-                      <li id="single_view_nav_gallery">Gallery</li>
+                      <li id="single_view_nav_gallery" class="active_single_view_nav">Gallery</li>
                       <li id="single_view_nav_floorplan">Floor Plan</a></li>
                       <li id="single_view_nav_epc">EPC</a></li>
                       <li id="single_view_nav_map">Map</a></li>
@@ -195,25 +195,71 @@
           <div class="single_view_info arrange">
             <div class="single_view_arrange_header">
                 <p>REQUEST THE VIEWING OF</p>
-               <h3 class="itemFact"><?php echo  $item->data->name; ?></h3>
-                <em>Please fill in the fields marked with *</em>
-               <a class="arrange_viewing_button beige angle_edges_button close" href="#">X</a>
+               <h3 class="itemFact"><?php echo  $item->data->name; ?><br><?php echo $item->data->pba__city_pb__c.', '; ?><?php echo $item->data->pba__postalcode_pb__c; ?></h3>
+                <i>Please fill in the fields marked with *</i>
+               <a class="arrange_viewing_button beige angle_edges_button close" href="#">&nbsp;</a>
             </div><!-- // end single_view_info_header -->
             <div class="panel full_width">  
-                        <form action="/">
+                        <form id="arrange_form"action="/">
                            <fieldset>
-                             <label for="name">Name</label>
-                             <input type="text" id="name" class="form-text" />
-                             <p class="form-help">This is help text under the form field.</p>
+                             <label for="arrange_first_name">FIRST NAME<sup>*</sup></label>
+                            <div class="jqcorner">
+                             <input type="text" id="arrange_first_name" class="form-text" />
+                            </div>
+                           </fieldset>
+
+                           <fieldset>
+                             <label for="arrange_last_name">LAST NAME<sup>*</sup></label>
+                             <div class="jqcorner">
+                             <input type="text" id="arrange_last_name" class="form-text" />
+                             </div>
                            </fieldset>
                            
                            <fieldset>
-                             <label for="email">Email</label>
-                             <input type="email" id="email" class="form-text" />
+                            <label for="arrange_telephone">TELEPHONE<sup>*</sup></label>
+                            <div class="jqcorner">
+                             <input type="text" id="arrange_telephone" class="form-text" />
+                             </div>
                            </fieldset>
 
+                           <fieldset>
+                             <label for="arrange_email">EMAIL<sup>*</sup></label>
+                             <div class="jqcorner">
+                             <input type="email" id="arrange_email" class="form-text" />
+                             </div>
+                           </fieldset>
+
+                           <fieldset>
+                            <label for="arrange_message">MESSAGE / PREFERRED VIEWING TIMES </label>
+                            <div class="jqcorner">
+                              <textarea id="arrange_message"></textarea>
+                            </div>
+                          </fieldset>
+
+                          <fieldset>
+                            <label for="arrange_where_did_you_hear">WHERE DID YOU HEAR ABOUT US?</label>
+                            <div class="jqcorner">
+                            <select id="arrange_where_did_you_hear">
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Cylon</option>
+                            </select>
+                            </div>
+                          </fieldset>
+
+                          <fieldset>
+                            <label for="arrange_are_you_selling">ARE YOU SELLING A PROPERTY?</label>
+                            <div class="jqcorner">
+                             <input type="text" id="arrange_are_you_selling" class="form-text" />
+                           </div>
+                          </fieldset>
+
+                          <fieldset class="arrange_check">
+                            <label><input type="checkbox" /> I accept the <a href="#">privacy policy</a><sup>*</sup></label>
+                          </fieldset>
+
                            <fieldset class="form-actions">
-                             <input type="submit" value="Submit" />
+                             <input type="submit" value="SUBMIT" />
                            </fieldset>
                         </form>     
             </div> <!-- // end panel -->  
@@ -223,7 +269,6 @@
             <div class="single_view_info_header">
                <h3 class="itemFact"><?php echo  $item->data->name; ?><br><?php echo $item->data->pba__city_pb__c.', '; ?><?php echo $item->data->pba__postalcode_pb__c; ?></h3>
                <p><strong>&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></strong><?php echo ' '.$item->data->tenure__c; ?></p>
-               <p><?php echo $item->data->pba__status__c; ?></p>
                <p> 
                <?php
                 $listing_bedrooms = $item->data->pba__bedrooms_pb__c;
