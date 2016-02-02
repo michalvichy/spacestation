@@ -479,7 +479,7 @@
 
 <!-- RELATED POSTS -->
 
-  <div class="wpb_tabstabs_holder clearfix" data-interval="0">
+  <!-- <div class="wpb_tabstabs_holder clearfix" data-interval="0">
     <div class="q_tabs vertical left" style="visibility: visible;">
         <ul class="tabs-nav">
             <li class="active">
@@ -588,7 +588,7 @@
             </div>
         </div>
     </div>
-  </div>
+  </div> -->
 
 <!-- RELATED PROPERTIES -->
   <?php 
