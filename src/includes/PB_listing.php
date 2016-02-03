@@ -24,7 +24,7 @@
    
         <!-- JS VARS -->
 
-        <script type="text/javascript">
+          <script type="text/javascript">
                   
                   var listing_id = <?php echo("'".$xmlResult->listings->listing->data->id."';");  ?>;
                   var lat;
@@ -40,10 +40,10 @@
                   var poiAddress = <?php echo '"'. $xmlResult->listings->listing->data->pba__city_pb__c.', '; ?><?php echo $xmlResult->listings->listing->data->pba__postalcode_pb__c .'";';?>
                   var poiHTML = <?php echo '"'. $xmlResult->listings->listing->data->name.'";'; ?>
                   var poiZoomLevel = 17;
-        </script>    
+          </script>    
 
 
-        <?php 
+          <?php 
          
          
           // ini_set('memory_limit','256M');
@@ -63,7 +63,7 @@
                   
                   <div class="single_view_navigation">
                     <ul>
-                      <li id="single_view_nav_gallery">Gallery</li>
+                      <li id="single_view_nav_gallery" class="active_single_view_nav">Gallery</li>
                       <li id="single_view_nav_floorplan">Floor Plan</a></li>
                       <li id="single_view_nav_epc">EPC</a></li>
                       <li id="single_view_nav_map">Map</a></li>
@@ -191,28 +191,75 @@
                    
                 </div> <!-- // end single_view_media -->
         <div class="single_view_description">
+          
           <div class="single_view_info arrange">
             <div class="single_view_arrange_header">
                 <p>REQUEST THE VIEWING OF</p>
-               <h3 class="itemFact"><?php echo  $item->data->name; ?></h3>
-                <em>Please fill in the fields marked with *</em>
-               <a class="arrange_viewing_button beige angle_edges_button close" href="#">X</a>
+               <h3 class="itemFact"><?php echo  $item->data->name; ?><br><?php echo $item->data->pba__city_pb__c.', '; ?><?php echo $item->data->pba__postalcode_pb__c; ?></h3>
+                <i>Please fill in the fields marked with *</i>
+               <a class="arrange_viewing_button beige angle_edges_button close" href="#">&nbsp;</a>
             </div><!-- // end single_view_info_header -->
             <div class="panel full_width">  
-                        <form action="/">
+                        <form id="arrange_form"action="/">
                            <fieldset>
-                             <label for="name">Name</label>
-                             <input type="text" id="name" class="form-text" />
-                             <p class="form-help">This is help text under the form field.</p>
+                             <label for="arrange_first_name">FIRST NAME<sup>*</sup></label>
+                            <div class="jqcorner">
+                             <input type="text" id="arrange_first_name" class="form-text" />
+                            </div>
+                           </fieldset>
+
+                           <fieldset>
+                             <label for="arrange_last_name">LAST NAME<sup>*</sup></label>
+                             <div class="jqcorner">
+                             <input type="text" id="arrange_last_name" class="form-text" />
+                             </div>
                            </fieldset>
                            
                            <fieldset>
-                             <label for="email">Email</label>
-                             <input type="email" id="email" class="form-text" />
+                            <label for="arrange_telephone">TELEPHONE<sup>*</sup></label>
+                            <div class="jqcorner">
+                             <input type="text" id="arrange_telephone" class="form-text" />
+                             </div>
                            </fieldset>
 
+                           <fieldset>
+                             <label for="arrange_email">EMAIL<sup>*</sup></label>
+                             <div class="jqcorner">
+                             <input type="email" id="arrange_email" class="form-text" />
+                             </div>
+                           </fieldset>
+
+                           <fieldset>
+                            <label for="arrange_message">MESSAGE / PREFERRED VIEWING TIMES </label>
+                            <div class="jqcorner">
+                              <textarea id="arrange_message"></textarea>
+                            </div>
+                          </fieldset>
+
+                          <fieldset>
+                            <label for="arrange_where_did_you_hear">WHERE DID YOU HEAR ABOUT US?</label>
+                            <div class="jqcorner">
+                            <select id="arrange_where_did_you_hear">
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Cylon</option>
+                            </select>
+                            </div>
+                          </fieldset>
+
+                          <fieldset>
+                            <label for="arrange_are_you_selling">ARE YOU SELLING A PROPERTY?</label>
+                            <div class="jqcorner">
+                             <input type="text" id="arrange_are_you_selling" class="form-text" />
+                           </div>
+                          </fieldset>
+
+                          <fieldset class="arrange_check">
+                            <label><input type="checkbox" /> I accept the <a href="#">privacy policy</a><sup>*</sup></label>
+                          </fieldset>
+
                            <fieldset class="form-actions">
-                             <input type="submit" value="Submit" />
+                             <input type="submit" value="SUBMIT" />
                            </fieldset>
                         </form>     
             </div> <!-- // end panel -->  
@@ -222,7 +269,6 @@
             <div class="single_view_info_header">
                <h3 class="itemFact"><?php echo  $item->data->name; ?><br><?php echo $item->data->pba__city_pb__c.', '; ?><?php echo $item->data->pba__postalcode_pb__c; ?></h3>
                <p><strong>&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></strong><?php echo ' '.$item->data->tenure__c; ?></p>
-               <p><?php echo $item->data->pba__status__c; ?></p>
                <p> 
                <?php
                 $listing_bedrooms = $item->data->pba__bedrooms_pb__c;
@@ -478,7 +524,7 @@
 
 <!-- RELATED POSTS -->
 
-<div class="wpb_tabstabs_holder clearfix" data-interval="0">
+  <!-- <div class="wpb_tabstabs_holder clearfix" data-interval="0">
     <div class="q_tabs vertical left" style="visibility: visible;">
         <ul class="tabs-nav">
             <li class="active">
@@ -587,7 +633,7 @@
             </div>
         </div>
     </div>
-</div>
+  </div> -->
 
 <!-- RELATED PROPERTIES -->
   <?php 
@@ -597,10 +643,9 @@
   
     /////////////// QUERY ARRAY ///////////////
     $reqArray = array("token"       => PB_SECURITYTOKEN,
-              "fields"      => "Id;name;",
+              "fields"      => "Id;name;pba__ListingPrice_pb__c;pba__status__c;Tenure__c;",
               "recordtypes" => (string)$listing_type,
               "pba__PropertyType__c" => (string)$item->data->pba__propertytype__c,
-              // "orderby"      => "pba__ListingPrice_pb__c;ASC",
               "debugmode"   => "true"
               );
     // BUILD HTTP QUERY STRING
@@ -617,29 +662,199 @@
       { 
         echo '<script>alert("no listings found");</script>';
       }else{ 
-        echo '<div class="qode_carousels_holder clearfix"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; 
-          foreach ($xmlResult->listings->listing as $item):
+
+        $numberOfListings = $xmlResult->numberOfListings -1 ;
+
+        echo '<div class="qode_carousels_holder clearfix related_properties"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="background-color: #040404; text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; 
+          
+          echo '<script></script>';
+
+          if($numberOfListings > 2){
+
+            $arr = $xmlResult->xpath('listings/listing');
+            $random = array_rand($arr, 4);
+
+            foreach ($random as $key):
+            $item = $xmlResult->listings->listing[$key];
             if( (string)$opened_listing_id !== (string)$item->data->id ):?>
               <li class="item">
                 <div class="carousel_item_holder">
-                  <a href="listing/?id=<?php echo $item->data->id; ?>" target="_self">
-                    <span class="first_image_holder has_hover_image">
-                      <img width="1100" height="619" src="<?php echo $item->media->images->image->url; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
+                    <span class="first_image_holder">
+                      <span class="arrow-right"></span>
+                      <span class="text_holder">
+                          <span class="text_outer">
+                            <span class="text_inner">
+                              <div class="hover_feature_holder_title">
+                                <div class="hover_feature_holder_title_inner">
+                                  <small>Related properties</small>
+                                  <h5 class="portfolio_title">
+                                    <?php echo  $item->data->name; ?>
+                                  </h5>
+                                  <span class="project_category">&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?><br><?php echo $item->data->pba__status__c; ?></span>
+                                  <br>
+                                  <a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" target="_self">VIEW</a>
+                                </div>
+                              </div>
+                            </span>
+                          </span>
+                        </span>
+                      <img width="1100" height="619" src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>" class="attachment-post-thumbnail wp-post-image" alt="<?php echo $item->media->images->image[0]->filename; ?>">
                     </span>
-                    <span class="second_image_holder has_hover_image">
-                      <img width="1100" height="619" src="<?php echo $item->media->images->image->url; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
-                    </span>
-                  </a>
                 </div>
               </li>
       <?php endif; 
+          endforeach;
+
+          }else{
+
+            foreach ($xmlResult->listings->listing as $item):
+            if( (string)$opened_listing_id !== (string)$item->data->id ):?>
+              <li class="item">
+                <div class="carousel_item_holder">
+                    <span class="first_image_holder">
+                      <span class="arrow-right"></span>
+                      <span class="text_holder">
+                          <span class="text_outer">
+                            <span class="text_inner">
+                              <div class="hover_feature_holder_title">
+                                <div class="hover_feature_holder_title_inner">
+                                  <small>Related properties</small>
+                                  <h5 class="portfolio_title">
+                                    <?php echo  $item->data->name; ?>
+                                  </h5>
+                                  <span class="project_category">&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?><br><?php echo $item->data->pba__status__c; ?></span>
+                                  <br>
+                                  <a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" target="_self">VIEW</a>
+                                </div>
+                              </div>
+                            </span>
+                          </span>
+                        </span>
+                      <img width="1100" height="619" src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>" class="attachment-post-thumbnail wp-post-image" alt="<?php echo $item->media->images->image[0]->filename; ?>">
+                    </span>
+                </div>
+              </li>
+      <?php endif; 
+          endforeach;
+
+          }
+
+          
+
+          switch ($numberOfListings) {
+                                  case 1:
+                                    # code...
+                                    echo '<li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li><li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li><li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li>';
+                                    break;
+                                  case 2:
+                                    # code...
+                                    echo '<li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li><li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"><a href="#" target="_self"></a></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li>';
+                                    break;
+                                  case 3:
+                                    # code...
+                                    echo '<li class="item" style="width: 705px;"><div class="carousel_item_holder"><span class="first_image_holder"><span class="text_holder"><span class="text_outer"><span class="text_inner"><div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner"><h5 class="portfolio_title"></h5><span class="project_category"><br></span></div></div></span></span></span><img width="1100" height="619" src="http://www.smartperform.de/wp-content/downloads/photoshop_templates/2014/200x200_transparent_placeholder.png" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata"></span></div></li>';
+                                    break;
+                                  
+                                  default:
+                                    # code...
+                                    #echo 'width: 50%;';
+                                    break;
+                                }
+
+
+        echo '</ul></div></div></div>';  
+      }
+  
+    }
+  
+    ?>
+
+<!-- RECENTLY VIEWED -->
+
+<h5 id="recently_viewed_header">RECENTLY VIEWED</h5>
+
+<?php 
+  
+    // VARS
+    $opened_listing_id = $item->data->id;
+    $recently_viewed_ids = array();
+    $hello = str_replace(':',' => ',stripcslashes($_COOKIE["recently_viewed"]));
+    $hello2 = str_replace('{', '(', $hello);
+    $hello3 = str_replace('}', ')', $hello2);
+    // $hello4 = 'array'.$hello3;
+    // $hello3 = 'array("property_1" => "a0924000007FkyqAAC", "property_2" => "a0924000007Fkz2AAC", "property_3" => "a09240000028j2eAAA", "property_4" => "a09240000028j28AAA")';
+    // $recently_viewed_cookie = array("property_1" => "a0924000007FkyqAAC", "property_2" => "a0924000007Fkz2AAC", "property_3" => "a09240000028j2eAAA", "property_4" => "a09240000028j28AAA");
+    eval('$recently_viewed_cookie = array'.$hello3.';'); 
+
+    $recently_viewed_cookie_slice = array_slice($recently_viewed_cookie, -4);
+    
+    foreach ($recently_viewed_cookie_slice as $item) {
+       array_push($recently_viewed_ids, $item);
+    }
+
+    // $recently_viewed_ids = array('a0924000007FkyqAAC' , 'a0924000007Fkz2AAC' ,'a09240000028j2eAAA' ,'a09240000028j28AAA');
+    $id_request = implode(";", $recently_viewed_ids);
+  
+    /////////////// QUERY ARRAY ///////////////
+    $reqArray = array("token"       => PB_SECURITYTOKEN,
+              "fields"      => "Id;name;pba__ListingPrice_pb__c;pba__status__c;Tenure__c;",
+              // "id" => 'IN(a0924000007FkyqAAC;a0924000007Fkz2AAC;a09240000028j2eAAA;a09240000028j28AAA)',
+              "id" => 'IN('.$id_request.')',
+              "debugmode"   => "true"
+              );
+    // BUILD HTTP QUERY STRING
+    $query    = http_build_query($reqArray,'','&');
+    // RETURN XML RESULT
+    $xmlResult  = simplexml_load_file(PB_WEBSERVICEENDPOINT . "?" . $query);
+    
+    if (!empty($xmlResult->errorMessages->message)) {
+      $errorMessage = 'Error: '.$xmlResult->errorMessages->message;
+      echo '<script>alert("'.$errorMessage.'");</script>';
+    } else {
+  
+      if ($doSearch  && ($xmlResult == null || count($xmlResult->listings->listing) == 0))
+      { 
+        echo '<script>alert("no listings found");</script>';
+      }else{ 
+
+        $numberOfListings = $xmlResult->numberOfListings;
+
+        echo '<div class="qode_carousels_holder clearfix recently_viewed"><div class="qode_carousels"><div class="caroufredsel_wrapper" ><ul class="slides" style="background-color: #fff; text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; margin: 0px; opacity: 1; z-index: 0;">'; 
+          echo '<script></script>';
+          foreach ($xmlResult->listings->listing as $item):
+            #if( (string)$opened_listing_id !== (string)$item->data->id ):?>
+              <li class="item" style="width:3.57%!important; margin:0;">
+                <div class="carousel_item_holder">
+                    <span class="first_image_holder">
+                      <span class="text_holder">
+                          <span class="text_outer">
+                            <span class="text_inner">
+                              <div class="hover_feature_holder_title">
+                                <div class="hover_feature_holder_title_inner">
+                                  <h5 class="portfolio_title">
+                                    <?php echo  $item->data->name; ?>
+                                  </h5>
+                                  <span class="project_category">&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?><p></p><?php echo $item->data->pba__status__c; ?></span><p></p>
+                                  <a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" target="_self">VIEW</a>
+                                </div>
+                              </div>
+                            </span>
+                          </span>
+                        </span>
+                      <img width="1100" height="619" src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>" class="attachment-post-thumbnail wp-post-image" alt="qode interactive strata">
+                    </span>
+                </div>
+              </li>
+      <?php #endif; 
           endforeach;
         echo '</ul></div></div></div>';  
       }
   
     }
   
-  ?>
+    ?>
+
+
  
 <!-- MESSAGE BOXED -->
 <!-- SUCCESS BOX -->

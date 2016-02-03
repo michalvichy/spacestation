@@ -7,6 +7,7 @@ var map_view = $j('#map_container');
 var video_view = $j('#myvid');
 var description_view = $j('.single_view_info.description');
 var arrange_view = $j('.single_view_info.arrange');
+var navigation = $j('.single_view_navigation ul');
 
 var video1;
 
@@ -151,12 +152,53 @@ function pauseVid() {
 
 // DOCUMENT READY - 2st
 	$j(document).ready(function() {
+
+	//SAVE TO RECENTLY VIEWED COOKIE
+	//if 'listing_id' & 'property_name' variable is available
+			if(listing_id !== undefined && property_name !== undefined )
+			{
+	
+				// check if saved_cookie exists
+					if($j.super_cookie().check("recently_viewed")){
+						//if available -> add another id value to cookie
+						var arr = $j.super_cookie().read_indexes("recently_viewed");
+						var jso = $j.super_cookie().read_JSON("recently_viewed");
+						var already_added_flag = false;
+	
+						for (var k = 1; k < arr.length+1; k++) {
+							if( jso['property_'+k] == listing_id ){
+								already_added_flag = true;
+								break;
+							}
+						};
+	
+						if( already_added_flag == false ){
+							var i = $j.super_cookie().read_indexes("recently_viewed").length + 1;
+							$j.super_cookie().add_value("recently_viewed",'property_'+i, listing_id);
+							// $j('.success').fadeIn().delay(600).fadeOut('fast');
+						}else{
+							// $j('.warning').fadeIn();
+						}
+	
+					}else{
+						//if not available create saved_cookie and add first id value
+						$j.super_cookie({expires: 1,path: "/"}).create("recently_viewed",{'property_1': listing_id});
+						// $j('.success').fadeIn().delay(600).fadeOut('fast');
+					}
+			}
+
+			// $j.super_cookie().remove_value("recently_viewed","property_5");
+
+			console.log($j.super_cookie().read_JSON("recently_viewed"));
+
+
 		
 	//LAYOUT CHANGE BUTTONS LOGIC
-
 	$j('.single_view_navigation ul').on('click','li',function(event){
 		event.preventDefault();
 		event.stopPropagation();
+		navigation.find('li').removeClass('active_single_view_nav');
+		navigation.find('li#'+$j(this).attr('id')).addClass('active_single_view_nav');
 		switch( $j(this).attr('id') ) {
     		case 'single_view_nav_map': 
     			
@@ -172,6 +214,7 @@ function pauseVid() {
     		    	hideItem([gallery_view,video_view,floorplan_view,epc_view]);
     		    	showItem([map_view]);
     		    	gallery_view.addClass('niema'); // ! window resize glitch fix
+
 
     		    	if( $j('#poi_map').is(':empty') ) 
     		    	{ 
@@ -263,18 +306,18 @@ function pauseVid() {
 	})
 
 	// ARRANGE VIEWING BUTTON
-	$j('.arrange_viewing_button.open').on('click',function(event){
-		event.preventDefault(); 
-		hideItem([description_view],true);
-		showItem([arrange_view],true);
-
-	})
-
-	$j('.arrange_viewing_button.close').on('click',function(event){
-		event.preventDefault(); 
-		hideItem([arrange_view],true);
-		showItem([description_view],true);
-	})
+		$j('.arrange_viewing_button.open').on('click',function(event){
+			event.preventDefault(); 
+			hideItem([description_view],true);
+			showItem([arrange_view],true);
+	
+		})
+	
+		$j('.arrange_viewing_button.close').on('click',function(event){
+			event.preventDefault(); 
+			hideItem([arrange_view],true);
+			showItem([description_view],true);
+		})
 
 	// -------- PRINT BUTTON ------------
 	
@@ -285,45 +328,45 @@ function pauseVid() {
 
 	// -------- SAVE BUTTON ------------
 	
-	$j('.add_to_saved_button').on('click', 'a', function(event) {
-		event.preventDefault();
-
-		// if 'listing_id' & 'property_name' variable is available
-		if(listing_id !== undefined && property_name !== undefined )
-		{
-
-			// check if saved_cookie exists
-				if($j.super_cookie().check("saved_cookie")){
-					//if available -> add another id value to cookie
-					var arr = $j.super_cookie().read_indexes("saved_cookie");
-					var jso = $j.super_cookie().read_JSON("saved_cookie");
-					var already_added_flag = false;
-
-					for (var k = 1; k < arr.length+1; k++) {
-						if( jso['property_'+k] == listing_id+'|'+property_name ){
-							already_added_flag = true;
-							break;
+		$j('.add_to_saved_button').on('click', 'a', function(event) {
+			event.preventDefault();
+	
+			// if 'listing_id' & 'property_name' variable is available
+			if(listing_id !== undefined && property_name !== undefined )
+			{
+	
+				// check if saved_cookie exists
+					if($j.super_cookie().check("saved_cookie")){
+						//if available -> add another id value to cookie
+						var arr = $j.super_cookie().read_indexes("saved_cookie");
+						var jso = $j.super_cookie().read_JSON("saved_cookie");
+						var already_added_flag = false;
+	
+						for (var k = 1; k < arr.length+1; k++) {
+							if( jso['property_'+k] == listing_id+'|'+property_name ){
+								already_added_flag = true;
+								break;
+							}
+						};
+	
+						if( already_added_flag == false ){
+							var i = $j.super_cookie().read_indexes("saved_cookie").length + 1;
+							$j.super_cookie().add_value("saved_cookie",'property_'+i, listing_id+'|'+property_name);
+							updateSavedCounter(listing_id,property_name);
+							$j('.success').fadeIn().delay(600).fadeOut('fast');
+						}else{
+							$j('.warning').fadeIn();
 						}
-					};
-
-					if( already_added_flag == false ){
-						var i = $j.super_cookie().read_indexes("saved_cookie").length + 1;
-						$j.super_cookie().add_value("saved_cookie",'property_'+i, listing_id+'|'+property_name);
+	
+					}else{
+						//if not available create saved_cookie and add first id value
+						$j.super_cookie({expires: 7,path: "/"}).create("saved_cookie",{'property_1': listing_id+'|'+property_name});
 						updateSavedCounter(listing_id,property_name);
 						$j('.success').fadeIn().delay(600).fadeOut('fast');
-					}else{
-						$j('.warning').fadeIn();
 					}
-
-				}else{
-					//if not available create saved_cookie and add first id value
-					$j.super_cookie({expires: 7,path: "/"}).create("saved_cookie",{'property_1': listing_id+'|'+property_name});
-					updateSavedCounter(listing_id,property_name);
-					$j('.success').fadeIn().delay(600).fadeOut('fast');
-				}
-		}
-
-	});
+			}
+	
+		});
 	
 	});
 
