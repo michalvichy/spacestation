@@ -165,7 +165,6 @@
                           </ul>
                           </div>
                           <div id="poi_map" style="height:770px;width:100%;"></div> <!-- !!! must match in pb-style.css -->
-                          <!-- /*<style>#poi_map img{max-width:none!important;background:none!important; }</style>*/ -->
 
                       </div>
                       
@@ -771,6 +770,7 @@
 
 <!-- RECENTLY VIEWED -->
 
+<?php if( isset($_COOKIE["recently_viewed"]) ) { ?>
 <h5 id="recently_viewed_header">RECENTLY VIEWED</h5>
 
 <?php 
@@ -781,9 +781,6 @@
     $hello = str_replace(':',' => ',stripcslashes($_COOKIE["recently_viewed"]));
     $hello2 = str_replace('{', '(', $hello);
     $hello3 = str_replace('}', ')', $hello2);
-    // $hello4 = 'array'.$hello3;
-    // $hello3 = 'array("property_1" => "a0924000007FkyqAAC", "property_2" => "a0924000007Fkz2AAC", "property_3" => "a09240000028j2eAAA", "property_4" => "a09240000028j28AAA")';
-    // $recently_viewed_cookie = array("property_1" => "a0924000007FkyqAAC", "property_2" => "a0924000007Fkz2AAC", "property_3" => "a09240000028j2eAAA", "property_4" => "a09240000028j28AAA");
     eval('$recently_viewed_cookie = array'.$hello3.';'); 
 
     $recently_viewed_cookie_slice = array_slice($recently_viewed_cookie, -4);
@@ -792,13 +789,11 @@
        array_push($recently_viewed_ids, $item);
     }
 
-    // $recently_viewed_ids = array('a0924000007FkyqAAC' , 'a0924000007Fkz2AAC' ,'a09240000028j2eAAA' ,'a09240000028j28AAA');
     $id_request = implode(";", $recently_viewed_ids);
   
     /////////////// QUERY ARRAY ///////////////
     $reqArray = array("token"       => PB_SECURITYTOKEN,
               "fields"      => "Id;name;pba__ListingPrice_pb__c;pba__status__c;Tenure__c;",
-              // "id" => 'IN(a0924000007FkyqAAC;a0924000007Fkz2AAC;a09240000028j2eAAA;a09240000028j28AAA)',
               "id" => 'IN('.$id_request.')',
               "debugmode"   => "true"
               );
@@ -853,7 +848,7 @@
     }
   
     ?>
-
+<?php } ?>
 
  
 <!-- MESSAGE BOXED -->

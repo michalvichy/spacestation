@@ -3,7 +3,7 @@ Theme Name: Space Station
 Theme URI: http://demo.qodeinteractive.com/bridge/
 Description: A child theme of Bridge Theme
 Author: Tuff Studio
-Author URI: http://www.tuff-studio.com/
+Author URI: http://www.matchboxpublishing.com
 Version: 1.0.0
 Template: bridge
 */
@@ -116,7 +116,8 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     right: 10px;
   }
 
-/*-------- PB_request_form ------------*/
+/* PB_request_form
+------------------------------------------------*/
 
 /*<-- TEXT INPUT -->*/
   form.PB_request_form input[type='text']{
@@ -134,7 +135,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
   box-sizing: border-box;
   }
 
-/*<-- SLIDER -->*/
+/*<-- RANGE SLIDER -->*/
 
   form.PB_request_form  input[type=range]::-ms-track {
     width: 100%;
@@ -303,7 +304,6 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
 /*<-- SELECT -->*/
 
   form.PB_request_form select{
-    /*background: url("/wp-content/themes/ten/img/arrow.png") no-repeat scroll 505px 12px / 21px 15px rgba(0, 0, 0, 0);*/
     padding: 2px 0 2px 4px;
     text-align: left;
     height: 20px!important;
@@ -416,7 +416,6 @@ aside.vertical_menu_area{
   padding: 5px 10px 5px 10px;
  }
 
-/*a.vertical_menu_hidden_button{ width: 128px; margin-left: 20px; } */ /* !!! reflect in default.js line 2190 */
 span.vertical_menu_hidden_button_line{ left: 20px; }
 
 /* ------- vertical_responsive.css overwrite ---------- */
@@ -639,7 +638,6 @@ div.caroufredsel_wrapper{
 
 /* ////////////////////////////////// */
 /* ------------- FOOTER ------------- */
-
 
   /* ---- MIDDLE COLUMN ---- */
   footer div.column2.footer_col2 div.textwidget{
@@ -902,16 +900,6 @@ height: 25%;
 
 /*////////////////////////////////////////////////////////*/
 /* -------- CANVAS CATEGORIES NAVIGATION FORM --------- */
-
-/*.page-template-canvas_page .content{
-  background: url('assets/imgs/canvas-background.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    z-index: 0;
-    margin-top: 0!important;
-}*/
 
 fieldset#selected_category input[type="radio"]{display: none;}
 fieldset#selected_category label{cursor: pointer; padding: 0 0 10px 20px; display: inline-block; width: 150px; color: black;}
