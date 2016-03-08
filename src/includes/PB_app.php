@@ -334,34 +334,11 @@
 				<!-- BEGIN RESULT -->
 					<div id="result">
 			
-						<!-- <div id="results"> -->
 							<div class="tuff projects_masonry_holder portfolio_one_by_one" >
 							<?php foreach ($xmlResult->listings->listing as $item): ?>
 							
 								<?php $statusClass = strtolower( str_replace(' ', '_', $item->data->pba__status__c) ); ?>
 
-		    						
-		    						<!-- <div class="property_search_result <?php echo $item->data->pba__status__c; ?>">
-		    							<h1><a href="<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" ><?php echo  $item->data->name; ?></a></h1>
-		    							<p><?php echo $item->data->pba__status__c; ?></p>
-		    							<?php if ($item->media->images->image != null && count($item->media->images->image) > 0){ ?>
-		    						    <div class="property_search_result_thumbnail">
-		    						    	<a href= "<?php echo site_url(); ?>/listing?id=<?php echo  $item->data->id; ?>" rel="<?php echo  $item->data->id; ?>"> 
-		    						    		<img src="<?php echo $item->media->images->image[0]->baseurl . "/thumbnail/" . $item->media->images->image[0]->filename; ?>">
-		    						    	</a>
-		    						    </div>
-		    						    <?php }; ?>
-		    						    
-		    						    <ul>
-											<li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
-											<li class="itemFact">Weekly Rent: <?php $weekly = number_format((float)$item->data->weekly_rent__c); $monthly = number_format((float)($weekly * 52)/12); echo  '&#163;'.$weekly.' (&#163;'.$monthly.'/month)'; ?></li>			
-											<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
-											<li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>			
-											<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
-											<li class="itemFact">Tenure: <?php echo  $item->data->tenure__c; ?></li>			
-											<li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>	
-		    						    </ul>
-		    						</div> -->
 	
 										<article class="portfolio_masonry_item show <?php echo $statusClass ?>">
 											<div class="flex image_holder">
@@ -400,7 +377,6 @@
 		    					
 		    				<?php endforeach;?>	
 		    				</div>
-						<!-- </div> -->
 			
 						
 					</div>
