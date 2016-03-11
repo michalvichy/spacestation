@@ -8,7 +8,7 @@ global $qode_options_proya;
 global $qode_toolbar;
 */
 $id = $wp_query->get_queried_object_id();
-$sidebar = get_post_meta($id, "qode_show-sidebar", true);  
+$sidebar = get_post_meta($id, "qode_show-sidebar", true);
 
 $enable_page_comments = false;
 if(get_post_meta($id, "qode_enable-page-comments", true) == 'yes') {
@@ -79,7 +79,7 @@ else { $paged = 1; }
 
 				TweenLite.from(intro_image_left, 2, {top:"-1000px"});
 				TweenLite.from(intro_image_right, 2, {bottom:"-1000px",onComplete: showElements});
-				
+
 			}
 		</script>
     </head>
@@ -115,34 +115,66 @@ else { $paged = 1; }
 
         <div class="content content_top_margin_none">
             <div class="content_inner">
-	         
+
                 <?php get_template_part( 'title' ); ?>
                 <?php
-                $revslider = get_post_meta($id, "qode_revolution-slider", true);
-                if (!empty($revslider)){ ?>
-                    <div class="q_slider"><div class="q_slider_inner">
-                            <?php echo do_shortcode($revslider); ?>
-                        </div></div>
-                <?php
-                }
+	                $revslider = get_post_meta($id, "qode_revolution-slider", true);
+	                if (!empty($revslider)){
+					?>
+	                    <div class="q_slider">
+							<div class="q_slider_inner">
+	                            <?php echo do_shortcode($revslider); ?>
+	                        </div>
+						</div>
+	                <?php
+                	}
                 ?>
                 <div class="full_width"<?php if($background_color != "") { echo " style='background-color:". $background_color ."'";} ?>>
                     <div class="full_width_inner">
-                        <?php if(($sidebar == "default")||($sidebar == "")) : ?>
+                        <?php if(($sidebar == "default") || ($sidebar == "")) : ?>
                             <?php if (have_posts()) :
                                 while (have_posts()) : the_post(); ?>
                                     <?php the_content(); ?>
                                     <?php
-                                    $args_pages = array(
-                                        'before'           => '<p class="single_links_pages">',
-                                        'after'            => '</p>',
-                                        'pagelink'         => '<span>%</span>'
-                                    );
+	                                    $args_pages = array(
+	                                        'before'           => '<p class="single_links_pages">',
+	                                        'after'            => '</p>',
+	                                        'pagelink'         => '<span>%</span>'
+	                                    );
 
-                                    wp_link_pages($args_pages); ?>
+	                                    wp_link_pages($args_pages); ?>
+                                    <?php if($enable_page_comments) { ?>
+                                        <div class="container">
+                                            <div class="container_inner">
+                                                <?php comments_template('', true); ?>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+                        <?php elseif($sidebar == "1" || $sidebar == "2"): ?>
+
+	                        <?php if($sidebar == "1") : ?>
+		                        <div class="two_columns_66_33 clearfix grid2">
+		                            <div class="column1">
+	                        <?php elseif($sidebar == "2") : ?>
+		                        <div class="two_columns_75_25 clearfix grid2">
+		                            <div class="column1">
+                    		<?php endif; ?>
+                        <?php if (have_posts()) :
+                            while (have_posts()) : the_post(); ?>
+                                <div class="column_inner">
+                                    <?php the_content(); ?>
                                     <?php
-                                    if($enable_page_comments){
-                                        ?>
+	                                    $args_pages = array(
+	                                        'before'           => '<p class="single_links_pages">',
+	                                        'after'            => '</p>',
+	                                        'pagelink'         => '<span>%</span>'
+	                                    );
+
+	                                    wp_link_pages($args_pages);
+									?>
+                                    <?php if($enable_page_comments) { ?>
                                         <div class="container">
                                             <div class="container_inner">
                                                 <?php
@@ -150,104 +182,61 @@ else { $paged = 1; }
                                                 ?>
                                             </div>
                                         </div>
-                                    <?php
-                                    }
-                                    ?>
-                                <?php endwhile; ?>
-                            <?php endif; ?>
-                        <?php elseif($sidebar == "1" || $sidebar == "2"): ?>
-
-                        <?php if($sidebar == "1") : ?>
-                        <div class="two_columns_66_33 clearfix grid2">
-                            <div class="column1">
-                        <?php elseif($sidebar == "2") : ?>
-                        <div class="two_columns_75_25 clearfix grid2">
-                            <div class="column1">
-                                <?php endif; ?>
-                                <?php if (have_posts()) :
-                                    while (have_posts()) : the_post(); ?>
-                                        <div class="column_inner">
-
-                                            <?php the_content(); ?>
-                                            <?php
-                                            $args_pages = array(
-                                                'before'           => '<p class="single_links_pages">',
-                                                'after'            => '</p>',
-                                                'pagelink'         => '<span>%</span>'
-                                            );
-
-                                            wp_link_pages($args_pages); ?>
-                                            <?php
-                                            if($enable_page_comments){
-                                                ?>
-                                                <div class="container">
-                                                    <div class="container_inner">
-                                                        <?php
-                                                        comments_template('', true);
-                                                        ?>
-                                                    </div>
-                                                </div>
-                                            <?php
-                                            }
-                                            ?>
-                                        </div>
-                                    <?php endwhile; ?>
-                                <?php endif; ?>
-
-
-                            </div>
-                            <div class="column2"><?php get_sidebar();?></div>
-                        </div>
+                                    <?php } ?>
+                                </div>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+	                            </div>
+	                            <div class="column2"><?php get_sidebar();?></div>
+	                        </div>
                         <?php elseif($sidebar == "3" || $sidebar == "4"): ?>
-                        <?php if($sidebar == "3") : ?>
-                        <div class="two_columns_33_66 clearfix grid2">
-                            <div class="column1"><?php get_sidebar();?></div>
-                            <div class="column2">
-                                <?php elseif($sidebar == "4") : ?>
+	                        <?php if($sidebar == "3") : ?>
+		                        <div class="two_columns_33_66 clearfix grid2">
+		                            <div class="column1"><?php get_sidebar();?></div>
+		                            <div class="column2">
+                            <?php elseif($sidebar == "4") : ?>
                                 <div class="two_columns_25_75 clearfix grid2">
                                     <div class="column1"><?php get_sidebar();?></div>
                                     <div class="column2">
-                                        <?php endif; ?>
-                                        <?php if (have_posts()) :
-                                            while (have_posts()) : the_post(); ?>
-                                                <div class="column_inner">
-                                                    <?php the_content(); ?>
-                                                    <?php
-                                                    $args_pages = array(
-                                                        'before'           => '<p class="single_links_pages">',
-                                                        'after'            => '</p>',
-                                                        'pagelink'         => '<span>%</span>'
-                                                    );
+                            <?php endif; ?>
+                            <?php if (have_posts()) :
+                                while (have_posts()) : the_post(); ?>
+                                    <div class="column_inner">
+                                    <?php the_content(); ?>
+                                    <?php
+                                        $args_pages = array(
+                                            'before'           => '<p class="single_links_pages">',
+                                            'after'            => '</p>',
+                                            'pagelink'         => '<span>%</span>'
+                                        );
 
-                                                    wp_link_pages($args_pages); ?>
-                                                    <?php
-                                                    if($enable_page_comments){
-                                                        ?>
-                                                        <div class="container">
-                                                            <div class="container_inner">
-                                                                <?php
-                                                                comments_template('', true);
-                                                                ?>
-                                                            </div>
-                                                        </div>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </div>
-                                            <?php endwhile; ?>
-                                        <?php endif; ?>
-
-
+                                        wp_link_pages($args_pages);
+									?>
+                                    <?php if($enable_page_comments) { ?>
+                                        <div class="container">
+                                            <div class="container_inner">
+                                                <?php comments_template('', true); ?>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                     </div>
-
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+									</div>
                                 </div>
                                 <?php endif; ?>
                             </div>
                         </div>
-            </div>
-        </div>
-    </div>
-</div>
+	            	</div>
+	        	</div>
+	    	</div>
+		</div>
+	</div> <!-- END content_inner -->
+</div> <!-- END content content_top_margin -->
+
+<!-- Start the rest of landing page -->
+<!-- End of landing page -->
+
 <?php wp_footer(); ?>
 </body>
 </html>

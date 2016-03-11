@@ -23,9 +23,9 @@ body, select, input{
 }
 
 section.side_menu.right label, section.side_menu.right li:not(.caslon-pro) a, #theForm-sidebar label{
-  font-family: "futura-pt",sans-serif; 
-  font-weight: 700; 
-  font-size: 20px; 
+  font-family: "futura-pt",sans-serif;
+  font-weight: 700;
+  font-size: 20px;
   letter-spacing: 1px;
 }
 
@@ -76,25 +76,25 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
 
   /* center logo */
   div.header_inner_left{
-  	left:50%!important; 
+  	left:50%!important;
   	margin-left:-75px;
   	}
-  	
+
   .q_logo a{max-height: 16px;}
-  	
+
   .header_bottom{ background-color: rgba(0,0,0,0)!important;}
-  
+
   div.side_menu_button a{
   	background: black;
   	padding: 10px!important;
   }
-  
+
   /* display both left and right navigation panels */
   aside.vertical_menu_area{
   	z-index: 5000;
   	opacity: 0.95;
   }
-  
+
   body.vertical_menu_enabled header div.header_inner{
   	display: block;
   }
@@ -130,7 +130,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
   background-color: #C5C7C8;
   color: #222;
   font-weight: 400;
-  
+
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   }
@@ -148,7 +148,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     color: transparent;
     overflow: visible;
   }
-  
+
   form.PB_request_form input[type=range]::-moz-range-track {
     width: 100%;
     height: 100%;
@@ -160,7 +160,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     color: transparent;
     overflow: visible;
   }
-  
+
   form.PB_request_form input[type=range] {
     width: 100%;
     height: 100%;
@@ -172,16 +172,16 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     color: transparent;
     overflow: visible;
   }
-  
+
   form.PB_request_form input[type=range]:focus::-webkit-slider-runnable-track {
     background: transparent;
     border: transparent;
   }
-  
+
   form.PB_request_form input[type=range]:focus {
     outline: none;
   }
-  
+
   /* Make the thumbs the same size as your custom sliderthumb. They will not be visible but they will be draggable. */
   form.PB_request_form input[type=range]::-ms-thumb {
     width: 12px;
@@ -190,7 +190,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     border: 0 none;
     background: transparent;
   }
-  
+
   form.PB_request_form input[type=range]::-moz-range-thumb {
     width: 12px;
     height: 12px;
@@ -198,7 +198,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     border: 0 none;
     background: transparent;
   }
-  
+
   form.PB_request_form input[type=range]::-webkit-slider-thumb {
     width: 12px;
     height: 12px;
@@ -207,22 +207,22 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     background: transparent;
     -webkit-appearance: none;
   }
-  
+
   /* Eliminate the default appearance and tooltip behaviour that is peculiar to IE and Edge. */
   form.PB_request_form input[type=range]::-ms-fill-lower {
     background: transparent;
     border: 0 none;
   }
-  
+
   form.PB_request_form input[type=range]::-ms-fill-upper {
     background: transparent;
     border: 0 none;
   }
-  
+
   form.PB_request_form input[type=range]::-ms-tooltip {
     display: none;
   }
-  
+
   /* The .slider and .slidervertical classes are for the range inputs. Set the z-index high so its on top. */
   form.PB_request_form .slider {
     position: absolute;
@@ -231,7 +231,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     overflow: visible;
     z-index: 100;
   }
-  
+
   /* slidershell exists only to provide a positioning context for the range input and other elements.*/
   form.PB_request_form .slidershell {
     border: 0 none;
@@ -242,7 +242,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     z-index: 1;
     margin-bottom: 30px;
   }
-  
+
   /* .slidertrack is the visible track on which the user drags the thumb button. */
   form.PB_request_form .slidertrack {
   height: 12px;
@@ -251,7 +251,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     background: aqua;
     display: none;
   }
-  
+
   /* .sliderfill adds color (or a gradient as seen here) to the track as the user drags the thumb. */
   form.PB_request_form .sliderfill {
     position: absolute;
@@ -260,9 +260,9 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     width: 180px;
     background-image: url('assets/imgs/slider-back.png');
   }
-  
-  /* .sliderthumb can be any css you like including an image. 
-      The dimensions must match those found in the rule for 
+
+  /* .sliderthumb can be any css you like including an image.
+      The dimensions must match those found in the rule for
       input[type=range]::-webkit-slider-thumb. */
   form.PB_request_form .sliderthumb {
     width: 12px;
@@ -281,7 +281,7 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     text-align: center;
     pointer-events: none;
   }
-  
+
   /* .slidervalue can be styled as you see fit */
   form.PB_request_form .slidervalue {
     width: 40px;
@@ -318,11 +318,11 @@ fieldset#selected_category label, .sidebar .textwidget > a{font-family: "futura-
     background-color: #C5C7C8!important;
     cursor: pointer;
   }
-  
+
   form.PB_request_form select option{
     font-family: 'Raleway'!important;
   }
-  
+
 div.jqcorner{
   background-color: #C5C7C8!important;
   margin-bottom: 10px ;
@@ -387,9 +387,9 @@ aside.vertical_menu_area{
 }
 
 #find-a-property, #top-nav-social{
-  position: fixed; 
-  top:0; 
-  left: 0; 
+  position: fixed;
+  top:0;
+  left: 0;
   background: black;
   color: white;
   padding: 5px 15px;
@@ -439,7 +439,7 @@ span.vertical_menu_hidden_button_line{ left: 20px; }
   aside.vertical_menu_area{
     display: block;
   }
-  
+
   .vertical_menu_hidden.vertical_menu_hidden_with_logo .vertical_menu_area_bottom_logo {
     display: block;
   }
@@ -480,14 +480,14 @@ span.vertical_menu_hidden_button_line{ left: 20px; }
   aside.vertical_menu_area form fieldset.record-types input[type="radio"]{
       display: none!important;
     }
-  
+
   aside.vertical_menu_area form fieldset.record-types label{
     display:inline-block;
           padding:0 0 0 5px;
           cursor: pointer;
           font-weight: 400;
     }
-  
+
   aside.vertical_menu_area form fieldset.record-types input[type="radio"]:checked + label {
       color: #9a751e;
       font-weight: 600;
@@ -501,7 +501,7 @@ span.vertical_menu_hidden_button_line{ left: 20px; }
     color: white!important;
     font-size: 12px!important;
     text-transform: uppercase;
-    background: #B59656; 
+    background: #B59656;
   }
 
 aside.vertical_menu_area form.PB_request_form input{width: 100%;}
@@ -528,13 +528,13 @@ div.caroufredsel_wrapper{
 }
 
 .tuff_carousel .carousel_item_holder{
-    margin:0!important; 
-    width:100%; 
+    margin:0!important;
+    width:100%;
     /*background: lime;*/
 }
 
 .tuff_carousel .has_hover_image{
-    opacity:1!important;   
+    opacity:1!important;
 }
 
 .tuff_carousel span.first_image_holder.has_hover_image{
@@ -546,8 +546,8 @@ div.caroufredsel_wrapper{
 .tuff_carousel div.second_image_holder.has_hover_image{
  width: 50%!important;
  float: left;
- position: relative!important; 
- padding:0; 
+ position: relative!important;
+ padding:0;
 }
 
 .tuff_carousel  .qode_carousels .slides>li{margin: 0;}
@@ -641,11 +641,11 @@ div.caroufredsel_wrapper{
 
   /* ---- MIDDLE COLUMN ---- */
   footer div.column2.footer_col2 div.textwidget{
-  
+
     text-align: center;
     margin-top:35%;
     margin-left: -15px;
-  
+
   }
 
   footer i.simple_social{
@@ -685,7 +685,7 @@ div.caroufredsel_wrapper{
 
 /* ---- LANDING PAGE ---- */
   body.page-template-landing_page .content{
-  	background: url('assets/imgs/back_marble.png') no-repeat center center fixed; 
+  	background: url('assets/imgs/back_marble.png') no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -693,7 +693,7 @@ div.caroufredsel_wrapper{
     z-index: 0;
     margin-top: 0!important;
   }
-  	
+
   #intro_image{
   	display: block;
   	text-align: center;
@@ -706,7 +706,7 @@ div.caroufredsel_wrapper{
   	height: 170px;
   	z-index: 5000;
   }
-  
+
   #intro_image-left{
   	position: absolute;
   	left:0;
@@ -715,7 +715,7 @@ div.caroufredsel_wrapper{
   	width: 108px;
   	height: 170px;
   }
-  
+
   #intro_image-right{
   	position: absolute;
   	right: 1px;
@@ -747,7 +747,7 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 /* ////////////////////////////////////////////// */
 
 /*/////// GENERAL STYLES */
-.tuff .projects_holder_outer.masonry_with_space .projects_holder.portfolio_one_by_one article.show, 
+.tuff .projects_holder_outer.masonry_with_space .projects_holder.portfolio_one_by_one article.show,
 .tuff.projects_masonry_holder.portfolio_one_by_one article.show{
     width:50%;
     /*background: aqua;*/
@@ -774,9 +774,9 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 }
 
 /*/////// BIG LEFT*/
-.tuff .portfolio_masonry_item.square_big .image_holder img, 
+.tuff .portfolio_masonry_item.square_big .image_holder img,
 .tuff .attachment-portfolio_masonry_large{
-  width: 200%!important;   
+  width: 200%!important;
 }
 
 .tuff .portfolio_masonry_item.square_big .text_holder{
@@ -787,9 +787,9 @@ div.tooltip.tooltip1 i{cursor: pointer;}
 }
 
 /*/////// BIG RIGHT*/
-.tuff .portfolio_masonry_item.square_big .image_holder img, 
+.tuff .portfolio_masonry_item.square_big .image_holder img,
 .tuff .attachment-portfolio_masonry_large{
-  width: 200%!important;   
+  width: 200%!important;
 }
 
 .tuff .portfolio_masonry_item.square_big.top-right .text_holder{
@@ -850,8 +850,8 @@ height: 25%;
 
 
 .arrow-right {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 0 solid transparent;
   border-bottom: 20px solid transparent;
   border-left: 40px solid white;
@@ -860,8 +860,8 @@ height: 25%;
 }
 
 .arrow-right_big_square {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 0 solid transparent;
   border-bottom: 20px solid transparent;
   border-left: 40px solid rgba(255,255,255,0.9);
@@ -874,21 +874,21 @@ height: 25%;
 }
 
 .arrow-left {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 0 solid transparent;
-  border-bottom: 20px solid transparent; 
-  border-right:40px solid white; 
+  border-bottom: 20px solid transparent;
+  border-right:40px solid white;
   margin-left: -39px;
   margin-top: 20%;
 }
 
 .arrow-left_big_square {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 0 solid transparent;
-  border-bottom: 20px solid transparent; 
-  border-right:40px solid rgba(255,255,255,0.9); 
+  border-bottom: 20px solid transparent;
+  border-right:40px solid rgba(255,255,255,0.9);
   margin-left: -40px;
   position: relative;
   display: flex;
@@ -922,9 +922,3 @@ fieldset#selected_category input[type="radio"]:checked + label, .sidebar .checke
 
 .single-format-standard div.pop-inside , .single-format-standard div.pop-inside ul li{border: none;}
 .single-format-standard ul.pop-widget-tabs li:first-child{display: none;}
-
-
-
-
-
-
