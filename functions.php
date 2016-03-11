@@ -27,13 +27,13 @@ wp_enqueue_script("imagesLoaded", "http://imagesloaded.desandro.com/imagesloaded
 
 		wp_register_style( 'pb-style', get_stylesheet_directory_uri() . '/css/pb-style.css'  );
 		wp_enqueue_style( 'pb-style' );
-	
+
 		wp_enqueue_script("masonry", "https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js",array(),false,true);
 		wp_enqueue_script("imagesLoaded", "http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js",array(),false,true);
 		wp_enqueue_script("PB_app", get_stylesheet_directory_uri()."/js/PB_app.js",array(),false,true);
-	
+
 	}
-	
+
 	// IF CURRENT TEMPLATE IS LISTING
 
 	if(get_option('current_page_template') === 'Full Width Listing'){
@@ -44,7 +44,7 @@ wp_enqueue_script("imagesLoaded", "http://imagesloaded.desandro.com/imagesloaded
 		wp_enqueue_style( 'px-video' );
 		wp_register_style( 'fontello', get_stylesheet_directory_uri() . '/css/fontello.css'  );
 		wp_enqueue_style( 'fontello' );
-	
+
 		wp_enqueue_script("tabs", site_url()."/wp-includes/js/jquery/ui/tabs.min.js",array(),false,true);
 		wp_enqueue_script("jcarousel", "https://cdnjs.cloudflare.com/ajax/libs/jcarousel/0.3.4/jquery.jcarousel.min.js",array(),false,true);
 		wp_enqueue_script("jcarouselResponsive", get_stylesheet_directory_uri()."/js/jcarousel.responsive.js",array(),false,true);
@@ -135,8 +135,8 @@ if (!function_exists('portfolio_list_tuff')) {
             'standard right space',
             'square_big top-left',
             'square_big top-right'
-            ); 
-        
+            );
+
         $_type_class = '';
         $_portfolio_space_class = '';
         $_portfolio_masonry_with_space_class = '';
@@ -178,7 +178,7 @@ if (!function_exists('portfolio_list_tuff')) {
             $_type_class = " hover_text no_space";
             $_portfolio_space_class = "portfolio_no_space portfolio_with_hover_text";
         }
-    // 
+    //
     // article layout / style classes
         $article_style = "";
         if (($type == "masonry_with_space" || $type == 'masonry_with_space_without_description') && $spacing !== ''){
@@ -314,9 +314,9 @@ if (!function_exists('portfolio_list_tuff')) {
             if($grid_size == 4){
                 $grid_number_of_columns = "gs4";
             }
-            
+
             $html .= "<div class='tuff projects_masonry_holder portfolio_main_holder ". $grid_number_of_columns ." ".$portfolio_loading_class."'>";
-            
+
             // PAGED
             if (get_query_var('paged')) {
                 $paged = get_query_var('paged');
@@ -413,7 +413,7 @@ if (!function_exists('portfolio_list_tuff')) {
                 if($hover_type == 'default') {
 
                     if(strpos($masonry_layout,'square_big') !== false){
-                        
+
                         $image_size = "portfolio_masonry_large";
 
                         $html .= "<div class='image_holder'>";
@@ -434,7 +434,7 @@ if (!function_exists('portfolio_list_tuff')) {
                         $html .= "<span class='text_outer'>";
                         $html .= "<span class='text_inner'>";
                         $html .= '<div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner">';
-    
+
                         if($show_categories !== 'no') {
                             $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>';
                             $k = 1;
@@ -447,20 +447,20 @@ if (!function_exists('portfolio_list_tuff')) {
                             }
                             $html .= '</span>';
                         }
-    
+
                         if($show_title !== 'no') {
                             $html .= '<'.$title_tag.' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).' target="'.$target.'">' . get_the_title() . '</a></'.$title_tag.'>';
                         }
-    
+
                         $excerpt = substr(get_the_excerpt(), 0, intval(65)).'...';
-    
+
                         if($portfolio_separator == "yes"){
                             $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
                             $html .='<div>'.$excerpt.'</div>';
                         }else{
                             $html .='<div>'.$excerpt.'</div>';
                         }
-    
+
                         $html .= '</div></div>';
                         $html .= "</span></span></span>";
                         $html .= "</div>";
@@ -474,7 +474,7 @@ if (!function_exists('portfolio_list_tuff')) {
                         $html .= get_the_post_thumbnail(get_the_ID(), $image_size);
                         $html .= "</span>";
                         $html .= "</a>";
-                        if(strpos($masonry_layout,'left') !== false){ 
+                        if(strpos($masonry_layout,'left') !== false){
                             $html .= "<span class='arrow-right'></span>";
                         }else{
                             $html .= "<span class='arrow-left'></span>";
@@ -484,7 +484,7 @@ if (!function_exists('portfolio_list_tuff')) {
                         $html .= "<span class='text_outer'>";
                         $html .= "<span class='text_inner'>";
                         $html .= '<div class="hover_feature_holder_title"><div class="hover_feature_holder_title_inner">';
-    
+
                         if($show_categories !== 'no') {
                             $html .= '<span class="project_category" '.qode_get_inline_style($category_styles).'>';
                             $k = 1;
@@ -497,29 +497,29 @@ if (!function_exists('portfolio_list_tuff')) {
                             }
                             $html .= '</span>';
                         }
-    
+
                         if($show_title !== 'no') {
                             $html .= '<'.$title_tag.' class="portfolio_title"><a href="' . $portfolio_link . '" '.qode_get_inline_style($title_styles).' target="'.$target.'">' . get_the_title() . '</a></'.$title_tag.'>';
                         }
-    
+
                         $excerpt = substr(get_the_excerpt(), 0, intval(65)).'...';
-    
+
                         if($portfolio_separator == "yes"){
                             $html .= '<div '.qode_get_inline_style($separator_styles).' class="portfolio_separator separator  small ' . $portfolio_separator_aignment . '"></div>';
                             $html .='<div>'.$excerpt.'</div>';
                         }else{
                             $html .='<div>'.$excerpt.'</div>';
                         }
-    
-                        
-    
+
+
+
                         $html .= '</div></div>';
                         $html .= "</span></span></span>";
                         $html .= "</div>";
                         }
 
-                    
-                } 
+
+                }
 
                 $html .= "</article>";
 
@@ -798,4 +798,8 @@ if (!function_exists('qode_carousel_tuff')) {
 }
 add_shortcode('qode_carousel_tuff', 'qode_carousel_tuff');
 
-
+/*
+  CHILID STYLES
+*/
+wp_register_style( 'chilid-styles', get_stylesheet_directory_uri() . '/css/main.css'  );
+wp_enqueue_style('chilid-styles');
